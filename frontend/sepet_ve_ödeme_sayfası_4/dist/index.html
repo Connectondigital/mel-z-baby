@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mel'z Baby&amp;Kids - Blog</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#e27036",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#211711",
+                        "text-main": "#171311",
+                        "text-secondary": "#876f64",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"],
+                        "body": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+
+</head>
+<body>
+<header class="bg-white border-b border-[#f4f2f0] sticky top-0 z-50">
+<div class="max-w-[1280px] mx-auto px-4 md:px-10 py-3">
+<div class="flex items-center justify-between gap-8">
+<!-- Logo -->
+<div class="flex items-center gap-4 text-text-main shrink-0">
+<div class="size-8 text-primary">
+<span class="material-symbols-outlined text-[32px]">child_care</span>
+</div>
+<h2 class="text-text-main text-lg font-bold leading-tight tracking-[-0.015em]">Mel'z Baby&amp;Kids</h2>
+</div>
+<!-- Desktop Menu -->
+<nav class="hidden lg:flex items-center gap-9">
+<a class="text-text-main text-sm font-medium hover:text-primary transition-colors" href="#">Mağaza</a>
+<a class="text-text-main text-sm font-medium hover:text-primary transition-colors" href="#">Giyim</a>
+<a class="text-text-main text-sm font-medium hover:text-primary transition-colors" href="#">Oyuncak</a>
+<a class="text-text-main text-sm font-medium hover:text-primary transition-colors" href="#">Bakım</a>
+<a class="text-primary text-sm font-bold transition-colors" href="#">Blog</a>
+<a class="text-text-main text-sm font-medium hover:text-primary transition-colors" href="#">İletişim</a>
+</nav>
+<!-- Actions -->
+<div class="flex items-center gap-4 justify-end flex-1 lg:flex-none">
+<label class="hidden md:flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full">
+<div class="text-text-secondary flex border-none bg-[#f4f2f0] items-center justify-center pl-4 rounded-l-xl border-r-0">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-text-main focus:outline-0 focus:ring-0 border-none bg-[#f4f2f0] focus:border-none h-full placeholder:text-text-secondary px-4 rounded-l-none border-l-0 pl-2 text-sm font-normal leading-normal" placeholder="Ara..." value=""/>
+</div>
+</label>
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-xl h-10 w-10 bg-[#f4f2f0] hover:bg-[#e8e6e4] text-text-main transition-colors">
+<span class="material-symbols-outlined text-[20px]">shopping_cart</span>
+</button>
+<button class="flex items-center justify-center rounded-xl h-10 w-10 bg-[#f4f2f0] hover:bg-[#e8e6e4] text-text-main transition-colors">
+<span class="material-symbols-outlined text-[20px]">account_circle</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</header>
+
+<main class="flex-grow w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<div class="mb-8">
+<h2 class="text-3xl font-bold leading-tight">Sepetim ve Ödeme</h2>
+<p class="text-[#897561] dark:text-[#a89580] mt-1">Siparişinizi güvenle tamamlayın</p>
+</div>
+<div class="w-full max-w-3xl mx-auto mb-12">
+<div class="relative">
+<div class="absolute top-1/2 left-0 w-full h-1 bg-gray-200 dark:bg-gray-800 -translate-y-1/2 rounded-full"></div>
+<div class="absolute top-1/2 left-0 w-1/3 h-1 bg-primary -translate-y-1/2 rounded-full transition-all duration-500 shadow-[0_0_10px_rgba(238,140,43,0.3)]"></div>
+<div class="relative z-10 flex justify-between w-full">
+<div class="flex flex-col items-center group cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center shadow-lg ring-[6px] ring-background-light dark:ring-background-dark transition-transform hover:scale-105">
+<span class="material-symbols-outlined text-lg">shopping_cart</span>
+</div>
+<span class="mt-3 text-xs font-bold uppercase tracking-wider text-primary">Sepet</span>
+</div>
+<div class="flex flex-col items-center group cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center shadow-lg ring-[6px] ring-background-light dark:ring-background-dark scale-110">
+<span class="material-symbols-outlined text-lg">local_shipping</span>
+</div>
+<span class="mt-3 text-xs font-bold uppercase tracking-wider text-primary">Teslimat</span>
+</div>
+<div class="flex flex-col items-center group">
+<div class="w-10 h-10 rounded-full bg-white dark:bg-[#2a2a2a] border-2 border-gray-200 dark:border-gray-700 text-gray-400 dark:text-gray-500 flex items-center justify-center ring-[6px] ring-background-light dark:ring-background-dark transition-colors">
+<span class="material-symbols-outlined text-lg">credit_card</span>
+</div>
+<span class="mt-3 text-xs font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors">Ödeme</span>
+</div>
+<div class="flex flex-col items-center group">
+<div class="w-10 h-10 rounded-full bg-white dark:bg-[#2a2a2a] border-2 border-gray-200 dark:border-gray-700 text-gray-400 dark:text-gray-500 flex items-center justify-center ring-[6px] ring-background-light dark:ring-background-dark transition-colors">
+<span class="material-symbols-outlined text-lg">check_circle</span>
+</div>
+<span class="mt-3 text-xs font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors">Onay</span>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<div class="lg:col-span-7 space-y-6">
+<div class="flex items-center justify-between pb-2 border-b border-gray-200 dark:border-gray-700">
+<h3 class="text-xl font-bold">Sepetim (3 Ürün)</h3>
+<button class="text-sm text-[#897561] hover:text-primary transition-colors font-medium">Sepeti Temizle</button>
+</div>
+<div class="space-y-4">
+<div class="bg-white dark:bg-[#181411] p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 flex gap-4 transition-all hover:shadow-md">
+<div class="w-24 h-24 shrink-0 rounded-lg bg-gray-100 overflow-hidden relative">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Beige organic cotton baby jumpsuit" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAz8Wj7lFaSc0yI5cokaeub8sx-VrsYY4tIUAf_8u4AW7z0RngQEB5veHRWklCHcM_WcWIQnOwEzTjAzNH9G1r8hD1cSYovUzgwIwoZyTigawHuuloBylttDas8IxEsi2R6dYzqJ6Fxf_vpQmBNV0ACxCkT18P1CO0Zkip76fqcXc_jBseFwFjJvkr7ngfCD7i3AQAiPyn6BUBoHnWfyL-9PMjbJ5X_Q2xvwyrYRLqQK1xlyhZ6WRJPIDxQeXp8rkS2yr_pKZ1a6JR7');"></div>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div class="flex justify-between items-start gap-2">
+<div>
+<h4 class="font-bold text-lg leading-tight">Organik Pamuk Tulum</h4>
+<p class="text-sm text-[#897561] mt-1">Beden: 6-9 Ay | Renk: Bej</p>
+</div>
+<span class="font-bold text-lg">450 TL</span>
+</div>
+<div class="flex justify-between items-end mt-2">
+<button class="text-red-500 hover:text-red-600 text-sm font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">delete</span>
+<span>Sil</span>
+</button>
+<div class="flex items-center bg-[#f4f2f0] dark:bg-[#333] rounded-lg p-1">
+<button class="w-7 h-7 flex items-center justify-center rounded-md bg-white dark:bg-[#444] shadow-sm hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">remove</span>
+</button>
+<input class="w-8 text-center bg-transparent border-none p-0 text-sm font-bold focus:ring-0" readonly="" type="text" value="1"/>
+<button class="w-7 h-7 flex items-center justify-center rounded-md bg-white dark:bg-[#444] shadow-sm hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-[#181411] p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 flex gap-4 transition-all hover:shadow-md">
+<div class="w-24 h-24 shrink-0 rounded-lg bg-gray-100 overflow-hidden relative">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Olive green baby diaper bag" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAltjAvE62x2Sw_J8majoXrBi0G_PnlYzV-wCyd4t1Gt-gKUkFN7z6SwU05moZQcxMEoJwyMPTBKNExKV_MhAkZP5ITh0W4cdmAlBzfYXUSQEFjrfG2s0WZ-c3P5ocXQiszWAqmwQZn-B_LrdLsJ0WS8GX0uwiPIgArTptG1rWq-p_e7PigZEgU23tJ9rbx9DoNR0FFzWC_aXrk_OEnNQHNAGRB81RS9n5yElNd8ww-ijO7nJ1EPBOmg8-ahzjqLElU7R7ONkb9hbTG');"></div>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div class="flex justify-between items-start gap-2">
+<div>
+<h4 class="font-bold text-lg leading-tight">Bebek Bakım Çantası</h4>
+<p class="text-sm text-[#897561] mt-1">Su Geçirmez | Renk: Haki</p>
+</div>
+<span class="font-bold text-lg">750 TL</span>
+</div>
+<div class="flex justify-between items-end mt-2">
+<button class="text-red-500 hover:text-red-600 text-sm font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">delete</span>
+<span>Sil</span>
+</button>
+<div class="flex items-center bg-[#f4f2f0] dark:bg-[#333] rounded-lg p-1">
+<button class="w-7 h-7 flex items-center justify-center rounded-md bg-white dark:bg-[#444] shadow-sm hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">remove</span>
+</button>
+<input class="w-8 text-center bg-transparent border-none p-0 text-sm font-bold focus:ring-0" readonly="" type="text" value="1"/>
+<button class="w-7 h-7 flex items-center justify-center rounded-md bg-white dark:bg-[#444] shadow-sm hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-[#181411] p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 flex gap-4 transition-all hover:shadow-md">
+<div class="w-24 h-24 shrink-0 rounded-lg bg-gray-100 overflow-hidden relative">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Wooden baby teether toy" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAP910T6wdNLSZOYHhKzGL_2_6T-V4SAiIgJbrLeD8Gv3uSp2e2soD-dBXEcl66u_L66L62hyy8R60blQ-GgW8B1mQhiigADknK_Lve5oDgoQdS0Dr7n9My7S5LQzqB8TNekX32P8kJVjdRLaEFWDjgVcfO_Pq06Xa_qg3CgvqPvFXbBSgmNJw0MZFHSdsDKwAeR9deRlcVGySVVyk3hBR8exaathHXqs8M5IURXb-ukWDAw0_j_6fikX8mq9965vnoazOQGBX-Ew0b');"></div>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div class="flex justify-between items-start gap-2">
+<div>
+<h4 class="font-bold text-lg leading-tight">Doğal Ahşap Diş Kaşıyıcı</h4>
+<p class="text-sm text-[#897561] mt-1">Kimyasal içermez</p>
+</div>
+<span class="font-bold text-lg">150 TL</span>
+</div>
+<div class="flex justify-between items-end mt-2">
+<button class="text-red-500 hover:text-red-600 text-sm font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">delete</span>
+<span>Sil</span>
+</button>
+<div class="flex items-center bg-[#f4f2f0] dark:bg-[#333] rounded-lg p-1">
+<button class="w-7 h-7 flex items-center justify-center rounded-md bg-white dark:bg-[#444] shadow-sm hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">remove</span>
+</button>
+<input class="w-8 text-center bg-transparent border-none p-0 text-sm font-bold focus:ring-0" readonly="" type="text" value="2"/>
+<button class="w-7 h-7 flex items-center justify-center rounded-md bg-white dark:bg-[#444] shadow-sm hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-6">
+<a class="inline-flex items-center gap-2 text-primary font-bold hover:underline" href="#">
+<span class="material-symbols-outlined">arrow_back</span>
+                        Alışverişe Devam Et
+                    </a>
+</div>
+</div>
+<div class="lg:col-span-5 relative">
+<div class="sticky top-24 space-y-6">
+<div class="bg-white dark:bg-[#181411] rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 p-5 relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:bg-primary/10 transition-colors"></div>
+<div class="relative z-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+<div>
+<div class="flex items-center justify-center sm:justify-start gap-2 mb-1">
+<span class="material-symbols-outlined text-primary">no_accounts</span>
+<h3 class="font-bold text-[#181411] dark:text-white">Üyeliksiz Devam Et</h3>
+</div>
+<p class="text-sm text-[#897561] dark:text-[#a89580]">Vaktiniz kısıtlı mı? Giriş yapmadan sipariş verin.</p>
+</div>
+<button class="shrink-0 bg-[#f8f7f6] dark:bg-[#222] hover:bg-primary hover:text-white dark:hover:bg-primary text-[#181411] dark:text-white font-bold py-2.5 px-5 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-primary dark:hover:border-primary transition-all duration-300 shadow-sm flex items-center gap-2">
+<span>Misafir Olarak Alışveriş Yap</span>
+<span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="bg-white dark:bg-[#181411] rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 overflow-hidden">
+<div class="border-b border-gray-100 dark:border-gray-800">
+<div class="p-4 bg-gray-50 dark:bg-gray-800 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold">1</div>
+<h3 class="font-bold text-lg">Teslimat Bilgileri</h3>
+</div>
+<div class="p-6 space-y-4">
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-1">
+<label class="text-sm font-medium text-[#897561]">Ad</label>
+<input class="w-full rounded-lg border-gray-300 dark:border-gray-600 bg-white dark:bg-[#222] focus:border-primary focus:ring-primary" placeholder="Adınız" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="text-sm font-medium text-[#897561]">Soyad</label>
+<input class="w-full rounded-lg border-gray-300 dark:border-gray-600 bg-white dark:bg-[#222] focus:border-primary focus:ring-primary" placeholder="Soyadınız" type="text"/>
+</div>
+</div>
+<div class="space-y-1">
+<label class="text-sm font-medium text-[#897561]">Telefon</label>
+<input class="w-full rounded-lg border-gray-300 dark:border-gray-600 bg-white dark:bg-[#222] focus:border-primary focus:ring-primary" placeholder="0(5__) ___ __ __" type="tel"/>
+</div>
+<div class="space-y-1">
+<label class="text-sm font-medium text-[#897561]">Adres</label>
+<textarea class="w-full rounded-lg border-gray-300 dark:border-gray-600 bg-white dark:bg-[#222] focus:border-primary focus:ring-primary" placeholder="Mahalle, Cadde, Sokak, No..." rows="2"></textarea>
+</div>
+</div>
+</div>
+<div>
+<div class="p-4 bg-gray-50 dark:bg-gray-800 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold">2</div>
+<h3 class="font-bold text-lg">Ödeme Yöntemi</h3>
+</div>
+<div class="p-6 space-y-4">
+<div class="flex gap-2 p-1 bg-gray-100 dark:bg-gray-800 rounded-lg">
+<button class="flex-1 py-2 px-3 rounded-md bg-white dark:bg-[#333] shadow-sm text-sm font-bold text-primary flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg">credit_card</span>
+                                        Kredi Kartı
+                                    </button>
+<button class="flex-1 py-2 px-3 rounded-md hover:bg-white/50 dark:hover:bg-[#444] text-sm font-medium text-gray-500 dark:text-gray-400 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg">home</span>
+                                        Kapıda Ödeme
+                                    </button>
+</div>
+<div class="space-y-3 pt-2">
+<div class="relative">
+<span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-gray-400">credit_card</span>
+</span>
+<input class="pl-10 w-full rounded-lg border-gray-300 dark:border-gray-600 bg-white dark:bg-[#222] focus:border-primary focus:ring-primary" placeholder="Kart Numarası" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<input class="w-full rounded-lg border-gray-300 dark:border-gray-600 bg-white dark:bg-[#222] focus:border-primary focus:ring-primary" placeholder="AA/YY" type="text"/>
+<input class="w-full rounded-lg border-gray-300 dark:border-gray-600 bg-white dark:bg-[#222] focus:border-primary focus:ring-primary" placeholder="CVC" type="text"/>
+</div>
+<div class="flex items-center gap-2 mt-2">
+<div class="h-6 w-10 bg-gray-200 rounded overflow-hidden relative">
+<div class="absolute inset-0 bg-contain bg-center bg-no-repeat" data-alt="Mastercard logo" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAlYFk42J4mrwEqMHksYC7TzERUAO56tbney-WTiEQDgEa0KZPrnEuLjh7LhMmG4NQ2WvMfCY28b5hKDUVt3kTRarXZI1_DULoOknYyG_hXBGccHZ9IKcxIAcENjzQD0SfGFZELb3tMvlJ2_DfGqpgcTClyG-9Bnp5TvC1i4fAgHpEuHVkAHJwZUVw2oj7t0eS-4lsVKdWJJ5uqjEFkbRvx80j8Z8M0iKuvPcpAKdz8teFCn2hk73-qlLE0zC4HhK5MhzgQ4CexqjPZ');"></div>
+</div>
+<div class="h-6 w-10 bg-gray-200 rounded overflow-hidden relative">
+<div class="absolute inset-0 bg-contain bg-center bg-no-repeat" data-alt="Visa logo" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA-cetf8KbXk0eaUGykJ9q6kBdQo7_W12Qx1SEDDWvc_HCa_DK7rjmSeKXk4AI4CCjlY8q9jXVkvT3tMepGI5OEjbCRK-iSdVg8ORWTgca1RLBhEi_5K0TZcbEf7Bm5jTX-hTlELWBADUO6NIVm4UGS5bsz66bYA-58B3BtzyyLvYIGpdq0MDRZpA4gnx43yPw8iRyDAVObI9xVKciF2wDKeGB9dH5Q5NyRJCm6v-xawbiZhkWtyBjTAXJJN6PMTr8DekRQ7ejnpb9D');"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-[#181411] rounded-2xl shadow-lg border-2 border-primary/10 p-6">
+<h3 class="font-bold text-lg mb-4">Sipariş Özeti</h3>
+<div class="space-y-3 pb-4 border-b border-gray-100 dark:border-gray-800">
+<div class="flex justify-between text-[#897561] dark:text-[#a89580]">
+<span>Ara Toplam</span>
+<span class="font-medium text-[#181411] dark:text-white">1.350,00 TL</span>
+</div>
+<div class="flex justify-between text-[#897561] dark:text-[#a89580]">
+<span>Kargo</span>
+<span class="font-medium text-green-600">Ücretsiz</span>
+</div>
+<div class="flex justify-between text-[#897561] dark:text-[#a89580]">
+<span>KDV (%10)</span>
+<span class="font-medium text-[#181411] dark:text-white">135,00 TL</span>
+</div>
+</div>
+<div class="flex justify-between items-center py-4">
+<span class="text-lg font-bold">Genel Toplam</span>
+<span class="text-2xl font-bold text-primary">1.485,00 TL</span>
+</div>
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 px-6 rounded-xl shadow-lg shadow-primary/30 transition-all active:scale-[0.98] flex items-center justify-center gap-2">
+<span>Siparişi Tamamla</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<div class="mt-4 flex items-center justify-center gap-2 text-xs text-gray-400">
+<span class="material-symbols-outlined text-sm">lock</span>
+                            256-bit SSL ile korunan güvenli ödeme
+                        </div>
+</div>
+</div>
+</div>
+</div>
+</main>
+
+<footer class="bg-white border-t border-[#f4f2f0] py-12">
+<div class="max-w-[1280px] mx-auto px-4 md:px-10">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+<div class="col-span-1 md:col-span-1">
+<div class="flex items-center gap-2 mb-4 text-text-main">
+<span class="material-symbols-outlined text-primary text-[28px]">child_care</span>
+<span class="font-bold text-lg">Mel'z Baby&amp;Kids</span>
+</div>
+<p class="text-text-secondary text-sm mb-4 leading-relaxed">
+                        Miniklerin konforu ve mutluluğu için özenle seçilmiş ürünler ve uzman tavsiyeleriyle yanınızdayız.
+                    </p>
+<div class="flex gap-4">
+<a class="text-text-secondary hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">thumb_up</span></a> <!-- Social Icon Placeholder -->
+<a class="text-text-secondary hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">photo_camera</span></a> <!-- Social Icon Placeholder -->
+</div>
+</div>
+<div>
+<h5 class="font-bold text-text-main mb-4">Kurumsal</h5>
+<ul class="flex flex-col gap-2 text-sm text-text-secondary">
+<li><a class="hover:text-primary transition-colors" href="#">Hakkımızda</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Kariyer</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Mağazalar</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">İletişim</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold text-text-main mb-4">Yardım</h5>
+<ul class="flex flex-col gap-2 text-sm text-text-secondary">
+<li><a class="hover:text-primary transition-colors" href="#">Sipariş Takibi</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">İade ve Değişim</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Kargo Bilgileri</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Sıkça Sorulan Sorular</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold text-text-main mb-4">Kategoriler</h5>
+<ul class="flex flex-col gap-2 text-sm text-text-secondary">
+<li><a class="hover:text-primary transition-colors" href="#">Bebek Giyim</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Eğitici Oyuncaklar</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Bakım Ürünleri</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Anne &amp; Bebek</a></li>
+</ul>
+</div>
+</div>
+<div class="border-t border-[#f4f2f0] pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-text-secondary">
+<p>© 2024 Mel'z Baby&amp;Kids. Tüm hakları saklıdır.</p>
+<div class="flex gap-4">
+<a class="hover:text-primary transition-colors" href="#">Gizlilik Politikası</a>
+<a class="hover:text-primary transition-colors" href="#">Kullanım Koşulları</a>
+</div>
+</div>
+</div>
+</footer>
+</body>
+</html>

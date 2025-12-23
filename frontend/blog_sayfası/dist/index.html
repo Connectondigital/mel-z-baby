@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mel'z Baby&amp;Kids - Blog</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#e27036",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#211711",
+                        "text-main": "#171311",
+                        "text-secondary": "#876f64",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"],
+                        "body": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+
+</head>
+<body>
+<header class="bg-white border-b border-[#f4f2f0] sticky top-0 z-50">
+<div class="max-w-[1280px] mx-auto px-4 md:px-10 py-3">
+<div class="flex items-center justify-between gap-8">
+<!-- Logo -->
+<div class="flex items-center gap-4 text-text-main shrink-0">
+<div class="size-8 text-primary">
+<span class="material-symbols-outlined text-[32px]">child_care</span>
+</div>
+<h2 class="text-text-main text-lg font-bold leading-tight tracking-[-0.015em]">Mel'z Baby&amp;Kids</h2>
+</div>
+<!-- Desktop Menu -->
+<nav class="hidden lg:flex items-center gap-9">
+<a class="text-text-main text-sm font-medium hover:text-primary transition-colors" href="#">Mağaza</a>
+<a class="text-text-main text-sm font-medium hover:text-primary transition-colors" href="#">Giyim</a>
+<a class="text-text-main text-sm font-medium hover:text-primary transition-colors" href="#">Oyuncak</a>
+<a class="text-text-main text-sm font-medium hover:text-primary transition-colors" href="#">Bakım</a>
+<a class="text-primary text-sm font-bold transition-colors" href="#">Blog</a>
+<a class="text-text-main text-sm font-medium hover:text-primary transition-colors" href="#">İletişim</a>
+</nav>
+<!-- Actions -->
+<div class="flex items-center gap-4 justify-end flex-1 lg:flex-none">
+<label class="hidden md:flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full">
+<div class="text-text-secondary flex border-none bg-[#f4f2f0] items-center justify-center pl-4 rounded-l-xl border-r-0">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-text-main focus:outline-0 focus:ring-0 border-none bg-[#f4f2f0] focus:border-none h-full placeholder:text-text-secondary px-4 rounded-l-none border-l-0 pl-2 text-sm font-normal leading-normal" placeholder="Ara..." value=""/>
+</div>
+</label>
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-xl h-10 w-10 bg-[#f4f2f0] hover:bg-[#e8e6e4] text-text-main transition-colors">
+<span class="material-symbols-outlined text-[20px]">shopping_cart</span>
+</button>
+<button class="flex items-center justify-center rounded-xl h-10 w-10 bg-[#f4f2f0] hover:bg-[#e8e6e4] text-text-main transition-colors">
+<span class="material-symbols-outlined text-[20px]">account_circle</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</header>
+
+<main class="min-h-screen pb-20">
+<!-- Breadcrumbs -->
+<div class="max-w-[1280px] mx-auto px-4 md:px-10 py-5">
+<div class="flex flex-wrap gap-2 items-center">
+<a class="text-text-secondary text-sm font-medium hover:text-primary transition-colors" href="#">Anasayfa</a>
+<span class="text-text-secondary text-sm font-medium">/</span>
+<span class="text-text-main text-sm font-bold">Blog</span>
+</div>
+</div>
+<!-- Hero Section -->
+<section class="max-w-[1280px] mx-auto px-4 md:px-10 mb-12">
+<div class="bg-white rounded-3xl p-6 md:p-10 shadow-sm border border-[#f0eeec] overflow-hidden">
+<div class="flex flex-col lg:flex-row gap-8 items-center">
+<div class="w-full lg:w-1/2">
+<div class="aspect-video w-full rounded-2xl bg-gray-200 bg-cover bg-center" data-alt="Happy baby sleeping peacefully in a crib with soft lighting" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAZ_kp5h5XtLdfPkaahwgLC6rmmgd7E-tTSPLxSsHUSMHXl5c6q8SWSBvvWJuAiAWjRucNYpOxS8cHrVdh0Vi4FdV58trjBrrwg-4_FwHI00M9jOMXmxHNu7-7G2RsfCzLPCv5dZtLPIAVhP1bdzVNe23dmhIxUBZwCDmwNN0lm7nb2LidBj94eF0_msiqw9torEaU4lYQC0CqY42O8yBAhLY1oS8tLO1Pbstfn5d_PVDerqq5RVdcTHzZczYSrwJn3fimQL_sj0sQT');">
+</div>
+</div>
+<div class="w-full lg:w-1/2 flex flex-col gap-6 items-start">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wide">
+<span class="material-symbols-outlined text-[16px]">star</span>
+                            Editörün Seçimi
+                        </div>
+<h1 class="text-text-main text-3xl md:text-4xl lg:text-5xl font-black leading-tight tracking-tight">
+                            Bebeklerde Uyku Düzeni Nasıl Sağlanır?
+                        </h1>
+<p class="text-text-secondary text-base md:text-lg leading-relaxed">
+                            Yeni doğan bebeğinizin uyku alışkanlıklarını düzenlemek ve daha huzurlu geceler geçirmek için ebeveynlere özel ipuçları ve uzman tavsiyeleri bu rehberde.
+                        </p>
+<div class="flex flex-wrap items-center gap-4 text-sm text-text-secondary mb-2">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+<span>12 Ekim 2023</span>
+</div>
+<span class="w-1 h-1 rounded-full bg-gray-300"></span>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+<span>5 dk okuma</span>
+</div>
+</div>
+<button class="flex items-center justify-center rounded-xl h-12 px-6 bg-primary hover:bg-[#d15f25] text-white text-base font-bold transition-all shadow-md shadow-primary/20 hover:shadow-primary/40 gap-2">
+                            Devamını Oku
+                            <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Main Content Area -->
+<div class="max-w-[1280px] mx-auto px-4 md:px-10">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+<!-- Left Column: Blog Grid -->
+<div class="lg:col-span-8 flex flex-col gap-8">
+<!-- Categories (Chips) -->
+<div class="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-text-main text-white px-5 transition-colors shadow-sm">
+<span class="text-sm font-bold">Tümü</span>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-white border border-[#e5dfdc] hover:border-primary hover:text-primary text-text-main px-5 transition-all">
+<span class="text-sm font-medium">Beslenme</span>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-white border border-[#e5dfdc] hover:border-primary hover:text-primary text-text-main px-5 transition-all">
+<span class="text-sm font-medium">Uyku</span>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-white border border-[#e5dfdc] hover:border-primary hover:text-primary text-text-main px-5 transition-all">
+<span class="text-sm font-medium">Oyun &amp; Aktivite</span>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-white border border-[#e5dfdc] hover:border-primary hover:text-primary text-text-main px-5 transition-all">
+<span class="text-sm font-medium">Bakım</span>
+</button>
+</div>
+<!-- Article Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Blog Card 1 -->
+<article class="flex flex-col bg-white border border-[#f0eeec] rounded-2xl overflow-hidden group hover:shadow-lg transition-all duration-300">
+<div class="h-48 w-full bg-gray-100 overflow-hidden">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Baby eating healthy pureed food from a spoon" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAH5-Ne6_ff05uHgRJJwEJUDTnG3UxWdmg4F6V1myBKVoZBRucuhnIkpGAq3ypM6iE6PSlDTJv8UuCzqtbP9SK8aI0h98VVYKjk-LjKihEgdjFqIsATtKnZouO1QNKXf62STRKHWTTcDHVE-wsIZqDewl5HUMB1Hl7Kba6tbwTTD53TR7KF1ECDde1egvzTfPecg2LZf-saGqDlmMekDtZujraA5fUVWR4tg4G7MJ8fBHzkgiDYxjDUHNzlN8JuVZ2oB1Da397h6qtU');">
+</div>
+</div>
+<div class="flex flex-col flex-1 p-6">
+<div class="flex items-center gap-2 mb-3">
+<span class="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded-md">Beslenme</span>
+<span class="text-xs text-text-secondary">2 Gün Önce</span>
+</div>
+<h3 class="text-xl font-bold text-text-main mb-3 group-hover:text-primary transition-colors">Ek Gıdaya Geçiş Süreci</h3>
+<p class="text-text-secondary text-sm leading-relaxed mb-4 line-clamp-2">
+                                    Bebeğinizin ilk katı gıda deneyimi için hazırlamanız gerekenler, alerji riskleri ve en sağlıklı başlangıç tarifleri.
+                                </p>
+<div class="mt-auto flex items-center justify-between border-t border-[#f4f2f0] pt-4">
+<div class="flex items-center gap-2">
+<div class="size-8 rounded-full bg-gray-200 bg-cover bg-center" data-alt="Portrait of Dr. Elif Yilmaz" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuADT_l95IycK-AZAdVL_eOxMTMWRVsP2ifrrN7cbSNY_XEwJd1LBIgwgs6qtojPIPYxAEGkNPr0pNY-_mQnAgWZxSknF6lNJHFR4X-mJlyJqeZHylnLxyMaXDoOfG4B9AtbCRSvlEuWh3ZeTqLaJOt33nwMSW9biGUwH0oGvbwqw7195qieSVm_K2G2uzYZK4S4RRPbmLozUeBhAILJC0kIm2Wh61BnhXBdjAu2PDHEfRGIzhCXEJmHnkoSiyCSZ4AUQm5-1PVmKrWk');"></div>
+<span class="text-xs font-medium text-text-main">Dr. Elif Yılmaz</span>
+</div>
+<a class="text-primary text-sm font-bold flex items-center gap-1 hover:gap-2 transition-all" href="#">
+                                        Oku <span class="material-symbols-outlined text-[16px]">arrow_right_alt</span>
+</a>
+</div>
+</div>
+</article>
+<!-- Blog Card 2 -->
+<article class="flex flex-col bg-white border border-[#f0eeec] rounded-2xl overflow-hidden group hover:shadow-lg transition-all duration-300">
+<div class="h-48 w-full bg-gray-100 overflow-hidden">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Toddler playing with wooden educational toys" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCpWE4cSJ8ZH5upfZDHZOviF0JrbJoh-W27qKME-5AGwJakIq-KIh5JHYOKIWTohdMBD_RIyQ5sgLr2aRVa-pltKAHpG2uDVPX9Vx6jx7I-HB-yI8MEFwo6yyiyJpqX9x9gY7j37VCDkqpDhawy24UorvoiAaJSYqFB9iiw_KtTYLHegYDnQfCNoB24XOksjqp5rFcSSQrOVvKy8K7FCQMDgxfKhOIWmiPA6AAU6W_ddNI-gBG6bKoou41a9ghZhPu-AnpIsq3slWeU');">
+</div>
+</div>
+<div class="flex flex-col flex-1 p-6">
+<div class="flex items-center gap-2 mb-3">
+<span class="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded-md">Oyun</span>
+<span class="text-xs text-text-secondary">5 Gün Önce</span>
+</div>
+<h3 class="text-xl font-bold text-text-main mb-3 group-hover:text-primary transition-colors">Montessori Oyuncak Seçimi</h3>
+<p class="text-text-secondary text-sm leading-relaxed mb-4 line-clamp-2">
+                                    Çocuğunuzun motor becerilerini geliştirecek ve yaratıcılığını destekleyecek en iyi ahşap oyuncak önerileri.
+                                </p>
+<div class="mt-auto flex items-center justify-between border-t border-[#f4f2f0] pt-4">
+<div class="flex items-center gap-2">
+<div class="size-8 rounded-full bg-gray-200 bg-cover bg-center" data-alt="Portrait of Author Ali Demir" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBlySep05h8kaxclEZ_Y5Ip4Pg7Wb50P2fyWSvVpSMFZZk0GYFo9eq6APpBZXFHns0ty63lsM7gY87jKNKy6SB0hPOJKtzR9rEmaNxo-2RIZe4WcTKQsW16ULCLRAmEfSmTIZhQH0qrn3h2mKVJniGBMm-DikjSjaJFBJdXhFXaEtustvttfjgkUUitKRUjqzfWlqfaOXupvL8TJXJSkbYeSIwj2lOX0dmjrqS5y_60twt-9yf0RrW2byurPlpfqd836C3rYbyd50QM');"></div>
+<span class="text-xs font-medium text-text-main">Ali Demir</span>
+</div>
+<a class="text-primary text-sm font-bold flex items-center gap-1 hover:gap-2 transition-all" href="#">
+                                        Oku <span class="material-symbols-outlined text-[16px]">arrow_right_alt</span>
+</a>
+</div>
+</div>
+</article>
+<!-- Blog Card 3 -->
+<article class="flex flex-col bg-white border border-[#f0eeec] rounded-2xl overflow-hidden group hover:shadow-lg transition-all duration-300">
+<div class="h-48 w-full bg-gray-100 overflow-hidden">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Baby skin care products and soft towels" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCvXvQCU8bOFfNApdadFH5UcnQI19flona2pe7i5qhg3qLWX-V6kreSRaT8596_3CY68hdYocUwfp5K2bPrw5P_sQw4-eKGPtHc-oXUWI-v7sbZzlC6J77iILgNGAppNNLzQ2WObiAdFnCPxaM2diG5LUwcnW4EidXK74BiMKpgAlCkRfLzLv4OlCEMGRef_b0lQ9eQEJVmbrUmNnmel3kQZsEkQPzXd6jFAf1iP8cZuzjnif9Rwt3JlR1YOXPlPJKYBC5DGYR0Zaqr');">
+</div>
+</div>
+<div class="flex flex-col flex-1 p-6">
+<div class="flex items-center gap-2 mb-3">
+<span class="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded-md">Bakım</span>
+<span class="text-xs text-text-secondary">1 Hafta Önce</span>
+</div>
+<h3 class="text-xl font-bold text-text-main mb-3 group-hover:text-primary transition-colors">Bebek Cildi İçin Doğru Bakım</h3>
+<p class="text-text-secondary text-sm leading-relaxed mb-4 line-clamp-2">
+                                    Hassas bebek cildini korumak için kullanmanız gereken doğal ürünler ve kaçınmanız gereken kimyasallar.
+                                </p>
+<div class="mt-auto flex items-center justify-between border-t border-[#f4f2f0] pt-4">
+<div class="flex items-center gap-2">
+<div class="size-8 rounded-full bg-gray-200 bg-cover bg-center" data-alt="Portrait of Dermatologist Zeynep Kaya" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA24bs3eh6r554paXb0ypu-DbSR-Ke3_JpNhFFiaiH5A1YSTGx_dEcDMTw6_a9BhS2NQiU_Fhzno_kriFmOjBHxLM5WFIClBSvpCm3Y6LgCjbzrd_StXx_BsuFvRA7gvflQapqDfeQ95WVkyWRyWNSu0PX5lE557na2Hc-Mo7uNIABovxnYiFegS6JSfLiPSsmPnGdJ_pmDvA4yiwPLKyHzKgr6WBG3eCBn2iW-7KcOLyctTq4IOze8nmyuVdhhGdhZsokuskoBmVhW');"></div>
+<span class="text-xs font-medium text-text-main">Dr. Zeynep Kaya</span>
+</div>
+<a class="text-primary text-sm font-bold flex items-center gap-1 hover:gap-2 transition-all" href="#">
+                                        Oku <span class="material-symbols-outlined text-[16px]">arrow_right_alt</span>
+</a>
+</div>
+</div>
+</article>
+<!-- Blog Card 4 -->
+<article class="flex flex-col bg-white border border-[#f0eeec] rounded-2xl overflow-hidden group hover:shadow-lg transition-all duration-300">
+<div class="h-48 w-full bg-gray-100 overflow-hidden">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Baby stroller in a park setting" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD2JQSs0FayowTLtrxQD9HzW94Bp__LyVXkorzSMveicFf_2gRmH9bVo-KHrQpQAdlArWMRADn_uPGG2XLJc8rdPw1QIdXbtYNs6IWnmUWIMhx5eGhLgIKLudO_5j20xX-7r2kaZcc5-F-9Uvy-6S-EIooCBEnYRasPd7SU-S6WIQuXHAaKVaSRchNuPALUTkkLY9-FpZd5KirjjcjjByQsbULWkDW3H5VdEBKHdvSqj8D8FcA1xxawGJ0bQxTH8fRFlKq_ZCQjD9CN');">
+</div>
+</div>
+<div class="flex flex-col flex-1 p-6">
+<div class="flex items-center gap-2 mb-3">
+<span class="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded-md">Ürün İnceleme</span>
+<span class="text-xs text-text-secondary">2 Hafta Önce</span>
+</div>
+<h3 class="text-xl font-bold text-text-main mb-3 group-hover:text-primary transition-colors">2024'ün En İyi Bebek Arabaları</h3>
+<p class="text-text-secondary text-sm leading-relaxed mb-4 line-clamp-2">
+                                    Konfor, güvenlik ve pratiklik açısından bu yılın en çok tercih edilen bebek arabası modellerini inceledik.
+                                </p>
+<div class="mt-auto flex items-center justify-between border-t border-[#f4f2f0] pt-4">
+<div class="flex items-center gap-2">
+<div class="size-8 rounded-full bg-gray-200 bg-cover bg-center" data-alt="Portrait of Editor Can Yilmaz" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC7H2mhs9TVYgGJSK4WB7opR4k8qkOTUjXm2pLYKN5hadv-jpqW_k2fJGHukXeY7dZCrmFMLumHcj_pklwWa4SR5E6x67fqe9RaaugmXLXR54gLZeZzdoRPuNaV34JkQ3aXCWY7rF2mHhnSIMypugND_sik6QVoDO76znxXco-b8kE3Sh5TlW2wImtykA0Qy4RmJ7aR8_df-ppzZMtMtjOjKnwQDmBwevn2RlY-NSG7u8xRLJsnfwubA7R87OQtL_2rFAeLoENzDS9y');"></div>
+<span class="text-xs font-medium text-text-main">Can Yılmaz</span>
+</div>
+<a class="text-primary text-sm font-bold flex items-center gap-1 hover:gap-2 transition-all" href="#">
+                                        Oku <span class="material-symbols-outlined text-[16px]">arrow_right_alt</span>
+</a>
+</div>
+</div>
+</article>
+</div>
+<!-- Pagination -->
+<div class="flex justify-center mt-8">
+<nav class="flex items-center gap-2">
+<button class="size-10 flex items-center justify-center rounded-lg border border-[#e5dfdc] bg-white text-text-secondary hover:bg-gray-50 disabled:opacity-50">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<button class="size-10 flex items-center justify-center rounded-lg bg-primary text-white font-bold shadow-md shadow-primary/20">1</button>
+<button class="size-10 flex items-center justify-center rounded-lg border border-[#e5dfdc] bg-white text-text-main font-medium hover:bg-gray-50 hover:border-primary/50 transition-colors">2</button>
+<button class="size-10 flex items-center justify-center rounded-lg border border-[#e5dfdc] bg-white text-text-main font-medium hover:bg-gray-50 hover:border-primary/50 transition-colors">3</button>
+<span class="text-text-secondary px-2">...</span>
+<button class="size-10 flex items-center justify-center rounded-lg border border-[#e5dfdc] bg-white text-text-secondary hover:bg-gray-50">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</nav>
+</div>
+</div>
+<!-- Right Column: Sidebar -->
+<aside class="lg:col-span-4 flex flex-col gap-8">
+<!-- Search Widget -->
+<div class="bg-white p-6 rounded-2xl border border-[#f0eeec] shadow-sm">
+<h4 class="text-lg font-bold text-text-main mb-4">Blogda Ara</h4>
+<div class="relative">
+<input class="w-full h-12 pl-12 pr-4 bg-[#f8f6f6] border-none rounded-xl text-sm focus:ring-2 focus:ring-primary/20 placeholder:text-text-secondary" placeholder="Makale, konu veya yazar..." type="text"/>
+<span class="material-symbols-outlined absolute left-4 top-3 text-text-secondary">search</span>
+</div>
+</div>
+<!-- Categories Widget -->
+<div class="bg-white p-6 rounded-2xl border border-[#f0eeec] shadow-sm">
+<h4 class="text-lg font-bold text-text-main mb-4">Kategoriler</h4>
+<ul class="flex flex-col gap-3">
+<li>
+<a class="flex items-center justify-between group p-2 rounded-lg hover:bg-[#fcfbf9] transition-colors" href="#">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[18px]">restaurant</span>
+</div>
+<span class="text-sm font-medium text-text-main group-hover:text-primary transition-colors">Beslenme</span>
+</div>
+<span class="text-xs text-text-secondary bg-[#f4f2f0] px-2 py-1 rounded-full">12</span>
+</a>
+</li>
+<li>
+<a class="flex items-center justify-between group p-2 rounded-lg hover:bg-[#fcfbf9] transition-colors" href="#">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[18px]">bedtime</span>
+</div>
+<span class="text-sm font-medium text-text-main group-hover:text-primary transition-colors">Uyku Düzeni</span>
+</div>
+<span class="text-xs text-text-secondary bg-[#f4f2f0] px-2 py-1 rounded-full">8</span>
+</a>
+</li>
+<li>
+<a class="flex items-center justify-between group p-2 rounded-lg hover:bg-[#fcfbf9] transition-colors" href="#">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[18px]">toys</span>
+</div>
+<span class="text-sm font-medium text-text-main group-hover:text-primary transition-colors">Oyun &amp; Gelişim</span>
+</div>
+<span class="text-xs text-text-secondary bg-[#f4f2f0] px-2 py-1 rounded-full">15</span>
+</a>
+</li>
+<li>
+<a class="flex items-center justify-between group p-2 rounded-lg hover:bg-[#fcfbf9] transition-colors" href="#">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[18px]">family_restroom</span>
+</div>
+<span class="text-sm font-medium text-text-main group-hover:text-primary transition-colors">Ebeveynlik</span>
+</div>
+<span class="text-xs text-text-secondary bg-[#f4f2f0] px-2 py-1 rounded-full">24</span>
+</a>
+</li>
+</ul>
+</div>
+<!-- Recent Posts Widget -->
+<div class="bg-white p-6 rounded-2xl border border-[#f0eeec] shadow-sm">
+<h4 class="text-lg font-bold text-text-main mb-4">Son Yazılar</h4>
+<div class="flex flex-col gap-4">
+<a class="flex gap-4 group" href="#">
+<div class="w-16 h-16 rounded-lg bg-gray-100 overflow-hidden shrink-0">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-300" data-alt="Baby holding a soft blanket" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBvMMch56Lt19dkDe3b600kh9cEUhuZhqz_qhe82sCDNf3GaB0Ix8FhaGY4us6fjP1kEw8ZLlwhP5wFW8evTXePjrZbEBzmpSrhGFrFdKYB0vX64y0uRvZu5K-opyrJTZq92E7HuU1LASpimH3-zp4cGH2KytcR6r3gLegx8lzIAZbL2PPJ6CTf8uuIxDGehPpng0IJ39fxtdsP6dQsfh5JJQQABkNeTnNrLrgprPet5xhtGQhO59oyNdW5i82ufliG1PkBCb3m6b2B');">
+</div>
+</div>
+<div class="flex flex-col justify-center">
+<h5 class="text-sm font-bold text-text-main leading-tight mb-1 group-hover:text-primary transition-colors">Kışın Bebek Giydirme Tüyoları</h5>
+<span class="text-xs text-text-secondary">24 Kas 2023</span>
+</div>
+</a>
+<div class="h-px bg-[#f4f2f0] w-full"></div>
+<a class="flex gap-4 group" href="#">
+<div class="w-16 h-16 rounded-lg bg-gray-100 overflow-hidden shrink-0">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-300" data-alt="Modern nursery room interior" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCroeSeS0cY2tj-r2iqyUO0br5mz8KJK620tpfMWOjoD4GGIGG5QTiwajwlk9YseE6xuduuf4GwIGcj55DZlmtyseqWJaUcuPK5H5l8P7vzz9r384sfDvEFLALqCKebZXYGHwRPHYDJH4D2Af25fuFViu39rqSaU0UUlAPYdmHGuye3feAJ77a1gc-J8qvlnnPkc5t2woge-2381Z23oRbAkA_dzGBxr3blS06g40Be-llsWZFWjxeq5UFKol1lN6z4tMwyQRATPsaj');">
+</div>
+</div>
+<div class="flex flex-col justify-center">
+<h5 class="text-sm font-bold text-text-main leading-tight mb-1 group-hover:text-primary transition-colors">Bebek Odası Dekorasyonu</h5>
+<span class="text-xs text-text-secondary">20 Kas 2023</span>
+</div>
+</a>
+<div class="h-px bg-[#f4f2f0] w-full"></div>
+<a class="flex gap-4 group" href="#">
+<div class="w-16 h-16 rounded-lg bg-gray-100 overflow-hidden shrink-0">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-300" data-alt="Mom reading a book to her baby" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAyZgDSquQUyLx2C6lcMjqx8lFaqxIOk4_kbQ2ER8Sz5rcVWvOVKFLdPQBMDIJQpv54oTUF_6b8HKm-aSCY-OH93Bo8Cq_7nxq8oDBK-tE7HwYBdsmITafE_28O0rDWPPKAiegAiqWq4si4IwQifb1StHj8t3NZUhX4NhvC-q7fZ0FvFHpDrszHt6FQ1pXPzaVLARkddfIh9IrtcStVBEEkdFLQy1_vSfj2rI9yzA8jNl3Q--RMs0yyx0yJvwjKVrijTlQnt4P5cePA');">
+</div>
+</div>
+<div class="flex flex-col justify-center">
+<h5 class="text-sm font-bold text-text-main leading-tight mb-1 group-hover:text-primary transition-colors">Bebeklerde Dil Gelişimi</h5>
+<span class="text-xs text-text-secondary">15 Kas 2023</span>
+</div>
+</a>
+</div>
+</div>
+<!-- Newsletter Widget -->
+<div class="bg-[#fdf8f4] p-6 rounded-2xl border border-primary/10 text-center">
+<div class="size-12 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm text-primary">
+<span class="material-symbols-outlined text-[24px]">mail</span>
+</div>
+<h4 class="text-lg font-bold text-text-main mb-2">Mel'z Ailesine Katılın</h4>
+<p class="text-sm text-text-secondary mb-4 leading-relaxed">Yeni ürünler, indirimler ve ebeveynlik ipuçları için bültenimize abone olun.</p>
+<form class="flex flex-col gap-2">
+<input class="w-full h-10 px-4 bg-white border border-[#e5dfdc] rounded-lg text-sm focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all" placeholder="E-posta adresiniz" type="email"/>
+<button class="w-full h-10 bg-primary hover:bg-[#d15f25] text-white rounded-lg text-sm font-bold transition-colors">Abone Ol</button>
+</form>
+</div>
+</aside>
+</div>
+</div>
+</main>
+
+<footer class="bg-white border-t border-[#f4f2f0] py-12">
+<div class="max-w-[1280px] mx-auto px-4 md:px-10">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+<div class="col-span-1 md:col-span-1">
+<div class="flex items-center gap-2 mb-4 text-text-main">
+<span class="material-symbols-outlined text-primary text-[28px]">child_care</span>
+<span class="font-bold text-lg">Mel'z Baby&amp;Kids</span>
+</div>
+<p class="text-text-secondary text-sm mb-4 leading-relaxed">
+                        Miniklerin konforu ve mutluluğu için özenle seçilmiş ürünler ve uzman tavsiyeleriyle yanınızdayız.
+                    </p>
+<div class="flex gap-4">
+<a class="text-text-secondary hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">thumb_up</span></a> <!-- Social Icon Placeholder -->
+<a class="text-text-secondary hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">photo_camera</span></a> <!-- Social Icon Placeholder -->
+</div>
+</div>
+<div>
+<h5 class="font-bold text-text-main mb-4">Kurumsal</h5>
+<ul class="flex flex-col gap-2 text-sm text-text-secondary">
+<li><a class="hover:text-primary transition-colors" href="#">Hakkımızda</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Kariyer</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Mağazalar</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">İletişim</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold text-text-main mb-4">Yardım</h5>
+<ul class="flex flex-col gap-2 text-sm text-text-secondary">
+<li><a class="hover:text-primary transition-colors" href="#">Sipariş Takibi</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">İade ve Değişim</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Kargo Bilgileri</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Sıkça Sorulan Sorular</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold text-text-main mb-4">Kategoriler</h5>
+<ul class="flex flex-col gap-2 text-sm text-text-secondary">
+<li><a class="hover:text-primary transition-colors" href="#">Bebek Giyim</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Eğitici Oyuncaklar</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Bakım Ürünleri</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Anne &amp; Bebek</a></li>
+</ul>
+</div>
+</div>
+<div class="border-t border-[#f4f2f0] pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-text-secondary">
+<p>© 2024 Mel'z Baby&amp;Kids. Tüm hakları saklıdır.</p>
+<div class="flex gap-4">
+<a class="hover:text-primary transition-colors" href="#">Gizlilik Politikası</a>
+<a class="hover:text-primary transition-colors" href="#">Kullanım Koşulları</a>
+</div>
+</div>
+</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mel'z Baby&amp;Kids - Blog</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#e27036",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#211711",
+                        "text-main": "#171311",
+                        "text-secondary": "#876f64",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"],
+                        "body": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+
+</head>
+<body>
+<header class="bg-white border-b border-[#f4f2f0] sticky top-0 z-50">
+<div class="max-w-[1280px] mx-auto px-4 md:px-10 py-3">
+<div class="flex items-center justify-between gap-8">
+<!-- Logo -->
+<div class="flex items-center gap-4 text-text-main shrink-0">
+<div class="size-8 text-primary">
+<span class="material-symbols-outlined text-[32px]">child_care</span>
+</div>
+<h2 class="text-text-main text-lg font-bold leading-tight tracking-[-0.015em]">Mel'z Baby&amp;Kids</h2>
+</div>
+<!-- Desktop Menu -->
+<nav class="hidden lg:flex items-center gap-9">
+<a class="text-text-main text-sm font-medium hover:text-primary transition-colors" href="#">Mağaza</a>
+<a class="text-text-main text-sm font-medium hover:text-primary transition-colors" href="#">Giyim</a>
+<a class="text-text-main text-sm font-medium hover:text-primary transition-colors" href="#">Oyuncak</a>
+<a class="text-text-main text-sm font-medium hover:text-primary transition-colors" href="#">Bakım</a>
+<a class="text-primary text-sm font-bold transition-colors" href="#">Blog</a>
+<a class="text-text-main text-sm font-medium hover:text-primary transition-colors" href="#">İletişim</a>
+</nav>
+<!-- Actions -->
+<div class="flex items-center gap-4 justify-end flex-1 lg:flex-none">
+<label class="hidden md:flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full">
+<div class="text-text-secondary flex border-none bg-[#f4f2f0] items-center justify-center pl-4 rounded-l-xl border-r-0">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-text-main focus:outline-0 focus:ring-0 border-none bg-[#f4f2f0] focus:border-none h-full placeholder:text-text-secondary px-4 rounded-l-none border-l-0 pl-2 text-sm font-normal leading-normal" placeholder="Ara..." value=""/>
+</div>
+</label>
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-xl h-10 w-10 bg-[#f4f2f0] hover:bg-[#e8e6e4] text-text-main transition-colors">
+<span class="material-symbols-outlined text-[20px]">shopping_cart</span>
+</button>
+<button class="flex items-center justify-center rounded-xl h-10 w-10 bg-[#f4f2f0] hover:bg-[#e8e6e4] text-text-main transition-colors">
+<span class="material-symbols-outlined text-[20px]">account_circle</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</header>
+
+<nav class="sticky top-0 z-50 w-full bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-gray-100 dark:border-gray-800">
+<div class="max-w-[1200px] mx-auto px-4 md:px-8">
+<div class="flex items-center justify-between h-20">
+<div class="flex items-center gap-2">
+<div class="size-8 text-primary">
+<span class="material-symbols-outlined text-4xl">child_care</span>
+</div>
+<h1 class="text-xl md:text-2xl font-bold tracking-tight text-melz-dark dark:text-white">Mel'z Baby&amp;Kids</h1>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Ana Sayfa</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Mağaza</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Koleksiyonlar</a>
+<a class="text-sm font-medium text-primary font-bold" href="#">Hakkımızda</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">İletişim</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-melz-beige dark:hover:bg-white/10 rounded-full transition-colors">
+<span class="material-symbols-outlined text-melz-dark dark:text-white">search</span>
+</button>
+<button class="p-2 hover:bg-melz-beige dark:hover:bg-white/10 rounded-full transition-colors relative">
+<span class="material-symbols-outlined text-melz-dark dark:text-white">shopping_cart</span>
+<span class="absolute top-1 right-1 size-2 bg-primary rounded-full"></span>
+</button>
+<button class="md:hidden p-2 hover:bg-melz-beige dark:hover:bg-white/10 rounded-full transition-colors">
+<span class="material-symbols-outlined text-melz-dark dark:text-white">menu</span>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<header class="relative w-full h-[600px] overflow-hidden">
+<div class="absolute inset-0 w-full h-full bg-cover bg-center" data-alt="Happy mother holding baby in warm soft light" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA8p6By1Wbau7hENZh368erVSk99hxmygcny4fExbVPBi1_7CjKA0eY6D9ki3b0NDfY6k5Qzk-8OE4QIrw4Qp-Wxkw81IAsqWB2Iy4rCnVZO_f8tJLoUIn6B3rtJVbvUi0y2DbhwNe247xy4jeobBlutLcaroOe1TiDdjflIRfIh-zKqmWTjSCSRpwRkR7hQMprA8pn8hEd3TKE8xBQ3g-71Bf5uqT0klBGfHMUOaCAs2I4vJYn1fnuOzhRndDEWiwtZ_LJbt_cGcS3');">
+<div class="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent dark:from-black/70"></div>
+</div>
+<div class="relative h-full max-w-[1200px] mx-auto px-4 md:px-8 flex flex-col justify-center text-white">
+<span class="text-primary font-bold tracking-wider uppercase mb-4">Bizim Hikayemiz</span>
+<h2 class="text-4xl md:text-6xl font-extrabold leading-tight max-w-2xl mb-6">
+            Miniklerin Dünyasına <br/>
+<span class="text-primary">Sevgi ve Konfor</span> Katıyoruz
+        </h2>
+<p class="text-lg md:text-xl text-white/90 max-w-xl font-medium leading-relaxed">
+            Mel'z Baby&amp;Kids olarak, her ebeveynin aradığı güveni ve her bebeğin hak ettiği yumuşaklığı sunmak için yola çıktık.
+        </p>
+</div>
+</header>
+<section class="py-20 md:py-32 bg-white dark:bg-background-dark">
+<div class="max-w-[1200px] mx-auto px-4 md:px-8">
+<div class="grid md:grid-cols-2 gap-12 items-center">
+<div class="flex flex-col gap-6 order-2 md:order-1">
+<h3 class="text-3xl md:text-4xl font-bold text-melz-dark dark:text-white">
+                    Bir Annenin Hayaliyle Başladı
+                </h3>
+<div class="w-20 h-1 bg-primary rounded-full"></div>
+<p class="text-melz-brown dark:text-gray-300 text-lg leading-relaxed">
+                    Mel'z Baby&amp;Kids'in yolculuğu, kurucumuz Melis'in kendi bebeği için "en iyisini" arama serüveniyle başladı. Piyasada bulduğu ürünlerin ya kalitesinden ya da doğallığından emin olamayan Melis, kendi çocuğuna giydirmekten çekinmeyeceği kıyafetleri üretmeye karar verdi.
+                </p>
+<p class="text-melz-brown dark:text-gray-300 text-lg leading-relaxed">
+                    Bugün, küçük bir atölyede başlayan bu hayal, binlerce ailenin güvenle tercih ettiği bir markaya dönüştü. Her dikişte, her kumaş seçiminde aynı anne şefkatini koruyoruz.
+                </p>
+</div>
+<div class="relative order-1 md:order-2 h-[500px]">
+<div class="absolute top-0 right-0 w-3/4 h-3/4 rounded-2xl overflow-hidden shadow-xl z-10">
+<img alt="Baby clothes production detail showing soft fabrics" class="w-full h-full object-cover" data-alt="Close up of high quality baby fabric textures" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgPug3CAyY2wZnF1e4cW4wevTDXG-95PZ5-eJDlFqB8wgzl_YMjDYvTqJcZ5Ij5xGNzmsxPPa0AtufdvxmMClrF6WioM9hVmASQqBr99MkamF00RrsekxN12S1N1o0zt7BUeVaqTQVP1dPALgwLzxzZIWKWrog1QIOTJCplIOS7hbOsdjQ3zB2AYwAR3Q5OfbQ2vGdU6eBiaDoO23ml15N9HUp8eRNObhhD56AVNUqMMt606MWkh9gGhD8ocmP-yE15LJPQ_WpNgtE"/>
+</div>
+<div class="absolute bottom-0 left-0 w-2/3 h-2/3 rounded-2xl overflow-hidden shadow-lg border-8 border-white dark:border-background-dark z-20">
+<img alt="Happy smiling baby playing with wooden toys" class="w-full h-full object-cover" data-alt="Happy smiling baby playing indoors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1rG31wSz4zyVCpvWVlt0Wy17aiiO_na7uSUuw1K7DxhGdv4P-AuNo8DSoltCPfJ6tMHo1A6VZEQ1BHFhnt32Gvs-uEKsF_-f8WyYu1VhG_QHwGTZihi0Xqm6bnHwfKxLuHZUG2jJV0413kvsey7skgJpGG-udAKFW0j9sIQ6zVVK0_SpaQ0ExBZRFCSlDLkK6xZiPQ_JoDA2l3R2AGSKRCpZ2HEade-KJad_QXO23-A1JUjmweczbDdmarJEEWK7QBIc4j8ogRWu4"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 bg-melz-beige dark:bg-[#2A221D]">
+<div class="max-w-[1200px] mx-auto px-4 md:px-8">
+<div class="text-center max-w-3xl mx-auto mb-16">
+<h3 class="text-3xl md:text-4xl font-bold text-melz-dark dark:text-white mb-4">Markamızın DNA'sı</h3>
+<p class="text-melz-brown dark:text-gray-400">
+                Her bir ürünümüzü tasarlarken bize rehberlik eden temel değerlerimiz ve standartlarımız.
+            </p>
+</div>
+<div class="relative mb-20">
+<div class="hidden md:block absolute top-12 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
+<div class="flex flex-col items-center text-center group">
+<div class="w-24 h-24 bg-white dark:bg-melz-dark rounded-full border-4 border-melz-beige dark:border-[#2A221D] shadow-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+<span class="material-symbols-outlined text-4xl text-primary">diamond</span>
+</div>
+<h4 class="text-xl font-bold text-melz-dark dark:text-white mb-2">Üstün Kalite</h4>
+<p class="text-sm text-melz-brown dark:text-gray-400 px-4">En ince iplikten en sağlam dikişe kadar kusursuzluk.</p>
+</div>
+<div class="flex flex-col items-center text-center group">
+<div class="w-24 h-24 bg-white dark:bg-melz-dark rounded-full border-4 border-melz-beige dark:border-[#2A221D] shadow-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+<span class="material-symbols-outlined text-4xl text-primary">health_and_safety</span>
+</div>
+<h4 class="text-xl font-bold text-melz-dark dark:text-white mb-2">Tam Güvenlik</h4>
+<p class="text-sm text-melz-brown dark:text-gray-400 px-4">Antialerjik kumaşlar ve zararsız boyalarla koruma.</p>
+</div>
+<div class="flex flex-col items-center text-center group">
+<div class="w-24 h-24 bg-white dark:bg-melz-dark rounded-full border-4 border-melz-beige dark:border-[#2A221D] shadow-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+<span class="material-symbols-outlined text-4xl text-primary">recycling</span>
+</div>
+<h4 class="text-xl font-bold text-melz-dark dark:text-white mb-2">Sürdürülebilirlik</h4>
+<p class="text-sm text-melz-brown dark:text-gray-400 px-4">Doğaya saygılı, geri dönüştürülebilir materyaller.</p>
+</div>
+<div class="flex flex-col items-center text-center group">
+<div class="w-24 h-24 bg-white dark:bg-melz-dark rounded-full border-4 border-melz-beige dark:border-[#2A221D] shadow-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+<span class="material-symbols-outlined text-4xl text-primary">favorite</span>
+</div>
+<h4 class="text-xl font-bold text-melz-dark dark:text-white mb-2">Çocuk Sevgisi</h4>
+<p class="text-sm text-melz-brown dark:text-gray-400 px-4">Her tasarımda miniklerin mutluluğunu hedefliyoruz.</p>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-background-dark rounded-3xl p-8 md:p-12 shadow-sm">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8 divide-y md:divide-y-0 md:divide-x divide-gray-100 dark:divide-gray-800">
+<div class="flex flex-col items-center justify-center text-center pt-4 md:pt-0">
+<span class="text-3xl md:text-4xl font-extrabold text-primary mb-2">%100</span>
+<span class="text-sm font-medium text-melz-dark dark:text-white uppercase tracking-wider">Organik Pamuk</span>
+</div>
+<div class="flex flex-col items-center justify-center text-center pt-4 md:pt-0">
+<span class="material-symbols-outlined text-4xl text-primary mb-2">verified</span>
+<span class="text-sm font-medium text-melz-dark dark:text-white uppercase tracking-wider">OEKO-TEX Sertifikalı</span>
+</div>
+<div class="flex flex-col items-center justify-center text-center pt-4 md:pt-0">
+<span class="text-3xl md:text-4xl font-extrabold text-primary mb-2">10K+</span>
+<span class="text-sm font-medium text-melz-dark dark:text-white uppercase tracking-wider">Mutlu Aile</span>
+</div>
+<div class="flex flex-col items-center justify-center text-center pt-4 md:pt-0">
+<span class="material-symbols-outlined text-4xl text-primary mb-2">local_shipping</span>
+<span class="text-sm font-medium text-melz-dark dark:text-white uppercase tracking-wider">Hızlı Teslimat</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 md:py-32 bg-white dark:bg-background-dark">
+<div class="max-w-[1000px] mx-auto px-4 md:px-8">
+<div class="bg-melz-beige dark:bg-[#2A221D] rounded-3xl p-8 md:p-12 relative overflow-hidden">
+<div class="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+<div class="absolute bottom-0 left-0 -ml-16 -mb-16 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+<div class="relative z-10 flex flex-col md:flex-row gap-8 items-center">
+<div class="shrink-0">
+<img alt="Founder portrait" class="w-40 h-40 md:w-56 md:h-56 rounded-full object-cover border-4 border-white dark:border-background-dark shadow-md" data-alt="Portrait of a smiling woman, the founder" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsYJV-C11V_kwD1cblIAIrYO6d4Q79sjvmex3x848EBcA77HeIZN_v6krPRgtf3WbUhhNeHaW-rrrsxSt5x8K49SSjLSxrVAgah6mnv1_131Usmcurg9vo-6HNYQFoYyOZhUBwPVoB4u7hUbixUMwQjGtdqSpdYet1Zo7YdRAdPGfGbPTey8bUu3X9FN99YCkJ6LhaUKeUztmBbsptRbwACc7vkACz2GJlUX6GdpG1sdap0LsXhseddRlSHXD6ucDOkBeKAh3VXKD9"/>
+</div>
+<div class="flex-1 text-center md:text-left">
+<div class="text-primary mb-4 flex justify-center md:justify-start">
+<span class="material-symbols-outlined text-4xl">format_quote</span>
+</div>
+<h4 class="text-xl md:text-2xl font-medium text-melz-dark dark:text-white italic mb-6">
+                        "Kendi bebeğim için aradığım özeni, şimdi tüm bebekler için sunuyorum. Bu yolculukta bizimle olduğunuz için ve Mel'z Baby&amp;Kids ailesinin bir parçası olduğunuz için teşekkür ederim."
+                    </h4>
+<div>
+<p class="text-lg font-bold text-melz-dark dark:text-white">Melis Yılmaz</p>
+<p class="text-sm text-melz-brown dark:text-gray-400">Kurucu &amp; Anne</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-10 bg-background-light dark:bg-background-dark overflow-hidden">
+<div class="flex gap-4 md:gap-8 overflow-x-auto pb-4 snap-x px-4 md:px-8 max-w-[1400px] mx-auto scrollbar-hide">
+<div class="shrink-0 snap-center w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden relative group">
+<img alt="Gallery image" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Soft knitted baby shoes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuUQB7GV71Vn6YDDuGv7sHAr-tYmk0xZQgk6neqQNyAar4GcW0UPX-Br6ExjOsFdWg2UUSlmS6kDGtOqn-pvKsqzYmeQzGOngKaW6SNW2eyD4h-Srsg8AjXAcWJ3sRLmP2cdtrphcfMY82LTEgDRHUS64th1jqLZ0RXItKOn_Tuhl1yLaqrXKjXBWzKHoCrhHrgqB-6zg9zbJ42O2IJaSNuPNeGld3FdBvCoq-figRCVilOUFWpVHWxEX6srFcKne9IawFPDYh6Cnp"/>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
+</div>
+<div class="shrink-0 snap-center w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden relative group">
+<img alt="Gallery image" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Baby sleeping peacefully" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRJZe6Nt8AIqwMw_RxNpnmB1_gcQQ1YdYoyxm0Ooz8zVHpZSuBvDTerv7RSpIcJmlyUEgqcq_DZH1pcr_lPZxUyu-73fj7QeGtIudcu8reodPt3hwSHigCOQUUJB8uMBaivF5FdAm84viLiGf07vZmlqbZoZRUAInHs5pVIQWO-elRmdU0VdXmvP0iylDN3zrIhocOUbEX3na2gfMV0GeykhBq-HpZxmrfNKTOAFpGkFW2SPysmlXcaGY_WpCtXMXaokBC1sNmu3gj"/>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
+</div>
+<div class="shrink-0 snap-center w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden relative group">
+<img alt="Gallery image" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Modern clean nursery room interior" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBk5UfJQT2QTZHmVTO2M1cnSbbtpMjJg4d3hOCyokiwtxlb-5o9yZWxfzKxOMtXscv1nDhIXLO4xhTVE6lDCBBOVaRBc2Wk32UZ0FXFvpETmwTYhcHeDBv1oRqjwIy2vuiVc9_3-hgMKcSC6BFBkdWZfXIeWrka_ab0NZ3tOBl5H4MaCEYc9TjilO2BO_TDlLqxbkHZpRhJIBepI_lrDoHMnItyNLTcBoKDbxvlwOjlAkDA81bZerVvCEnIdMSjJG2dI7T93spkQ0d6"/>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
+</div>
+<div class="shrink-0 snap-center w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden relative group">
+<img alt="Gallery image" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Mother holding baby hands" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3RKRLH-1HGA9qQoKhDkcv9ww-wNemfb0Rf1GHKTgryDF-v1F6I3Sx28T6YcIhI_gGs0lG7FesTXAQGuePgflnDMoTPKw9rcY7-7mU0oFS3jzjULW1_3Jr5MJdC2B7PJUNbVc6VlS4-RbK27DfmMHUjMVjluwwhTvAOlZOIdI4zk9Tcd_UqKjG4Ag6hxTdl6ZiqrOrX7aDng6tIN2MA9iWG3vow9pAtBfbMlsMsJ2focFDwg5UTziil7-rE6iR7EER3tgrmS05jkWv"/>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
+</div>
+</div>
+</section>
+<section class="py-20 bg-white dark:bg-background-dark border-t border-gray-100 dark:border-gray-800">
+<div class="max-w-[1200px] mx-auto px-4 md:px-8 text-center">
+<h3 class="text-2xl md:text-3xl font-bold text-melz-dark dark:text-white mb-6">
+            Miniklerin Konforuna Ortak Olun
+        </h3>
+<p class="text-melz-brown dark:text-gray-400 max-w-xl mx-auto mb-8">
+            Yeni koleksiyonlarımızı keşfedin ve Mel'z ailesine katılın.
+        </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<button class="bg-primary hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-xl transition-all shadow-lg hover:shadow-orange-200 dark:hover:shadow-none">
+                Koleksiyonu Keşfet
+            </button>
+<button class="bg-melz-beige dark:bg-white/5 text-melz-dark dark:text-white hover:bg-gray-200 dark:hover:bg-white/10 font-bold py-3 px-8 rounded-xl transition-colors">
+                İletişime Geç
+            </button>
+</div>
+</div>
+</section>
+<footer class="bg-melz-beige dark:bg-[#1A1410] py-12">
+<div class="max-w-[1200px] mx-auto px-4 md:px-8">
+<div class="grid md:grid-cols-4 gap-8">
+<div class="col-span-1 md:col-span-1">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary text-2xl">child_care</span>
+<h5 class="font-bold text-lg text-melz-dark dark:text-white">Mel'z Baby&amp;Kids</h5>
+</div>
+<p class="text-sm text-melz-brown dark:text-gray-500">
+                    © 2024 Tüm hakları saklıdır.
+                </p>
+</div>
+<div>
+<h6 class="font-bold text-melz-dark dark:text-white mb-4">Kurumsal</h6>
+<ul class="space-y-2 text-sm text-melz-brown dark:text-gray-400">
+<li><a class="hover:text-primary" href="#">Hakkımızda</a></li>
+<li><a class="hover:text-primary" href="#">Kariyer</a></li>
+<li><a class="hover:text-primary" href="#">Gizlilik Politikası</a></li>
+</ul>
+</div>
+<div>
+<h6 class="font-bold text-melz-dark dark:text-white mb-4">Müşteri Hizmetleri</h6>
+<ul class="space-y-2 text-sm text-melz-brown dark:text-gray-400">
+<li><a class="hover:text-primary" href="#">Sıkça Sorulan Sorular</a></li>
+<li><a class="hover:text-primary" href="#">Kargo ve Teslimat</a></li>
+<li><a class="hover:text-primary" href="#">İade ve Değişim</a></li>
+</ul>
+</div>
+<div>
+<h6 class="font-bold text-melz-dark dark:text-white mb-4">Bizi Takip Edin</h6>
+<div class="flex gap-4">
+<a class="w-10 h-10 bg-white dark:bg-white/10 rounded-full flex items-center justify-center text-melz-dark dark:text-white hover:text-primary dark:hover:text-primary transition-colors" href="#">
+<svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path clip-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" fill-rule="evenodd"></path></svg>
+</a>
+<a class="w-10 h-10 bg-white dark:bg-white/10 rounded-full flex items-center justify-center text-melz-dark dark:text-white hover:text-primary dark:hover:text-primary transition-colors" href="#">
+<svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path clip-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772 4.902 4.902 0 011.772-1.153c.636-.247 1.363-.416 2.427-.465C9.673 2.013 10.03 2 12.488 2h.172zm-.172 2h-.166c-2.41 0-2.74.008-3.708.053-.97.045-1.502.207-1.854.344-.465.182-.797.398-1.144.745-.347.347-.563.68-.744 1.144-.137.352-.3.884-.345 1.854-.044.956-.053 1.286-.053 3.693v.231c0 2.406.009 2.736.053 3.693.045.97.207 1.502.344 1.854.182.466.399.797.745 1.144.347.347.68.563 1.144.744.352.137.884.3 1.854.345.956.045 1.296.053 3.738.053h.166c2.41 0 2.74-.008 3.708-.053.97-.045 1.502-.207 1.854-.344.466-.182.798-.398 1.144-.745.347-.347.563-.68.744-1.144.137-.352.3-.884.345-1.854.045-.968.053-1.296.053-3.738v-.166c0-2.41-.008-2.74-.053-3.708-.045-.97-.207-1.502-.344-1.854-.182-.466-.398-.798-.745-1.144-.347-.347-.68-.563-1.144-.744-.352-.137-.884-.3-1.854-.345-.968-.045-1.296-.053-3.738-.053zM12.314 6.872a5.132 5.132 0 110 10.264 5.132 5.132 0 010-10.264zm0 2a3.132 3.132 0 100 6.264 3.132 3.132 0 000-6.264zm6.056-2.906a1.333 1.333 0 110 2.666 1.333 1.333 0 010-2.666z" fill-rule="evenodd"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</div>
+</footer>
+
+<footer class="bg-white border-t border-[#f4f2f0] py-12">
+<div class="max-w-[1280px] mx-auto px-4 md:px-10">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+<div class="col-span-1 md:col-span-1">
+<div class="flex items-center gap-2 mb-4 text-text-main">
+<span class="material-symbols-outlined text-primary text-[28px]">child_care</span>
+<span class="font-bold text-lg">Mel'z Baby&amp;Kids</span>
+</div>
+<p class="text-text-secondary text-sm mb-4 leading-relaxed">
+                        Miniklerin konforu ve mutluluğu için özenle seçilmiş ürünler ve uzman tavsiyeleriyle yanınızdayız.
+                    </p>
+<div class="flex gap-4">
+<a class="text-text-secondary hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">thumb_up</span></a> <!-- Social Icon Placeholder -->
+<a class="text-text-secondary hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">photo_camera</span></a> <!-- Social Icon Placeholder -->
+</div>
+</div>
+<div>
+<h5 class="font-bold text-text-main mb-4">Kurumsal</h5>
+<ul class="flex flex-col gap-2 text-sm text-text-secondary">
+<li><a class="hover:text-primary transition-colors" href="#">Hakkımızda</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Kariyer</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Mağazalar</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">İletişim</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold text-text-main mb-4">Yardım</h5>
+<ul class="flex flex-col gap-2 text-sm text-text-secondary">
+<li><a class="hover:text-primary transition-colors" href="#">Sipariş Takibi</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">İade ve Değişim</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Kargo Bilgileri</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Sıkça Sorulan Sorular</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold text-text-main mb-4">Kategoriler</h5>
+<ul class="flex flex-col gap-2 text-sm text-text-secondary">
+<li><a class="hover:text-primary transition-colors" href="#">Bebek Giyim</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Eğitici Oyuncaklar</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Bakım Ürünleri</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Anne &amp; Bebek</a></li>
+</ul>
+</div>
+</div>
+<div class="border-t border-[#f4f2f0] pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-text-secondary">
+<p>© 2024 Mel'z Baby&amp;Kids. Tüm hakları saklıdır.</p>
+<div class="flex gap-4">
+<a class="hover:text-primary transition-colors" href="#">Gizlilik Politikası</a>
+<a class="hover:text-primary transition-colors" href="#">Kullanım Koşulları</a>
+</div>
+</div>
+</div>
+</footer>
+</body>
+</html>
