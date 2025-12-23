@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+
+<html class="light" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Müşteri Yönetimi - Mel'z Baby&amp;Kids</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Theme Config -->
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#e49444",
+              "background-light": "#f8f7f6",
+              "background-dark": "#211911",
+              "neutral-dark": "#171411",
+              "neutral-muted": "#877564",
+            },
+            fontFamily: {
+              "display": ["Manrope", "sans-serif"]
+            },
+            borderRadius: {
+              "DEFAULT": "0.25rem", 
+              "lg": "0.5rem", 
+              "xl": "0.75rem", 
+              "full": "9999px"
+            },
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-neutral-dark dark:text-white">
+<div class="flex h-screen w-full overflow-hidden">
+<!-- Sidebar -->
+<aside class="hidden w-64 flex-col border-r border-[#e5e0dc] dark:border-neutral-700 bg-white dark:bg-[#1a1612] lg:flex">
+<div class="flex h-full flex-col justify-between p-4">
+<div class="flex flex-col gap-6">
+<!-- Brand -->
+<div class="flex items-center gap-3 px-2 py-2">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 shadow-sm" data-alt="Mel'z Baby&amp;Kids brand logo abstract cute shape" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB8Uolxz7qMCXHdFKaDp6bU-dEyyXQZvBDLynWWqpK1GfRyu39ESS3jyNNJao5RZOWssy-s6Bm7sZPmWRqD3YycmUOzrFuzeeFUKsq12DFkEI6Ks0DaLDgm90jHopZQItKyX6ZAYziaYxl2k6lCdfSJLRy8CIb699Jjg2gc0loM4iE6NzNm9r6Na6EDDSnjJkbTLr0OlpnbD31RGhvPCfBdVxhvOynNWx9Pa4A42WYnejcnAG-t7auuauYwQnhG-HnoQhaJ9jDL-okb");'></div>
+<div class="flex flex-col">
+<h1 class="text-neutral-dark dark:text-white text-base font-bold leading-normal">Mel'z Baby&amp;Kids</h1>
+<p class="text-neutral-muted text-xs font-normal leading-normal">Yönetici Paneli</p>
+</div>
+</div>
+<!-- Navigation -->
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-neutral-dark dark:text-gray-300 hover:bg-[#f4f2f0] dark:hover:bg-neutral-800 transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Panel</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-neutral-dark dark:text-gray-300 hover:bg-[#f4f2f0] dark:hover:bg-neutral-800 transition-colors" href="#">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="text-sm font-medium">Siparişler</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-neutral-dark dark:text-gray-300 hover:bg-[#f4f2f0] dark:hover:bg-neutral-800 transition-colors" href="#">
+<span class="material-symbols-outlined">local_offer</span>
+<span class="text-sm font-medium">Ürünler</span>
+</a>
+<!-- Active Item -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary dark:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined icon-fill">group</span>
+<span class="text-sm font-bold">Müşteriler</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-neutral-dark dark:text-gray-300 hover:bg-[#f4f2f0] dark:hover:bg-neutral-800 transition-colors" href="#">
+<span class="material-symbols-outlined">campaign</span>
+<span class="text-sm font-medium">Pazarlama</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-neutral-dark dark:text-gray-300 hover:bg-[#f4f2f0] dark:hover:bg-neutral-800 transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Ayarlar</span>
+</a>
+</nav>
+</div>
+<!-- Bottom Action -->
+<div class="flex items-center gap-3 px-3 py-2 text-neutral-muted cursor-pointer hover:text-primary transition-colors">
+<span class="material-symbols-outlined">logout</span>
+<span class="text-sm font-medium">Çıkış Yap</span>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex flex-1 flex-col overflow-y-auto bg-background-light dark:bg-background-dark">
+<!-- Top Header -->
+<header class="sticky top-0 z-20 flex h-16 w-full items-center justify-between border-b border-[#e5e0dc] dark:border-neutral-700 bg-white/80 dark:bg-[#1a1612]/80 backdrop-blur-md px-6">
+<div class="flex items-center gap-4 lg:hidden">
+<button class="text-neutral-dark dark:text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-8" data-alt="Mel'z Logo Mobile" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCDyLgJamea32YkWer3t48FxHOq_B7ZExwbB5s_IPUSBhYDKM-xZDZXA4LFPVg503rD9UlGXd3NnessBwhQSzdXqNEiVmXMSa6EQOfNEyqac3t2t2fQtU5eXZuhbt6rZFkaLi62K6XqN81fnbkOzDAU5j3lppNOl7us_pWwo5qR4VnvpeyBv0D9xRTdbLlVQ4_SFGJFnAC_eaVym_bbfGxuaULP9vdtomLTv6P2t4mwypEv41uQW5Xz3zv30aMRasL0h7tPd5hm8V1Q");'></div>
+</div>
+<div class="hidden lg:flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">group</span>
+<h2 class="text-lg font-bold text-neutral-dark dark:text-white">Müşteri Yönetimi</h2>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex gap-2">
+<button class="flex size-10 items-center justify-center rounded-lg bg-[#f4f2f0] dark:bg-neutral-800 text-neutral-dark dark:text-white hover:bg-gray-200 dark:hover:bg-neutral-700 transition-colors">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+<button class="flex size-10 items-center justify-center rounded-lg bg-[#f4f2f0] dark:bg-neutral-800 text-neutral-dark dark:text-white hover:bg-gray-200 dark:hover:bg-neutral-700 transition-colors">
+<span class="material-symbols-outlined text-[20px]">chat_bubble</span>
+</button>
+</div>
+<div class="h-8 w-px bg-[#e5e0dc] dark:bg-neutral-700 mx-1"></div>
+<div class="flex items-center gap-3">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 ring-2 ring-white dark:ring-neutral-800 shadow-sm" data-alt="Admin User Profile" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAaLMGRGwl0UilZo0npXCR1YxYA4EElR0MzkgFE0iBjtaycioitqXsLv4Zli5uu6eROJaLsw3PEVbKAps1keXrkmyy0mf6d9PaqYdyCLqlwGOPE6JZTaJFUAl73D7J31CP0bYafq01dnOxZdBTUqkMxSelmjNj7sOrQ01bdaQNqRSJA4_qwGpmTSwrSq-K0uP0tCPSBNb_LGrJ9x_QPcScTnNQ6UXlTkeQKUIi4_eBdkv8bjV34EsL1D6VIe2U8xwza7N86ZimjCEP0");'></div>
+<div class="hidden md:flex flex-col">
+<span class="text-sm font-bold text-neutral-dark dark:text-white">Melis Yılmaz</span>
+<span class="text-xs text-neutral-muted">Admin</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<div class="flex-1 p-6 lg:px-10 lg:py-8 space-y-6 max-w-7xl mx-auto w-full">
+<!-- Stats Section -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="flex flex-col gap-1 rounded-xl bg-white dark:bg-[#1a1612] p-5 shadow-sm border border-[#e5e0dc] dark:border-neutral-700">
+<p class="text-neutral-muted text-sm font-medium">Toplam Müşteri</p>
+<div class="flex items-end justify-between">
+<p class="text-2xl font-bold text-neutral-dark dark:text-white tracking-tight">2,543</p>
+<span class="text-[#07880e] bg-[#07880e]/10 px-2 py-0.5 rounded text-xs font-bold">+12%</span>
+</div>
+</div>
+<div class="flex flex-col gap-1 rounded-xl bg-white dark:bg-[#1a1612] p-5 shadow-sm border border-[#e5e0dc] dark:border-neutral-700">
+<p class="text-neutral-muted text-sm font-medium">Bu Ay Yeni</p>
+<div class="flex items-end justify-between">
+<p class="text-2xl font-bold text-neutral-dark dark:text-white tracking-tight">128</p>
+<span class="text-[#07880e] bg-[#07880e]/10 px-2 py-0.5 rounded text-xs font-bold">+5%</span>
+</div>
+</div>
+<div class="flex flex-col gap-1 rounded-xl bg-white dark:bg-[#1a1612] p-5 shadow-sm border border-[#e5e0dc] dark:border-neutral-700">
+<p class="text-neutral-muted text-sm font-medium">Aktif Kullanıcılar</p>
+<div class="flex items-end justify-between">
+<p class="text-2xl font-bold text-neutral-dark dark:text-white tracking-tight">1,890</p>
+<span class="text-[#07880e] bg-[#07880e]/10 px-2 py-0.5 rounded text-xs font-bold">+2%</span>
+</div>
+</div>
+<div class="flex flex-col gap-1 rounded-xl bg-white dark:bg-[#1a1612] p-5 shadow-sm border border-[#e5e0dc] dark:border-neutral-700">
+<p class="text-neutral-muted text-sm font-medium">VIP Müşteriler</p>
+<div class="flex items-end justify-between">
+<p class="text-2xl font-bold text-neutral-dark dark:text-white tracking-tight">450</p>
+<span class="text-neutral-muted bg-neutral-100 dark:bg-neutral-800 px-2 py-0.5 rounded text-xs font-bold">Stabil</span>
+</div>
+</div>
+</section>
+<!-- Toolbar & Filters -->
+<section class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between bg-white dark:bg-[#1a1612] p-4 rounded-xl border border-[#e5e0dc] dark:border-neutral-700 shadow-sm">
+<div class="flex flex-1 flex-col md:flex-row gap-4">
+<!-- Search -->
+<div class="relative w-full md:max-w-xs">
+<div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+<span class="material-symbols-outlined text-neutral-muted">search</span>
+</div>
+<input class="block w-full rounded-lg border-none bg-[#f4f2f0] dark:bg-neutral-800 py-2.5 pl-10 pr-3 text-sm text-neutral-dark dark:text-white placeholder-neutral-muted focus:ring-2 focus:ring-primary focus:outline-none" placeholder="İsim, e-posta veya telefon..." type="text"/>
+</div>
+<!-- Filter Chips -->
+<div class="flex items-center gap-2 overflow-x-auto no-scrollbar">
+<button class="whitespace-nowrap rounded-lg bg-primary/10 px-3 py-2 text-sm font-bold text-primary ring-1 ring-primary/20 transition-all">
+                                Tüm Müşteriler
+                            </button>
+<button class="whitespace-nowrap rounded-lg bg-[#f4f2f0] dark:bg-neutral-800 px-3 py-2 text-sm font-medium text-neutral-dark dark:text-white hover:bg-gray-200 dark:hover:bg-neutral-700 transition-all">
+                                En Çok Harcayanlar
+                            </button>
+<button class="whitespace-nowrap rounded-lg bg-[#f4f2f0] dark:bg-neutral-800 px-3 py-2 text-sm font-medium text-neutral-dark dark:text-white hover:bg-gray-200 dark:hover:bg-neutral-700 transition-all">
+                                Yeni Kayıtlar
+                            </button>
+<button class="whitespace-nowrap rounded-lg bg-[#f4f2f0] dark:bg-neutral-800 px-3 py-2 text-sm font-medium text-neutral-dark dark:text-white hover:bg-gray-200 dark:hover:bg-neutral-700 transition-all">
+                                Kara Liste
+                            </button>
+</div>
+</div>
+<!-- Add Button -->
+<button class="flex items-center justify-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-bold text-white shadow hover:bg-primary/90 transition-all">
+<span class="material-symbols-outlined text-[20px]">add</span>
+                        Yeni Müşteri
+                    </button>
+</section>
+<!-- Data Table -->
+<div class="w-full overflow-hidden rounded-xl border border-[#e5e0dc] dark:border-neutral-700 bg-white dark:bg-[#1a1612] shadow-sm">
+<div class="overflow-x-auto">
+<table class="w-full text-left text-sm">
+<thead class="bg-[#f8f7f6] dark:bg-neutral-800 border-b border-[#e5e0dc] dark:border-neutral-700">
+<tr>
+<th class="px-6 py-4 font-semibold text-neutral-muted" scope="col">Müşteri</th>
+<th class="px-6 py-4 font-semibold text-neutral-muted" scope="col">Kayıt Tarihi</th>
+<th class="px-6 py-4 font-semibold text-neutral-muted text-center" scope="col">Siparişler</th>
+<th class="px-6 py-4 font-semibold text-neutral-muted" scope="col">Toplam Harcama</th>
+<th class="px-6 py-4 font-semibold text-neutral-muted" scope="col">Durum</th>
+<th class="px-6 py-4 font-semibold text-neutral-muted text-right" scope="col">İşlemler</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#e5e0dc] dark:divide-neutral-700">
+<!-- Row 1 -->
+<tr class="group hover:bg-[#fffcf8] dark:hover:bg-neutral-800/50 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-cover bg-center" data-alt="Customer Portrait Woman Smiling" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAYvS6BBerQXABpZwKQ6BdF4yuuKmqvgJith8Tst3_A7fnDVKElJ2u1l3hRYftKZ5F7iyLvl3ERHChsy3qtFPseDWgvCcFDZW9Tjz-qHTLP9hIK-erjD_57TA4B2IuraackSf7bFDt_8CpHfN_X3CgzOXzCRWds8hjOAKJyFkZC86heGgOww1KvHULF0yvBl3YkHDhON-aKy90gjfuFsEQcRO6w5E1CBfVa6zzQoxuKDctAedYgsBrkQS9J1B5jI5Q4ewhMJLCyKps3");'></div>
+<div class="flex flex-col">
+<span class="font-bold text-neutral-dark dark:text-white group-hover:text-primary transition-colors">Ayşe Yılmaz</span>
+<span class="text-xs text-neutral-muted">ayse.yilmaz@example.com</span>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-neutral-dark dark:text-gray-300">12 Oca 2024</td>
+<td class="px-6 py-4 text-center">
+<span class="inline-flex items-center justify-center rounded-full bg-[#f4f2f0] dark:bg-neutral-800 px-2.5 py-0.5 text-xs font-bold text-neutral-dark dark:text-white">14</span>
+</td>
+<td class="px-6 py-4 font-bold text-neutral-dark dark:text-white">₺8.450,00</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1 rounded-full bg-green-50 dark:bg-green-900/20 px-2 py-1 text-xs font-medium text-green-700 dark:text-green-400">
+<span class="size-1.5 rounded-full bg-green-500"></span> Aktif
+                                        </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 rounded hover:bg-primary/10 text-neutral-muted hover:text-primary transition-colors" title="Mail Gönder">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+</button>
+<button class="p-1.5 rounded hover:bg-primary/10 text-neutral-muted hover:text-primary transition-colors" title="Düzenle">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-1.5 rounded hover:bg-red-50 text-neutral-muted hover:text-red-500 transition-colors" title="Kara Listeye Al">
+<span class="material-symbols-outlined text-[20px]">block</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="group hover:bg-[#fffcf8] dark:hover:bg-neutral-800/50 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-cover bg-center" data-alt="Customer Portrait Man Beard" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCbLm7X1F0X_xR-0zPMBik1sDMYIKLd2xHqULSkVljCqmgsCKqNHn6cJjo7EZdAehRrhCfpavk7AhA6WoY6Fi6eEFkvmoQ4ZOg1gDB7g4WN4bQHVUOnMqqAURfgJepRTpfo-f6RUqVhZUWxcou86MAMa1XWTiL03fK-NP5SnFC5fUYO_EB1Yw5SOWwQ1ni9wZfSledAg8GLYB98NDCvZUryEdQBSh4oNnaPdHdDV1l4cYxiVKruq2b8jbi8JtRzcGSEwWT6mq-4U4D-");'></div>
+<div class="flex flex-col">
+<span class="font-bold text-neutral-dark dark:text-white group-hover:text-primary transition-colors">Mehmet Demir</span>
+<span class="text-xs text-neutral-muted">mehmet.d@example.com</span>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-neutral-dark dark:text-gray-300">05 Şub 2024</td>
+<td class="px-6 py-4 text-center">
+<span class="inline-flex items-center justify-center rounded-full bg-[#f4f2f0] dark:bg-neutral-800 px-2.5 py-0.5 text-xs font-bold text-neutral-dark dark:text-white">3</span>
+</td>
+<td class="px-6 py-4 font-bold text-neutral-dark dark:text-white">₺1.250,50</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1 rounded-full bg-green-50 dark:bg-green-900/20 px-2 py-1 text-xs font-medium text-green-700 dark:text-green-400">
+<span class="size-1.5 rounded-full bg-green-500"></span> Aktif
+                                        </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 rounded hover:bg-primary/10 text-neutral-muted hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+</button>
+<button class="p-1.5 rounded hover:bg-primary/10 text-neutral-muted hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-1.5 rounded hover:bg-red-50 text-neutral-muted hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-[20px]">block</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 (VIP) -->
+<tr class="group hover:bg-[#fffcf8] dark:hover:bg-neutral-800/50 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-cover bg-center ring-2 ring-primary ring-offset-2 dark:ring-offset-[#1a1612]" data-alt="Customer Portrait Woman Glasses" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDFK1vpxVdo-kjGbeaKCg2Aeqk9n3Rw6Xo3x6IebkUTQOWHJNkx4DXmL2AsiHvNrmj373o6Qj32PgQIzXA-Nwe2ZW1B3tewfFJPO3mhV82Cg5eyCka8tywf0vy-4jLMjyFT1EnsjB-cgP63vFWEM_1MfP5kETX1s19oCXgbmF4FaC5P3t75LNQO1jzm7ABK7VDI7SiVKjTY22qURhIZLIbbYC5x2jenp8s-Ur-fZjfzl_RzU00JYgbjN-YLuAmD4lbCD31wwJKODfGl");'></div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1">
+<span class="font-bold text-neutral-dark dark:text-white group-hover:text-primary transition-colors">Zeynep Kaya</span>
+<span class="material-symbols-outlined text-primary text-[14px] icon-fill">star</span>
+</div>
+<span class="text-xs text-neutral-muted">zeynep.kaya@example.com</span>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-neutral-dark dark:text-gray-300">10 Kas 2023</td>
+<td class="px-6 py-4 text-center">
+<span class="inline-flex items-center justify-center rounded-full bg-primary/10 dark:bg-primary/20 px-2.5 py-0.5 text-xs font-bold text-primary">42</span>
+</td>
+<td class="px-6 py-4 font-bold text-primary">₺24.890,00</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1 rounded-full bg-orange-50 dark:bg-orange-900/20 px-2 py-1 text-xs font-medium text-orange-700 dark:text-orange-400">
+<span class="size-1.5 rounded-full bg-orange-500"></span> VIP
+                                        </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 rounded hover:bg-primary/10 text-neutral-muted hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+</button>
+<button class="p-1.5 rounded hover:bg-primary/10 text-neutral-muted hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-1.5 rounded hover:bg-red-50 text-neutral-muted hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-[20px]">block</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="group hover:bg-[#fffcf8] dark:hover:bg-neutral-800/50 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="flex size-10 items-center justify-center rounded-full bg-[#f4f2f0] dark:bg-neutral-800 text-neutral-muted font-bold text-sm">EK</div>
+<div class="flex flex-col">
+<span class="font-bold text-neutral-dark dark:text-white group-hover:text-primary transition-colors">Emre Kılıç</span>
+<span class="text-xs text-neutral-muted">emre.k@example.com</span>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-neutral-dark dark:text-gray-300">01 Mar 2024</td>
+<td class="px-6 py-4 text-center">
+<span class="inline-flex items-center justify-center rounded-full bg-[#f4f2f0] dark:bg-neutral-800 px-2.5 py-0.5 text-xs font-bold text-neutral-dark dark:text-white">1</span>
+</td>
+<td class="px-6 py-4 font-bold text-neutral-dark dark:text-white">₺450,00</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1 rounded-full bg-green-50 dark:bg-green-900/20 px-2 py-1 text-xs font-medium text-green-700 dark:text-green-400">
+<span class="size-1.5 rounded-full bg-green-500"></span> Aktif
+                                        </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 rounded hover:bg-primary/10 text-neutral-muted hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+</button>
+<button class="p-1.5 rounded hover:bg-primary/10 text-neutral-muted hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-1.5 rounded hover:bg-red-50 text-neutral-muted hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-[20px]">block</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5 (Blacklist) -->
+<tr class="group bg-red-50/30 dark:bg-red-900/10 hover:bg-red-50/50 dark:hover:bg-red-900/20 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-cover bg-center grayscale" data-alt="Customer Portrait Man Serious" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBoagdalr8vPlK4_u6Au5WVDFGxJ9dnYLS-JrLfLH9D1uqM_HDFLtwoWrRURD2Cx-Uy3jBD5iAXdHoJyqHCMhTtRa7_4-TrbDpw4d3MF5jO3-uBK0Z7szfaNN-mLBVKV0kE1-nuM6Usv2WzkszryUbh6aNgKzl1EiHRVooT37xGkFixdeqi0t5UcCmBA2ugYtLzB5ZvHYbQI2qnRXqaOiQTczC6_8_qoHQXhZuhJfwNpgd9mrbx_D-BgUHCbCLzCZZtIJ7uBUR2E5SM");'></div>
+<div class="flex flex-col">
+<span class="font-bold text-neutral-dark dark:text-white line-through decoration-red-500">Caner Öz</span>
+<span class="text-xs text-neutral-muted">caner.oz@example.com</span>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-neutral-dark dark:text-gray-300">15 Ara 2023</td>
+<td class="px-6 py-4 text-center">
+<span class="inline-flex items-center justify-center rounded-full bg-red-100 dark:bg-red-900/40 px-2.5 py-0.5 text-xs font-bold text-red-700 dark:text-red-300">0</span>
+</td>
+<td class="px-6 py-4 font-bold text-neutral-dark dark:text-white">₺0,00</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1 rounded-full bg-red-100 dark:bg-red-900/40 px-2 py-1 text-xs font-medium text-red-700 dark:text-red-300">
+<span class="size-1.5 rounded-full bg-red-500"></span> Kara Liste
+                                        </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 rounded hover:bg-primary/10 text-neutral-muted hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">info</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="flex items-center justify-between border-t border-[#e5e0dc] dark:border-neutral-700 px-6 py-4">
+<span class="text-sm text-neutral-muted">Toplam 2,543 müşteriden 1-5 arası gösteriliyor</span>
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-lg border border-[#e5e0dc] dark:border-neutral-700 bg-white dark:bg-neutral-800 px-3 py-1 text-sm font-medium text-neutral-dark dark:text-white hover:bg-[#f4f2f0] dark:hover:bg-neutral-700 transition-colors disabled:opacity-50" disabled="">
+                                Önceki
+                            </button>
+<button class="flex items-center justify-center rounded-lg border border-[#e5e0dc] dark:border-neutral-700 bg-white dark:bg-neutral-800 px-3 py-1 text-sm font-medium text-neutral-dark dark:text-white hover:bg-[#f4f2f0] dark:hover:bg-neutral-700 transition-colors">
+                                Sonraki
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

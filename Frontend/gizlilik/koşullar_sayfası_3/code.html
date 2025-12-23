@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html class="light" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Gizlilik Politikası ve Kullanım Koşulları - Mel'z Baby&amp;Kids</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#e27036",
+                        "primary-dark": "#c95e28",
+                        "background-light": "#fdfbf7", // Slightly warmer/lighter beige for background
+                        "background-dark": "#211711",
+                        "text-main": "#2d2420", // Higher contrast dark brown/black
+                        "text-body": "#4a403a", // New body text color, high contrast but soft
+                        "text-secondary": "#7a6b63",
+                        "beige-soft": "#f5f2ef",
+                        "beige-dark": "#e8e3df",
+                        "white-pure": "#ffffff"
+                    },
+                    fontFamily: {
+                        "sans": ["Montserrat", "sans-serif"],
+                        "display": ["Montserrat", "sans-serif"]
+                    },
+                    fontSize: {
+                        "body-lg": ["1.125rem", { lineHeight: "1.7" }], // 18px text with 170% line height
+                        "body-md": ["1.0625rem", { lineHeight: "1.6" }], // 17px text with 160% line height
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "2xl": "2rem", "full": "9999px"},
+                    boxShadow: {
+                        "soft": "0 4px 25px -5px rgba(226, 112, 54, 0.15)",
+                        "card": "0 2px 10px rgba(0, 0, 0, 0.03)",
+                        "inner-light": "inset 0 2px 4px 0 rgba(0, 0, 0, 0.02)",
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f5f2ef;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e27036; 
+            border-radius: 5px;
+            border: 2px solid #f5f2ef;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #c95e28;
+        }
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 120px;}
+        body {
+            font-feature-settings: "cv11", "ss01";
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-sans text-text-main dark:text-white transition-colors duration-200 antialiased selection:bg-primary/20 selection:text-primary-dark">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<header class="sticky top-0 z-50 w-full border-b border-[#ece8e5] bg-white/95 backdrop-blur-md dark:bg-[#1a120d]/95 dark:border-[#3a2e26] shadow-sm">
+<div class="layout-container mx-auto flex max-w-7xl flex-col px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between py-5">
+<div class="flex items-center gap-3">
+<div class="flex items-center justify-center size-12 rounded-xl bg-primary text-white shadow-soft">
+<span class="material-symbols-outlined text-3xl">child_care</span>
+</div>
+<div>
+<h2 class="text-text-main dark:text-white text-xl font-bold tracking-tight leading-none">Mel'z</h2>
+<span class="text-xs font-semibold text-primary tracking-widest uppercase">Baby&amp;Kids</span>
+</div>
+</div>
+<nav class="hidden lg:flex items-center gap-10">
+<a class="text-text-main dark:text-gray-200 text-sm font-bold hover:text-primary transition-colors" href="#">Ana Sayfa</a>
+<a class="text-text-main dark:text-gray-200 text-sm font-bold hover:text-primary transition-colors" href="#">Bebek Giyim</a>
+<a class="text-text-main dark:text-gray-200 text-sm font-bold hover:text-primary transition-colors" href="#">Oyuncak</a>
+<a class="text-text-main dark:text-gray-200 text-sm font-bold hover:text-primary transition-colors" href="#">Bakım</a>
+<a class="text-primary text-sm font-black hover:text-primary-dark transition-colors bg-primary/5 px-3 py-1 rounded-full" href="#">% İndirimler</a>
+</nav>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex relative group">
+<input class="w-56 rounded-full border border-transparent bg-[#f5f2ef] py-2.5 pl-11 pr-4 text-sm font-medium text-text-main outline-none focus:bg-white focus:border-primary/30 focus:ring-4 focus:ring-primary/10 transition-all dark:bg-[#2a1f18] dark:text-white placeholder:text-text-secondary" placeholder="Ürün ara..."/>
+<span class="material-symbols-outlined absolute left-4 top-2.5 text-text-secondary group-focus-within:text-primary transition-colors">search</span>
+</div>
+<button class="relative flex size-11 items-center justify-center rounded-full bg-white border border-[#f5f2ef] hover:border-primary/30 hover:shadow-soft hover:text-primary dark:bg-[#2a1f18] dark:border-[#3a2e26] transition-all text-text-main dark:text-white group">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">shopping_bag</span>
+<span class="absolute top-0 right-0 flex size-3 rounded-full bg-primary ring-2 ring-white dark:ring-[#1a120d]"></span>
+</button>
+<button class="flex size-11 items-center justify-center rounded-full bg-white border border-[#f5f2ef] hover:border-primary/30 hover:shadow-soft hover:text-primary dark:bg-[#2a1f18] dark:border-[#3a2e26] transition-all text-text-main dark:text-white group">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">person</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16">
+<div class="mb-12 flex flex-col gap-8 md:flex-row md:items-end md:justify-between border-b border-[#e5e0dc] pb-10 dark:border-[#3a2e26]">
+<div class="flex flex-col gap-4 max-w-3xl">
+<div class="flex items-center gap-2">
+<span class="flex h-2 w-2 rounded-full bg-primary animate-pulse"></span>
+<span class="text-primary font-bold tracking-widest uppercase text-xs">Yasal Bilgilendirme Merkezi</span>
+</div>
+<h1 class="text-text-main dark:text-white text-4xl md:text-5xl font-extrabold leading-[1.2] tracking-tight">
+                    Gizlilik Politikası ve <span class="text-primary">Kullanım Koşulları</span>
+</h1>
+<p class="text-text-body dark:text-gray-300 text-body-md font-medium max-w-2xl">
+                    Mel'z Baby&amp;Kids olarak, kişisel verilerinizin güvenliği bizim için en öncelikli konudur. Aşağıda verilerinizi nasıl işlediğimiz ve koruduğumuza dair detaylı bilgileri bulabilirsiniz.
+                </p>
+</div>
+<div class="flex flex-col gap-2 shrink-0">
+<button class="group flex items-center justify-center gap-3 rounded-xl bg-text-main px-8 py-4 text-white shadow-xl shadow-gray-200 transition-all hover:bg-black hover:-translate-y-1 active:scale-95 active:translate-y-0 dark:shadow-none dark:bg-primary dark:hover:bg-primary-dark">
+<span class="material-symbols-outlined">description</span>
+<span class="font-bold text-sm">PDF Olarak İndir</span>
+</button>
+<span class="text-xs text-center text-text-secondary font-medium">Son güncelleme: 24 Ekim 2023</span>
+</div>
+</div>
+<div class="flex flex-col lg:flex-row gap-12 relative">
+<aside class="w-full lg:w-[280px] lg:flex-none">
+<div class="lg:sticky lg:top-32 flex flex-col gap-6">
+<nav class="flex flex-col gap-2 rounded-2xl bg-white p-3 shadow-card border border-gray-100 dark:bg-[#1a120d] dark:border-[#3a2e26] dark:shadow-none">
+<div class="px-3 py-2 mb-2">
+<h3 class="text-xs font-bold uppercase tracking-widest text-text-secondary">İçindekiler</h3>
+</div>
+<a class="group flex items-center justify-between rounded-xl bg-primary px-4 py-3.5 text-white shadow-md shadow-primary/20 transition-all relative overflow-hidden" href="#genel-bakis">
+<div class="flex items-center gap-3 relative z-10">
+<span class="material-symbols-outlined text-[20px]">info</span>
+<span class="font-bold text-sm tracking-wide">Genel Bakış</span>
+</div>
+<span class="material-symbols-outlined text-sm relative z-10">arrow_forward_ios</span>
+<div class="absolute inset-0 bg-white/10 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300"></div>
+</a>
+<a class="group flex items-center gap-3 rounded-xl bg-transparent px-4 py-3.5 text-text-main hover:bg-beige-soft hover:text-primary transition-all duration-200 dark:text-gray-300 dark:hover:bg-[#2a1f18] dark:hover:text-white border border-transparent hover:border-beige-dark" href="#veri-toplama">
+<span class="material-symbols-outlined text-[20px] text-text-secondary group-hover:text-primary transition-colors">database</span>
+<span class="font-semibold text-sm">Veri Toplama</span>
+</a>
+<a class="group flex items-center gap-3 rounded-xl bg-transparent px-4 py-3.5 text-text-main hover:bg-beige-soft hover:text-primary transition-all duration-200 dark:text-gray-300 dark:hover:bg-[#2a1f18] dark:hover:text-white border border-transparent hover:border-beige-dark" href="#veri-kullanimi">
+<span class="material-symbols-outlined text-[20px] text-text-secondary group-hover:text-primary transition-colors">check_circle</span>
+<span class="font-semibold text-sm">Kullanım Alanları</span>
+</a>
+<a class="group flex items-center gap-3 rounded-xl bg-transparent px-4 py-3.5 text-text-main hover:bg-beige-soft hover:text-primary transition-all duration-200 dark:text-gray-300 dark:hover:bg-[#2a1f18] dark:hover:text-white border border-transparent hover:border-beige-dark" href="#cerezler">
+<span class="material-symbols-outlined text-[20px] text-text-secondary group-hover:text-primary transition-colors">cookie</span>
+<span class="font-semibold text-sm">Çerez Politikası</span>
+</a>
+<a class="group flex items-center gap-3 rounded-xl bg-transparent px-4 py-3.5 text-text-main hover:bg-beige-soft hover:text-primary transition-all duration-200 dark:text-gray-300 dark:hover:bg-[#2a1f18] dark:hover:text-white border border-transparent hover:border-beige-dark" href="#guvenlik">
+<span class="material-symbols-outlined text-[20px] text-text-secondary group-hover:text-primary transition-colors">shield</span>
+<span class="font-semibold text-sm">Hesap ve Güvenlik</span>
+</a>
+<a class="group flex items-center gap-3 rounded-xl bg-transparent px-4 py-3.5 text-text-main hover:bg-beige-soft hover:text-primary transition-all duration-200 dark:text-gray-300 dark:hover:bg-[#2a1f18] dark:hover:text-white border border-transparent hover:border-beige-dark" href="#iletisim">
+<span class="material-symbols-outlined text-[20px] text-text-secondary group-hover:text-primary transition-colors">mail</span>
+<span class="font-semibold text-sm">İletişim</span>
+</a>
+</nav>
+<div class="rounded-2xl bg-[#fdf6f2] p-6 border border-primary/10 dark:bg-[#2a1f18] dark:border-[#3a2e26]">
+<div class="flex items-center gap-2 mb-3 text-primary">
+<span class="material-symbols-outlined">support_agent</span>
+<span class="text-xs font-bold uppercase tracking-widest">Canlı Destek</span>
+</div>
+<p class="text-sm font-medium text-text-body dark:text-gray-400 mb-4 leading-relaxed">Politikalarımız hakkında aklınıza takılan sorular mı var?</p>
+<a class="inline-flex items-center gap-2 text-sm font-bold text-primary hover:text-primary-dark hover:underline" href="#">
+                            Müşteri Temsilcisine Bağlan
+                            <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</aside>
+<div class="w-full lg:flex-1 flex flex-col gap-16 pb-24">
+<section class="group" id="genel-bakis">
+<div class="relative pl-6 border-l-4 border-primary/20 group-hover:border-primary transition-colors duration-300">
+<h2 class="text-3xl font-bold text-text-main dark:text-white mb-6 flex items-center gap-3">
+<span class="text-primary hidden md:inline-block">01.</span>
+                            Genel Bakış
+                        </h2>
+<div class="prose prose-lg prose-stone dark:prose-invert max-w-none">
+<p class="text-body-lg text-text-body dark:text-gray-300 mb-6">
+                                Mel'z Baby&amp;Kids ("Biz", "Şirket") olarak, müşterilerimizin ("Kullanıcı", "Siz") gizliliğine derin bir saygı duyuyoruz. Bu Gizlilik Politikası, web sitemizi ziyaret ettiğinizde veya ürünlerimizi satın aldığınızda kişisel verilerinizin nasıl toplandığını, kullanıldığını ve korunduğunu açıklar.
+                            </p>
+<p class="text-body-lg text-text-body dark:text-gray-300">
+                                Hizmetlerimizi kullanarak, bu politikada belirtilen veri işleme faaliyetlerini kabul etmiş sayılırsınız. Amacımız, en değerli varlıklarımız olan çocuklarımız ve ebeveynleri için <strong class="text-primary font-bold">güvenli, şeffaf ve keyifli</strong> bir dijital alışveriş ortamı yaratmaktır.
+                            </p>
+</div>
+</div>
+</section>
+<section class="group" id="veri-toplama">
+<div class="relative pl-6 border-l-4 border-gray-200 group-hover:border-primary transition-colors duration-300">
+<h2 class="text-3xl font-bold text-text-main dark:text-white mb-6 flex items-center gap-3">
+<span class="text-primary hidden md:inline-block">02.</span>
+                             Veri Toplama Yöntemleri
+                        </h2>
+<p class="text-body-md text-text-body dark:text-gray-400 mb-8">
+                            Hizmet kalitemizi artırmak ve yasal yükümlülüklerimizi yerine getirmek amacıyla, yalnızca gerekli olan verileri topluyor ve işliyoruz. Topladığımız temel veri kategorileri şunlardır:
+                        </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="p-6 rounded-2xl bg-white border border-gray-100 shadow-card hover:shadow-soft hover:border-primary/20 transition-all dark:bg-[#1a120d] dark:border-[#3a2e26]">
+<div class="size-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-4 dark:bg-blue-900/20 dark:text-blue-400">
+<span class="material-symbols-outlined text-2xl">badge</span>
+</div>
+<h3 class="font-bold text-xl mb-3 dark:text-white">Kimlik Bilgileri</h3>
+<p class="text-body-md text-text-secondary dark:text-gray-400">Ad, soyad, T.C. kimlik numarası (yasal fatura zorunluluğu gereği) ve doğum tarihi.</p>
+</div>
+<div class="p-6 rounded-2xl bg-white border border-gray-100 shadow-card hover:shadow-soft hover:border-primary/20 transition-all dark:bg-[#1a120d] dark:border-[#3a2e26]">
+<div class="size-12 rounded-xl bg-green-50 text-green-600 flex items-center justify-center mb-4 dark:bg-green-900/20 dark:text-green-400">
+<span class="material-symbols-outlined text-2xl">contact_phone</span>
+</div>
+<h3 class="font-bold text-xl mb-3 dark:text-white">İletişim Bilgileri</h3>
+<p class="text-body-md text-text-secondary dark:text-gray-400">Sipariş takibi için E-posta adresi, kargo için telefon numarası ve açık adres bilgileri.</p>
+</div>
+<div class="p-6 rounded-2xl bg-white border border-gray-100 shadow-card hover:shadow-soft hover:border-primary/20 transition-all dark:bg-[#1a120d] dark:border-[#3a2e26]">
+<div class="size-12 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center mb-4 dark:bg-purple-900/20 dark:text-purple-400">
+<span class="material-symbols-outlined text-2xl">credit_card</span>
+</div>
+<h3 class="font-bold text-xl mb-3 dark:text-white">Ödeme Bilgileri</h3>
+<p class="text-body-md text-text-secondary dark:text-gray-400">Kredi kartı verileriniz sunucularımızda <span class="font-bold text-text-main">asla saklanmaz</span>. Ödemeler banka altyapısı ile şifrelenir.</p>
+</div>
+<div class="p-6 rounded-2xl bg-white border border-gray-100 shadow-card hover:shadow-soft hover:border-primary/20 transition-all dark:bg-[#1a120d] dark:border-[#3a2e26]">
+<div class="size-12 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center mb-4 dark:bg-orange-900/20 dark:text-orange-400">
+<span class="material-symbols-outlined text-2xl">security</span>
+</div>
+<h3 class="font-bold text-xl mb-3 dark:text-white">Dijital Güvenlik</h3>
+<p class="text-body-md text-text-secondary dark:text-gray-400">IP adresi, cihaz bilgisi, şifre hashleri ve işlem güvenliği için log kayıtları.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="group" id="veri-kullanimi">
+<div class="relative pl-6 border-l-4 border-gray-200 group-hover:border-primary transition-colors duration-300">
+<h2 class="text-3xl font-bold text-text-main dark:text-white mb-6 flex items-center gap-3">
+<span class="text-primary hidden md:inline-block">03.</span>
+                             Kişisel Verilerin Kullanım Alanları
+                        </h2>
+<div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm dark:bg-[#1a120d] dark:border-[#3a2e26]">
+<ul class="flex flex-col gap-6">
+<li class="flex items-start gap-4">
+<div class="mt-1 flex items-center justify-center size-8 rounded-full bg-primary/10 text-primary shrink-0">
+<span class="material-symbols-outlined text-xl">inventory_2</span>
+</div>
+<div class="flex-1">
+<h4 class="text-lg font-bold text-text-main dark:text-white mb-2">Sipariş Yönetimi ve Teslimat</h4>
+<p class="text-body-md text-text-body dark:text-gray-400">Ürünlerin size sorunsuz ulaştırılması, iade süreçlerinin yönetilmesi ve yasal faturalandırma işlemleri için verilerinizi kullanırız.</p>
+</div>
+</li>
+<div class="h-px w-full bg-gray-100 dark:bg-[#3a2e26]"></div>
+<li class="flex items-start gap-4">
+<div class="mt-1 flex items-center justify-center size-8 rounded-full bg-primary/10 text-primary shrink-0">
+<span class="material-symbols-outlined text-xl">headset_mic</span>
+</div>
+<div class="flex-1">
+<h4 class="text-lg font-bold text-text-main dark:text-white mb-2">Müşteri Destek Hizmetleri</h4>
+<p class="text-body-md text-text-body dark:text-gray-400">Sorularınızı yanıtlamak, taleplerinizi değerlendirmek ve olası sorunları çözmek amacıyla iletişim kanallarını kullanırız.</p>
+</div>
+</li>
+<div class="h-px w-full bg-gray-100 dark:bg-[#3a2e26]"></div>
+<li class="flex items-start gap-4">
+<div class="mt-1 flex items-center justify-center size-8 rounded-full bg-primary/10 text-primary shrink-0">
+<span class="material-symbols-outlined text-xl">analytics</span>
+</div>
+<div class="flex-1">
+<h4 class="text-lg font-bold text-text-main dark:text-white mb-2">Deneyim Geliştirme</h4>
+<p class="text-body-md text-text-body dark:text-gray-400">Size özel kampanyaların oluşturulması (açık rızanız varsa) ve site kullanım deneyiminin sürekli iyileştirilmesi için analizler yaparız.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</section>
+<section class="group" id="cerezler">
+<div class="relative pl-6 border-l-4 border-gray-200 group-hover:border-primary transition-colors duration-300">
+<h2 class="text-3xl font-bold text-text-main dark:text-white mb-6 flex items-center gap-3">
+<span class="text-primary hidden md:inline-block">04.</span>
+                             Çerez (Cookie) Politikası
+                        </h2>
+<p class="text-body-lg text-text-body dark:text-gray-300 mb-6">
+                            Web sitemiz, deneyiminizi kişiselleştirmek ve geliştirmek için çerezler kullanır. Çerezler, tarayıcınız tarafından cihazınıza kaydedilen, zararsız küçük metin dosyalarıdır.
+                        </p>
+<div class="bg-[#f8f6f4] dark:bg-[#231a15] rounded-2xl p-8 border border-[#efece9] dark:border-[#3a2e26]">
+<h4 class="text-xl font-bold text-text-main dark:text-white mb-4 flex items-center gap-3">
+<span class="material-symbols-outlined text-text-secondary">tune</span>
+                                Çerez Tercihlerinizi Yönetin
+                            </h4>
+<p class="text-body-md text-text-body dark:text-gray-400 mb-6">
+                                Tarayıcı ayarlarınızdan dilediğiniz zaman çerezleri engelleyebilir veya silebilirsiniz. Ancak, zorunlu çerezlerin kapatılması sitenin sepet gibi temel fonksiyonlarının çalışmasını engelleyebilir.
+                            </p>
+<div class="flex flex-wrap gap-3">
+<div class="px-4 py-2 rounded-lg bg-white border border-gray-200 shadow-sm flex items-center gap-2 dark:bg-[#1a120d] dark:border-[#3a2e26]">
+<span class="size-2 rounded-full bg-green-500"></span>
+<span class="text-sm font-semibold text-text-main dark:text-gray-300">Zorunlu Çerezler</span>
+</div>
+<div class="px-4 py-2 rounded-lg bg-white border border-gray-200 shadow-sm flex items-center gap-2 dark:bg-[#1a120d] dark:border-[#3a2e26]">
+<span class="size-2 rounded-full bg-blue-500"></span>
+<span class="text-sm font-semibold text-text-main dark:text-gray-300">Performans Çerezleri</span>
+</div>
+<div class="px-4 py-2 rounded-lg bg-white border border-gray-200 shadow-sm flex items-center gap-2 dark:bg-[#1a120d] dark:border-[#3a2e26]">
+<span class="size-2 rounded-full bg-purple-500"></span>
+<span class="text-sm font-semibold text-text-main dark:text-gray-300">Hedefleme Çerezleri</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="group" id="guvenlik">
+<div class="relative pl-6 border-l-4 border-gray-200 group-hover:border-primary transition-colors duration-300">
+<div class="bg-gradient-to-r from-primary/10 to-transparent rounded-2xl p-8 border border-primary/10">
+<div class="flex flex-col md:flex-row gap-6 items-start">
+<div class="p-4 bg-white rounded-2xl text-primary shadow-soft shrink-0 dark:bg-[#1a120d]">
+<span class="material-symbols-outlined text-4xl">lock_person</span>
+</div>
+<div class="flex-1">
+<h2 class="text-2xl font-bold text-text-main dark:text-white mb-3">05. Hesap ve Veri Güvenliği</h2>
+<p class="text-body-md text-text-body dark:text-gray-300 mb-6">
+                                        Mel'z Baby&amp;Kids, verilerinizi korumak için endüstri standardı SSL şifreleme teknolojileri ve güncel güvenlik duvarları kullanmaktadır. Ancak, hesap şifrenizin güvenliği sizin sorumluluğunuzdadır. Şifrenizi kimseyle paylaşmamanızı ve karmaşık şifreler kullanmanızı önemle tavsiye ederiz.
+                                    </p>
+<div class="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-lg border border-primary/20 shadow-sm text-sm font-bold text-primary dark:bg-[#1a120d] dark:border-[#3a2e26]">
+<span class="material-symbols-outlined text-lg">verified_user</span>
+                                        256-Bit SSL Sertifikası ile Korunmaktadır
+                                    </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="group" id="iletisim">
+<div class="relative pl-6 border-l-4 border-gray-200 group-hover:border-primary transition-colors duration-300">
+<h2 class="text-3xl font-bold text-text-main dark:text-white mb-6 flex items-center gap-3">
+<span class="text-primary hidden md:inline-block">06.</span>
+                             İletişim Kanalları
+                        </h2>
+<p class="text-body-lg text-text-body dark:text-gray-300 mb-8">
+                            Gizlilik politikamız veya kişisel verilerinizle ilgili her türlü sorunuz için bize 7/24 ulaşabilirsiniz. KVKK kapsamındaki haklarınızı kullanmak için aşağıdaki kanalları kullanabilirsiniz.
+                        </p>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+<a class="flex flex-col items-center justify-center p-8 bg-white rounded-2xl border border-gray-100 hover:border-primary/50 hover:shadow-soft transition-all text-center group dark:bg-[#1a120d] dark:border-[#3a2e26]" href="mailto:info@melzbaby.com">
+<span class="material-symbols-outlined text-4xl text-text-secondary group-hover:text-primary mb-4 transition-colors">mail</span>
+<span class="text-lg font-bold text-text-main dark:text-white mb-1">E-Posta</span>
+<span class="text-sm text-text-secondary dark:text-gray-400 group-hover:text-primary transition-colors">info@melzbaby.com</span>
+</a>
+<a class="flex flex-col items-center justify-center p-8 bg-white rounded-2xl border border-gray-100 hover:border-primary/50 hover:shadow-soft transition-all text-center group dark:bg-[#1a120d] dark:border-[#3a2e26]" href="tel:+902120000000">
+<span class="material-symbols-outlined text-4xl text-text-secondary group-hover:text-primary mb-4 transition-colors">call</span>
+<span class="text-lg font-bold text-text-main dark:text-white mb-1">Telefon</span>
+<span class="text-sm text-text-secondary dark:text-gray-400 group-hover:text-primary transition-colors">0 (212) 000 00 00</span>
+</a>
+<div class="flex flex-col items-center justify-center p-8 bg-white rounded-2xl border border-gray-100 text-center dark:bg-[#1a120d] dark:border-[#3a2e26]">
+<span class="material-symbols-outlined text-4xl text-text-secondary mb-4">location_on</span>
+<span class="text-lg font-bold text-text-main dark:text-white mb-1">Merkez Ofis</span>
+<span class="text-sm text-text-secondary dark:text-gray-400">Bebek Mah. Mel'z Plaza<br/>No:1 İstanbul, TR</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+<footer class="bg-white border-t border-[#f4f2f0] py-12 dark:bg-[#1a120d] dark:border-[#3a2e26]">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex items-center gap-3">
+<div class="flex items-center justify-center size-10 rounded-full bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-xl">child_care</span>
+</div>
+<div class="flex flex-col">
+<span class="font-bold text-lg text-text-main dark:text-white leading-none">Mel'z Baby&amp;Kids</span>
+<span class="text-xs text-text-secondary mt-1">Mutlu bebekler, mutlu yarınlar.</span>
+</div>
+</div>
+<p class="text-sm font-medium text-text-secondary dark:text-gray-500">© 2023 Mel'z Baby&amp;Kids. Tüm hakları saklıdır.</p>
+<div class="flex gap-4">
+<a class="size-10 flex items-center justify-center rounded-full bg-gray-50 text-text-secondary hover:bg-primary hover:text-white transition-all dark:bg-[#2a1f18] dark:text-gray-500 dark:hover:text-white" href="#">
+<span class="material-symbols-outlined text-xl">social_leaderboard</span>
+</a>
+<a class="size-10 flex items-center justify-center rounded-full bg-gray-50 text-text-secondary hover:bg-primary hover:text-white transition-all dark:bg-[#2a1f18] dark:text-gray-500 dark:hover:text-white" href="#">
+<span class="material-symbols-outlined text-xl">photo_camera</span>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+
+</body></html>

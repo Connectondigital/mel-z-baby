@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html class="light" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mel'z Baby&amp;Kids - Ürün Ekleme</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#e49444",
+                        "primary-dark": "#cc833b",
+                        "background-light": "#f8f7f6",
+                        "background-dark": "#211911",
+                        "surface": "#ffffff",
+                        "border-subtle": "#e5e0dc",
+                        "text-main": "#171411",
+                        "text-subtle": "#877564",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d1d5db; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #9ca3af; 
+        }
+        .form-checkbox:checked {
+            background-color: #e49444;
+            border-color: #e49444;
+        }
+        .form-radio:checked {
+            color: #e49444;
+        }
+        .form-input:focus, .form-textarea:focus, .form-select:focus {
+            border-color: #e49444;
+            box-shadow: 0 0 0 1px #e49444;
+        }
+    </style>
+</head>
+<body class="font-display bg-background-light text-text-main h-screen overflow-hidden flex">
+<aside class="hidden md:flex flex-col w-72 bg-white border-r border-border-subtle h-full flex-shrink-0 z-20">
+<div class="flex flex-col h-full p-4 justify-between">
+<div class="flex flex-col gap-6">
+<div class="flex gap-3 items-center px-2">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 shrink-0 shadow-sm" data-alt="Mel'z Baby&amp;Kids Logo featuring a cute baby illustration" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDHvDVz8iUt6jLPXF4FsgsGbgKaJhffduhKfNiOyRHeMmby9YvdGs0HuDBizU1ziXEYkCAD1j5m85csYYVVDvHSf7TUbPcrrQu1QcXolpwMZHlhYu7aNhLni23Dwf32btpWuCuSIXAmmmm-6uPBYaTWNv1vVqbDy4h68pncu2T0gAT6bPdmfSfsY9O5Pab2I8NpCuxcHI6W0mRxLtbuiDemA0zWtdVGHIIBYnNPoWpOUj8vDDTOWLPTm2wgiaFixVjDL8WxPlKmZS_w");'></div>
+<div class="flex flex-col overflow-hidden">
+<h1 class="text-text-main text-base font-bold leading-tight truncate">Mel'z Baby&amp;Kids</h1>
+<p class="text-text-subtle text-xs font-medium truncate">Yönetici Paneli</p>
+</div>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-subtle hover:bg-background-light hover:text-text-main transition-colors group" href="#">
+<span class="material-symbols-outlined text-[24px]">dashboard</span>
+<span class="text-sm font-medium">Kontrol Paneli</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-[#fcf9f6] text-primary border border-[#f0ebe6]" href="#">
+<span class="material-symbols-outlined text-[24px] fill-1">inventory_2</span>
+<span class="text-sm font-bold">Ürünler</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-subtle hover:bg-background-light hover:text-text-main transition-colors group" href="#">
+<span class="material-symbols-outlined text-[24px]">shopping_cart</span>
+<span class="text-sm font-medium">Siparişler</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-subtle hover:bg-background-light hover:text-text-main transition-colors group" href="#">
+<span class="material-symbols-outlined text-[24px]">group</span>
+<span class="text-sm font-medium">Müşteriler</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-subtle hover:bg-background-light hover:text-text-main transition-colors group" href="#">
+<span class="material-symbols-outlined text-[24px]">analytics</span>
+<span class="text-sm font-medium">Raporlar</span>
+</a>
+</nav>
+</div>
+<div class="flex flex-col gap-1 border-t border-border-subtle pt-4">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-subtle hover:bg-background-light hover:text-text-main transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">settings</span>
+<span class="text-sm font-medium">Ayarlar</span>
+</a>
+</div>
+</div>
+</aside>
+<div class="flex-1 flex flex-col min-w-0 h-full overflow-hidden relative">
+<header class="bg-white border-b border-border-subtle h-16 flex items-center justify-between px-6 flex-shrink-0 z-10">
+<button class="md:hidden mr-4 text-text-main">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="hidden sm:flex items-center text-sm font-medium text-text-subtle">
+<span class="material-symbols-outlined mr-2 text-lg">search</span>
+            Hızlı Arama...
+        </div>
+<div class="flex items-center gap-4 ml-auto">
+<button class="relative p-2 text-text-subtle hover:bg-background-light rounded-full transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-red-500 rounded-full border border-white"></span>
+</button>
+<div class="h-8 w-px bg-border-subtle mx-1"></div>
+<button class="flex items-center gap-2 text-sm font-medium text-text-main hover:opacity-80 transition-opacity">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-8 border border-border-subtle" data-alt="User profile picture placeholder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAH1yz5cBzvdkwHyetzk5jMC0Eun_ixjvAC6qP5HxF30BEGgfcmVEnJ2_ni-sEaRpIJfGZ4XPXW1uFxYHZrTwcUmGqbthBdd7jHZD-Nti2WOaXDzKV1iNc0Cq3rEitbktgOV8Eotu3oTDJXydIOW5hZ4qAcA_WugU9ueg_RMkUjVDatrx82TviKhi-6XGzJvWv0llelH5NdCdoq7Olk30hRXvST0FRaC5vMRyKAOOpOZuE0DoUqFBce3cEuZIfTyUW0pJRxVAqNJtCz");'></div>
+<span class="hidden sm:inline">Melis Y.</span>
+<span class="material-symbols-outlined text-text-subtle text-lg">expand_more</span>
+</button>
+</div>
+</header>
+<main class="flex-1 overflow-y-auto bg-background-light p-4 md:p-8">
+<div class="max-w-[1200px] mx-auto space-y-6">
+<div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+<div class="flex flex-col gap-2">
+<nav class="flex items-center gap-2 text-sm text-text-subtle">
+<a class="hover:text-primary transition-colors" href="#">Ana Sayfa</a>
+<span class="material-symbols-outlined text-[12px]">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Ürünler</a>
+<span class="material-symbols-outlined text-[12px]">chevron_right</span>
+<span class="text-text-main font-semibold">Ürün Ekle</span>
+</nav>
+<h1 class="text-3xl font-extrabold text-text-main tracking-tight">Ürün Ekleme/Düzenleme</h1>
+<p class="text-text-subtle text-sm max-w-2xl">Mağazanıza yeni bir ürün ekleyin. Ürün bilgileri, fiyatlandırma ve görselleri aşağıdan yönetebilirsiniz.</p>
+</div>
+<div class="flex items-center gap-3 mt-4 sm:mt-0">
+<button class="px-5 py-2.5 rounded-lg border border-border-subtle bg-white text-text-main text-sm font-bold hover:bg-gray-50 transition-colors">
+                        İptal
+                    </button>
+<button class="px-5 py-2.5 rounded-lg bg-primary text-white text-sm font-bold hover:bg-primary-dark shadow-sm hover:shadow transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">save</span>
+                        Değişiklikleri Kaydet
+                    </button>
+</div>
+</div>
+<div class="sticky top-0 z-10 bg-background-light pt-2 pb-4 -mx-4 px-4 md:static md:p-0 md:bg-transparent">
+<div class="flex overflow-x-auto border-b border-border-subtle no-scrollbar">
+<a class="flex-shrink-0 px-1 pb-3 pt-2 text-sm font-bold text-primary border-b-[3px] border-primary mr-6" href="#general">Genel Bilgiler</a>
+<a class="flex-shrink-0 px-1 pb-3 pt-2 text-sm font-bold text-text-subtle border-b-[3px] border-transparent hover:text-text-main hover:border-border-subtle transition-all mr-6" href="#pricing">Fiyat &amp; Stok</a>
+<a class="flex-shrink-0 px-1 pb-3 pt-2 text-sm font-bold text-text-subtle border-b-[3px] border-transparent hover:text-text-main hover:border-border-subtle transition-all mr-6" href="#media">Medya</a>
+<a class="flex-shrink-0 px-1 pb-3 pt-2 text-sm font-bold text-text-subtle border-b-[3px] border-transparent hover:text-text-main hover:border-border-subtle transition-all mr-6" href="#categories">Kategoriler</a>
+<a class="flex-shrink-0 px-1 pb-3 pt-2 text-sm font-bold text-text-subtle border-b-[3px] border-transparent hover:text-text-main hover:border-border-subtle transition-all mr-6" href="#seo">SEO</a>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 pb-20">
+<div class="lg:col-span-2 space-y-8">
+<section class="bg-white rounded-xl border border-border-subtle p-6 shadow-sm" id="general">
+<div class="flex items-center gap-3 mb-6 pb-4 border-b border-border-subtle/50">
+<div class="bg-primary/10 p-2 rounded-lg text-primary">
+<span class="material-symbols-outlined">description</span>
+</div>
+<h3 class="text-lg font-bold text-text-main">Genel Bilgiler</h3>
+</div>
+<div class="space-y-5">
+<div class="space-y-1.5">
+<label class="text-sm font-semibold text-text-main">Ürün Adı</label>
+<input class="w-full form-input rounded-lg border-border-subtle text-text-main placeholder:text-text-subtle/70 bg-background-light/50 focus:bg-white transition-colors" placeholder="Örn: Organik Pamuk Bebek Tulumu" type="text"/>
+</div>
+<div class="space-y-1.5">
+<label class="text-sm font-semibold text-text-main">Kısa Açıklama</label>
+<textarea class="w-full form-textarea rounded-lg border-border-subtle text-text-main placeholder:text-text-subtle/70 bg-background-light/50 focus:bg-white transition-colors h-20 resize-none" placeholder="Ürün listelerinde görünecek kısa özet..."></textarea>
+</div>
+<div class="space-y-1.5">
+<label class="text-sm font-semibold text-text-main">Tam Açıklama</label>
+<div class="rounded-lg border border-border-subtle overflow-hidden bg-white">
+<div class="flex items-center gap-1 border-b border-border-subtle bg-gray-50 p-2">
+<button class="p-1.5 hover:bg-gray-200 rounded text-text-subtle"><span class="material-symbols-outlined text-[20px]">format_bold</span></button>
+<button class="p-1.5 hover:bg-gray-200 rounded text-text-subtle"><span class="material-symbols-outlined text-[20px]">format_italic</span></button>
+<button class="p-1.5 hover:bg-gray-200 rounded text-text-subtle"><span class="material-symbols-outlined text-[20px]">format_underlined</span></button>
+<div class="w-px h-5 bg-border-subtle mx-1"></div>
+<button class="p-1.5 hover:bg-gray-200 rounded text-text-subtle"><span class="material-symbols-outlined text-[20px]">format_list_bulleted</span></button>
+<button class="p-1.5 hover:bg-gray-200 rounded text-text-subtle"><span class="material-symbols-outlined text-[20px]">format_list_numbered</span></button>
+<div class="w-px h-5 bg-border-subtle mx-1"></div>
+<button class="p-1.5 hover:bg-gray-200 rounded text-text-subtle"><span class="material-symbols-outlined text-[20px]">link</span></button>
+<button class="p-1.5 hover:bg-gray-200 rounded text-text-subtle"><span class="material-symbols-outlined text-[20px]">image</span></button>
+</div>
+<div class="p-4 min-h-[160px] text-text-subtle">
+                                        Ürün detaylarını buraya giriniz...
+                                    </div>
+</div>
+</div>
+</div>
+</section>
+<section class="bg-white rounded-xl border border-border-subtle p-6 shadow-sm" id="pricing">
+<div class="flex items-center gap-3 mb-6 pb-4 border-b border-border-subtle/50">
+<div class="bg-primary/10 p-2 rounded-lg text-primary">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<h3 class="text-lg font-bold text-text-main">Fiyatlandırma ve Stok</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+<div class="space-y-1.5">
+<label class="text-sm font-semibold text-text-main">Satış Fiyatı (₺)</label>
+<div class="relative">
+<input class="w-full form-input rounded-lg border-border-subtle text-text-main placeholder:text-text-subtle/70 bg-background-light/50 focus:bg-white pl-8" placeholder="0.00" type="number"/>
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-text-subtle text-sm">₺</span>
+</div>
+</div>
+<div class="space-y-1.5">
+<label class="text-sm font-semibold text-text-main">İndirimli Fiyat (₺)</label>
+<div class="relative">
+<input class="w-full form-input rounded-lg border-border-subtle text-text-main placeholder:text-text-subtle/70 bg-background-light/50 focus:bg-white pl-8" placeholder="0.00" type="number"/>
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-text-subtle text-sm">₺</span>
+</div>
+<p class="text-xs text-text-subtle">Boş bırakılırsa indirim uygulanmaz.</p>
+</div>
+</div>
+<div class="flex items-center gap-4 mb-6">
+<div class="h-px bg-border-subtle flex-1"></div>
+<span class="text-xs font-bold text-text-subtle uppercase tracking-wider">Detaylı Stok Yönetimi</span>
+<div class="h-px bg-border-subtle flex-1"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+<div class="space-y-1.5">
+<label class="text-sm font-semibold text-text-main">SKU (Stok Kodu)</label>
+<input class="w-full form-input rounded-lg border-border-subtle text-text-main placeholder:text-text-subtle/70 bg-background-light/50 focus:bg-white" placeholder="MLZ-001" type="text"/>
+</div>
+<div class="space-y-1.5">
+<label class="text-sm font-semibold text-text-main">Stok Durumu</label>
+<select class="w-full form-select rounded-lg border-border-subtle text-text-main bg-background-light/50 focus:bg-white">
+<option>Stokta Var</option>
+<option>Stokta Yok</option>
+<option>Ön Sipariş</option>
+</select>
+</div>
+<div class="space-y-1.5">
+<label class="text-sm font-semibold text-text-main flex items-center gap-1">
+                                    Min. Stok Uyarısı
+                                    <span class="material-symbols-outlined text-[16px] text-text-subtle" title="Bu seviyenin altına düştüğünde uyarı alırsınız">help</span>
+</label>
+<input class="w-full form-input rounded-lg border-border-subtle text-text-main placeholder:text-text-subtle/70 bg-background-light/50 focus:bg-white" placeholder="Örn: 5" type="number"/>
+</div>
+<div class="space-y-1.5">
+<label class="text-sm font-semibold text-text-main">Tedarikçi Geliş Tarihi</label>
+<input class="w-full form-input rounded-lg border-border-subtle text-text-main bg-background-light/50 focus:bg-white" type="date"/>
+</div>
+</div>
+<div class="bg-primary/5 rounded-xl p-5 border border-primary/10 mb-8">
+<h4 class="text-sm font-bold text-text-main mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">notifications_active</span>
+                                Stok Bildirimleri &amp; Aksiyonlar
+                            </h4>
+<div class="flex flex-col md:flex-row gap-4 md:gap-8">
+<label class="inline-flex items-center gap-2 cursor-pointer">
+<input checked="" class="form-checkbox rounded text-primary border-border-subtle focus:ring-primary w-4 h-4" type="checkbox"/>
+<span class="text-sm text-text-main">Stok bittiğinde "Gelince Haber Ver" butonunu göster</span>
+</label>
+<label class="inline-flex items-center gap-2 cursor-pointer">
+<input class="form-checkbox rounded text-primary border-border-subtle focus:ring-primary w-4 h-4" type="checkbox"/>
+<span class="text-sm text-text-main">Stoksuz satışa izin ver (Backorder)</span>
+</label>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/20 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+<span class="ms-3 text-sm font-bold text-text-main">Varyasyonlu Stok Takibi (Beden/Renk)</span>
+</label>
+</div>
+<div class="border border-border-subtle rounded-lg overflow-hidden bg-white">
+<div class="grid grid-cols-12 gap-4 bg-background-light border-b border-border-subtle px-4 py-2 text-xs font-bold text-text-subtle uppercase">
+<div class="col-span-3">Varyasyon</div>
+<div class="col-span-3">Özel SKU</div>
+<div class="col-span-2">Stok</div>
+<div class="col-span-2">Min. Stok</div>
+<div class="col-span-2 text-right">İşlemler</div>
+</div>
+<div class="grid grid-cols-12 gap-4 px-4 py-3 items-center border-b border-border-subtle hover:bg-gray-50 transition-colors">
+<div class="col-span-3 flex items-center gap-2">
+<span class="size-3 rounded-full bg-[#f5f5dc] border border-gray-300" title="Bej"></span>
+<span class="text-sm font-medium text-text-main">0-3 Ay</span>
+</div>
+<div class="col-span-3">
+<input class="w-full text-xs py-1.5 px-2 rounded border border-border-subtle focus:border-primary focus:ring-0" type="text" value="MLZ-001-S"/>
+</div>
+<div class="col-span-2">
+<input class="w-full text-xs py-1.5 px-2 rounded border border-border-subtle focus:border-primary focus:ring-0" type="number" value="15"/>
+</div>
+<div class="col-span-2">
+<input class="w-full text-xs py-1.5 px-2 rounded border border-border-subtle focus:border-primary focus:ring-0 text-text-subtle" type="number" value="5"/>
+</div>
+<div class="col-span-2 flex justify-end gap-2">
+<button class="text-text-subtle hover:text-primary"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+<button class="text-text-subtle hover:text-red-500"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+</div>
+</div>
+<div class="grid grid-cols-12 gap-4 px-4 py-3 items-center border-b border-border-subtle hover:bg-gray-50 transition-colors">
+<div class="col-span-3 flex items-center gap-2">
+<span class="size-3 rounded-full bg-[#f5f5dc] border border-gray-300" title="Bej"></span>
+<span class="text-sm font-medium text-text-main">3-6 Ay</span>
+</div>
+<div class="col-span-3">
+<input class="w-full text-xs py-1.5 px-2 rounded border border-border-subtle focus:border-primary focus:ring-0" type="text" value="MLZ-001-M"/>
+</div>
+<div class="col-span-2">
+<input class="w-full text-xs py-1.5 px-2 rounded border border-border-subtle focus:border-primary focus:ring-0" type="number" value="8"/>
+</div>
+<div class="col-span-2">
+<input class="w-full text-xs py-1.5 px-2 rounded border border-border-subtle focus:border-primary focus:ring-0 text-text-subtle" type="number" value="5"/>
+</div>
+<div class="col-span-2 flex justify-end gap-2">
+<button class="text-text-subtle hover:text-primary"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+<button class="text-text-subtle hover:text-red-500"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+</div>
+</div>
+<div class="grid grid-cols-12 gap-4 px-4 py-3 items-center hover:bg-gray-50 transition-colors bg-background-light/30">
+<div class="col-span-3 text-sm text-text-subtle italic">Yeni varyasyon...</div>
+<div class="col-span-3"></div>
+<div class="col-span-2"></div>
+<div class="col-span-2"></div>
+<div class="col-span-2 flex justify-end">
+<button class="text-primary text-xs font-bold hover:underline flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">add_circle</span> Ekle
+                                        </button>
+</div>
+</div>
+<div class="bg-gray-50 px-4 py-2 text-xs text-text-main font-semibold border-t border-border-subtle flex justify-between">
+<span>Toplam Varyasyon Stoğu: 23</span>
+<span class="text-text-subtle font-normal">Ana stok miktarı varyasyon toplamından otomatik güncellenir.</span>
+</div>
+</div>
+</div>
+</section>
+<section class="bg-white rounded-xl border border-border-subtle p-6 shadow-sm" id="media">
+<div class="flex items-center gap-3 mb-6 pb-4 border-b border-border-subtle/50">
+<div class="bg-primary/10 p-2 rounded-lg text-primary">
+<span class="material-symbols-outlined">imagesmode</span>
+</div>
+<h3 class="text-lg font-bold text-text-main">Medya Yönetimi</h3>
+</div>
+<div class="border-2 border-dashed border-border-subtle rounded-xl p-8 flex flex-col items-center justify-center text-center bg-background-light/30 hover:bg-background-light/60 transition-colors cursor-pointer group">
+<div class="bg-white p-3 rounded-full shadow-sm mb-3 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-[32px]">cloud_upload</span>
+</div>
+<p class="text-text-main font-semibold">Görselleri buraya sürükleyin</p>
+<p class="text-text-subtle text-sm mt-1">veya bilgisayarınızdan seçmek için tıklayın</p>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mt-6">
+<div class="relative group aspect-square rounded-lg overflow-hidden border border-border-subtle">
+<div class="bg-center bg-no-repeat bg-cover h-full w-full" data-alt="Baby onesie product photo" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuClkMG9NiIDvn1EZeWv-rZZD8X6w6bQuDtmpD5AjPYR2GcQ3BC0URO7Achl_Ja-Yfh-KzFJ4Nvkl-Y2CX18Do-b_uDX3st46N5185zk3aGDgHOnIaNyNmX85oOyTdY5yTLpNpNYIANLxWQmpSBGECb1vaVVQx-lDeLSinbhGE_2QCSNVZyIMdt2Bjxr_UZ0nl-dC7_P00sAiBwF0TgGnQ_fM_bzYxhpcKT03baiVa7vDUW6y1Nqds-RlxUpcTNCcnFnxg77cWdPlU_-");'></div>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
+<button class="bg-white text-text-main p-1.5 rounded-full hover:bg-primary hover:text-white transition-colors"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+<button class="bg-white text-red-500 p-1.5 rounded-full hover:bg-red-500 hover:text-white transition-colors"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+</div>
+<span class="absolute top-2 left-2 bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm">Kapak</span>
+</div>
+<div class="relative group aspect-square rounded-lg overflow-hidden border border-border-subtle">
+<div class="bg-center bg-no-repeat bg-cover h-full w-full" data-alt="Baby toy wooden rattle" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB7Oo5d3EfZ7Xi-TyVnnlQHgg7qe7IOlCvWmUnixuibnfIyDggbnFkItkg0-WkhUIn_pgkNA-NPlTnoG1RfD74JU0tjWAi4nmE3JGI5G-RwR0GGoh3u1VLnVggFly6Ebi3Gdqh1WGRZ-viJBxbe6Mqda1_SINtsEroBZtIERly1phYtp-Bt-cGkYxvIbH9D57ynw4t7COUcz5XIDM0gr9D92QS4TwmmO_nCPmEjh2gDKjhf-WASQEQXus4owajpI0AbByufZ13XfPkK");'></div>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
+<button class="bg-white text-text-main p-1.5 rounded-full hover:bg-primary hover:text-white transition-colors"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+<button class="bg-white text-red-500 p-1.5 rounded-full hover:bg-red-500 hover:text-white transition-colors"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+</div>
+</div>
+<div class="aspect-square rounded-lg border border-border-subtle bg-background-light flex items-center justify-center">
+<span class="material-symbols-outlined text-border-subtle text-[32px]">image</span>
+</div>
+</div>
+</section>
+<section class="bg-white rounded-xl border border-border-subtle p-6 shadow-sm" id="seo">
+<div class="flex items-center gap-3 mb-6 pb-4 border-b border-border-subtle/50">
+<div class="bg-primary/10 p-2 rounded-lg text-primary">
+<span class="material-symbols-outlined">search</span>
+</div>
+<h3 class="text-lg font-bold text-text-main">Arama Motoru Optimizasyonu (SEO)</h3>
+</div>
+<div class="space-y-5">
+<div class="space-y-1.5">
+<div class="flex justify-between">
+<label class="text-sm font-semibold text-text-main">Meta Başlık</label>
+<span class="text-xs text-text-subtle">0/60</span>
+</div>
+<input class="w-full form-input rounded-lg border-border-subtle text-text-main placeholder:text-text-subtle/70 bg-background-light/50 focus:bg-white transition-colors" type="text"/>
+</div>
+<div class="space-y-1.5">
+<div class="flex justify-between">
+<label class="text-sm font-semibold text-text-main">Meta Açıklama</label>
+<span class="text-xs text-text-subtle">0/160</span>
+</div>
+<textarea class="w-full form-textarea rounded-lg border-border-subtle text-text-main placeholder:text-text-subtle/70 bg-background-light/50 focus:bg-white transition-colors h-24 resize-none"></textarea>
+</div>
+</div>
+</section>
+</div>
+<div class="space-y-8">
+<div class="bg-white rounded-xl border border-border-subtle p-6 shadow-sm">
+<h3 class="text-base font-bold text-text-main mb-4">Yayın Durumu</h3>
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<span class="text-sm text-text-main font-medium">Durum</span>
+<span class="px-2 py-1 rounded bg-green-100 text-green-700 text-xs font-bold">Taslak</span>
+</div>
+<div class="space-y-2">
+<label class="flex items-center gap-3 p-3 border border-primary bg-primary/5 rounded-lg cursor-pointer">
+<input checked="" class="form-radio text-primary focus:ring-primary" name="status" type="radio"/>
+<div class="flex flex-col">
+<span class="text-sm font-semibold text-text-main">Taslak</span>
+<span class="text-xs text-text-subtle">Henüz müşteriler göremez</span>
+</div>
+</label>
+<label class="flex items-center gap-3 p-3 border border-border-subtle rounded-lg cursor-pointer hover:bg-background-light transition-colors">
+<input class="form-radio text-primary focus:ring-primary" name="status" type="radio"/>
+<div class="flex flex-col">
+<span class="text-sm font-semibold text-text-main">Yayınlandı</span>
+<span class="text-xs text-text-subtle">Mağazada hemen görünür</span>
+</div>
+</label>
+</div>
+<div class="pt-2 border-t border-border-subtle mt-2">
+<label class="text-sm font-semibold text-text-main block mb-2">Yayınlanma Tarihi</label>
+<div class="relative">
+<input class="w-full form-input rounded-lg border-border-subtle text-text-main text-sm" type="date"/>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-xl border border-border-subtle p-6 shadow-sm" id="categories">
+<h3 class="text-base font-bold text-text-main mb-4">Organizasyon</h3>
+<div class="space-y-5">
+<div class="space-y-2">
+<label class="text-sm font-semibold text-text-main">Kategoriler</label>
+<div class="border border-border-subtle rounded-lg max-h-48 overflow-y-auto p-3 bg-background-light/30 custom-scrollbar">
+<label class="flex items-center gap-2 py-1.5 cursor-pointer hover:bg-background-light rounded px-1 -mx-1">
+<input class="form-checkbox rounded text-primary focus:ring-primary border-gray-300" type="checkbox"/>
+<span class="text-sm text-text-main">Bebek Giyim</span>
+</label>
+<div class="ml-6 flex flex-col">
+<label class="flex items-center gap-2 py-1.5 cursor-pointer hover:bg-background-light rounded px-1 -mx-1">
+<input class="form-checkbox rounded text-primary focus:ring-primary border-gray-300" type="checkbox"/>
+<span class="text-sm text-text-main">Tulumlar</span>
+</label>
+<label class="flex items-center gap-2 py-1.5 cursor-pointer hover:bg-background-light rounded px-1 -mx-1">
+<input class="form-checkbox rounded text-primary focus:ring-primary border-gray-300" type="checkbox"/>
+<span class="text-sm text-text-main">Zıbınlar</span>
+</label>
+</div>
+<label class="flex items-center gap-2 py-1.5 cursor-pointer hover:bg-background-light rounded px-1 -mx-1">
+<input class="form-checkbox rounded text-primary focus:ring-primary border-gray-300" type="checkbox"/>
+<span class="text-sm text-text-main">Oyuncak</span>
+</label>
+<label class="flex items-center gap-2 py-1.5 cursor-pointer hover:bg-background-light rounded px-1 -mx-1">
+<input class="form-checkbox rounded text-primary focus:ring-primary border-gray-300" type="checkbox"/>
+<span class="text-sm text-text-main">Bakım &amp; Banyo</span>
+</label>
+</div>
+<button class="text-primary text-xs font-bold hover:underline flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[14px]">add</span> Yeni Kategori Ekle
+                                </button>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-semibold text-text-main">Etiketler</label>
+<input class="w-full form-input rounded-lg border-border-subtle text-text-main text-sm" placeholder="Örn: organik, pamuk, yazlık" type="text"/>
+<div class="flex flex-wrap gap-2 mt-2">
+<span class="bg-background-light border border-border-subtle px-2 py-1 rounded text-xs font-medium text-text-subtle flex items-center gap-1">
+                                        Yazlık <button class="hover:text-red-500"><span class="material-symbols-outlined text-[12px]">close</span></button>
+</span>
+<span class="bg-background-light border border-border-subtle px-2 py-1 rounded text-xs font-medium text-text-subtle flex items-center gap-1">
+                                        Organik <button class="hover:text-red-500"><span class="material-symbols-outlined text-[12px]">close</span></button>
+</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

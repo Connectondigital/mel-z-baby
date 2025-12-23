@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+
+<html class="light" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mel'z Baby&amp;Kids Yönetici Paneli</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ee8c2b",
+                        "primary-light": "#fef3e9",
+                        "secondary": "#897561",
+                        "background-light": "#fdfbf7",
+                        "background-dark": "#221910",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#2d241b",
+                        "border-light": "#f4f2f0",
+                        "border-dark": "#3d3228",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for webkit browsers */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e5e0dc;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d1c8c0;
+        }
+    </style>
+</head>
+<body class="font-display bg-background-light text-[#181411] overflow-hidden">
+<div class="flex h-screen w-full">
+<!-- Sidebar -->
+<aside class="flex flex-col w-64 h-full bg-surface-light border-r border-border-light flex-shrink-0">
+<!-- Logo Section -->
+<div class="p-6 flex items-center gap-3">
+<div class="bg-primary/20 bg-center bg-no-repeat bg-cover rounded-full size-10 flex items-center justify-center text-primary" data-alt="Mel'z Baby&amp;Kids Logo Icon">
+<span class="material-symbols-outlined">child_care</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-[#181411] text-base font-bold leading-none">Mel'z Baby&amp;Kids</h1>
+<p class="text-secondary text-xs font-medium mt-1">Yönetici Paneli</p>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="flex-1 overflow-y-auto px-4 py-2 space-y-1">
+<!-- Dashboard (Active) -->
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg bg-primary-light text-primary group transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="text-sm font-bold">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-secondary hover:bg-background-light hover:text-[#181411] transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">shopping_bag</span>
+<span class="text-sm font-medium">Siparişler</span>
+<span class="ml-auto bg-primary text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">3</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-secondary hover:bg-background-light hover:text-[#181411] transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">inventory_2</span>
+<span class="text-sm font-medium">Ürünler</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-secondary hover:bg-background-light hover:text-[#181411] transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">group</span>
+<span class="text-sm font-medium">Müşteriler</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-secondary hover:bg-background-light hover:text-[#181411] transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">category</span>
+<span class="text-sm font-medium">Kategoriler</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-secondary hover:bg-background-light hover:text-[#181411] transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">article</span>
+<span class="text-sm font-medium">Blog</span>
+</a>
+</nav>
+<!-- Bottom Settings -->
+<div class="p-4 border-t border-border-light">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-secondary hover:bg-background-light hover:text-[#181411] transition-colors group mb-2" href="#">
+<span class="material-symbols-outlined group-hover:rotate-45 transition-transform">settings</span>
+<span class="text-sm font-medium">Ayarlar</span>
+</a>
+<!-- User Profile Mini -->
+<div class="flex items-center gap-3 mt-4 pt-4 border-t border-dashed border-border-light">
+<div class="size-9 rounded-full bg-cover bg-center border border-gray-200" data-alt="Admin user profile picture showing a woman smiling" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB8WVq-MYCHagtI5Zxs6vn3iJoLu6KCCYC-eyM_oNxDEB5xFi8m68S-mSTzWY3_TedBcz--NilyjYJRkOzBVl6AgTks9lcfIDP2vKTMBHTzN1HHzHLMuPzqcQ3K6NyfrKPmV87ayj_r8cxkocNlxWo60NYHlC4Q2GBfQ4VfCHbsHJaEyYPEGwFZ2EERJUsZxARE2lSowEGk7xwU2-Ly6e3Z-FQFQNm221fdU5yoyfAr_fFZd36DlwN7P2OxJ-_DXVPV6BORINKFhe94");'></div>
+<div class="flex flex-col overflow-hidden">
+<span class="text-sm font-bold text-[#181411] truncate">Melis Yılmaz</span>
+<span class="text-xs text-secondary truncate">Süper Yönetici</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<main class="flex-1 flex flex-col h-full overflow-hidden relative">
+<!-- Top Header -->
+<header class="h-16 bg-surface-light border-b border-border-light flex items-center justify-between px-8 flex-shrink-0 z-10">
+<!-- Title & Breadcrumb -->
+<div>
+<h2 class="text-xl font-bold text-[#181411]">Dashboard</h2>
+<p class="text-xs text-secondary mt-0.5">Yönetici Paneli &gt; Ana Sayfa</p>
+</div>
+<!-- Right Actions -->
+<div class="flex items-center gap-6">
+<!-- Search Bar -->
+<div class="relative hidden md:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-secondary text-[20px]">search</span>
+<input class="pl-10 pr-4 py-2 w-64 bg-background-light border-none rounded-lg text-sm focus:ring-2 focus:ring-primary/20 focus:bg-white transition-all placeholder:text-secondary/70" placeholder="Ara..." type="text"/>
+</div>
+<!-- Actions -->
+<div class="flex items-center gap-3">
+<button class="relative p-2 rounded-lg bg-background-light text-[#181411] hover:bg-primary-light hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[22px]">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-red-500 rounded-full border-2 border-white"></span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg text-sm font-bold hover:bg-orange-600 transition-colors shadow-sm shadow-orange-200">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span>Yeni Sipariş</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Scrollable Content Area -->
+<div class="flex-1 overflow-y-auto p-8 pb-20">
+<div class="max-w-7xl mx-auto space-y-8">
+<!-- Stats Cards -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Total Sales -->
+<div class="bg-surface-light p-6 rounded-xl border border-border-light shadow-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-green-50 rounded-lg text-green-600">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<span class="flex items-center text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-full">
+<span class="material-symbols-outlined text-[14px] mr-1">trending_up</span> +12%
+                                </span>
+</div>
+<h3 class="text-secondary text-sm font-medium">Toplam Satış</h3>
+<p class="text-2xl font-bold text-[#181411] mt-1">₺124,500</p>
+<p class="text-xs text-secondary mt-2">Geçen aya göre artış</p>
+</div>
+<!-- Orders -->
+<div class="bg-surface-light p-6 rounded-xl border border-border-light shadow-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-blue-50 rounded-lg text-blue-600">
+<span class="material-symbols-outlined">shopping_cart</span>
+</div>
+<span class="flex items-center text-xs font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded-full">
+<span class="material-symbols-outlined text-[14px] mr-1">trending_up</span> +5%
+                                </span>
+</div>
+<h3 class="text-secondary text-sm font-medium">Yeni Siparişler</h3>
+<p class="text-2xl font-bold text-[#181411] mt-1">12</p>
+<p class="text-xs text-secondary mt-2">Bugün alınan siparişler</p>
+</div>
+<!-- Products -->
+<div class="bg-surface-light p-6 rounded-xl border border-border-light shadow-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-orange-50 rounded-lg text-primary">
+<span class="material-symbols-outlined">inventory</span>
+</div>
+<span class="flex items-center text-xs font-bold text-secondary bg-gray-50 px-2 py-1 rounded-full">
+<span class="material-symbols-outlined text-[14px] mr-1">remove</span> 0%
+                                </span>
+</div>
+<h3 class="text-secondary text-sm font-medium">Toplam Ürün</h3>
+<p class="text-2xl font-bold text-[#181411] mt-1">450</p>
+<p class="text-xs text-secondary mt-2">Stoktaki aktif ürün sayısı</p>
+</div>
+<!-- Customers -->
+<div class="bg-surface-light p-6 rounded-xl border border-border-light shadow-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-purple-50 rounded-lg text-purple-600">
+<span class="material-symbols-outlined">group_add</span>
+</div>
+<span class="flex items-center text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-full">
+<span class="material-symbols-outlined text-[14px] mr-1">trending_up</span> +8%
+                                </span>
+</div>
+<h3 class="text-secondary text-sm font-medium">Yeni Müşteriler</h3>
+<p class="text-2xl font-bold text-[#181411] mt-1">45</p>
+<p class="text-xs text-secondary mt-2">Bu hafta kayıt olanlar</p>
+</div>
+</section>
+<!-- Chart & Top Products Row -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Chart Section -->
+<div class="lg:col-span-2 bg-surface-light p-6 rounded-xl border border-border-light shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<div>
+<h3 class="text-lg font-bold text-[#181411]">Satış Performansı</h3>
+<p class="text-sm text-secondary">Son 30 günün satış özeti</p>
+</div>
+<select class="bg-background-light border-none text-sm text-[#181411] font-medium rounded-lg py-2 pl-3 pr-8 focus:ring-0 cursor-pointer">
+<option>Son 30 Gün</option>
+<option>Bu Hafta</option>
+<option>Bu Yıl</option>
+</select>
+</div>
+<!-- Custom Chart SVG Representation -->
+<div class="relative h-64 w-full">
+<!-- Background Grid Lines -->
+<div class="absolute inset-0 flex flex-col justify-between text-xs text-secondary/50">
+<div class="flex w-full border-b border-dashed border-gray-100 pb-1"><span>₺50k</span></div>
+<div class="flex w-full border-b border-dashed border-gray-100 pb-1"><span>₺40k</span></div>
+<div class="flex w-full border-b border-dashed border-gray-100 pb-1"><span>₺30k</span></div>
+<div class="flex w-full border-b border-dashed border-gray-100 pb-1"><span>₺20k</span></div>
+<div class="flex w-full border-b border-dashed border-gray-100 pb-1"><span>₺10k</span></div>
+<div class="flex w-full border-b border-dashed border-gray-100 pb-1"><span>0</span></div>
+</div>
+<!-- The Chart Line (Visual representation) -->
+<svg class="absolute inset-0 w-full h-full pt-4 pr-4 pl-8 pb-6" preserveaspectratio="none" viewbox="0 0 100 50">
+<!-- Area Fill -->
+<path d="M0,45 Q10,35 20,40 T40,20 T60,25 T80,10 T100,15 V50 H0 Z" fill="url(#gradient)" opacity="0.2"></path>
+<!-- Stroke Line -->
+<path d="M0,45 Q10,35 20,40 T40,20 T60,25 T80,10 T100,15" fill="none" stroke="#ee8c2b" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.8" vector-effect="non-scaling-stroke"></path>
+<defs>
+<lineargradient id="gradient" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" style="stop-color:#ee8c2b;stop-opacity:1"></stop>
+<stop offset="100%" style="stop-color:#ffffff;stop-opacity:0"></stop>
+</lineargradient>
+</defs>
+</svg>
+<!-- X Axis Labels -->
+<div class="absolute bottom-0 left-8 right-0 flex justify-between text-xs text-secondary font-medium px-1">
+<span>1 Mar</span>
+<span>5 Mar</span>
+<span>10 Mar</span>
+<span>15 Mar</span>
+<span>20 Mar</span>
+<span>25 Mar</span>
+<span>30 Mar</span>
+</div>
+</div>
+</div>
+<!-- Top Selling Products -->
+<div class="bg-surface-light p-6 rounded-xl border border-border-light shadow-sm flex flex-col">
+<h3 class="text-lg font-bold text-[#181411] mb-1">Çok Satanlar</h3>
+<p class="text-sm text-secondary mb-5">Bu ayın favori ürünleri</p>
+<div class="flex-1 space-y-4">
+<!-- Item 1 -->
+<div class="flex items-center gap-4 group cursor-pointer">
+<div class="size-12 rounded-lg bg-gray-100 bg-cover bg-center flex-shrink-0 border border-gray-100 group-hover:border-primary/50 transition-colors" data-alt="Bebek tulumu görseli" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBkZK5wHbGzqom9ibqiPB8CdpGO3mUjdlcu5SqucADWJQCfvJa1yfhuDnec1Up91J_K9dAALvtzfR2Kfm5puiej-dHfHwmG12m0oDzpTvMhd4ft2KlBrqvQbW-dmz_6_FBe3OVoUpnjfOb5VuUI-0iF7tl0J9KZ53qV8zBb3ItDHP_VX_EhditZOsa5B9BxeURW6HEaj29N0c-b0rkETp25feFxbZVaS89NdqZkh0uFY8h0-_3BKjr1uruXq6QSzJn-RKpk4LBhowh3");'></div>
+<div class="flex-1 min-w-0">
+<h4 class="text-sm font-bold text-[#181411] truncate">Organik Pamuk Tulum</h4>
+<p class="text-xs text-secondary">Bebek Giyim</p>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold text-[#181411]">₺450</p>
+<p class="text-xs text-green-600 font-medium">124 Satış</p>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center gap-4 group cursor-pointer">
+<div class="size-12 rounded-lg bg-gray-100 bg-cover bg-center flex-shrink-0 border border-gray-100 group-hover:border-primary/50 transition-colors" data-alt="Çocuk oyuncak ayı görseli" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDm3azFVr33kuGUDo3pu123_tKHPG_mtkkaWs-tnYamDTg6zurDxK7-0cobxnd60mn99Q39l0IG1HE4Z53X1__LF1xI_IrKAVEVUIZOMVWUAHy6keP2MuCg1OlQEpxrTQaFz7T5VT9a7_sqqg4dz4diEVHeKEGTP5vTHJ6eiswj44UfkF-57h8RrGBCfbs0yt-eTy1S-HMRDpF6D6CULwjbPS_-64_3gHNvt6c3Sf394n1k7galgqYvNOtSGYOMB5xgYpq-L2Mx-gG1");'></div>
+<div class="flex-1 min-w-0">
+<h4 class="text-sm font-bold text-[#181411] truncate">Uyku Arkadaşı Ayıcık</h4>
+<p class="text-xs text-secondary">Oyuncak</p>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold text-[#181411]">₺290</p>
+<p class="text-xs text-green-600 font-medium">98 Satış</p>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="flex items-center gap-4 group cursor-pointer">
+<div class="size-12 rounded-lg bg-gray-100 bg-cover bg-center flex-shrink-0 border border-gray-100 group-hover:border-primary/50 transition-colors" data-alt="Ahşap blok oyuncak seti görseli" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBSl1er5LNARQ1hsG7tr3x7UTcC1jFRlpakRU3jw2QODAuNoz_vl8ho-Je1qEeNO8G5qSk-RZBBcPvslwOz27RfrVnw7MLlsxjvcOJhnRU_Izg87juOJSPnMUoBf87nI4NLB7fVmefTrU9oFJdXn9XIsud2TiI4t0Kgcu4XRQlvG843A7MkfeJu1SB4cMGaWpw95SkVRXZVNjyeEHoKbG9O1_qflLqRyyXOt3EH8WXhkLGoyQd-cTnJiv5PyL9prFJE2R5nN2lsG7m7");'></div>
+<div class="flex-1 min-w-0">
+<h4 class="text-sm font-bold text-[#181411] truncate">Ahşap Yapı Blokları</h4>
+<p class="text-xs text-secondary">Eğitici</p>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold text-[#181411]">₺620</p>
+<p class="text-xs text-green-600 font-medium">85 Satış</p>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="flex items-center gap-4 group cursor-pointer">
+<div class="size-12 rounded-lg bg-gray-100 bg-cover bg-center flex-shrink-0 border border-gray-100 group-hover:border-primary/50 transition-colors" data-alt="Bebek ayakkabısı görseli" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDdq9DMn57O_1ATkccaTLC0JiA3XCjKEvyXjsxWrpKhDKl7omr5GHhOmnq-FP16xmynGr8l2EmNN2alN06dA90gLICVdISt88wkljJ9XfBS-slxhEw_Q8n_0lmmsgKWtJA6o3XJqJSlSMpaSEnq1U52A_yxCZhl57DJm5Oj40xenRze01Hxu5TqYtzgN52TOBO8I-3J4Cmc4LLAOe1ZGBnyKi12QJ5boGk4SW_R0FPR1MApwtm8tohCMcRxYZgIRNV0Cs0xgazYK-k3");'></div>
+<div class="flex-1 min-w-0">
+<h4 class="text-sm font-bold text-[#181411] truncate">İlk Adım Ayakkabısı</h4>
+<p class="text-xs text-secondary">Ayakkabı</p>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold text-[#181411]">₺380</p>
+<p class="text-xs text-green-600 font-medium">62 Satış</p>
+</div>
+</div>
+</div>
+<button class="w-full mt-4 py-2.5 text-sm text-primary font-bold bg-primary-light hover:bg-primary/20 rounded-lg transition-colors">
+                                Tüm Raporu Gör
+                            </button>
+</div>
+</section>
+<!-- Recent Orders Table -->
+<section class="bg-surface-light rounded-xl border border-border-light shadow-sm overflow-hidden">
+<div class="flex items-center justify-between p-6 pb-4">
+<h3 class="text-lg font-bold text-[#181411]">Son Siparişler</h3>
+<button class="text-sm text-primary font-bold hover:underline">Tümünü Gör</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-background-light border-y border-border-light text-secondary text-xs uppercase tracking-wider">
+<th class="px-6 py-4 font-semibold">Sipariş ID</th>
+<th class="px-6 py-4 font-semibold">Müşteri</th>
+<th class="px-6 py-4 font-semibold">Tarih</th>
+<th class="px-6 py-4 font-semibold">Tutar</th>
+<th class="px-6 py-4 font-semibold">Durum</th>
+<th class="px-6 py-4 font-semibold text-right">İşlem</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-light text-sm">
+<tr class="hover:bg-background-light/50 transition-colors">
+<td class="px-6 py-4 font-medium text-[#181411]">#ORD-7352</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-cover bg-center" data-alt="Customer avatar woman" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuABvRrSPHnzvJYKJqWw9eUbfkMS6nUSZ_IOR2lvUyDS2cl8fEYg_cT6h5CJzZm9cMgO4UENGa3ley9uvYhI1lkEZkUyyHkimgHNmomojPTJN5IWDbt0_0MkaI01cooh2ctpoDW7v7QaCF8uaUVQEy_rE2e8HjdlGzfEL71AAlZoahSbooZc-apKgY6kXJeo63MlCm2w7HH28A49XQmDvGmeYvzI_LtzbSxJFQmePGmiMN0ZbSRf4emoxOJi0j7RDhnCmkk6W7ElhBJT");'></div>
+<span class="font-medium text-[#181411]">Ayşe Demir</span>
+</div>
+</td>
+<td class="px-6 py-4 text-secondary">12 Nis 2024</td>
+<td class="px-6 py-4 font-bold text-[#181411]">₺1,250.00</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-700">
+<span class="size-1.5 rounded-full bg-green-600"></span>
+                                                Teslim Edildi
+                                            </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-background-light/50 transition-colors">
+<td class="px-6 py-4 font-medium text-[#181411]">#ORD-7351</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-cover bg-center" data-alt="Customer avatar man" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDdu4IYks6uJhHc5xCOtFhpTNJyn-37kRiYSE6KSJUGDnDM37yIJFza8NlA5ZbpNkEWxtO5lSlwkJfvvSaszWJ0Bx5XmGEEtT9igadqDIOjQ66TWykXdZLqiLuozkxcagIXdw-bbXkXYBxUkK6Gl0Dop7uzNoFI2ZCMHrG7IIrSOiQ_n6_OxOupUr08ukKyxuxMCTSZIOhnCO2f6vhQepsgfA6LwrwXITSw3FRt5aPUYs9YJpHLyHdA3ro8NYKIDzXZ7NklfEo3Fq56");'></div>
+<span class="font-medium text-[#181411]">Mehmet Kaya</span>
+</div>
+</td>
+<td class="px-6 py-4 text-secondary">12 Nis 2024</td>
+<td class="px-6 py-4 font-bold text-[#181411]">₺845.50</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-orange-100 text-orange-700">
+<span class="size-1.5 rounded-full bg-orange-600"></span>
+                                                Hazırlanıyor
+                                            </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-background-light/50 transition-colors">
+<td class="px-6 py-4 font-medium text-[#181411]">#ORD-7350</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-xs" data-alt="Initials avatar">
+                                                    ZS
+                                                </div>
+<span class="font-medium text-[#181411]">Zeynep Sönmez</span>
+</div>
+</td>
+<td class="px-6 py-4 text-secondary">11 Nis 2024</td>
+<td class="px-6 py-4 font-bold text-[#181411]">₺2,100.00</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-gray-100 text-gray-700">
+<span class="size-1.5 rounded-full bg-gray-500"></span>
+                                                Beklemede
+                                            </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-background-light/50 transition-colors">
+<td class="px-6 py-4 font-medium text-[#181411]">#ORD-7349</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-cover bg-center" data-alt="Customer avatar woman glasses" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAzNojcTjsxIF8pky3i-GIoU6_DQ0yaFqxREPaAYdwOS_iXz_bm9zHCmQx4comda_VXnwCc1sifBmhzKTQbTudOijGjBdnaoxt0ZoAV4d73yquZLGeyTLUT5tywPtw01mSrkf2RXlO959j5M1jMe7y8E8zYoSufhh-oJUxjsGk0ClgVC8XvX3jGBvly54LVriNq14YMU7EjfUuO-EGrkZ2ZzMet0zQLiXTVEjDMRU3IGC-plO-9OqStonbiU6A6A65YeQV13Tu30oxA");'></div>
+<span class="font-medium text-[#181411]">Elif Yılmaz</span>
+</div>
+</td>
+<td class="px-6 py-4 text-secondary">11 Nis 2024</td>
+<td class="px-6 py-4 font-bold text-[#181411]">₺420.90</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700">
+<span class="size-1.5 rounded-full bg-blue-600"></span>
+                                                Kargoda
+                                            </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+</div>
+</main>
+</div>
+</body></html>

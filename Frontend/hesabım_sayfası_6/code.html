@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html class="light" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mel'z Baby&amp;Kids - Hesabım</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Noto+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ee6c2b",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-[#181311] antialiased">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<header class="flex flex-col bg-white border-b border-solid border-[#f4f2f0]">
+<div class="px-4 md:px-10 py-3 flex items-center justify-between gap-4">
+<div class="flex items-center gap-4 text-[#181311]">
+<div class="size-8 text-primary">
+<svg class="w-full h-full" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.8261 17.4264C16.7203 18.1174 20.2244 18.5217 24 18.5217C27.7756 18.5217 31.2797 18.1174 34.1739 17.4264C36.9144 16.7722 39.9967 15.2331 41.3563 14.1648L24.8486 40.6391C24.4571 41.267 23.5429 41.267 23.1514 40.6391L6.64374 14.1648C8.00331 15.2331 11.0856 16.7722 13.8261 17.4264Z" fill="currentColor"></path>
+<path clip-rule="evenodd" d="M39.998 12.236C39.9944 12.2537 39.9875 12.2845 39.9748 12.3294C39.9436 12.4399 39.8949 12.5741 39.8346 12.7175C39.8168 12.7597 39.7989 12.8007 39.7813 12.8398C38.5103 13.7113 35.9788 14.9393 33.7095 15.4811C30.9875 16.131 27.6413 16.5217 24 16.5217C20.3587 16.5217 17.0125 16.131 14.2905 15.4811C12.0012 14.9346 9.44505 13.6897 8.18538 12.8168C8.17384 12.7925 8.16216 12.767 8.15052 12.7408C8.09919 12.6249 8.05721 12.5114 8.02977 12.411C8.00356 12.3152 8.00039 12.2667 8.00004 12.2612C8.00004 12.261 8 12.2607 8.00004 12.2612C8.00004 12.2359 8.0104 11.9233 8.68485 11.3686C9.34546 10.8254 10.4222 10.2469 11.9291 9.72276C14.9242 8.68098 19.1919 8 24 8C28.8081 8 33.0758 8.68098 36.0709 9.72276C37.5778 10.2469 38.6545 10.8254 39.3151 11.3686C39.9006 11.8501 39.9857 12.1489 39.998 12.236ZM4.95178 15.2312L21.4543 41.6973C22.6288 43.5809 25.3712 43.5809 26.5457 41.6973L43.0534 15.223C43.0709 15.1948 43.0878 15.1662 43.104 15.1371L41.3563 14.1648C43.104 15.1371 43.1038 15.1374 43.104 15.1371L43.1051 15.135L43.1065 15.1325L43.1101 15.1261L43.1199 15.1082C43.1276 15.094 43.1377 15.0754 43.1497 15.0527C43.1738 15.0075 43.2062 14.9455 43.244 14.8701C43.319 14.7208 43.4196 14.511 43.5217 14.2683C43.6901 13.8679 44 13.0689 44 12.2609C44 10.5573 43.003 9.22254 41.8558 8.2791C40.6947 7.32427 39.1354 6.55361 37.385 5.94477C33.8654 4.72057 29.133 4 24 4C18.867 4 14.1346 4.72057 10.615 5.94478C8.86463 6.55361 7.30529 7.32428 6.14419 8.27911C4.99695 9.22255 3.99999 10.5573 3.99999 12.2609C3.99999 13.1275 4.29264 13.9078 4.49321 14.3607C4.60375 14.6102 4.71348 14.8196 4.79687 14.9689C4.83898 15.0444 4.87547 15.1065 4.9035 15.1529C4.91754 15.1762 4.92954 15.1957 4.93916 15.2111L4.94662 15.223L4.95178 15.2312ZM35.9868 18.996L24 38.22L12.0131 18.996C12.4661 19.1391 12.9179 19.2658 13.3617 19.3718C16.4281 20.1039 20.0901 20.5217 24 20.5217C27.9099 20.5217 31.5719 20.1039 34.6383 19.3718C35.082 19.2658 35.5339 19.1391 35.9868 18.996Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">Mel'z Baby&amp;Kids</h2>
+</div>
+<nav class="hidden md:flex items-center gap-9">
+<a class="text-[#181311] text-sm font-medium hover:text-primary transition-colors" href="#">Ana Sayfa</a>
+<a class="text-[#181311] text-sm font-medium hover:text-primary transition-colors" href="#">Bebek Giyim</a>
+<a class="text-[#181311] text-sm font-medium hover:text-primary transition-colors" href="#">Çocuk Giyim</a>
+<a class="text-[#181311] text-sm font-medium hover:text-primary transition-colors" href="#">Oyuncak</a>
+<a class="text-[#181311] text-sm font-medium hover:text-primary transition-colors" href="#">İletişim</a>
+</nav>
+<div class="flex items-center justify-end gap-4 md:gap-8 flex-1 md:flex-none">
+<label class="hidden lg:flex flex-col min-w-40 h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full">
+<div class="text-[#896f61] flex border-none bg-[#f4f2f0] items-center justify-center pl-4 rounded-l-xl border-r-0">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#181311] focus:outline-0 focus:ring-0 border-none bg-[#f4f2f0] focus:border-none h-full placeholder:text-[#896f61] px-4 rounded-l-none border-l-0 pl-2 text-sm font-normal" placeholder="Ara..." value=""/>
+</div>
+</label>
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-xl size-10 bg-[#f4f2f0] text-[#181311] hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined text-[20px]">shopping_cart</span>
+</button>
+<button class="flex items-center justify-center rounded-xl size-10 bg-primary text-white hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined text-[20px]">account_circle</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-1 px-4 md:px-10 lg:px-40 py-8">
+<div class="layout-content-container max-w-[1200px] mx-auto flex flex-col gap-6">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pb-4 border-b border-[#e6dfdb]">
+<div class="flex flex-col gap-2">
+<h1 class="text-[#181311] text-3xl md:text-4xl font-black leading-tight tracking-[-0.033em]">Hesabım</h1>
+<p class="text-[#896f61] text-base font-normal">Hoşgeldiniz Melis, siparişlerinizi ve hesap detaylarınızı buradan yönetebilirsiniz.</p>
+</div>
+<div class="hidden md:block">
+<span class="inline-flex items-center gap-1 rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
+<span class="size-1.5 rounded-full bg-primary"></span>
+                            Aktif Üye
+                        </span>
+</div>
+</div>
+<div class="flex flex-col lg:flex-row gap-8 items-start">
+<aside class="w-full lg:w-1/4 lg:min-w-[280px]">
+<div class="flex flex-col bg-white rounded-2xl p-4 shadow-sm border border-[#f4f2f0]">
+<div class="flex gap-3 items-center mb-6 p-2">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-12 shadow-inner" data-alt="Profile picture of Melis Yılmaz" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCHsEX8IYnPCey0vo05Tw8FQcNvSBEVOUGC90TCtdsZTeWNuxg94QI8h6tVD3WSSud-5i4XAz5-cyO_OIEmJmZUqQlVnGRYj8zoVTRoo0QLRaMKxncafjihi_ho-wwE1QR0C_j3fZf9Ur7lNM2siUVfc4VrWuatVfQsTdYvkI-Rb2oGxAQgDuI8jq7hORVFMNRa64xazaa-vuHzs9BJcBPhQfTrTJgmYAZrw_0KVD3WyDP5fmcMjANz_F30ONv3gzd72nNBhzUgawDx");'></div>
+<div class="flex flex-col overflow-hidden">
+<h3 class="text-[#181311] text-base font-bold truncate">Melis Yılmaz</h3>
+<p class="text-[#896f61] text-xs truncate">melis.yilmaz@example.com</p>
+</div>
+</div>
+<nav class="flex flex-col gap-1.5">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary text-white shadow-md shadow-primary/20 transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+<span class="text-sm font-bold">Siparişlerim</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#f8f6f6] text-[#63534b] transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">location_on</span>
+<span class="text-sm font-medium group-hover:text-[#181311] transition-colors">Adreslerim</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#f8f6f6] text-[#63534b] transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">person</span>
+<span class="text-sm font-medium group-hover:text-[#181311] transition-colors">Profil Bilgilerim</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#f8f6f6] text-[#63534b] transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">favorite</span>
+<span class="text-sm font-medium group-hover:text-[#181311] transition-colors">Favorilerim</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#f8f6f6] text-[#63534b] transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">sell</span>
+<span class="text-sm font-medium group-hover:text-[#181311] transition-colors">İndirim Kuponlarım</span>
+</a>
+</nav>
+<div class="h-px bg-[#f4f2f0] my-4"></div>
+<button class="flex w-full items-center justify-center gap-2 rounded-xl h-10 px-4 border border-[#e6dfdb] text-[#896f61] hover:bg-[#f4f2f0] hover:text-[#181311] transition-colors text-sm font-bold">
+<span class="material-symbols-outlined text-[18px]">logout</span>
+<span>Çıkış Yap</span>
+</button>
+</div>
+</aside>
+<div class="flex-1 w-full min-w-0 flex flex-col gap-6">
+<div class="flex flex-wrap items-center justify-between gap-4">
+<h2 class="text-[#181311] text-xl font-bold">Sipariş Geçmişi</h2>
+<div class="flex gap-2 p-1 bg-white rounded-lg border border-[#f4f2f0]">
+<button class="px-3 py-1.5 rounded-md bg-[#f4f2f0] text-[#181311] text-xs font-bold shadow-sm">Tümü</button>
+<button class="px-3 py-1.5 rounded-md hover:bg-[#f8f6f6] text-[#896f61] text-xs font-medium transition-colors">Aktif</button>
+<button class="px-3 py-1.5 rounded-md hover:bg-[#f8f6f6] text-[#896f61] text-xs font-medium transition-colors">Tamamlanan</button>
+<button class="px-3 py-1.5 rounded-md hover:bg-[#f8f6f6] text-[#896f61] text-xs font-medium transition-colors">İptal/İade</button>
+</div>
+</div>
+<div class="flex flex-col gap-6">
+<div class="w-full bg-white rounded-2xl border border-primary/20 shadow-md overflow-hidden">
+<div class="bg-[#fff9f6] p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b border-[#f0e6e1]">
+<div class="flex flex-wrap gap-x-8 gap-y-2">
+<div class="flex flex-col">
+<span class="text-[10px] uppercase font-bold text-[#896f61] tracking-wider">Sipariş Tarihi</span>
+<span class="text-sm font-bold text-[#181311]">14 Mayıs 2024</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] uppercase font-bold text-[#896f61] tracking-wider">Sipariş Özeti</span>
+<span class="text-sm font-bold text-[#181311]">3 Ürün</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] uppercase font-bold text-[#896f61] tracking-wider">Toplam Tutar</span>
+<span class="text-sm font-bold text-primary">1.250 TL</span>
+</div>
+</div>
+<div class="flex flex-col md:items-end gap-1">
+<span class="text-xs text-[#896f61]">Sipariş No: <span class="font-bold text-[#181311]">#SIP-8291</span></span>
+<button class="text-xs font-bold text-primary hover:text-primary/80 flex items-center gap-1">
+                                            Fatura Görüntüle <span class="material-symbols-outlined text-[14px]">open_in_new</span>
+</button>
+</div>
+</div>
+<div class="px-6 py-8">
+<div class="relative flex items-center justify-between w-full max-w-3xl mx-auto">
+<div class="absolute left-0 top-1/2 -translate-y-1/2 w-full h-1 bg-[#f4f2f0] -z-10 rounded-full"></div>
+<div class="absolute left-0 top-1/2 -translate-y-1/2 w-2/3 h-1 bg-green-500 -z-10 rounded-full"></div>
+<div class="flex flex-col items-center gap-2">
+<div class="size-8 rounded-full bg-green-500 text-white flex items-center justify-center ring-4 ring-white">
+<span class="material-symbols-outlined text-[18px]">inventory_2</span>
+</div>
+<span class="text-xs font-bold text-[#181311] hidden sm:block">Sipariş Alındı</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="size-8 rounded-full bg-green-500 text-white flex items-center justify-center ring-4 ring-white">
+<span class="material-symbols-outlined text-[18px]">package_2</span>
+</div>
+<span class="text-xs font-bold text-[#181311] hidden sm:block">Hazırlanıyor</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="size-8 rounded-full bg-green-500 text-white flex items-center justify-center ring-4 ring-white shadow-lg shadow-green-200 animate-pulse">
+<span class="material-symbols-outlined text-[18px]">local_shipping</span>
+</div>
+<span class="text-xs font-bold text-green-600 hidden sm:block">Kargoya Verildi</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="size-8 rounded-full bg-white border-2 border-[#e6dfdb] text-[#e6dfdb] flex items-center justify-center ring-4 ring-white">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+</div>
+<span class="text-xs font-medium text-[#896f61] hidden sm:block">Teslim Edildi</span>
+</div>
+</div>
+<div class="mt-4 text-center sm:hidden">
+<span class="text-sm font-bold text-green-600">Durum: Kargoya Verildi</span>
+</div>
+</div>
+<div class="px-6 pb-6 pt-2">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<div class="lg:col-span-2 flex flex-col gap-4">
+<h3 class="font-bold text-[#181311] text-sm mb-1">Ürünler</h3>
+<div class="flex gap-4 p-3 rounded-xl border border-[#f4f2f0] bg-[#fcfbfb]">
+<div class="size-20 shrink-0 bg-white rounded-lg border border-[#e6dfdb] overflow-hidden flex items-center justify-center">
+<img alt="Bebek Tulum" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6j4IMQ3TnXJWBQmlgf-9SPnqHb2fG7C7gD-cg_AnDfEcPnxN3fxKruKio1QcINo2n16KTPAsA-0KHWiLLnozbeoZNikEfZp_oc1eEG9P_bDCvmm_7ZmR9Ns_3XqLCNHojhsQQjQnpQ-qRG41ECfvfTuI7kZ7NMYMhIk6JzyCGPOQ07MLU5Vs_uZo3zYx45IDKWQ80pMy-A3Jqnmohc0ChjbAaw8E5XjTdw9W9UB2Kg86cYADr_n7hQ8V4d4GHscQN6-wJ_zLhCEkM"/>
+</div>
+<div class="flex flex-col flex-1 justify-center gap-1">
+<span class="text-xs font-bold text-primary">Mel'z Baby</span>
+<h4 class="text-sm font-bold text-[#181311] leading-tight">Organik Pamuk Bebek Tulumu - Krem</h4>
+<div class="text-xs text-[#896f61]">Beden: 6-9 Ay | Adet: 1</div>
+</div>
+<div class="flex items-center justify-end font-bold text-[#181311]">450 TL</div>
+</div>
+<div class="flex gap-4 p-3 rounded-xl border border-[#f4f2f0] bg-[#fcfbfb]">
+<div class="size-20 shrink-0 bg-white rounded-lg border border-[#e6dfdb] overflow-hidden flex items-center justify-center">
+<img alt="Ahşap Oyuncak" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLdAoqBqgowk5ybXimHJOIhaH9002UBbADj-Rg8VQUjcJDUpB1NrtflagprHn9o5UBurfwjUsIlGHGB1d-mJ-FTrHbwLyrO2hxfxsvZnPvaihSFwxcQ-cVO62252zTf3iCl2NdGS_rLuszh-Qu7AI2PJbUkr9oQ1-QaCaiTgMvS688gW8wsbl-IBTxmlUFkYz53Vo0mUz8lomxzY5zffvvFQIjz5joQbqLlMd-bkoqGZaEb1U9ZXcgy5NNvErW6J5ULYBQJr1tyuhh"/>
+</div>
+<div class="flex flex-col flex-1 justify-center gap-1">
+<span class="text-xs font-bold text-primary">Woody</span>
+<h4 class="text-sm font-bold text-[#181311] leading-tight">Doğal Ahşap Diş Kaşıyıcı</h4>
+<div class="text-xs text-[#896f61]">Renk: Meşe | Adet: 1</div>
+</div>
+<div class="flex items-center justify-end font-bold text-[#181311]">350 TL</div>
+</div>
+<div class="flex gap-4 p-3 rounded-xl border border-[#f4f2f0] bg-[#fcfbfb]">
+<div class="size-20 shrink-0 bg-white rounded-lg border border-[#e6dfdb] overflow-hidden flex items-center justify-center">
+<img alt="Bebek Battaniyesi" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIxi85Sd27LouwCS70SqyKilkxh8wIOcF_LURMjSP-qRVIomOk0Frhdci7Nl6QFh4vD9oifcIhQ8k5gpc-V4TOzVgW6hiYUtrAxp4OVRPv0jB_JKpfsQNeSk12EuLToRz87pIyaoaOAgE2952qDrszxIG4XyzK_v4lDFbihTworFjidIh2f1v6HpfuaNCrWcsosir3pin3znSvpwYgXtQLvz67xsfhPb65X10epINe3hXLC_mr9wgrXXVujNoLOt_Roob4_4jJuXTS"/>
+</div>
+<div class="flex flex-col flex-1 justify-center gap-1">
+<span class="text-xs font-bold text-primary">Mel'z Home</span>
+<h4 class="text-sm font-bold text-[#181311] leading-tight">Müslin Battaniye - Yıldız Desenli</h4>
+<div class="text-xs text-[#896f61]">Boyut: 100x100 | Adet: 1</div>
+</div>
+<div class="flex items-center justify-end font-bold text-[#181311]">450 TL</div>
+</div>
+</div>
+<div class="flex flex-col gap-6">
+<div class="flex flex-col gap-2">
+<h3 class="font-bold text-[#181311] text-sm">Teslimat Bilgileri</h3>
+<div class="p-4 rounded-xl bg-[#fcfbfb] border border-[#f4f2f0] text-xs text-[#63534b]">
+<span class="font-bold block text-[#181311] mb-1">Melis Yılmaz</span>
+                                                    Atatürk Mah. Cumhuriyet Cad.<br/>Lale Apt. No: 15 D:4<br/>Ataşehir, İstanbul
+                                                </div>
+<div class="flex items-center gap-2 text-xs text-[#63534b] mt-1">
+<span class="material-symbols-outlined text-[16px]">local_shipping</span>
+<span>Kargo Firması: <strong>Yurtiçi Kargo</strong></span>
+</div>
+<div class="flex items-center gap-2 text-xs text-[#63534b]">
+<span class="material-symbols-outlined text-[16px]">calendar_month</span>
+<span>Tahmini Teslimat: <strong>16 Mayıs</strong></span>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<h3 class="font-bold text-[#181311] text-sm">Ödeme Özeti</h3>
+<div class="flex flex-col gap-2 p-4 rounded-xl bg-[#fcfbfb] border border-[#f4f2f0]">
+<div class="flex justify-between text-xs text-[#63534b]">
+<span>Ara Toplam</span>
+<span>1.250 TL</span>
+</div>
+<div class="flex justify-between text-xs text-[#63534b]">
+<span>Kargo</span>
+<span class="text-green-600 font-bold">Bedava</span>
+</div>
+<div class="h-px bg-[#e6dfdb] my-1"></div>
+<div class="flex justify-between text-sm font-bold text-[#181311]">
+<span>Toplam</span>
+<span>1.250 TL</span>
+</div>
+</div>
+<div class="flex items-center gap-2 text-xs text-[#63534b] mt-1">
+<span class="material-symbols-outlined text-[16px]">credit_card</span>
+<span>Ödeme Yöntemi: <strong>Kredi Kartı (**** 4242)</strong></span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-[#fcfbfb] px-6 py-4 border-t border-[#f0e6e1] flex justify-between items-center">
+<button class="text-xs font-bold text-[#896f61] hover:text-[#181311] flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-[18px]">expand_less</span>
+                                        Detayları Gizle
+                                    </button>
+<button class="px-5 py-2.5 rounded-xl bg-primary text-white text-xs font-bold hover:bg-primary/90 transition-colors shadow-sm shadow-primary/30 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">local_shipping</span>
+                                        Kargo Takip
+                                    </button>
+</div>
+</div>
+<div class="w-full bg-white rounded-2xl border border-[#e6dfdb] shadow-sm hover:border-primary/30 transition-all group">
+<div class="p-6 flex flex-col md:flex-row gap-6">
+<div class="flex flex-col gap-1 min-w-[150px]">
+<div class="flex items-center gap-2 mb-1">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold bg-green-50 text-green-700 border border-green-100">
+<span class="size-1.5 rounded-full bg-green-600"></span>
+                                                Teslim Edildi
+                                            </span>
+</div>
+<span class="text-sm font-bold text-[#181311]">#SIP-8210</span>
+<span class="text-xs text-[#896f61]">22 Nisan 2024</span>
+<span class="text-sm font-bold text-[#181311] mt-1">850 TL</span>
+</div>
+<div class="hidden md:block w-px bg-[#f4f2f0]"></div>
+<div class="flex-1 flex flex-col justify-center">
+<div class="flex items-center gap-3">
+<div class="relative size-14 rounded-lg border border-[#f4f2f0] overflow-hidden bg-[#fcfbfb]">
+<img alt="Product" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIcHL8ANNdfnzmAx1VGt_PSggc-DErvNftIhFWfdvmbV35dTVIk7n5B6pjIlvvKktO4RKfl0hZ10hUGwBpjqB2t1yX4kjnKETbyidnERdsfiNXv_nGfc3CaKsati7z-4lXxvWpNBNomv01ghpoAlVQAlaUREe6YTFs5-mckPU7b_YMcznSbRA7K5L8BYUE6Qfsmw76DfnWI0h2oB5Y45rXAayXlmn9lRM0blz3q0x8dFt86bvvo3JLrRJau_dBb0V3HFsbtue_fmlM"/>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-[#181311]">Organik Pamuk Pijama Takımı</span>
+<span class="text-[10px] text-[#896f61]">+ 1 ürün daha</span>
+</div>
+</div>
+</div>
+<div class="flex items-center md:justify-end">
+<button class="w-full md:w-auto px-5 py-2.5 rounded-xl border border-[#e6dfdb] text-[#181311] text-xs font-bold hover:bg-primary hover:text-white hover:border-primary transition-all shadow-sm flex items-center justify-center gap-2">
+<span>Detayları Gör</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<div class="w-full bg-white rounded-2xl border border-[#e6dfdb] shadow-sm hover:border-primary/30 transition-all group">
+<div class="p-6 flex flex-col md:flex-row gap-6">
+<div class="flex flex-col gap-1 min-w-[150px]">
+<div class="flex items-center gap-2 mb-1">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold bg-red-50 text-red-700 border border-red-100">
+<span class="size-1.5 rounded-full bg-red-600"></span>
+                                                İptal Edildi
+                                            </span>
+</div>
+<span class="text-sm font-bold text-[#181311] line-through decoration-red-500/50">#SIP-7902</span>
+<span class="text-xs text-[#896f61]">10 Mart 2024</span>
+<span class="text-sm font-bold text-[#181311] mt-1">420 TL</span>
+</div>
+<div class="hidden md:block w-px bg-[#f4f2f0]"></div>
+<div class="flex-1 flex flex-col justify-center">
+<div class="flex items-center gap-3">
+<div class="relative size-14 rounded-lg border border-[#f4f2f0] overflow-hidden bg-[#fcfbfb] grayscale">
+<img alt="Product" class="w-full h-full object-cover opacity-70" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDL-VBzrCjCfBj9J-3Mq3AYNIEjQtUjiLAwrRXgq009GAWajekzpMwE44QG7nzfFbC1zaj_n86A_moBYYwtup9zKjkRHG-NR8yvrGG-LjmsexbJU8At--DQf488zrWJtOngBALzs3KIYhE0IfYtlbStGyJMZvBhlOdTpoD7PCILK4pjjEPrVfEeX_UUzadMyIYLLU2DoFIMMwXfr7odN6p8E_IFgUUO6Y-lnRn3X1lnTfqnWUrllu-T5__pYMaKCsdLfRtUVrBccEMF"/>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-[#63534b]">Ahşap Blok Seti</span>
+<span class="text-[10px] text-[#896f61]">2 ürün</span>
+</div>
+</div>
+</div>
+<div class="flex items-center md:justify-end">
+<button class="w-full md:w-auto px-5 py-2.5 rounded-xl border border-[#e6dfdb] text-[#181311] text-xs font-bold hover:bg-primary hover:text-white hover:border-primary transition-all shadow-sm flex items-center justify-center gap-2">
+<span>Detayları Gör</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-center gap-2 mt-4">
+<button class="p-2 rounded-lg hover:bg-[#e6dfdb] disabled:opacity-50 transition-colors" disabled="">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<span class="text-xs font-medium text-[#63534b]">Sayfa 1 / 5</span>
+<button class="p-2 rounded-lg hover:bg-[#e6dfdb] transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+<div class="bg-primary/5 p-6 rounded-2xl border border-primary/10 shadow-sm flex items-center justify-between group cursor-pointer hover:bg-primary/10 transition-colors col-span-2 md:col-span-2">
+<div class="flex flex-col gap-1">
+<h3 class="font-bold text-[#181311]">Yardım mı lazım?</h3>
+<p class="text-xs text-[#63534b]">Siparişinizle ilgili sorun yaşıyorsanız destek ekibimizle iletişime geçin.</p>
+</div>
+<div class="size-10 rounded-full bg-white flex items-center justify-center text-primary shadow-sm group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">support_agent</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

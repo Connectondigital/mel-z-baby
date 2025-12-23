@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ayarlar Sayfası - Mel'z Baby&amp;Kids Admin</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ee6c2b",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                        "text-main": "#181311",
+                        "text-secondary": "#896f61",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24;
+            font-size: 24px;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-main dark:text-gray-100 antialiased overflow-x-hidden">
+<div class="relative flex min-h-screen flex-col">
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#e5e0dc] bg-white dark:bg-[#2a1c15] dark:border-[#3d2920] px-4 py-3 sm:px-10">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-text-main dark:text-white">
+<div class="size-8 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined !text-3xl">child_care</span>
+</div>
+<h2 class="hidden sm:block text-text-main dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Mel'z Baby&amp;Kids Admin</h2>
+</div>
+<label class="hidden md:flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full bg-[#f4f2f0] dark:bg-[#3d2920]">
+<div class="text-text-secondary dark:text-gray-400 flex border-none items-center justify-center pl-4 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-main dark:text-white focus:outline-0 focus:ring-0 border-none bg-transparent focus:border-none h-full placeholder:text-text-secondary dark:placeholder:text-gray-500 px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal" placeholder="Ara" value=""/>
+</div>
+</label>
+</div>
+<div class="flex flex-1 justify-end gap-4 sm:gap-8">
+<div class="hidden lg:flex items-center gap-6 xl:gap-9">
+<a class="text-text-main dark:text-gray-200 text-sm font-medium hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-text-main dark:text-gray-200 text-sm font-medium hover:text-primary transition-colors" href="#">Ürünler</a>
+<a class="text-text-main dark:text-gray-200 text-sm font-medium hover:text-primary transition-colors" href="#">Siparişler</a>
+<a class="text-text-main dark:text-gray-200 text-sm font-medium hover:text-primary transition-colors" href="#">Müşteriler</a>
+<a class="text-primary text-sm font-bold" href="#">Ayarlar</a>
+</div>
+<div class="flex items-center gap-3">
+<button class="relative text-text-secondary hover:text-primary dark:text-gray-400 dark:hover:text-primary">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-0 right-0 size-2 bg-primary rounded-full border-2 border-white dark:border-[#2a1c15]"></span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-white shadow-sm cursor-pointer" data-alt="Administrator profile picture showing a smiling woman" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAxnnjJ17NFMwsTfLF1G5Tu1QW-zrk7TId_fNLg5fMBG4MyfBgUjTXkdAn31KqbYi5214zJ5-WnG_CrkzxXDPlurxlq5GOfOm7hoNR9UPhNMZxSskBW1QfYj7OqMnoBG545BiDGbAbrMubQVSx2_xCTEd6Hirya80dB1a_IiN7SHH8OiFzldrP8DLSFV-faEDXd0foaOZjVUsHnsYNuOXQp8E3I6FnVN_xBQoU2_MPeNcv9PI7kgTHxCG1DCm59dbV8vE0ic5PHVjYk");'>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-1 px-4 py-6 sm:px-6 lg:px-40 lg:py-8">
+<div class="mx-auto max-w-[1200px]">
+<nav class="flex flex-wrap gap-2 pb-6 text-sm">
+<a class="text-text-secondary hover:text-primary dark:text-gray-400 transition-colors" href="#">Dashboard</a>
+<span class="text-text-secondary dark:text-gray-500">/</span>
+<span class="text-text-main font-semibold dark:text-white">Ayarlar</span>
+</nav>
+<div class="mb-8 flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+<div>
+<h1 class="text-3xl font-black tracking-tight text-text-main dark:text-white sm:text-4xl">Ayarlar</h1>
+<p class="mt-2 text-base text-text-secondary dark:text-gray-400">Mağaza yapılandırmanızı ve tercihlerinizi buradan yönetin.</p>
+</div>
+<div class="mt-4 md:mt-0">
+<button class="md:hidden w-full rounded-lg bg-primary px-6 py-2.5 text-sm font-bold text-white shadow-md hover:bg-orange-600 transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">save</span>
+                        Değişiklikleri Kaydet
+                    </button>
+</div>
+</div>
+<div class="grid grid-cols-1 gap-8 lg:grid-cols-12">
+<aside class="lg:col-span-3">
+<div class="sticky top-24 overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-black/5 dark:bg-[#2a1c15] dark:ring-white/10">
+<div class="p-4 border-b border-[#f4f2f0] dark:border-[#3d2920]">
+<div class="flex items-center gap-3">
+<div class="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
+<span class="material-symbols-outlined fill">tune</span>
+</div>
+<div>
+<p class="font-bold text-text-main dark:text-white">Yapılandırma</p>
+<p class="text-xs text-text-secondary dark:text-gray-500">Tüm sistem ayarları</p>
+</div>
+</div>
+</div>
+<nav class="flex flex-col gap-1 p-2">
+<a class="flex items-center gap-3 rounded-lg bg-primary/10 px-3 py-2.5 text-sm font-bold text-primary transition-colors" href="#">
+<span class="material-symbols-outlined fill">settings</span>
+                                Genel Ayarlar
+                            </a>
+<a class="group flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-text-main hover:bg-[#f8f6f6] dark:text-gray-300 dark:hover:bg-[#3d2920] transition-colors" href="#">
+<span class="material-symbols-outlined text-text-secondary group-hover:text-primary dark:text-gray-500">credit_card</span>
+                                Ödeme Ayarları
+                            </a>
+<a class="group flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-text-main hover:bg-[#f8f6f6] dark:text-gray-300 dark:hover:bg-[#3d2920] transition-colors" href="#">
+<span class="material-symbols-outlined text-text-secondary group-hover:text-primary dark:text-gray-500">local_shipping</span>
+                                Kargo Ayarları
+                            </a>
+<a class="group flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-text-main hover:bg-[#f8f6f6] dark:text-gray-300 dark:hover:bg-[#3d2920] transition-colors" href="#">
+<span class="material-symbols-outlined text-text-secondary group-hover:text-primary dark:text-gray-500">search</span>
+                                SEO Ayarları
+                            </a>
+<a class="group flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-text-main hover:bg-[#f8f6f6] dark:text-gray-300 dark:hover:bg-[#3d2920] transition-colors" href="#">
+<span class="material-symbols-outlined text-text-secondary group-hover:text-primary dark:text-gray-500">notifications</span>
+                                Bildirim Ayarları
+                            </a>
+</nav>
+</div>
+</aside>
+<div class="lg:col-span-9 flex flex-col gap-6">
+<section class="rounded-xl bg-white p-6 shadow-sm ring-1 ring-black/5 dark:bg-[#2a1c15] dark:ring-white/10">
+<div class="mb-6 border-b border-[#f4f2f0] pb-4 dark:border-[#3d2920]">
+<h2 class="text-xl font-bold text-text-main dark:text-white">Site Kimliği</h2>
+<p class="text-sm text-text-secondary dark:text-gray-400">Markanızın web sitesinde nasıl göründüğünü ayarlayın.</p>
+</div>
+<div class="space-y-6">
+<div class="grid gap-6 md:grid-cols-2">
+<div class="col-span-1">
+<label class="mb-1.5 block text-sm font-medium text-text-main dark:text-gray-200">Site Başlığı</label>
+<input class="w-full rounded-lg border-[#e5e0dc] bg-[#fcfcfc] px-3 py-2.5 text-text-main focus:border-primary focus:ring-1 focus:ring-primary dark:border-[#3d2920] dark:bg-[#221610] dark:text-white placeholder:text-gray-400" type="text" value="Mel'z Baby&amp;Kids"/>
+</div>
+<div class="col-span-1">
+<label class="mb-1.5 block text-sm font-medium text-text-main dark:text-gray-200">Kısa Açıklama (Tagline)</label>
+<input class="w-full rounded-lg border-[#e5e0dc] bg-[#fcfcfc] px-3 py-2.5 text-text-main focus:border-primary focus:ring-1 focus:ring-primary dark:border-[#3d2920] dark:bg-[#221610] dark:text-white placeholder:text-gray-400" type="text" value="Minikler için en iyisi"/>
+</div>
+</div>
+<div>
+<label class="mb-1.5 block text-sm font-medium text-text-main dark:text-gray-200">Logo</label>
+<div class="flex items-center gap-6">
+<div class="flex h-20 w-20 shrink-0 items-center justify-center rounded-lg border border-[#e5e0dc] bg-[#f8f6f6] dark:border-[#3d2920] dark:bg-[#221610]">
+<span class="material-symbols-outlined text-4xl text-text-secondary/50">image</span>
+</div>
+<div class="flex-1 rounded-lg border border-dashed border-[#e5e0dc] bg-[#fcfcfc] px-6 py-8 text-center hover:bg-[#f8f6f6] dark:border-[#3d2920] dark:bg-[#221610] dark:hover:bg-[#2a1c15] transition-colors cursor-pointer group">
+<span class="material-symbols-outlined mx-auto mb-2 block h-8 w-8 text-text-secondary group-hover:text-primary dark:text-gray-500">cloud_upload</span>
+<div class="text-sm text-text-main dark:text-gray-300">
+<span class="font-semibold text-primary">Yüklemek için tıklayın</span> veya sürükleyip bırakın
+                                        </div>
+<p class="mt-1 text-xs text-text-secondary dark:text-gray-500">PNG, JPG, GIF (Max. 2MB)</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="rounded-xl bg-white p-6 shadow-sm ring-1 ring-black/5 dark:bg-[#2a1c15] dark:ring-white/10">
+<div class="mb-6 border-b border-[#f4f2f0] pb-4 dark:border-[#3d2920]">
+<h2 class="text-xl font-bold text-text-main dark:text-white">İletişim Bilgileri</h2>
+<p class="text-sm text-text-secondary dark:text-gray-400">Müşterilerin size ulaşabileceği kanallar.</p>
+</div>
+<div class="grid gap-6 md:grid-cols-2">
+<div>
+<label class="mb-1.5 block text-sm font-medium text-text-main dark:text-gray-200">Destek E-posta Adresi</label>
+<div class="relative">
+<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+<span class="material-symbols-outlined text-[20px] text-text-secondary dark:text-gray-500">mail</span>
+</div>
+<input class="w-full rounded-lg border-[#e5e0dc] bg-[#fcfcfc] pl-10 px-3 py-2.5 text-text-main focus:border-primary focus:ring-1 focus:ring-primary dark:border-[#3d2920] dark:bg-[#221610] dark:text-white placeholder:text-gray-400" type="email" value="destek@melzbaby.com"/>
+</div>
+</div>
+<div>
+<label class="mb-1.5 block text-sm font-medium text-text-main dark:text-gray-200">Müşteri Hizmetleri Telefon</label>
+<div class="relative">
+<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+<span class="material-symbols-outlined text-[20px] text-text-secondary dark:text-gray-500">call</span>
+</div>
+<input class="w-full rounded-lg border-[#e5e0dc] bg-[#fcfcfc] pl-10 px-3 py-2.5 text-text-main focus:border-primary focus:ring-1 focus:ring-primary dark:border-[#3d2920] dark:bg-[#221610] dark:text-white placeholder:text-gray-400" type="tel" value="+90 555 123 45 67"/>
+</div>
+</div>
+</div>
+</section>
+<section class="rounded-xl bg-white p-6 shadow-sm ring-1 ring-black/5 dark:bg-[#2a1c15] dark:ring-white/10">
+<div class="mb-6 border-b border-[#f4f2f0] pb-4 dark:border-[#3d2920]">
+<h2 class="text-xl font-bold text-text-main dark:text-white">Yerelleştirme &amp; Tercihler</h2>
+<p class="text-sm text-text-secondary dark:text-gray-400">Para birimi, zaman dilimi ve bakım modu ayarları.</p>
+</div>
+<div class="space-y-6">
+<div class="grid gap-6 md:grid-cols-2">
+<div>
+<label class="mb-1.5 block text-sm font-medium text-text-main dark:text-gray-200">Para Birimi</label>
+<select class="w-full rounded-lg border-[#e5e0dc] bg-[#fcfcfc] px-3 py-2.5 text-text-main focus:border-primary focus:ring-1 focus:ring-primary dark:border-[#3d2920] dark:bg-[#221610] dark:text-white">
+<option selected="" value="TRY">Türk Lirası (₺)</option>
+<option value="USD">Amerikan Doları ($)</option>
+<option value="EUR">Euro (€)</option>
+</select>
+</div>
+<div>
+<label class="mb-1.5 block text-sm font-medium text-text-main dark:text-gray-200">Zaman Dilimi</label>
+<select class="w-full rounded-lg border-[#e5e0dc] bg-[#fcfcfc] px-3 py-2.5 text-text-main focus:border-primary focus:ring-1 focus:ring-primary dark:border-[#3d2920] dark:bg-[#221610] dark:text-white">
+<option selected="" value="europe_istanbul">(GMT+3) İstanbul</option>
+<option value="europe_london">(GMT+0) Londra</option>
+<option value="america_new_york">(GMT-5) New York</option>
+</select>
+</div>
+</div>
+<div class="flex items-center justify-between rounded-lg border border-[#e5e0dc] bg-[#fcfcfc] p-4 dark:border-[#3d2920] dark:bg-[#221610]">
+<div>
+<p class="font-medium text-text-main dark:text-white">Bakım Modu</p>
+<p class="text-sm text-text-secondary dark:text-gray-400">Siteyi ziyaretçilere kapatıp sadece adminlerin görmesini sağlar.</p>
+</div>
+<label class="relative inline-flex cursor-pointer items-center">
+<input class="peer sr-only" type="checkbox" value=""/>
+<div class="peer h-6 w-11 rounded-full bg-gray-200 after:absolute after:left-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary/20 dark:bg-gray-700 dark:border-gray-600"></div>
+</label>
+</div>
+</div>
+</section>
+<section class="rounded-xl bg-white p-6 shadow-sm ring-1 ring-black/5 dark:bg-[#2a1c15] dark:ring-white/10">
+<div class="mb-6 border-b border-[#f4f2f0] pb-4 dark:border-[#3d2920]">
+<h2 class="text-xl font-bold text-text-main dark:text-white">Analiz ve İzleme</h2>
+<p class="text-sm text-text-secondary dark:text-gray-400">Ziyaretçi takibi ve pazarlama araçları entegrasyonları.</p>
+</div>
+<div class="space-y-6">
+<div class="rounded-lg border border-[#e5e0dc] bg-[#fcfcfc] p-4 dark:border-[#3d2920] dark:bg-[#221610]">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-orange-500">analytics</span>
+<div>
+<p class="font-medium text-text-main dark:text-white">Google Analytics</p>
+<p class="text-xs text-text-secondary dark:text-gray-400">Ziyaretçi istatistiklerini takip edin.</p>
+</div>
+</div>
+<label class="relative inline-flex cursor-pointer items-center">
+<input checked="" class="peer sr-only" type="checkbox" value=""/>
+<div class="peer h-6 w-11 rounded-full bg-gray-200 after:absolute after:left-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary/20 dark:bg-gray-700 dark:border-gray-600"></div>
+</label>
+</div>
+<div>
+<label class="mb-1.5 block text-xs font-medium text-text-secondary dark:text-gray-400">İzleme Kimliği (Tracking ID)</label>
+<input class="w-full rounded-lg border-[#e5e0dc] bg-white px-3 py-2 text-sm text-text-main focus:border-primary focus:ring-1 focus:ring-primary dark:border-[#3d2920] dark:bg-[#2a1c15] dark:text-white placeholder:text-gray-400" placeholder="G-XXXXXXXXXX" type="text"/>
+</div>
+</div>
+<div class="rounded-lg border border-[#e5e0dc] bg-[#fcfcfc] p-4 dark:border-[#3d2920] dark:bg-[#221610]">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-blue-600">filter_center_focus</span>
+<div>
+<p class="font-medium text-text-main dark:text-white">Facebook Pixel</p>
+<p class="text-xs text-text-secondary dark:text-gray-400">Reklam dönüşümlerini izleyin.</p>
+</div>
+</div>
+<label class="relative inline-flex cursor-pointer items-center">
+<input class="peer sr-only" type="checkbox" value=""/>
+<div class="peer h-6 w-11 rounded-full bg-gray-200 after:absolute after:left-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary/20 dark:bg-gray-700 dark:border-gray-600"></div>
+</label>
+</div>
+<div>
+<label class="mb-1.5 block text-xs font-medium text-text-secondary dark:text-gray-400">Pixel ID</label>
+<input class="w-full rounded-lg border-[#e5e0dc] bg-white px-3 py-2 text-sm text-text-main focus:border-primary focus:ring-1 focus:ring-primary dark:border-[#3d2920] dark:bg-[#2a1c15] dark:text-white placeholder:text-gray-400" placeholder="1234567890" type="text"/>
+</div>
+</div>
+</div>
+</section>
+<section class="rounded-xl bg-white p-6 shadow-sm ring-1 ring-black/5 dark:bg-[#2a1c15] dark:ring-white/10">
+<div class="mb-6 flex flex-col justify-between gap-4 border-b border-[#f4f2f0] pb-4 sm:flex-row sm:items-center dark:border-[#3d2920]">
+<div>
+<h2 class="text-xl font-bold text-text-main dark:text-white">Sosyal Medya Linkleri</h2>
+<p class="text-sm text-text-secondary dark:text-gray-400">Markanızın sosyal medya hesapları.</p>
+</div>
+<div class="flex items-center gap-3 rounded-lg bg-[#f8f6f6] px-3 py-2 dark:bg-[#221610]">
+<span class="text-sm font-medium text-text-main dark:text-gray-200">Footer'da Göster</span>
+<label class="relative inline-flex cursor-pointer items-center">
+<input checked="" class="peer sr-only" type="checkbox" value=""/>
+<div class="peer h-5 w-9 rounded-full bg-gray-200 after:absolute after:left-[2px] after:top-[2px] after:h-4 after:w-4 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary/20 dark:bg-gray-700 dark:border-gray-600"></div>
+</label>
+</div>
+</div>
+<div class="grid gap-6 md:grid-cols-2">
+<div>
+<label class="mb-1.5 block text-sm font-medium text-text-main dark:text-gray-200">Facebook</label>
+<div class="relative">
+<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+<span class="material-symbols-outlined text-[20px] text-text-secondary dark:text-gray-500">public</span>
+</div>
+<input class="w-full rounded-lg border-[#e5e0dc] bg-[#fcfcfc] pl-10 px-3 py-2.5 text-text-main focus:border-primary focus:ring-1 focus:ring-primary dark:border-[#3d2920] dark:bg-[#221610] dark:text-white placeholder:text-gray-400" placeholder="https://facebook.com/..." type="url"/>
+</div>
+</div>
+<div>
+<label class="mb-1.5 block text-sm font-medium text-text-main dark:text-gray-200">Instagram</label>
+<div class="relative">
+<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+<span class="material-symbols-outlined text-[20px] text-text-secondary dark:text-gray-500">photo_camera</span>
+</div>
+<input class="w-full rounded-lg border-[#e5e0dc] bg-[#fcfcfc] pl-10 px-3 py-2.5 text-text-main focus:border-primary focus:ring-1 focus:ring-primary dark:border-[#3d2920] dark:bg-[#221610] dark:text-white placeholder:text-gray-400" placeholder="https://instagram.com/..." type="url"/>
+</div>
+</div>
+<div>
+<label class="mb-1.5 block text-sm font-medium text-text-main dark:text-gray-200">Twitter (X)</label>
+<div class="relative">
+<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+<span class="material-symbols-outlined text-[20px] text-text-secondary dark:text-gray-500">alternate_email</span>
+</div>
+<input class="w-full rounded-lg border-[#e5e0dc] bg-[#fcfcfc] pl-10 px-3 py-2.5 text-text-main focus:border-primary focus:ring-1 focus:ring-primary dark:border-[#3d2920] dark:bg-[#221610] dark:text-white placeholder:text-gray-400" placeholder="https://twitter.com/..." type="url"/>
+</div>
+</div>
+<div>
+<label class="mb-1.5 block text-sm font-medium text-text-main dark:text-gray-200">Pinterest</label>
+<div class="relative">
+<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+<span class="material-symbols-outlined text-[20px] text-text-secondary dark:text-gray-500">push_pin</span>
+</div>
+<input class="w-full rounded-lg border-[#e5e0dc] bg-[#fcfcfc] pl-10 px-3 py-2.5 text-text-main focus:border-primary focus:ring-1 focus:ring-primary dark:border-[#3d2920] dark:bg-[#221610] dark:text-white placeholder:text-gray-400" placeholder="https://pinterest.com/..." type="url"/>
+</div>
+</div>
+</div>
+</section>
+<section class="rounded-xl bg-white p-6 shadow-sm ring-1 ring-black/5 dark:bg-[#2a1c15] dark:ring-white/10">
+<div class="mb-6 flex flex-col justify-between gap-4 border-b border-[#f4f2f0] pb-4 sm:flex-row sm:items-center dark:border-[#3d2920]">
+<div>
+<h2 class="text-xl font-bold text-text-main dark:text-white">Yasal Bilgiler Linkleri</h2>
+<p class="text-sm text-text-secondary dark:text-gray-400">Sözleşme sayfaları ve yasal onaylar.</p>
+</div>
+<div class="flex items-center gap-3 rounded-lg bg-[#f8f6f6] px-3 py-2 dark:bg-[#221610]">
+<span class="text-sm font-medium text-text-main dark:text-gray-200">Sepette Onay İste</span>
+<label class="relative inline-flex cursor-pointer items-center">
+<input checked="" class="peer sr-only" type="checkbox" value=""/>
+<div class="peer h-5 w-9 rounded-full bg-gray-200 after:absolute after:left-[2px] after:top-[2px] after:h-4 after:w-4 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary/20 dark:bg-gray-700 dark:border-gray-600"></div>
+</label>
+</div>
+</div>
+<div class="grid gap-6 md:grid-cols-2">
+<div>
+<label class="mb-1.5 block text-sm font-medium text-text-main dark:text-gray-200">Gizlilik Politikası</label>
+<select class="w-full rounded-lg border-[#e5e0dc] bg-[#fcfcfc] px-3 py-2.5 text-text-main focus:border-primary focus:ring-1 focus:ring-primary dark:border-[#3d2920] dark:bg-[#221610] dark:text-white">
+<option value="">Sayfa Seçiniz</option>
+<option selected="" value="1">Gizlilik Politikası</option>
+<option value="2">KVKK Metni</option>
+</select>
+</div>
+<div>
+<label class="mb-1.5 block text-sm font-medium text-text-main dark:text-gray-200">Kullanım Koşulları</label>
+<select class="w-full rounded-lg border-[#e5e0dc] bg-[#fcfcfc] px-3 py-2.5 text-text-main focus:border-primary focus:ring-1 focus:ring-primary dark:border-[#3d2920] dark:bg-[#221610] dark:text-white">
+<option value="">Sayfa Seçiniz</option>
+<option selected="" value="3">Kullanım Şartları</option>
+<option value="4">Üyelik Sözleşmesi</option>
+</select>
+</div>
+<div class="md:col-span-2">
+<label class="mb-1.5 block text-sm font-medium text-text-main dark:text-gray-200">İade Politikası</label>
+<select class="w-full rounded-lg border-[#e5e0dc] bg-[#fcfcfc] px-3 py-2.5 text-text-main focus:border-primary focus:ring-1 focus:ring-primary dark:border-[#3d2920] dark:bg-[#221610] dark:text-white">
+<option value="">Sayfa Seçiniz</option>
+<option selected="" value="5">İptal ve İade Koşulları</option>
+<option value="6">Garanti Şartları</option>
+</select>
+</div>
+</div>
+</section>
+<div class="sticky bottom-4 z-10 mt-2 flex justify-end">
+<div class="flex items-center gap-3 rounded-xl bg-white/80 p-2 shadow-lg backdrop-blur-md ring-1 ring-black/5 dark:bg-[#2a1c15]/80 dark:ring-white/10">
+<button class="rounded-lg px-4 py-2 text-sm font-medium text-text-secondary hover:text-text-main dark:text-gray-400 dark:hover:text-white transition-colors">İptal</button>
+<button class="flex items-center gap-2 rounded-lg bg-primary px-6 py-2 text-sm font-bold text-white shadow-md hover:bg-orange-600 focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 transition-all">
+<span class="material-symbols-outlined text-[18px]">save</span>
+                                Değişiklikleri Kaydet
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

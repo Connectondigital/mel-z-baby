@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+
+<html class="light" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Müşteri Profili Detayları - Mel'z Baby&amp;Kids</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#e2a936",
+                        "background-light": "#f8f7f6",
+                        "background-dark": "#211c11",
+                        "surface": "#ffffff",
+                        "text-main": "#171511",
+                        "text-secondary": "#877b64",
+                        "border-subtle": "#f4f3f0",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-main antialiased overflow-hidden">
+<div class="flex h-screen w-full">
+<!-- Side Navigation -->
+<aside class="w-64 h-full bg-surface border-r border-border-subtle flex flex-col shrink-0 transition-all duration-300 hidden md:flex">
+<div class="p-6 pb-2">
+<div class="flex items-center gap-3 mb-8">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 shadow-sm" data-alt="Mel'z Baby &amp; Kids Logo, minimal bear icon" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDXhJIsiI5XofclzDe8_LTtZZ0je39B86atCLDN0XbNM6cS5IzmeZMF0dv7rrt94vvyCmQVrHocBy5F1MXaV5vldmqkW3-TEeZ5sfjqATrg7t-leBsOwmxX_UMMHTyzpIGzoErNFRbyibX1aXrBmNL1lDYjpfn76P6v6kyCvWtoFzi8gVjBPrZAWppTdKadO9hXPbIDFybx1NmhJGXe0xZs11DcOImD0XYlIn08c9jLx5si1bbXSmEicGbMqB3Wakl9zUMD6y1Bxc1i");'></div>
+<div class="flex flex-col">
+<h1 class="text-text-main text-base font-bold leading-tight">Mel'z Baby&amp;Kids</h1>
+<p class="text-text-secondary text-xs font-normal">Yönetici Paneli</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-background-light transition-colors group" href="#">
+<span class="material-symbols-outlined text-text-secondary group-hover:text-primary">dashboard</span>
+<span class="text-text-main text-sm font-medium">Panel</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-background-light transition-colors group" href="#">
+<span class="material-symbols-outlined text-text-secondary group-hover:text-primary">shopping_bag</span>
+<span class="text-text-main text-sm font-medium">Siparişler</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-background-light transition-colors group" href="#">
+<span class="material-symbols-outlined text-text-secondary group-hover:text-primary">inventory_2</span>
+<span class="text-text-main text-sm font-medium">Ürünler</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary" href="#">
+<span class="material-symbols-outlined fill text-primary">group</span>
+<span class="text-primary text-sm font-bold">Müşteriler</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-background-light transition-colors group" href="#">
+<span class="material-symbols-outlined text-text-secondary group-hover:text-primary">bar_chart</span>
+<span class="text-text-main text-sm font-medium">Raporlar</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-background-light transition-colors group" href="#">
+<span class="material-symbols-outlined text-text-secondary group-hover:text-primary">settings</span>
+<span class="text-text-main text-sm font-medium">Ayarlar</span>
+</a>
+</nav>
+</div>
+<div class="mt-auto p-6 border-t border-border-subtle">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-xs">AD</div>
+<div class="flex flex-col">
+<p class="text-text-main text-sm font-bold">Admin User</p>
+<p class="text-text-secondary text-xs">admin@melzbaby.com</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<main class="flex-1 flex flex-col h-full overflow-hidden bg-background-light relative">
+<!-- Top Header -->
+<header class="h-16 bg-surface border-b border-border-subtle flex items-center justify-between px-6 shrink-0 sticky top-0 z-10">
+<div class="flex items-center gap-4">
+<button class="md:hidden text-text-main">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<!-- Search Bar -->
+<div class="hidden md:flex items-center bg-background-light rounded-lg h-10 w-80 px-3 border border-transparent focus-within:border-primary/50 transition-colors">
+<span class="material-symbols-outlined text-text-secondary text-[20px]">search</span>
+<input class="bg-transparent border-none text-sm text-text-main placeholder-text-secondary focus:ring-0 w-full ml-2" placeholder="Müşteri, sipariş veya ürün ara..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="relative p-2 text-text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-red-500 rounded-full border border-surface"></span>
+</button>
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-9 border border-border-subtle" data-alt="Profile picture of logged in admin" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAuVR-o06K-FOBMcxY4ghYSneAQTsjqEt5GmNwA3JMzcuk-y9GtXOxE8zJUlshMvLG7M6un0ZtD2XMEQqnF3mRWjdqvShG1t037vLvvk8slcpPkcpeyjR9qySJ-ztbbEtae2D_jyumxYKRF74HmcGAocE8wJIbz2yra6SUSERCY32Wf6j5TUHA3k0ac3JujzIAwo4guLNGi5EkJGIW1JKngAMu4WSxcIjAp_K1NiDhnyyMd1T8nsc6YZF7hgfjJjHO8-OY3x8od2AZS");'></div>
+</div>
+</header>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto p-6 md:p-10 scrollbar-hide">
+<div class="max-w-6xl mx-auto space-y-8">
+<!-- Breadcrumbs -->
+<div class="flex items-center gap-2 text-sm">
+<a class="text-text-secondary hover:text-primary" href="#">Panel</a>
+<span class="text-text-secondary">/</span>
+<a class="text-text-secondary hover:text-primary" href="#">Müşteriler</a>
+<span class="text-text-secondary">/</span>
+<span class="text-text-main font-medium">Ayşe Yılmaz</span>
+</div>
+<!-- Page Heading & Actions -->
+<div class="flex flex-col md:flex-row md:items-start justify-between gap-6">
+<div class="flex items-center gap-4">
+<div class="size-16 rounded-full bg-primary/20 flex items-center justify-center text-primary text-2xl font-bold border-2 border-surface shadow-sm">
+                                AY
+                            </div>
+<div>
+<h1 class="text-3xl font-bold text-text-main tracking-tight">Ayşe Yılmaz</h1>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-text-secondary text-sm">Müşteri ID: #82910</span>
+<span class="size-1.5 rounded-full bg-text-secondary"></span>
+<span class="px-2 py-0.5 rounded-full bg-green-100 text-green-700 text-xs font-bold border border-green-200">Aktif Üye</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 h-10 px-4 rounded-lg bg-surface border border-border-subtle text-text-main text-sm font-bold hover:bg-background-light transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+<span>E-posta Gönder</span>
+</button>
+<button class="flex items-center gap-2 h-10 px-4 rounded-lg bg-primary text-white text-sm font-bold hover:bg-primary/90 transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+<span>Profili Düzenle</span>
+</button>
+</div>
+</div>
+<!-- Stats Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="bg-surface p-5 rounded-xl border border-border-subtle shadow-sm flex items-center justify-between group hover:border-primary/30 transition-colors">
+<div>
+<p class="text-text-secondary text-sm font-medium mb-1">Toplam Harcama</p>
+<p class="text-2xl font-bold text-text-main">12.450 ₺</p>
+</div>
+<div class="size-12 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">payments</span>
+</div>
+</div>
+<div class="bg-surface p-5 rounded-xl border border-border-subtle shadow-sm flex items-center justify-between group hover:border-primary/30 transition-colors">
+<div>
+<p class="text-text-secondary text-sm font-medium mb-1">Toplam Sipariş</p>
+<p class="text-2xl font-bold text-text-main">24 Adet</p>
+</div>
+<div class="size-12 rounded-full bg-orange-50 flex items-center justify-center text-orange-600 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">shopping_bag</span>
+</div>
+</div>
+<div class="bg-surface p-5 rounded-xl border border-border-subtle shadow-sm flex items-center justify-between group hover:border-primary/30 transition-colors">
+<div>
+<p class="text-text-secondary text-sm font-medium mb-1">Son Sipariş</p>
+<p class="text-2xl font-bold text-text-main">2 Gün Önce</p>
+</div>
+<div class="size-12 rounded-full bg-green-50 flex items-center justify-center text-green-600 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">history</span>
+</div>
+</div>
+</div>
+<!-- Main Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Left Column: Info & Addresses -->
+<div class="flex flex-col gap-6 lg:col-span-1">
+<!-- Personal Info Card -->
+<div class="bg-surface rounded-xl border border-border-subtle shadow-sm overflow-hidden">
+<div class="px-5 py-4 border-b border-border-subtle bg-background-light/50">
+<h3 class="font-bold text-text-main flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">person</span>
+                                        Kişisel Bilgiler
+                                    </h3>
+</div>
+<div class="p-5 flex flex-col gap-4">
+<div class="group">
+<p class="text-xs text-text-secondary mb-1">E-posta Adresi</p>
+<div class="flex items-center gap-2 text-text-main text-sm font-medium">
+<span class="material-symbols-outlined text-[18px] text-text-secondary">mail</span>
+                                            ayse.yilmaz@ornek.com
+                                        </div>
+</div>
+<div class="group">
+<p class="text-xs text-text-secondary mb-1">Telefon Numarası</p>
+<div class="flex items-center gap-2 text-text-main text-sm font-medium">
+<span class="material-symbols-outlined text-[18px] text-text-secondary">call</span>
+                                            +90 555 123 45 67
+                                        </div>
+</div>
+<div class="group">
+<p class="text-xs text-text-secondary mb-1">Doğum Tarihi</p>
+<div class="flex items-center gap-2 text-text-main text-sm font-medium">
+<span class="material-symbols-outlined text-[18px] text-text-secondary">cake</span>
+                                            15 Mart 1990
+                                        </div>
+</div>
+<div class="group">
+<p class="text-xs text-text-secondary mb-1">Kayıt Tarihi</p>
+<div class="flex items-center gap-2 text-text-main text-sm font-medium">
+<span class="material-symbols-outlined text-[18px] text-text-secondary">calendar_month</span>
+                                            12 Ocak 2023
+                                        </div>
+</div>
+</div>
+</div>
+<!-- Addresses Card -->
+<div class="bg-surface rounded-xl border border-border-subtle shadow-sm overflow-hidden">
+<div class="px-5 py-4 border-b border-border-subtle bg-background-light/50 flex justify-between items-center">
+<h3 class="font-bold text-text-main flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">location_on</span>
+                                        Adresler
+                                    </h3>
+<button class="text-primary text-xs font-bold hover:underline">Tümünü Gör</button>
+</div>
+<div class="p-5 flex flex-col gap-4">
+<!-- Home Address -->
+<div class="p-3 rounded-lg border border-border-subtle hover:border-primary/50 transition-colors bg-background-light/30">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-text-secondary">home</span>
+<span class="text-sm font-bold text-text-main">Ev Adresi</span>
+</div>
+<span class="text-[10px] bg-primary/10 text-primary px-1.5 py-0.5 rounded font-bold">Varsayılan</span>
+</div>
+<p class="text-sm text-text-secondary leading-relaxed">
+                                            Bağdat Caddesi No:123 Daire:5<br/>
+                                            Kadıköy, İstanbul 34740
+                                        </p>
+</div>
+<!-- Work Address -->
+<div class="p-3 rounded-lg border border-border-subtle hover:border-primary/50 transition-colors bg-background-light/30">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-text-secondary">work</span>
+<span class="text-sm font-bold text-text-main">İş Adresi</span>
+</div>
+</div>
+<p class="text-sm text-text-secondary leading-relaxed">
+                                            Maslak Plaza, Kat:12<br/>
+                                            Sarıyer, İstanbul 34398
+                                        </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Order History & Notes -->
+<div class="flex flex-col gap-6 lg:col-span-2">
+<!-- Order History -->
+<div class="bg-surface rounded-xl border border-border-subtle shadow-sm flex-1 flex flex-col">
+<div class="px-6 py-4 border-b border-border-subtle flex items-center justify-between bg-background-light/50">
+<h3 class="font-bold text-text-main flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">receipt_long</span>
+                                        Sipariş Geçmişi
+                                    </h3>
+<button class="flex items-center gap-1 text-xs font-bold text-text-secondary hover:text-primary transition-colors">
+<span>Filtrele</span>
+<span class="material-symbols-outlined text-[16px]">filter_list</span>
+</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-background-light/50 text-text-secondary text-xs uppercase font-semibold">
+<tr>
+<th class="px-6 py-4 font-medium">Sipariş No</th>
+<th class="px-6 py-4 font-medium">Tarih</th>
+<th class="px-6 py-4 font-medium">Durum</th>
+<th class="px-6 py-4 font-medium">Tutar</th>
+<th class="px-6 py-4 font-medium text-right">İşlem</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-subtle text-sm">
+<tr class="group hover:bg-background-light/50 transition-colors">
+<td class="px-6 py-4 font-medium text-primary">#SP-2024-089</td>
+<td class="px-6 py-4 text-text-main">10 Eki 2024</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-yellow-100 text-yellow-700 border border-yellow-200">
+<span class="size-1.5 rounded-full bg-yellow-600"></span> Hazırlanıyor
+                                                    </span>
+</td>
+<td class="px-6 py-4 font-bold text-text-main">1.250 ₺</td>
+<td class="px-6 py-4 text-right">
+<button class="text-text-secondary hover:text-primary p-1 rounded transition-colors">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</td>
+</tr>
+<tr class="group hover:bg-background-light/50 transition-colors">
+<td class="px-6 py-4 font-medium text-primary">#SP-2024-042</td>
+<td class="px-6 py-4 text-text-main">25 Eyl 2024</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-green-100 text-green-700 border border-green-200">
+<span class="size-1.5 rounded-full bg-green-600"></span> Teslim Edildi
+                                                    </span>
+</td>
+<td class="px-6 py-4 font-bold text-text-main">450 ₺</td>
+<td class="px-6 py-4 text-right">
+<button class="text-text-secondary hover:text-primary p-1 rounded transition-colors">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</td>
+</tr>
+<tr class="group hover:bg-background-light/50 transition-colors">
+<td class="px-6 py-4 font-medium text-primary">#SP-2024-015</td>
+<td class="px-6 py-4 text-text-main">12 Ağu 2024</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-green-100 text-green-700 border border-green-200">
+<span class="size-1.5 rounded-full bg-green-600"></span> Teslim Edildi
+                                                    </span>
+</td>
+<td class="px-6 py-4 font-bold text-text-main">3.200 ₺</td>
+<td class="px-6 py-4 text-right">
+<button class="text-text-secondary hover:text-primary p-1 rounded transition-colors">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</td>
+</tr>
+<tr class="group hover:bg-background-light/50 transition-colors">
+<td class="px-6 py-4 font-medium text-primary">#SP-2024-001</td>
+<td class="px-6 py-4 text-text-main">20 Tem 2024</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-red-100 text-red-700 border border-red-200">
+<span class="size-1.5 rounded-full bg-red-600"></span> İade Edildi
+                                                    </span>
+</td>
+<td class="px-6 py-4 font-bold text-text-main">890 ₺</td>
+<td class="px-6 py-4 text-right">
+<button class="text-text-secondary hover:text-primary p-1 rounded transition-colors">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-4 border-t border-border-subtle flex justify-center">
+<button class="text-sm text-text-secondary hover:text-primary font-medium transition-colors">Daha Fazla Göster</button>
+</div>
+</div>
+<!-- Notes Section -->
+<div class="bg-surface rounded-xl border border-border-subtle shadow-sm flex flex-col">
+<div class="px-6 py-4 border-b border-border-subtle bg-background-light/50">
+<h3 class="font-bold text-text-main flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">note_alt</span>
+                                        Yönetici Notları
+                                    </h3>
+</div>
+<div class="p-6">
+<div class="flex gap-4 mb-8">
+<div class="flex-1">
+<textarea class="w-full rounded-lg bg-background-light border-border-subtle focus:border-primary focus:ring-0 text-sm text-text-main placeholder-text-secondary p-3 min-h-[80px] resize-none" placeholder="Müşteri hakkında yeni bir not ekle..."></textarea>
+</div>
+<button class="bg-primary text-white h-[80px] w-[80px] rounded-lg flex flex-col items-center justify-center hover:bg-primary/90 transition-colors font-bold text-xs gap-1 shadow-sm">
+<span class="material-symbols-outlined">add_circle</span>
+                                            Ekle
+                                        </button>
+</div>
+<div class="space-y-6 relative pl-4 border-l-2 border-border-subtle">
+<!-- Note Item -->
+<div class="relative">
+<span class="absolute -left-[23px] top-0 bg-background-light border-2 border-primary rounded-full size-3.5"></span>
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="text-sm font-bold text-text-main">Ahmet K. (Destek Ekibi)</span>
+<span class="text-xs text-text-secondary">Dün, 14:30</span>
+</div>
+<p class="text-sm text-text-secondary">Müşteri kargo süresi hakkında aradı. Hızlandırılmış teslimat sözü verildi. Takip edilecek.</p>
+</div>
+</div>
+<!-- Note Item -->
+<div class="relative">
+<span class="absolute -left-[23px] top-0 bg-background-light border-2 border-gray-300 rounded-full size-3.5"></span>
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="text-sm font-bold text-text-main">Selin Y. (Satış)</span>
+<span class="text-xs text-text-secondary">25 Eyl 2024</span>
+</div>
+<p class="text-sm text-text-secondary">VIP Müşteri listesine eklendi. Özel indirim kodu tanımlandı: OZEL20</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

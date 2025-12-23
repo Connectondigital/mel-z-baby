@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Blog Yönetimi - Mel'z Baby&amp;Kids</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#17bfcf",
+                        "primary-dark": "#139ba8",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#112021",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1a2c2e",
+                        "text-main": "#111718",
+                        "text-secondary": "#638588",
+                        "accent-bg": "#f0f4f4",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-text-main dark:text-white overflow-hidden">
+<div class="flex h-screen w-full">
+<!-- Sidebar -->
+<aside class="w-64 hidden md:flex flex-col border-r border-[#e5e7eb] dark:border-gray-700 bg-surface-light dark:bg-surface-dark h-full flex-shrink-0 z-20">
+<div class="flex items-center gap-3 p-6 border-b border-[#f0f4f4] dark:border-gray-700">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 flex-shrink-0" data-alt="Mel'z logo abstract shape" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDYuLC5DbX_s49TeZ8HULgnFcIiPKn3B32LdlYdLeTzvkwbaEKZNFvfARDWUqDs1XloG1qj5tUW4T2726oj04IIgWtpd2zuhKWnoVflIQ000143X0Z2SG0Hu1tNQqviDt0NVXPPacpk2yuekI7mu3rx82Tc1vKCddq3-hYBohxkLvmyccsUtxBJ0ABqLMzP-huo5PWCsDBP-72SHJVJWUuXbMRi7ndgBAr8ZrTJztP34cEJTdSmFse1Xxw-KkEElhg79xgqO_b3J52s");'></div>
+<div class="flex flex-col">
+<h1 class="text-text-main dark:text-white text-base font-bold leading-normal">Mel'z Admin</h1>
+<p class="text-text-secondary text-xs font-normal leading-normal">Yönetici Paneli</p>
+</div>
+</div>
+<nav class="flex-1 overflow-y-auto py-4 px-3 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-main dark:text-gray-200 hover:bg-accent-bg dark:hover:bg-gray-700 group transition-colors" href="#">
+<span class="material-symbols-outlined text-text-secondary group-hover:text-primary" style="font-size: 24px;">dashboard</span>
+<span class="text-sm font-medium">Panel</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-main dark:text-gray-200 hover:bg-accent-bg dark:hover:bg-gray-700 group transition-colors" href="#">
+<span class="material-symbols-outlined text-text-secondary group-hover:text-primary" style="font-size: 24px;">shopping_bag</span>
+<span class="text-sm font-medium">Ürünler</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-main dark:text-gray-200 hover:bg-accent-bg dark:hover:bg-gray-700 group transition-colors" href="#">
+<span class="material-symbols-outlined text-text-secondary group-hover:text-primary" style="font-size: 24px;">shopping_cart</span>
+<span class="text-sm font-medium">Siparişler</span>
+</a>
+<!-- Active State -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary font-medium" href="#">
+<span class="material-symbols-outlined text-primary fill-current" style="font-variation-settings: 'FILL' 1; font-size: 24px;">book_2</span>
+<span class="text-sm">Blog</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-main dark:text-gray-200 hover:bg-accent-bg dark:hover:bg-gray-700 group transition-colors" href="#">
+<span class="material-symbols-outlined text-text-secondary group-hover:text-primary" style="font-size: 24px;">group</span>
+<span class="text-sm font-medium">Müşteriler</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-main dark:text-gray-200 hover:bg-accent-bg dark:hover:bg-gray-700 group transition-colors" href="#">
+<span class="material-symbols-outlined text-text-secondary group-hover:text-primary" style="font-size: 24px;">settings</span>
+<span class="text-sm font-medium">Ayarlar</span>
+</a>
+</nav>
+<div class="p-4 border-t border-[#f0f4f4] dark:border-gray-700">
+<button class="flex items-center gap-3 px-3 py-2 text-text-secondary hover:text-red-500 w-full rounded-lg transition-colors">
+<span class="material-symbols-outlined" style="font-size: 24px;">logout</span>
+<span class="text-sm font-medium">Çıkış Yap</span>
+</button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col h-full relative overflow-hidden">
+<!-- Top Navbar -->
+<header class="flex items-center justify-between px-6 py-4 bg-surface-light dark:bg-surface-dark border-b border-[#f0f4f4] dark:border-gray-700 sticky top-0 z-10">
+<div class="flex items-center gap-4">
+<button class="md:hidden text-text-main dark:text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<!-- Search could go here, but we have specific search below -->
+<h2 class="text-text-main dark:text-white text-lg font-bold tracking-tight hidden sm:block">Mel'z Baby&amp;Kids</h2>
+</div>
+<div class="flex items-center gap-4">
+<button class="relative p-2 text-text-secondary hover:bg-accent-bg dark:hover:bg-gray-700 rounded-full transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border border-white"></span>
+</button>
+<div class="flex items-center gap-3">
+<div class="text-right hidden sm:block">
+<p class="text-sm font-medium text-text-main dark:text-white">Melis Yılmaz</p>
+<p class="text-xs text-text-secondary">Admin</p>
+</div>
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 border-2 border-white shadow-sm" data-alt="User profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCHt7K8TzDzVnl5L7wGyepYQIO-jd5b0auwx8F5sZe3bEJ5P41of6Ibyb6N7Pe5qL-nyuhi4YFQMyN3IJmgy1uiaxthrgrA1TLHVbAcZoYRitdu1PkZrX9t0SNOLO2peldJzaLBVkt93wX3Xa344MEUxhsQagOcQMr9z9WFCSbK8EP9Ah5CWnoZZgpoqf3s0gw7Q0dqbm-KHxYHTuaFUyPuf9GmLKDNyNkn1m-X2ZAMa71WNYH3k95qyTDK0UG8qZwhti36NQH9zyKk");'></div>
+</div>
+</div>
+</header>
+<!-- Scrollable Content Area -->
+<div class="flex-1 overflow-y-auto p-4 md:p-8 scroll-smooth">
+<div class="max-w-[1200px] mx-auto flex flex-col gap-6">
+<!-- Breadcrumbs -->
+<div class="flex flex-wrap gap-2 text-sm">
+<a class="text-text-secondary hover:text-primary transition-colors font-medium" href="#">Panel</a>
+<span class="text-text-secondary">/</span>
+<span class="text-text-main dark:text-white font-medium">Blog Yönetimi</span>
+</div>
+<!-- Page Header -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div class="flex flex-col gap-1">
+<h1 class="text-text-main dark:text-white text-3xl font-black tracking-tight">Blog Yönetimi</h1>
+<p class="text-text-secondary text-base">Blog yazılarınızı buradan yönetebilir, düzenleyebilir ve yayınlayabilirsiniz.</p>
+</div>
+<button class="flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white rounded-lg h-11 px-6 font-bold text-sm transition-all shadow-md shadow-primary/20 shrink-0">
+<span class="material-symbols-outlined text-[20px]">add</span>
+<span>Yeni Yazı Ekle</span>
+</button>
+</div>
+<!-- Filters and Search -->
+<div class="bg-surface-light dark:bg-surface-dark p-5 rounded-xl border border-[#f0f4f4] dark:border-gray-700 shadow-sm flex flex-col lg:flex-row gap-4">
+<!-- Search -->
+<div class="flex-1">
+<label class="relative block w-full">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3 text-text-secondary">
+<span class="material-symbols-outlined" style="font-size: 20px;">search</span>
+</span>
+<input class="block w-full rounded-lg border-0 bg-accent-bg dark:bg-gray-800 py-3 pl-10 pr-4 text-text-main dark:text-white placeholder:text-text-secondary focus:ring-2 focus:ring-primary sm:text-sm" placeholder="Blog yazısı ara (Başlık, Etiket)..." type="text"/>
+</label>
+</div>
+<!-- Filters -->
+<div class="flex flex-wrap sm:flex-nowrap gap-3">
+<div class="relative min-w-[140px] flex-1 sm:flex-none">
+<select class="block w-full rounded-lg border-0 bg-accent-bg dark:bg-gray-800 py-3 pl-3 pr-10 text-text-main dark:text-white text-sm focus:ring-2 focus:ring-primary appearance-none cursor-pointer">
+<option value="">Tüm Kategoriler</option>
+<option value="sleep">Uyku Eğitimi</option>
+<option value="nutrition">Beslenme</option>
+<option value="play">Oyun &amp; Aktivite</option>
+<option value="health">Sağlık</option>
+</select>
+<span class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none text-text-secondary">
+<span class="material-symbols-outlined" style="font-size: 20px;">keyboard_arrow_down</span>
+</span>
+</div>
+<div class="relative min-w-[140px] flex-1 sm:flex-none">
+<select class="block w-full rounded-lg border-0 bg-accent-bg dark:bg-gray-800 py-3 pl-3 pr-10 text-text-main dark:text-white text-sm focus:ring-2 focus:ring-primary appearance-none cursor-pointer">
+<option value="">Tüm Yazarlar</option>
+<option value="melis">Melis Yılmaz</option>
+<option value="burcu">Burcu Kaya</option>
+<option value="guest">Misafir Yazar</option>
+</select>
+<span class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none text-text-secondary">
+<span class="material-symbols-outlined" style="font-size: 20px;">keyboard_arrow_down</span>
+</span>
+</div>
+<div class="relative min-w-[140px] flex-1 sm:flex-none">
+<select class="block w-full rounded-lg border-0 bg-accent-bg dark:bg-gray-800 py-3 pl-3 pr-10 text-text-main dark:text-white text-sm focus:ring-2 focus:ring-primary appearance-none cursor-pointer">
+<option value="">Durum</option>
+<option value="published">Yayınlandı</option>
+<option value="draft">Taslak</option>
+<option value="archived">Arşivlendi</option>
+</select>
+<span class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none text-text-secondary">
+<span class="material-symbols-outlined" style="font-size: 20px;">keyboard_arrow_down</span>
+</span>
+</div>
+</div>
+</div>
+<!-- Data Table -->
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl border border-[#f0f4f4] dark:border-gray-700 shadow-sm overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-accent-bg dark:bg-gray-800/50 border-b border-[#f0f4f4] dark:border-gray-700 text-xs uppercase tracking-wide text-text-secondary font-bold">
+<th class="p-4 w-12 text-center">
+<input class="rounded border-gray-300 text-primary focus:ring-primary bg-white dark:bg-gray-700" type="checkbox"/>
+</th>
+<th class="p-4 min-w-[200px]">Blog Başlığı</th>
+<th class="p-4 hidden md:table-cell">Kategori</th>
+<th class="p-4 hidden lg:table-cell">Yazar</th>
+<th class="p-4">Tarih</th>
+<th class="p-4">Durum</th>
+<th class="p-4 text-right">İşlemler</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#f0f4f4] dark:divide-gray-700">
+<!-- Row 1 -->
+<tr class="hover:bg-accent-bg/50 dark:hover:bg-gray-800/30 transition-colors group">
+<td class="p-4 text-center">
+<input class="rounded border-gray-300 text-primary focus:ring-primary bg-white dark:bg-gray-700" type="checkbox"/>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="h-12 w-12 rounded-lg bg-cover bg-center shrink-0 border border-gray-100 dark:border-gray-600" data-alt="Baby sleeping peacefully" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBo2JINVZPYsJ1QU0kD81UtUfTTlZzC0lS_OQP3QUiVkJAFwzlNOQesu79-medaEY8D3UNeGcXYsyXmQxzz5d0s45DBJPf4xdLEdf-2fuDf4NuLG7LwPJ7M8cdl-QMaY1QRCyyMWI8m0kdbf7bdcg6fT5Hhves9yG4IaMBQERUhOZpa6Ov20Wet6KnnpZi_3zep95_DEmtWkrGoG-lsyIG8dMiNFaZxzZr-yD36Mw8zaKQyJ5HlffCj7QR6t1MO3YRiMEioahNFU7E4');"></div>
+<div class="flex flex-col">
+<span class="font-bold text-text-main dark:text-white text-sm line-clamp-1">Bebeklerde Uyku Düzeni Nasıl Sağlanır?</span>
+<span class="text-xs text-text-secondary hidden sm:block">3 dk okuma süresi</span>
+</div>
+</div>
+</td>
+<td class="p-4 hidden md:table-cell">
+<span class="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10 dark:bg-blue-900/20 dark:text-blue-300">Uyku Eğitimi</span>
+</td>
+<td class="p-4 hidden lg:table-cell text-sm text-text-main dark:text-gray-300">
+<div class="flex items-center gap-2">
+<div class="size-6 rounded-full bg-gray-200 bg-cover bg-center" data-alt="Author portrait" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBVo6jCaWjX9tAsBjhvbmmLNEy3F2dQDX7UqEIwClmQrVBeJNEV5_LJYd0aSgZKTJcH59bXsovXqthaQimYoWcOMFkXfS_uaJz-mLEl_jC_LLh5YoURwJoPC0nwEzXKM5FkoVQ-MxkDkHInNynVAySmU6OjGZgZTPxWNgjfAJtXdMB4_zHvdBVHWaCbaY_914iFg-op7zGTOAczJ814wxZuP6xGWtb6Hhx7N9i_x3EEWfiGgqiwMzIlWRyh7FR3Zn3AnrNhHQnaUZ9h');"></div>
+                                                Melis Yılmaz
+                                            </div>
+</td>
+<td class="p-4 text-sm text-text-secondary">
+                                            24 Ekim 2023
+                                        </td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 rounded-full bg-green-50 px-2 py-1 text-xs font-bold text-green-700 ring-1 ring-inset ring-green-600/20 dark:bg-green-900/20 dark:text-green-400">
+<span class="h-1.5 w-1.5 rounded-full bg-green-600 dark:bg-green-400"></span>
+                                                Yayınlandı
+                                            </span>
+</td>
+<td class="p-4 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 text-text-secondary hover:text-primary hover:bg-primary/10 rounded-md transition-colors" title="Önizle">
+<span class="material-symbols-outlined" style="font-size: 20px;">visibility</span>
+</button>
+<button class="p-1.5 text-text-secondary hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-md transition-colors" title="Düzenle">
+<span class="material-symbols-outlined" style="font-size: 20px;">edit</span>
+</button>
+<button class="p-1.5 text-text-secondary hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-md transition-colors" title="Sil">
+<span class="material-symbols-outlined" style="font-size: 20px;">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-accent-bg/50 dark:hover:bg-gray-800/30 transition-colors group">
+<td class="p-4 text-center">
+<input class="rounded border-gray-300 text-primary focus:ring-primary bg-white dark:bg-gray-700" type="checkbox"/>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="h-12 w-12 rounded-lg bg-cover bg-center shrink-0 border border-gray-100 dark:border-gray-600" data-alt="Healthy baby food bowl" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDdNnJcQb-5lg2g5e5g6cFeLMBHOaNIFzfc8VspbFOKwG5wEPZs0msVfmHcugcz3YGg_1cCb6fWnBWqSd_o5SRBOZQifWKSvbkbI6InKK8YiLbKeoiKQXeR3a6x1DRuVes4qMu2A6vU58G80YMXUdaa7JP9hRYw-3LtDGlID5YS-Z_p0uNWcGAPg649X4oE5zUDI5uOCJ4J94iHyAqd01I_ZRoUvrD2zc6xVu3NyC4Y5yIe812CGwTr7GcfKy3fTi9AmczmrdjgdcjX');"></div>
+<div class="flex flex-col">
+<span class="font-bold text-text-main dark:text-white text-sm line-clamp-1">Ek Gıdaya Geçişte İlk Adımlar</span>
+<span class="text-xs text-text-secondary hidden sm:block">5 dk okuma süresi</span>
+</div>
+</div>
+</td>
+<td class="p-4 hidden md:table-cell">
+<span class="inline-flex items-center rounded-md bg-orange-50 px-2 py-1 text-xs font-medium text-orange-700 ring-1 ring-inset ring-orange-700/10 dark:bg-orange-900/20 dark:text-orange-300">Beslenme</span>
+</td>
+<td class="p-4 hidden lg:table-cell text-sm text-text-main dark:text-gray-300">
+<div class="flex items-center gap-2">
+<div class="size-6 rounded-full bg-gray-200 bg-cover bg-center" data-alt="Author portrait" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCEvpd6Hjx6JptljPbRyVCeTFUO6hozoNJY1DUxH76EngdjJAV1LpuspAN35JX1-QDUG00UIW4pdR1gYTspzXAPFy1CKIhBlLAVlS0LDIs7bBjK_0_noo4PVzOz-llzFPeMpaO6MDfLXJG6gLHJxo_lBNDckDnxhzNfLEk0vvQ7P-a7p1RcNAYyw1gkMMVdlDI4ucjwFW5dzgAbw0I0MVjfwoeliQSPTjNXmVgBbN91R1n7N2byQjlOo10f6WsLehm9S1kHhYusWhJO');"></div>
+                                                Burcu Kaya
+                                            </div>
+</td>
+<td class="p-4 text-sm text-text-secondary">
+                                            20 Ekim 2023
+                                        </td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 rounded-full bg-yellow-50 px-2 py-1 text-xs font-bold text-yellow-700 ring-1 ring-inset ring-yellow-600/20 dark:bg-yellow-900/20 dark:text-yellow-400">
+<span class="h-1.5 w-1.5 rounded-full bg-yellow-600 dark:bg-yellow-400"></span>
+                                                Taslak
+                                            </span>
+</td>
+<td class="p-4 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 text-text-secondary hover:text-primary hover:bg-primary/10 rounded-md transition-colors" title="Önizle">
+<span class="material-symbols-outlined" style="font-size: 20px;">visibility</span>
+</button>
+<button class="p-1.5 text-text-secondary hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-md transition-colors" title="Düzenle">
+<span class="material-symbols-outlined" style="font-size: 20px;">edit</span>
+</button>
+<button class="p-1.5 text-text-secondary hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-md transition-colors" title="Sil">
+<span class="material-symbols-outlined" style="font-size: 20px;">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-accent-bg/50 dark:hover:bg-gray-800/30 transition-colors group">
+<td class="p-4 text-center">
+<input class="rounded border-gray-300 text-primary focus:ring-primary bg-white dark:bg-gray-700" type="checkbox"/>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="h-12 w-12 rounded-lg bg-cover bg-center shrink-0 border border-gray-100 dark:border-gray-600" data-alt="Toy wooden blocks" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAPulQJ6vhrn8vXHJjERehyebWNhBrs_7-gC2HP6fWYNdYO1__gfn2Enh18baG20IpunOiFkt8vORbWSpxHsAfMu02h8lJtpHkkOLXiYJntex2HugBxnBah88hY_JitKbZ1E2zB3vEt0DSQRDs5Jumfq_aHpCzGV3vxifgQVy2eZP4KojekwhFwyht_AentPwXpSL8Ol7iaeAMJHFWAfciIKZh_JDFSays3XxOyE9Clgc52StAyibX6hduNFiNS-HC9Pt4MzH1Ywnrd');"></div>
+<div class="flex flex-col">
+<span class="font-bold text-text-main dark:text-white text-sm line-clamp-1">Montessori Oyuncakları ve Faydaları</span>
+<span class="text-xs text-text-secondary hidden sm:block">7 dk okuma süresi</span>
+</div>
+</div>
+</td>
+<td class="p-4 hidden md:table-cell">
+<span class="inline-flex items-center rounded-md bg-purple-50 px-2 py-1 text-xs font-medium text-purple-700 ring-1 ring-inset ring-purple-700/10 dark:bg-purple-900/20 dark:text-purple-300">Oyun &amp; Aktivite</span>
+</td>
+<td class="p-4 hidden lg:table-cell text-sm text-text-main dark:text-gray-300">
+<div class="flex items-center gap-2">
+<div class="size-6 rounded-full bg-gray-200 bg-cover bg-center" data-alt="Author portrait" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDwFN4229AHvkR04bpi_cBorcuC3dCe41B-nSaSPmgc_yJO8bFUPLUsk6Glh6CConJ3kOw847aoTz6SJHys48MmrCKfFHM6giPLQZHgFfPDQu5LDkwu__R0SmEYP2h2UhH7jnIQbD2DbaLPtYDpZbw-1J4L8v2ftKkhykCQXDXRMeeDZxIyP_DbQC4UIpVdiEYl6kRPYDco1y-YFTZhs6hXms3J1brjMtDin7ignFQZye6zjzamE_wciqNhAlvyccOC-4hepY0Vm-tH');"></div>
+                                                Melis Yılmaz
+                                            </div>
+</td>
+<td class="p-4 text-sm text-text-secondary">
+                                            15 Ekim 2023
+                                        </td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 rounded-full bg-green-50 px-2 py-1 text-xs font-bold text-green-700 ring-1 ring-inset ring-green-600/20 dark:bg-green-900/20 dark:text-green-400">
+<span class="h-1.5 w-1.5 rounded-full bg-green-600 dark:bg-green-400"></span>
+                                                Yayınlandı
+                                            </span>
+</td>
+<td class="p-4 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 text-text-secondary hover:text-primary hover:bg-primary/10 rounded-md transition-colors" title="Önizle">
+<span class="material-symbols-outlined" style="font-size: 20px;">visibility</span>
+</button>
+<button class="p-1.5 text-text-secondary hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-md transition-colors" title="Düzenle">
+<span class="material-symbols-outlined" style="font-size: 20px;">edit</span>
+</button>
+<button class="p-1.5 text-text-secondary hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-md transition-colors" title="Sil">
+<span class="material-symbols-outlined" style="font-size: 20px;">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-accent-bg/50 dark:hover:bg-gray-800/30 transition-colors group">
+<td class="p-4 text-center">
+<input class="rounded border-gray-300 text-primary focus:ring-primary bg-white dark:bg-gray-700" type="checkbox"/>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="h-12 w-12 rounded-lg bg-cover bg-center shrink-0 border border-gray-100 dark:border-gray-600" data-alt="Winter baby clothes" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB0jPoFSM2cAArtnprQFUYQ1NHRGdGLUS61rKOYCrxOygOBfSIVFgp_AZeEgJf4dXOoCruxRXXRQlL1BW9pWU5rlxk6CEVmWh41M2hWLbMkWZh9pEQP5r5BB1CvLa5IWYN27o_pZE6ZtwRGGglkIkwn5xxeZ33hTnXfwBoSnqXRQexvxkKT6eO_QMOLQqvpuWCZxgx9h8O5c20Ef40EmDkkpeb3sDItAfddy-6BfwBV23DUxNQzCYky0aHCMDCTBRWd-xXvHploFfm2');"></div>
+<div class="flex flex-col">
+<span class="font-bold text-text-main dark:text-white text-sm line-clamp-1">Kış Aylarında Bebek Giyimi</span>
+<span class="text-xs text-text-secondary hidden sm:block">4 dk okuma süresi</span>
+</div>
+</div>
+</td>
+<td class="p-4 hidden md:table-cell">
+<span class="inline-flex items-center rounded-md bg-teal-50 px-2 py-1 text-xs font-medium text-teal-700 ring-1 ring-inset ring-teal-700/10 dark:bg-teal-900/20 dark:text-teal-300">Sağlık &amp; Bakım</span>
+</td>
+<td class="p-4 hidden lg:table-cell text-sm text-text-main dark:text-gray-300">
+<div class="flex items-center gap-2">
+<div class="size-6 rounded-full bg-gray-200 bg-cover bg-center" data-alt="Author portrait" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAXLMGfHNlwMhtq9bZzUekkxE_5nalxpqtBoLUiecEKqgXaZCUkcyKlDUxpMRBkGHqgWwSACZuJJr_hr5jgBV5wcnz2orvtWNg_3PB0o0cQBv2yKGaYYDrJucvW3PIczW_viL223YKGdJeuNwq4YV4D0Dqnk3woJ3W0kxBwyW1jRFizd1BckjoQ6her8fVSs-7-osXmUS1RHXJlfu0B3ZNppb1FImTv5w97buo9gxJnntWT5kAjwtspQi9GObaRl14ipvyDNP8BIA10');"></div>
+                                                Melis Yılmaz
+                                            </div>
+</td>
+<td class="p-4 text-sm text-text-secondary">
+                                            10 Ekim 2023
+                                        </td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 rounded-full bg-green-50 px-2 py-1 text-xs font-bold text-green-700 ring-1 ring-inset ring-green-600/20 dark:bg-green-900/20 dark:text-green-400">
+<span class="h-1.5 w-1.5 rounded-full bg-green-600 dark:bg-green-400"></span>
+                                                Yayınlandı
+                                            </span>
+</td>
+<td class="p-4 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 text-text-secondary hover:text-primary hover:bg-primary/10 rounded-md transition-colors" title="Önizle">
+<span class="material-symbols-outlined" style="font-size: 20px;">visibility</span>
+</button>
+<button class="p-1.5 text-text-secondary hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-md transition-colors" title="Düzenle">
+<span class="material-symbols-outlined" style="font-size: 20px;">edit</span>
+</button>
+<button class="p-1.5 text-text-secondary hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-md transition-colors" title="Sil">
+<span class="material-symbols-outlined" style="font-size: 20px;">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-accent-bg/50 dark:hover:bg-gray-800/30 transition-colors group">
+<td class="p-4 text-center">
+<input class="rounded border-gray-300 text-primary focus:ring-primary bg-white dark:bg-gray-700" type="checkbox"/>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="h-12 w-12 rounded-lg bg-cover bg-center shrink-0 border border-gray-100 dark:border-gray-600" data-alt="Digital thermometer" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDzUH2tGJEBbmMvPwXSH0PBsDodZuzL_mSC3n5CnNOPkXCKSVJNibqKLPWPBid0t-mghMZq4mHKDy0B4_3gIbaXgRXnVDGhxFByl05FKgltwy8HKT17h-1u67ruYsuUJh86ckwLriSCDHl4qFy0xyTAUi3bzJuxu63hg9ijTUE1wHHEz7JsytaT8HEYCehBrDdCR74N-Eddi6fRHLvU8TxIGcF5Z_l5tnHB4ibTutAJduvn1icnt00l_KJSCPGbeYwExghFxuakWN8R');"></div>
+<div class="flex flex-col">
+<span class="font-bold text-text-main dark:text-white text-sm line-clamp-1">Bebeklerde Yüksek Ateş Yönetimi</span>
+<span class="text-xs text-text-secondary hidden sm:block">8 dk okuma süresi</span>
+</div>
+</div>
+</td>
+<td class="p-4 hidden md:table-cell">
+<span class="inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-700/10 dark:bg-red-900/20 dark:text-red-300">Sağlık</span>
+</td>
+<td class="p-4 hidden lg:table-cell text-sm text-text-main dark:text-gray-300">
+<div class="flex items-center gap-2">
+<div class="size-6 rounded-full bg-gray-200 bg-cover bg-center" data-alt="Author portrait" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBdv5I2COsgG0SgUdvnlkf9iY4XcCrR0C81Xo6KFzO9mqTUy5mSTX1EcOSYa4auT5EPo1Ew_0yUB9hjUgKyTakN3DgfUOPc3aahXS9mf1_FJ2llhNcZwjuETG1oC_vlDQnPzsONBggxObf8Ee34vEQZwObFHTMELWFTiS_YMDNWmvDE08HjnMSHtvm03sp0TprbcDhOCVdnSSgpcOAdwqOkIDD9UrkzcMnl3aGoFHA-9fIY38HNC_5NwTNhYITNJpKuDjkfOOEvs6Ga');"></div>
+                                                Dr. Ahmet Demir
+                                            </div>
+</td>
+<td class="p-4 text-sm text-text-secondary">
+                                            05 Ekim 2023
+                                        </td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 rounded-full bg-gray-100 px-2 py-1 text-xs font-bold text-gray-600 ring-1 ring-inset ring-gray-500/10 dark:bg-gray-700 dark:text-gray-300">
+<span class="h-1.5 w-1.5 rounded-full bg-gray-500"></span>
+                                                Arşiv
+                                            </span>
+</td>
+<td class="p-4 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 text-text-secondary hover:text-primary hover:bg-primary/10 rounded-md transition-colors" title="Önizle">
+<span class="material-symbols-outlined" style="font-size: 20px;">visibility</span>
+</button>
+<button class="p-1.5 text-text-secondary hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-md transition-colors" title="Düzenle">
+<span class="material-symbols-outlined" style="font-size: 20px;">edit</span>
+</button>
+<button class="p-1.5 text-text-secondary hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-md transition-colors" title="Sil">
+<span class="material-symbols-outlined" style="font-size: 20px;">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="flex items-center justify-between border-t border-[#f0f4f4] dark:border-gray-700 px-4 py-3 sm:px-6">
+<div class="hidden sm:flex flex-1 sm:items-center sm:justify-between">
+<div>
+<p class="text-sm text-text-secondary">
+                                        Toplam <span class="font-bold text-text-main dark:text-white">56</span> yazıdan <span class="font-bold text-text-main dark:text-white">1</span> ile <span class="font-bold text-text-main dark:text-white">5</span> arası gösteriliyor
+                                    </p>
+</div>
+<div>
+<nav aria-label="Pagination" class="isolate inline-flex -space-x-px rounded-md shadow-sm">
+<a class="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 dark:ring-gray-600 dark:hover:bg-gray-700" href="#">
+<span class="sr-only">Önceki</span>
+<span class="material-symbols-outlined" style="font-size: 20px;">chevron_left</span>
+</a>
+<a aria-current="page" class="relative z-10 inline-flex items-center bg-primary px-4 py-2 text-sm font-semibold text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary" href="#">1</a>
+<a class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-text-main ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 dark:text-gray-300 dark:ring-gray-600 dark:hover:bg-gray-700" href="#">2</a>
+<a class="relative hidden items-center px-4 py-2 text-sm font-semibold text-text-main ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 md:inline-flex dark:text-gray-300 dark:ring-gray-600 dark:hover:bg-gray-700" href="#">3</a>
+<span class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-700 ring-1 ring-inset ring-gray-300 focus:outline-offset-0 dark:text-gray-400 dark:ring-gray-600">...</span>
+<a class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-text-main ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 dark:text-gray-300 dark:ring-gray-600 dark:hover:bg-gray-700" href="#">8</a>
+<a class="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 dark:ring-gray-600 dark:hover:bg-gray-700" href="#">
+<span class="sr-only">Sonraki</span>
+<span class="material-symbols-outlined" style="font-size: 20px;">chevron_right</span>
+</a>
+</nav>
+</div>
+</div>
+<!-- Mobile Pagination View -->
+<div class="flex flex-1 justify-between sm:hidden">
+<a class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600" href="#">Önceki</a>
+<a class="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600" href="#">Sonraki</a>
+</div>
+</div>
+</div>
+</div>
+<footer class="mt-8 text-center text-xs text-text-secondary py-4">
+                     © 2023 Mel'z Baby&amp;Kids. Tüm hakları saklıdır.
+                </footer>
+</div>
+</main>
+</div>
+</body></html>
