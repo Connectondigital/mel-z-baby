@@ -1,2 +1,8 @@
 
+<<<<<<< HEAD
 dist/
+=======
+# build outputs
+/dist/
+**/dist/
+>>>>>>> edff1d8 (chore: rename pages to turkish seo slugs)
