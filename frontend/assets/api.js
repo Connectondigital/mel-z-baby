@@ -240,56 +240,99 @@
 
   // Render product detail
   function renderProductDetail(product) {
-    // Update title
-    const titleEl = document.querySelector('[data-product-title], h1');
-    if (titleEl) titleEl.textContent = product.name;
+    // Update all title elements
+    document.querySelectorAll('[data-product-title]').forEach(el => {
+      el.textContent = product.name;
+    });
 
     // Update price
     const priceEl = document.querySelector('[data-product-price]');
     if (priceEl) {
       const hasDiscount = product.salePrice && product.salePrice < product.price;
       if (hasDiscount) {
-        priceEl.innerHTML = `<span class="text-2xl font-bold">${formatPrice(product.salePrice)}</span> <span class="text-gray-500 line-through ml-2">${formatPrice(product.price)}</span>`;
+        priceEl.innerHTML = `<span>${formatPrice(product.salePrice)}</span> <span class="text-gray-500 line-through text-lg ml-2">${formatPrice(product.price)}</span>`;
       } else {
-        priceEl.innerHTML = `<span class="text-2xl font-bold">${formatPrice(product.price)}</span>`;
+        priceEl.innerHTML = `<span>${formatPrice(product.price)}</span>`;
       }
     }
 
     // Update description
     const descEl = document.querySelector('[data-product-description]');
-    if (descEl) descEl.textContent = product.description || '';
+    if (descEl) descEl.textContent = product.description || 'Ürün açıklaması bulunmuyor.';
 
     // Update category
-    const catEl = document.querySelector('[data-product-category]');
-    if (catEl && product.category) catEl.textContent = product.category.name;
+    const catEls = document.querySelectorAll('[data-product-category]');
+    catEls.forEach(el => {
+      el.textContent = product.category ? `Kategori: ${product.category.name}` : 'Kategori';
+    });
+
+    // Update category links
+    const catLinks = document.querySelectorAll('[data-product-category-link], [data-product-category-link2]');
+    catLinks.forEach(el => {
+      if (product.category) {
+        el.textContent = product.category.name;
+        el.href = `/kategori/liste/dist/index.html?category=${product.category.slug}`;
+      }
+    });
 
     // Update stock
     const stockEl = document.querySelector('[data-product-stock]');
     if (stockEl) {
-      stockEl.textContent = product.stock > 0 ? 'Stokta Var' : 'Tükendi';
-      stockEl.className = product.stock > 0 ? 'text-green-600' : 'text-red-600';
+      if (product.stock > 10) {
+        stockEl.textContent = 'Stokta';
+        stockEl.className = 'text-green-600 font-semibold';
+      } else if (product.stock > 0) {
+        stockEl.textContent = `Son ${product.stock} adet`;
+        stockEl.className = 'text-orange-500 font-semibold';
+      } else {
+        stockEl.textContent = 'Tükendi';
+        stockEl.className = 'text-red-500 font-semibold';
+      }
     }
 
     // Update main image
-    const imageEl = document.querySelector('[data-product-image] img, .product-image img');
-    if (imageEl && product.images && product.images.length > 0) {
-      imageEl.src = product.images[0];
-      imageEl.alt = product.name;
+    const mainImageContainer = document.querySelector('[data-product-image]');
+    if (mainImageContainer && product.images && product.images.length > 0) {
+      const mainImg = mainImageContainer.querySelector('[data-main-image]');
+      const placeholder = mainImageContainer.querySelector('[data-image-placeholder]');
+      if (mainImg) {
+        mainImg.src = product.images[0];
+        mainImg.alt = product.name;
+        mainImg.classList.remove('hidden');
+      }
+      if (placeholder) {
+        placeholder.classList.add('hidden');
+      }
+
+      // Update thumbnails
+      const thumbsContainer = mainImageContainer.querySelector('[data-product-thumbnails]');
+      if (thumbsContainer) {
+        thumbsContainer.innerHTML = product.images.slice(0, 4).map((img, i) => `
+          <div class="rounded-2xl bg-[#f4f2f0] aspect-square overflow-hidden cursor-pointer hover:ring-2 ring-primary transition" onclick="document.querySelector('[data-main-image]').src='${img}'">
+            <img src="${img}" alt="${product.name} ${i+1}" class="w-full h-full object-cover">
+          </div>
+        `).join('');
+      }
     }
 
     // Update sizes
     const sizesContainer = document.querySelector('[data-product-sizes]');
-    if (sizesContainer && product.sizes && product.sizes.length > 0) {
-      sizesContainer.innerHTML = product.sizes.map(size => 
-        `<button class="size-btn px-4 py-2 border border-gray-300 rounded-lg hover:border-primary hover:bg-primary/10 transition-colors" data-size="${size}">${size}</button>`
-      ).join('');
+    if (sizesContainer) {
+      if (product.sizes && product.sizes.length > 0) {
+        sizesContainer.innerHTML = product.sizes.map(size => 
+          `<button class="px-4 h-10 rounded-xl bg-[#f4f2f0] hover:bg-primary hover:text-white transition text-sm font-semibold" data-size="${size}">${size}</button>`
+        ).join('');
+      } else {
+        const sizesSection = document.querySelector('[data-sizes-section]');
+        if (sizesSection) sizesSection.style.display = 'none';
+      }
     }
 
-    // Update colors
+    // Update colors if present
     const colorsContainer = document.querySelector('[data-product-colors]');
     if (colorsContainer && product.colors && product.colors.length > 0) {
       colorsContainer.innerHTML = product.colors.map(color => 
-        `<button class="color-btn px-4 py-2 border border-gray-300 rounded-lg hover:border-primary hover:bg-primary/10 transition-colors" data-color="${color}">${color}</button>`
+        `<button class="px-4 py-2 border border-gray-300 rounded-lg hover:border-primary hover:bg-primary/10 transition-colors" data-color="${color}">${color}</button>`
       ).join('');
     }
 
