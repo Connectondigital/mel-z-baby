@@ -596,52 +596,52 @@
   async function initCheckout() {
     const cart = getCart();
     
-    // DOM elements
+    // DOM elements - use specific IDs from checkout page
     const cartItemsEl = document.getElementById("checkout-cart-items");
+    const cartCountEl = document.getElementById("cart-item-count");
     const subtotalEl = document.getElementById("checkout-subtotal");
     const shippingEl = document.getElementById("checkout-shipping");
     const totalEl = document.getElementById("checkout-total");
-    const cartCountEl = document.getElementById("checkout-cart-count");
-    const emptyCartEl = document.getElementById("checkout-empty");
-    const checkoutFormEl = document.getElementById("checkout-form");
+    const freeShippingEl = document.getElementById("free-shipping-progress");
     const cartSectionEl = document.querySelector(".lg\\:col-span-7");
-    const summarySectionEl = document.querySelector(".lg\\:col-span-5");
 
     // Check if we're on the checkout page
-    if (!cartSectionEl) return;
+    if (!cartItemsEl && !cartSectionEl) return;
 
     if (cart.length === 0) {
       // Show empty cart message
-      cartSectionEl.innerHTML = `
-        <div id="checkout-empty" class="text-center py-12">
-          <span class="material-symbols-outlined text-6xl text-gray-300 mb-4">shopping_cart</span>
-          <h3 class="text-xl font-bold text-gray-600 mb-2">Sepetiniz Boş</h3>
-          <p class="text-gray-500 mb-6">Henüz sepetinize ürün eklemediniz.</p>
-          <a href="/bebek-urunleri/dist/index.html" class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-xl font-bold hover:opacity-90 transition">
-            <span class="material-symbols-outlined">storefront</span>
-            Alışverişe Başla
-          </a>
-        </div>
-      `;
+      if (cartItemsEl) {
+        cartItemsEl.innerHTML = `
+          <div class="text-center py-12">
+            <span class="material-symbols-outlined text-6xl text-gray-300 mb-4">shopping_cart</span>
+            <h3 class="text-xl font-bold text-gray-600 mb-2">Sepetiniz Boş</h3>
+            <p class="text-gray-500 mb-6">Henüz sepetinize ürün eklemediniz.</p>
+            <a href="/bebek-urunleri/dist/index.html" class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-xl font-bold hover:opacity-90 transition">
+              <span class="material-symbols-outlined">storefront</span>
+              Alışverişe Başla
+            </a>
+          </div>
+        `;
+      }
+      if (cartCountEl) cartCountEl.textContent = "0";
+      if (subtotalEl) subtotalEl.textContent = fmtTRY(0);
+      if (shippingEl) shippingEl.textContent = fmtTRY(0);
+      if (totalEl) totalEl.textContent = fmtTRY(0);
       return;
     }
 
     const products = await getCartProducts();
     const totals = await getCartTotals();
+    const config = getConfig();
 
-    // Update cart section header
-    const headerEl = cartSectionEl.querySelector(".flex.items-center.justify-between");
-    if (headerEl) {
-      headerEl.innerHTML = `
-        <h3 class="text-xl font-bold">Sepetim (${totals.totalQty} Ürün)</h3>
-        <button onclick="MelzV2.clearCart(); MelzV2.initCheckout();" class="text-sm text-[#897561] hover:text-red-500 transition-colors font-medium">Sepeti Temizle</button>
-      `;
+    // Update cart count in header
+    if (cartCountEl) {
+      cartCountEl.textContent = totals.totalQty;
     }
 
     // Render cart items
-    const itemsContainer = cartSectionEl.querySelector(".space-y-4");
-    if (itemsContainer) {
-      itemsContainer.innerHTML = products.map((p) => {
+    if (cartItemsEl) {
+      cartItemsEl.innerHTML = products.map((p) => {
         const cartItem = cart.find(c => c.id === String(p.id));
         const img = (p.images && p.images[0]) || PLACEHOLDER_IMAGE;
         const price = p.salePrice != null && Number(p.salePrice) < Number(p.price) ? p.salePrice : p.price;
@@ -683,41 +683,33 @@
       }).join("");
     }
 
-    // Update order summary
-    const summaryEl = summarySectionEl?.querySelector(".bg-white.dark\\:bg-\\[\\#181411\\].rounded-2xl.shadow-lg");
-    if (summaryEl) {
-      const config = getConfig();
-      const progressHtml = totals.isFreeShipping 
-        ? `<div class="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg text-sm text-green-700 dark:text-green-300 mb-4">
+    // Update totals
+    if (subtotalEl) subtotalEl.textContent = fmtTRY(totals.subtotal);
+    if (shippingEl) {
+      shippingEl.textContent = totals.isFreeShipping ? 'Ücretsiz' : fmtTRY(totals.shipping);
+      shippingEl.className = totals.isFreeShipping ? 'font-medium text-green-600' : 'font-medium';
+    }
+    if (totalEl) totalEl.textContent = fmtTRY(totals.total);
+
+    // Update free shipping progress
+    if (freeShippingEl) {
+      if (totals.isFreeShipping) {
+        freeShippingEl.innerHTML = `
+          <div class="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg text-sm text-green-700 dark:text-green-300">
             <span class="material-symbols-outlined text-sm align-middle mr-1">check_circle</span>
             Ücretsiz kargo kazandınız!
-          </div>`
-        : `<div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg text-sm text-blue-700 dark:text-blue-300 mb-4">
+          </div>
+        `;
+      } else {
+        const remaining = config.FREE_SHIPPING_THRESHOLD - totals.subtotal;
+        freeShippingEl.innerHTML = `
+          <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg text-sm text-blue-700 dark:text-blue-300">
             <span class="material-symbols-outlined text-sm align-middle mr-1">local_shipping</span>
-            Ücretsiz kargo için <strong>${fmtTRY(config.FREE_SHIPPING_THRESHOLD - totals.subtotal)}</strong> daha ekleyin!
-          </div>`;
-
-      summaryEl.innerHTML = `
-        <h3 class="font-bold text-lg mb-4">Sipariş Özeti</h3>
-        ${progressHtml}
-        <div class="space-y-3 pb-4 border-b border-gray-100 dark:border-gray-800">
-          <div class="flex justify-between text-[#897561] dark:text-[#a89580]">
-            <span>Ara Toplam</span>
-            <span class="font-medium text-[#181411] dark:text-white">${fmtTRY(totals.subtotal)}</span>
+            Ücretsiz kargo için <strong>${fmtTRY(remaining)}</strong> daha ekleyin!
           </div>
-          <div class="flex justify-between text-[#897561] dark:text-[#a89580]">
-            <span>Kargo</span>
-            <span class="font-medium ${totals.isFreeShipping ? 'text-green-600' : 'text-[#181411] dark:text-white'}">${totals.isFreeShipping ? 'Ücretsiz' : fmtTRY(totals.shipping)}</span>
-          </div>
-        </div>
-        <div class="flex justify-between items-center py-4">
-          <span class="text-lg font-bold">Genel Toplam</span>
-          <span class="text-2xl font-bold text-primary">${fmtTRY(totals.total)}</span>
-        </div>
-        <button onclick="MelzV2.proceedToPayment()" class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 px-6 rounded-xl shadow-lg shadow-primary/30 transition-all active:scale-[0.98] flex items-center justify-center gap-2">
-          <span>Ödemeye Geç</span>
-          <span class="material-symbols-outlined">arrow_forward</span>
-        </button>
+        `;
+      }
+    }
         <div class="mt-4 flex items-center justify-center gap-2 text-xs text-gray-400">
           <span class="material-symbols-outlined text-sm">lock</span>
           256-bit SSL ile korunan güvenli ödeme
