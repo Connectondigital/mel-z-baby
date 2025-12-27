@@ -722,12 +722,13 @@
       return;
     }
 
-    // Get form data
-    const nameInputs = document.querySelectorAll('input[placeholder*="Ad"]');
-    const phoneInput = document.querySelector('input[placeholder*="5"]');
-    const addressInput = document.querySelector('textarea[placeholder*="Mahalle"]');
+    // Get form data using specific IDs
+    const nameInput = document.getElementById('checkout-name');
+    const surnameInput = document.getElementById('checkout-surname');
+    const phoneInput = document.getElementById('checkout-phone');
+    const addressInput = document.getElementById('checkout-address');
 
-    const name = Array.from(nameInputs).map(i => i.value).join(" ").trim();
+    const name = [nameInput?.value, surnameInput?.value].filter(Boolean).join(" ").trim();
     const phone = phoneInput?.value?.trim() || "";
     const address = addressInput?.value?.trim() || "";
 
