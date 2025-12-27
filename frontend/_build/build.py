@@ -1,18 +1,19 @@
+#!/usr/bin/env python3
 import re
-import pathlib
+from pathlib import Path
 
-ROOT = pathlib.Path(__file__).resolve().parents[1]  # /frontend
+ROOT = Path(__file__).resolve().parents[1]  # /frontend
 PARTIALS = ROOT / "_partials"
 
-# Referans sayfa: head/header/footer buradan alınır (custom yoksa)
-REF_PAGE = ROOT / "hakkımızda_sayfası_3" / "code.html"
+# Referans sayfa (header/footer custom yoksa buradan çeker)
+REF_PAGE = ROOT / "hakkimizda" / "code.html"
 
 
-def read_text(p: pathlib.Path) -> str:
+def read_text(p: Path) -> str:
     return p.read_text(encoding="utf-8", errors="ignore")
 
 
-def write_text(p: pathlib.Path, content: str) -> None:
+def write_text(p: Path, content: str) -> None:
     p.parent.mkdir(parents=True, exist_ok=True)
     p.write_text(content, encoding="utf-8")
 
@@ -22,10 +23,7 @@ def normalize(s: str) -> str:
 
 
 def extract_block(html: str, tag: str) -> str:
-    """
-    Returns the FULL <tag ...>...</tag> block (first match).
-    If not found, returns "".
-    """
+    """Returns FULL <tag ...>...</tag> block (first match)."""
     m = re.search(
         rf"(<{tag}\b[^>]*>.*?</{tag}>)",
         html,
@@ -34,24 +32,21 @@ def extract_block(html: str, tag: str) -> str:
     return m.group(1).strip() if m else ""
 
 
-def extract_head_inner(html: str) -> str:
-    """
-    Returns the inner content of <head>...</head> (without head tag).
-    """
-    m = re.search(
-        r"<head\b[^>]*>(.*?)</head>",
-        html,
-        flags=re.IGNORECASE | re.DOTALL,
-    )
-    return (m.group(1).strip() if m else "")
+def strip_blocks(html: str, tags: list[str]) -> str:
+    """Remove header/footer if they accidentally exist in page content."""
+    out = html
+    for t in tags:
+        out = re.sub(
+            rf"<{t}\b[^>]*>.*?</{t}>",
+            "",
+            out,
+            flags=re.IGNORECASE | re.DOTALL,
+        )
+    return out.strip()
 
 
-def extract_main_or_body(html: str) -> str:
-    """
-    Prefer <main>...</main>.
-    If no <main>, return body inner HTML.
-    If no body, return html as fallback.
-    """
+def extract_main_or_body_inner(html: str) -> str:
+    """Prefer <main>...</main>. Else return body inner. Else return whole html."""
     main_block = extract_block(html, "main")
     if main_block:
         return main_block
@@ -62,6 +57,23 @@ def extract_main_or_body(html: str) -> str:
         flags=re.IGNORECASE | re.DOTALL,
     )
     return (m.group(1).strip() if m else html.strip())
+
+
+def load_head() -> str:
+    """
+    Priority:
+      1) _partials/head.generated.html
+      2) _partials/head.html
+      3) (fallback) empty
+    """
+    gen = PARTIALS / "head.generated.html"
+    plain = PARTIALS / "head.html"
+
+    if gen.exists():
+        return normalize(read_text(gen)).strip() + "\n"
+    if plain.exists():
+        return normalize(read_text(plain)).strip() + "\n"
+    return ""
 
 
 def load_header_footer(ref_html: str) -> tuple[str, str]:
@@ -82,43 +94,50 @@ def load_header_footer(ref_html: str) -> tuple[str, str]:
     return header + "\n", footer + "\n"
 
 
+def iter_code_pages():
+    """
+    Find every */code.html under ROOT, including nested dirs (kategori/liste/code.html)
+    Excludes _ folders and dist folders.
+    """
+    for code in ROOT.rglob("code.html"):
+        # skip _build/_partials/_backup etc
+        if any(part.startswith("_") for part in code.parts):
+            continue
+        # skip anything inside dist
+        if "dist" in code.parts:
+            continue
+        yield code
+
+
 def build_pages():
     if not REF_PAGE.exists():
         raise RuntimeError(f"Referans sayfa yok: {REF_PAGE}")
 
     ref_html = normalize(read_text(REF_PAGE))
 
-    # HEAD: base head + ref head inner
-    base_head = read_text(PARTIALS / "head.html") if (PARTIALS / "head.html").exists() else ""
-    ref_head_inner = extract_head_inner(ref_html)
-    combined_head = (base_head + "\n" + ref_head_inner).strip() + "\n"
-
-    # header/footer
+    head = load_head()
     header, footer = load_header_footer(ref_html)
 
     pages = []
     built = 0
 
-    for page in ROOT.iterdir():
-        if not page.is_dir():
-            continue
-        if page.name.startswith("_"):
-            continue
-
-        code = page / "code.html"
-        if not code.exists():
-            continue
-
-        pages.append(page)
+    for code in iter_code_pages():
+        page_dir = code.parent
+        rel_dir = page_dir.relative_to(ROOT).as_posix()
+        pages.append(rel_dir)
 
         html = normalize(read_text(code))
-        main_content = extract_main_or_body(html)
+
+        main_content = extract_main_or_body_inner(html)
+        # Eğer code.html içinde header/footer kalmışsa temizle (çift header çözümü)
+        main_content = strip_blocks(main_content, ["header", "footer"])
 
         out = f"""<!doctype html>
 <html lang="tr">
 <head>
-{combined_head}
-</head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+{head}</head>
 <body>
 {header}
 
@@ -128,13 +147,12 @@ def build_pages():
 </body>
 </html>
 """
-        write_text(page / "dist" / "index.html", out)
+        write_text(page_dir / "dist" / "index.html", out)
         built += 1
 
     # Root index.html (link list)
-    links = "\n".join(
-        [f'<li><a href="./{p.name}/dist/index.html">{p.name}</a></li>' for p in sorted(pages, key=lambda x: x.name)]
-    )
+    pages_sorted = sorted(set(pages))
+    links = "\n".join([f'<li><a href="./{p}/dist/index.html">{p}</a></li>' for p in pages_sorted])
 
     index = f"""<!doctype html>
 <html lang="tr">
@@ -155,7 +173,7 @@ def build_pages():
 
     print(f"Reference used: {REF_PAGE}")
     print(f"Built pages: {built}")
-    print("✔ Build tamamlandı (CUSTOM header/footer korunuyor)")
+    print("✔ Build tamamlandı (head.generated/head.html + CUSTOM header/footer)")
 
 
 if __name__ == "__main__":

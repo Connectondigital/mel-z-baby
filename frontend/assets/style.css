@@ -1,0 +1,75 @@
+/* ===============================
+   MELZ BABY – BASE STYLE
+   =============================== */
+
+   :root {
+    --primary: #D67A2B;
+    --primary-300: #F0DCC5;
+  
+    --text-main: #1F2937;
+    --text-secondary: #6B7280;
+  
+    --surface-light: #FFFFFF;
+    --surface-dark: #0B0B0B;
+  }
+  
+  /* Reset */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Base body */
+  body {
+    font-family: ui-sans-serif, system-ui, -apple-system,
+      "Segoe UI", Roboto, Helvetica, Arial,
+      "Apple Color Emoji", "Segoe UI Emoji";
+    color: var(--text-main);
+    background-color: var(--surface-light);
+    line-height: 1.5;
+  }
+  
+  /* Links */
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  /* Utility text colors */
+  .text-primary {
+    color: var(--primary);
+  }
+  
+  .text-primary-300 {
+    color: var(--primary-300);
+  }
+  
+  .text-text-main {
+    color: var(--text-main);
+  }
+  
+  .text-text-secondary {
+    color: var(--text-secondary);
+  }
+  
+  /* Utility backgrounds */
+  .bg-surface-light {
+    background-color: var(--surface-light);
+  }
+  
+  .bg-surface-dark {
+    background-color: var(--surface-dark);
+  }
+  
+  /* Simple buttons fallback */
+  button {
+    font-family: inherit;
+    cursor: pointer;
+  }

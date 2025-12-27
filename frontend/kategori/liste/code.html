@@ -1,395 +1,131 @@
-<!DOCTYPE html>
+<main class="max-w-[1280px] mx-auto px-4 md:px-10">
+  <section class="pt-8">
+    <h1 class="text-2xl md:text-3xl font-extrabold text-text-main">Kategoriler</h1>
+    <p class="text-text-secondary mt-2">Filtreler şimdilik UI. Backend bağlanınca gerçek filtre olacak.</p>
+  </section>
 
-<html class="light" lang="tr"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Kategoriler ve Etiketler Yönetimi - Mel'z Baby &amp; Kids</title>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#308ce8",
-                        "background-light": "#fdfbf7", // Adjusted for a subtle "beige" feel suitable for baby brand
-                        "background-dark": "#111921",
-                        "surface-light": "#ffffff",
-                        "surface-dark": "#1a2632",
-                        "text-main": "#111418",
-                        "text-sub": "#637588",
-                        "beige-100": "#f4f1ea", // Custom beige accents
-                        "beige-200": "#e8e4db",
-                    },
-                    fontFamily: {
-                        "display": ["Manrope", "sans-serif"]
-                    },
-                    borderRadius: { "DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1rem", "full": "9999px" },
-                },
-            },
-        }
-    </script>
-<style>
-        /* Custom scrollbar for table */
-        .custom-scrollbar::-webkit-scrollbar {
-            height: 8px;
-            width: 8px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background-color: #cbd5e1;
-            border-radius: 20px;
-        }
-    </style>
-</head>
-<body class="bg-background-light dark:bg-background-dark font-display text-text-main antialiased min-h-screen flex flex-col overflow-x-hidden">
-<!-- Top Navigation / Breadcrumbs -->
-<div class="border-b border-beige-200 dark:border-gray-800 bg-surface-light dark:bg-surface-dark px-6 py-4 sticky top-0 z-20">
-<div class="max-w-7xl mx-auto w-full">
-<div class="flex flex-col gap-1">
-<div class="flex items-center gap-2 text-sm text-text-sub dark:text-gray-400">
-<a class="hover:text-primary transition-colors" href="#">Ana Sayfa</a>
-<span class="material-symbols-outlined text-[16px]">chevron_right</span>
-<span class="font-medium text-text-main dark:text-white">Kategoriler &amp; Etiketler</span>
-</div>
-</div>
-</div>
-</div>
-<!-- Main Content Area -->
-<main class="flex-1 px-4 py-8 md:px-8">
-<div class="max-w-7xl mx-auto w-full flex flex-col gap-6">
-<!-- Page Header -->
-<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-<div class="flex flex-col gap-1">
-<h1 class="text-3xl font-black tracking-tight text-text-main dark:text-white">Kategoriler ve Etiketler</h1>
-<p class="text-text-sub dark:text-gray-400">Ürün kategorilerinizi ve blog etiketlerinizi buradan yönetin.</p>
-</div>
-<button class="bg-primary hover:bg-primary/90 text-white px-5 py-2.5 rounded-lg font-bold text-sm shadow-sm flex items-center gap-2 transition-all">
-<span class="material-symbols-outlined text-[20px]">add</span>
-                    Yeni Ekle
-                </button>
-</div>
-<!-- Tabs -->
-<div class="border-b border-beige-200 dark:border-gray-800">
-<nav aria-label="Tabs" class="flex gap-8">
-<a class="border-b-2 border-primary py-4 px-1 text-sm font-bold text-primary flex items-center gap-2" href="#">
-<span class="material-symbols-outlined text-[20px]">category</span>
-                        Ürün Kategorileri
-                    </a>
-<a class="border-b-2 border-transparent py-4 px-1 text-sm font-medium text-text-sub hover:text-text-main hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-200 transition-colors flex items-center gap-2" href="#">
-<span class="material-symbols-outlined text-[20px]">label</span>
-                        Blog Etiketleri
-                    </a>
-</nav>
-</div>
-<!-- Toolbar & Filter Area -->
-<div class="bg-surface-light dark:bg-surface-dark p-4 rounded-xl shadow-sm border border-beige-200 dark:border-gray-800 flex flex-col md:flex-row items-center justify-between gap-4">
-<!-- Search -->
-<div class="relative w-full md:max-w-md">
-<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-<span class="material-symbols-outlined text-text-sub text-[20px]">search</span>
-</div>
-<input class="block w-full pl-10 pr-3 py-2.5 border-none bg-background-light dark:bg-background-dark rounded-lg text-sm text-text-main placeholder-text-sub focus:ring-2 focus:ring-primary/20 dark:text-white" placeholder="Kategori adı, slug veya açıklama ara..." type="text"/>
-</div>
-<!-- Action Buttons -->
-<div class="flex items-center gap-2 w-full md:w-auto">
-<button class="flex items-center justify-center gap-2 px-4 py-2.5 bg-background-light dark:bg-background-dark rounded-lg text-text-main dark:text-white text-sm font-bold border border-transparent hover:border-beige-200 dark:hover:border-gray-700 transition-all flex-1 md:flex-none">
-<span class="material-symbols-outlined text-[20px]">filter_list</span>
-                        Filtrele
-                    </button>
-<button class="flex items-center justify-center gap-2 px-4 py-2.5 bg-background-light dark:bg-background-dark rounded-lg text-text-main dark:text-white text-sm font-bold border border-transparent hover:border-beige-200 dark:hover:border-gray-700 transition-all flex-1 md:flex-none">
-<span class="material-symbols-outlined text-[20px]">sort</span>
-                        Sırala
-                    </button>
-</div>
-</div>
-<!-- Data Table Section -->
-<div class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-sm border border-beige-200 dark:border-gray-800 overflow-hidden flex flex-col">
-<div class="overflow-x-auto custom-scrollbar">
-<table class="w-full text-left border-collapse">
-<thead>
-<tr class="bg-beige-100 dark:bg-gray-800/50 text-text-sub dark:text-gray-400 text-xs uppercase tracking-wider border-b border-beige-200 dark:border-gray-800">
-<th class="px-6 py-4 font-bold w-16 text-center">
-<input class="rounded border-gray-300 text-primary focus:ring-primary/20 bg-white dark:bg-gray-700 dark:border-gray-600" type="checkbox"/>
-</th>
-<th class="px-6 py-4 font-bold">Görsel / İsim</th>
-<th class="px-6 py-4 font-bold">Slug (URL)</th>
-<th class="px-6 py-4 font-bold">Üst Kategori</th>
-<th class="px-6 py-4 font-bold text-center">Ürün Sayısı</th>
-<th class="px-6 py-4 font-bold">Tarih</th>
-<th class="px-6 py-4 font-bold text-right">İşlemler</th>
-</tr>
-</thead>
-<tbody class="divide-y divide-beige-200 dark:divide-gray-800">
-<!-- Row 1 -->
-<tr class="hover:bg-background-light dark:hover:bg-gray-800/30 transition-colors group">
-<td class="px-6 py-4 text-center">
-<input class="rounded border-gray-300 text-primary focus:ring-primary/20 bg-white dark:bg-gray-700 dark:border-gray-600" type="checkbox"/>
-</td>
-<td class="px-6 py-4">
-<div class="flex items-center gap-4">
-<div class="h-12 w-12 rounded-lg bg-gray-100 dark:bg-gray-700 flex-shrink-0 overflow-hidden relative border border-beige-200 dark:border-gray-700">
-<!-- Image Placeholder -->
-<div class="absolute inset-0 bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center text-primary/40" data-alt="Blue baby stroller illustration gradient">
-<span class="material-symbols-outlined">stroller</span>
-</div>
-</div>
-<div>
-<p class="font-bold text-text-main dark:text-white text-sm">Bebek Arabaları</p>
-<p class="text-xs text-text-sub mt-0.5 max-w-[180px] truncate">Konforlu ve güvenli yürüyüşler için.</p>
-</div>
-</div>
-</td>
-<td class="px-6 py-4">
-<span class="px-2.5 py-1 rounded bg-gray-100 dark:bg-gray-800 text-xs font-medium text-gray-600 dark:text-gray-300 font-mono">/bebek-arabalari</span>
-</td>
-<td class="px-6 py-4">
-<span class="text-sm text-text-sub italic">Yok (Ana Kategori)</span>
-</td>
-<td class="px-6 py-4 text-center">
-<span class="inline-flex items-center justify-center h-6 min-w-8 px-2 rounded-full bg-blue-50 text-blue-600 text-xs font-bold dark:bg-blue-900/30 dark:text-blue-300">42</span>
-</td>
-<td class="px-6 py-4">
-<div class="text-sm text-text-main dark:text-white">12 Mar 2024</div>
-<div class="text-xs text-text-sub">14:30</div>
-</td>
-<td class="px-6 py-4 text-right">
-<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-<button class="p-2 text-text-sub hover:text-primary hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg transition-colors" title="Düzenle">
-<span class="material-symbols-outlined text-[20px]">edit</span>
-</button>
-<button class="p-2 text-text-sub hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors" title="Sil">
-<span class="material-symbols-outlined text-[20px]">delete</span>
-</button>
-</div>
-</td>
-</tr>
-<!-- Row 2 -->
-<tr class="hover:bg-background-light dark:hover:bg-gray-800/30 transition-colors group">
-<td class="px-6 py-4 text-center">
-<input class="rounded border-gray-300 text-primary focus:ring-primary/20 bg-white dark:bg-gray-700 dark:border-gray-600" type="checkbox"/>
-</td>
-<td class="px-6 py-4">
-<div class="flex items-center gap-4">
-<!-- Indication of sub-category -->
-<span class="material-symbols-outlined text-gray-300 text-[20px] -mr-2">subdirectory_arrow_right</span>
-<div class="h-12 w-12 rounded-lg bg-gray-100 dark:bg-gray-700 flex-shrink-0 overflow-hidden relative border border-beige-200 dark:border-gray-700">
-<div class="absolute inset-0 bg-gradient-to-br from-pink-50 to-pink-100 flex items-center justify-center text-pink-400" data-alt="Pink baby textile pattern gradient">
-<span class="material-symbols-outlined">checkroom</span>
-</div>
-</div>
-<div>
-<p class="font-bold text-text-main dark:text-white text-sm">Zıbınlar &amp; Tulumlar</p>
-<p class="text-xs text-text-sub mt-0.5 max-w-[180px] truncate">%100 Pamuklu ürünler.</p>
-</div>
-</div>
-</td>
-<td class="px-6 py-4">
-<span class="px-2.5 py-1 rounded bg-gray-100 dark:bg-gray-800 text-xs font-medium text-gray-600 dark:text-gray-300 font-mono">/zibin-tulum</span>
-</td>
-<td class="px-6 py-4">
-<span class="text-sm text-text-main font-medium dark:text-white">Bebek Giyim</span>
-</td>
-<td class="px-6 py-4 text-center">
-<span class="inline-flex items-center justify-center h-6 min-w-8 px-2 rounded-full bg-blue-50 text-blue-600 text-xs font-bold dark:bg-blue-900/30 dark:text-blue-300">156</span>
-</td>
-<td class="px-6 py-4">
-<div class="text-sm text-text-main dark:text-white">10 Mar 2024</div>
-<div class="text-xs text-text-sub">09:15</div>
-</td>
-<td class="px-6 py-4 text-right">
-<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-<button class="p-2 text-text-sub hover:text-primary hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg transition-colors" title="Düzenle">
-<span class="material-symbols-outlined text-[20px]">edit</span>
-</button>
-<button class="p-2 text-text-sub hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors" title="Sil">
-<span class="material-symbols-outlined text-[20px]">delete</span>
-</button>
-</div>
-</td>
-</tr>
-<!-- Row 3 -->
-<tr class="hover:bg-background-light dark:hover:bg-gray-800/30 transition-colors group">
-<td class="px-6 py-4 text-center">
-<input class="rounded border-gray-300 text-primary focus:ring-primary/20 bg-white dark:bg-gray-700 dark:border-gray-600" type="checkbox"/>
-</td>
-<td class="px-6 py-4">
-<div class="flex items-center gap-4">
-<div class="h-12 w-12 rounded-lg bg-gray-100 dark:bg-gray-700 flex-shrink-0 overflow-hidden relative border border-beige-200 dark:border-gray-700">
-<div class="absolute inset-0 bg-gradient-to-br from-green-50 to-green-100 flex items-center justify-center text-green-500/50" data-alt="Green soft toy gradient">
-<span class="material-symbols-outlined">toys</span>
-</div>
-</div>
-<div>
-<p class="font-bold text-text-main dark:text-white text-sm">Oyuncaklar</p>
-<p class="text-xs text-text-sub mt-0.5 max-w-[180px] truncate">Eğitici ve eğlenceli.</p>
-</div>
-</div>
-</td>
-<td class="px-6 py-4">
-<span class="px-2.5 py-1 rounded bg-gray-100 dark:bg-gray-800 text-xs font-medium text-gray-600 dark:text-gray-300 font-mono">/oyuncaklar</span>
-</td>
-<td class="px-6 py-4">
-<span class="text-sm text-text-sub italic">Yok (Ana Kategori)</span>
-</td>
-<td class="px-6 py-4 text-center">
-<span class="inline-flex items-center justify-center h-6 min-w-8 px-2 rounded-full bg-blue-50 text-blue-600 text-xs font-bold dark:bg-blue-900/30 dark:text-blue-300">89</span>
-</td>
-<td class="px-6 py-4">
-<div class="text-sm text-text-main dark:text-white">05 Mar 2024</div>
-<div class="text-xs text-text-sub">16:45</div>
-</td>
-<td class="px-6 py-4 text-right">
-<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-<button class="p-2 text-text-sub hover:text-primary hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg transition-colors" title="Düzenle">
-<span class="material-symbols-outlined text-[20px]">edit</span>
-</button>
-<button class="p-2 text-text-sub hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors" title="Sil">
-<span class="material-symbols-outlined text-[20px]">delete</span>
-</button>
-</div>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<!-- Pagination -->
-<div class="border-t border-beige-200 dark:border-gray-800 bg-surface-light dark:bg-surface-dark px-6 py-4 flex items-center justify-between">
-<p class="text-sm text-text-sub dark:text-gray-400">
-                        Toplam <span class="font-bold text-text-main dark:text-white">24</span> kategoriden <span class="font-bold text-text-main dark:text-white">1-10</span> arası gösteriliyor
-                    </p>
-<div class="flex items-center gap-2">
-<button class="p-2 rounded-lg border border-beige-200 dark:border-gray-700 text-text-sub hover:bg-background-light dark:hover:bg-gray-800 disabled:opacity-50">
-<span class="material-symbols-outlined text-[18px]">chevron_left</span>
-</button>
-<button class="px-3 py-1 rounded-lg bg-primary text-white text-sm font-bold shadow-sm">1</button>
-<button class="px-3 py-1 rounded-lg text-text-sub hover:bg-background-light dark:hover:bg-gray-800 text-sm font-medium">2</button>
-<button class="px-3 py-1 rounded-lg text-text-sub hover:bg-background-light dark:hover:bg-gray-800 text-sm font-medium">3</button>
-<button class="p-2 rounded-lg border border-beige-200 dark:border-gray-700 text-text-sub hover:bg-background-light dark:hover:bg-gray-800">
-<span class="material-symbols-outlined text-[18px]">chevron_right</span>
-</button>
-</div>
-</div>
-</div>
-<!-- Quick Stats Area (Optional but adds value to Management Screen) -->
-<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-<div class="bg-white dark:bg-surface-dark p-6 rounded-xl border border-beige-200 dark:border-gray-800 flex items-center gap-4">
-<div class="w-12 h-12 rounded-full bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-primary">
-<span class="material-symbols-outlined">folder_open</span>
-</div>
-<div>
-<p class="text-sm text-text-sub dark:text-gray-400">Toplam Kategori</p>
-<p class="text-2xl font-black text-text-main dark:text-white">24</p>
-</div>
-</div>
-<div class="bg-white dark:bg-surface-dark p-6 rounded-xl border border-beige-200 dark:border-gray-800 flex items-center gap-4">
-<div class="w-12 h-12 rounded-full bg-purple-50 dark:bg-purple-900/20 flex items-center justify-center text-purple-600">
-<span class="material-symbols-outlined">label</span>
-</div>
-<div>
-<p class="text-sm text-text-sub dark:text-gray-400">Aktif Etiketler</p>
-<p class="text-2xl font-black text-text-main dark:text-white">108</p>
-</div>
-</div>
-<div class="bg-white dark:bg-surface-dark p-6 rounded-xl border border-beige-200 dark:border-gray-800 flex items-center gap-4">
-<div class="w-12 h-12 rounded-full bg-orange-50 dark:bg-orange-900/20 flex items-center justify-center text-orange-600">
-<span class="material-symbols-outlined">inventory_2</span>
-</div>
-<div>
-<p class="text-sm text-text-sub dark:text-gray-400">Kategorilenmemiş</p>
-<p class="text-2xl font-black text-text-main dark:text-white">3</p>
-</div>
-</div>
-</div>
-</div>
+  <section class="mt-8 grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-6">
+    <!-- Filters -->
+    <aside class="rounded-3xl border border-[#f4f2f0] bg-white p-5 h-fit">
+      <div class="flex items-center justify-between">
+        <div class="font-bold text-text-main">Filtreler</div>
+        <button class="text-sm font-semibold text-primary hover:opacity-80 transition">Sıfırla</button>
+      </div>
+
+      <div class="mt-5 space-y-5">
+        <div>
+          <div class="text-sm font-semibold text-text-main mb-2">Yaş</div>
+          <div class="flex flex-wrap gap-2">
+            <button class="px-3 h-9 rounded-xl bg-[#f4f2f0] hover:bg-[#e8e6e4] transition text-sm">0–12 Ay</button>
+            <button class="px-3 h-9 rounded-xl bg-[#f4f2f0] hover:bg-[#e8e6e4] transition text-sm">1–3 Yaş</button>
+            <button class="px-3 h-9 rounded-xl bg-[#f4f2f0] hover:bg-[#e8e6e4] transition text-sm">4–6 Yaş</button>
+            <button class="px-3 h-9 rounded-xl bg-[#f4f2f0] hover:bg-[#e8e6e4] transition text-sm">7+ Yaş</button>
+          </div>
+        </div>
+
+        <div>
+          <div class="text-sm font-semibold text-text-main mb-2">Beden</div>
+          <div class="flex flex-wrap gap-2">
+            <button class="px-3 h-9 rounded-xl bg-[#f4f2f0] hover:bg-[#e8e6e4] transition text-sm">62</button>
+            <button class="px-3 h-9 rounded-xl bg-[#f4f2f0] hover:bg-[#e8e6e4] transition text-sm">68</button>
+            <button class="px-3 h-9 rounded-xl bg-[#f4f2f0] hover:bg-[#e8e6e4] transition text-sm">74</button>
+            <button class="px-3 h-9 rounded-xl bg-[#f4f2f0] hover:bg-[#e8e6e4] transition text-sm">80</button>
+          </div>
+        </div>
+
+        <div>
+          <div class="text-sm font-semibold text-text-main mb-2">Renk</div>
+          <div class="flex flex-wrap gap-2">
+            <button class="px-3 h-9 rounded-xl bg-[#f4f2f0] hover:bg-[#e8e6e4] transition text-sm">Krem</button>
+            <button class="px-3 h-9 rounded-xl bg-[#f4f2f0] hover:bg-[#e8e6e4] transition text-sm">Bej</button>
+            <button class="px-3 h-9 rounded-xl bg-[#f4f2f0] hover:bg-[#e8e6e4] transition text-sm">Pudra</button>
+            <button class="px-3 h-9 rounded-xl bg-[#f4f2f0] hover:bg-[#e8e6e4] transition text-sm">Mavi</button>
+          </div>
+        </div>
+
+        <div class="pt-4 border-t border-[#f4f2f0]">
+          <div class="text-sm font-semibold text-text-main mb-2">Hızlı Kategoriler</div>
+          <div class="space-y-2 text-sm">
+            <a class="block hover:text-primary transition" href="#bebek">Bebek</a>
+            <a class="block hover:text-primary transition" href="#kiz">Kız Çocuk</a>
+            <a class="block hover:text-primary transition" href="#erkek">Erkek Çocuk</a>
+            <a class="block hover:text-primary transition" href="#aksesuar">Aksesuar</a>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Results -->
+    <div class="space-y-10">
+      <!-- Section -->
+      <div id="bebek">
+        <div class="flex items-end justify-between">
+          <h2 class="text-xl md:text-2xl font-extrabold text-text-main">Bebek</h2>
+          <a href="/bebek-urunleri/dist/index.html" class="text-sm font-semibold text-primary hover:opacity-80 transition">Shop’a dön →</a>
+        </div>
+        <div class="mt-4 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
+          <!-- card -->
+          <a href="/urun/dist/index.html" class="group rounded-3xl border border-[#f4f2f0] p-3 hover:shadow-md transition bg-white">
+            <div class="aspect-[4/5] rounded-2xl bg-[#f4f2f0] flex items-center justify-center">
+              <span class="material-symbols-outlined text-[34px] text-text-secondary">child_friendly</span>
+            </div>
+            <div class="mt-3">
+              <div class="text-sm font-semibold text-text-main group-hover:text-primary transition">Bebek Tulum</div>
+              <div class="text-xs text-text-secondary mt-1">0–12 Ay</div>
+              <div class="mt-2 font-bold text-text-main">₺ 0,00</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div id="kiz">
+        <h2 class="text-xl md:text-2xl font-extrabold text-text-main">Kız Çocuk</h2>
+        <div class="mt-4 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
+          <a href="/urun/dist/index.html" class="group rounded-3xl border border-[#f4f2f0] p-3 hover:shadow-md transition bg-white">
+            <div class="aspect-[4/5] rounded-2xl bg-[#f4f2f0] flex items-center justify-center">
+              <span class="material-symbols-outlined text-[34px] text-text-secondary">checkroom</span>
+            </div>
+            <div class="mt-3">
+              <div class="text-sm font-semibold text-text-main group-hover:text-primary transition">Kız Elbise</div>
+              <div class="text-xs text-text-secondary mt-1">2–6 Yaş</div>
+              <div class="mt-2 font-bold text-text-main">₺ 0,00</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div id="erkek">
+        <h2 class="text-xl md:text-2xl font-extrabold text-text-main">Erkek Çocuk</h2>
+        <div class="mt-4 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
+          <a href="/urun/dist/index.html" class="group rounded-3xl border border-[#f4f2f0] p-3 hover:shadow-md transition bg-white">
+            <div class="aspect-[4/5] rounded-2xl bg-[#f4f2f0] flex items-center justify-center">
+              <span class="material-symbols-outlined text-[34px] text-text-secondary">person</span>
+            </div>
+            <div class="mt-3">
+              <div class="text-sm font-semibold text-text-main group-hover:text-primary transition">Erkek Takım</div>
+              <div class="text-xs text-text-secondary mt-1">4–10 Yaş</div>
+              <div class="mt-2 font-bold text-text-main">₺ 0,00</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div id="aksesuar">
+        <h2 class="text-xl md:text-2xl font-extrabold text-text-main">Aksesuar</h2>
+        <div class="mt-4 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
+          <a href="/urun/dist/index.html" class="group rounded-3xl border border-[#f4f2f0] p-3 hover:shadow-md transition bg-white">
+            <div class="aspect-[4/5] rounded-2xl bg-[#f4f2f0] flex items-center justify-center">
+              <span class="material-symbols-outlined text-[34px] text-text-secondary">redeem</span>
+            </div>
+            <div class="mt-3">
+              <div class="text-sm font-semibold text-text-main group-hover:text-primary transition">Şapka / Çorap</div>
+              <div class="text-xs text-text-secondary mt-1">Tümü</div>
+              <div class="mt-2 font-bold text-text-main">₺ 0,00</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
 </main>
-<!-- Slide-over / Modal for Add New (Simulated as static part of design, usually hidden) -->
-<!-- For visualization purposes in this task, I will include it as a "Drawer" element on the right side -->
-<div class="fixed inset-0 z-50 pointer-events-none flex justify-end">
-<!-- Backdrop (Invisible here to show page, but in real app would be visible on active) -->
-<!-- <div class="absolute inset-0 bg-black/20 backdrop-blur-sm pointer-events-auto"></div> -->
-<!-- Drawer Panel (Simulating visible state for demonstration or just hidden) -->
-<!-- To keep the main view clean as requested, I will not overlay it by default, but structure it below 
-             so you can see how the "Add New" form components would look. 
-             Ideally, this would be inside a modal. Let's create a dedicated section at the bottom for "Form Preview" context. -->
-</div>
-<!-- Edit/Add Form Section (Displayed inline for design demonstration purposes as requested "forms... visual layout") -->
-<section class="border-t border-beige-200 dark:border-gray-800 bg-white dark:bg-surface-dark mt-8 py-10 px-4 md:px-8">
-<div class="max-w-3xl mx-auto">
-<div class="mb-6 pb-4 border-b border-beige-200 dark:border-gray-800">
-<h2 class="text-xl font-bold text-text-main dark:text-white">Hızlı Ekle / Düzenle</h2>
-<p class="text-sm text-text-sub mt-1">Yeni kategori oluşturma formu önizlemesi.</p>
-</div>
-<form class="space-y-6">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-<!-- Name Input -->
-<div class="space-y-2">
-<label class="block text-sm font-bold text-text-main dark:text-white">Kategori Adı</label>
-<input class="w-full px-4 py-3 rounded-lg bg-background-light dark:bg-background-dark border-transparent focus:border-primary focus:ring-0 text-text-main dark:text-white placeholder-text-sub transition-colors" placeholder="Örn: Bebek Giyim" type="text"/>
-</div>
-<!-- Slug Input -->
-<div class="space-y-2">
-<label class="block text-sm font-bold text-text-main dark:text-white">URL Slug</label>
-<input class="w-full px-4 py-3 rounded-lg bg-background-light dark:bg-background-dark border-transparent focus:border-primary focus:ring-0 text-text-main dark:text-white placeholder-text-sub transition-colors" placeholder="Örn: bebek-giyim" type="text"/>
-</div>
-</div>
-<!-- Description -->
-<div class="space-y-2">
-<label class="block text-sm font-bold text-text-main dark:text-white">Açıklama</label>
-<textarea class="w-full px-4 py-3 rounded-lg bg-background-light dark:bg-background-dark border-transparent focus:border-primary focus:ring-0 text-text-main dark:text-white placeholder-text-sub transition-colors resize-none" placeholder="Kategori hakkında kısa bir açıklama yazın..." rows="3"></textarea>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-<!-- Parent Category -->
-<div class="space-y-2">
-<label class="block text-sm font-bold text-text-main dark:text-white">Üst Kategori</label>
-<div class="relative">
-<select class="w-full px-4 py-3 rounded-lg bg-background-light dark:bg-background-dark border-transparent focus:border-primary focus:ring-0 text-text-main dark:text-white appearance-none cursor-pointer">
-<option value="">Yok (Ana Kategori)</option>
-<option value="1">Bebek Giyim</option>
-<option value="2">Oyuncaklar</option>
-</select>
-<div class="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-text-sub">
-<span class="material-symbols-outlined">expand_more</span>
-</div>
-</div>
-</div>
-<!-- Status -->
-<div class="space-y-2">
-<label class="block text-sm font-bold text-text-main dark:text-white">Durum</label>
-<div class="flex items-center gap-4 mt-3">
-<label class="inline-flex items-center cursor-pointer">
-<input checked="" class="form-radio text-primary focus:ring-primary/20 h-5 w-5 bg-background-light border-gray-300" name="status" type="radio"/>
-<span class="ml-2 text-text-main dark:text-white">Aktif</span>
-</label>
-<label class="inline-flex items-center cursor-pointer">
-<input class="form-radio text-primary focus:ring-primary/20 h-5 w-5 bg-background-light border-gray-300" name="status" type="radio"/>
-<span class="ml-2 text-text-main dark:text-white">Pasif</span>
-</label>
-</div>
-</div>
-</div>
-<!-- Image Upload -->
-<div class="space-y-2">
-<label class="block text-sm font-bold text-text-main dark:text-white">Kategori Görseli</label>
-<div class="border-2 border-dashed border-gray-300 dark:border-gray-700 rounded-xl p-8 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-background-light dark:hover:bg-gray-800/50 transition-colors group/upload">
-<div class="w-12 h-12 rounded-full bg-blue-50 dark:bg-blue-900/20 text-primary flex items-center justify-center mb-3 group-hover/upload:scale-110 transition-transform">
-<span class="material-symbols-outlined">cloud_upload</span>
-</div>
-<p class="text-sm font-bold text-text-main dark:text-white">Görsel yüklemek için tıklayın</p>
-<p class="text-xs text-text-sub mt-1">veya sürükleyip bırakın (Max 2MB)</p>
-</div>
-</div>
-<!-- Form Actions -->
-<div class="flex items-center justify-end gap-4 pt-4">
-<button class="px-6 py-2.5 rounded-lg text-text-sub font-bold hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" type="button">İptal</button>
-<button class="px-6 py-2.5 rounded-lg bg-primary hover:bg-primary/90 text-white font-bold shadow-sm transition-all transform active:scale-95" type="button">Kaydet</button>
-</div>
-</form>
-</div>
-</section>
-</body></html>

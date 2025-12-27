@@ -1,58 +1,44 @@
 <header class="bg-white border-b border-[#f4f2f0] sticky top-0 z-50">
-    <div class="max-w-[1280px] mx-auto px-4 md:px-10 py-3">
-        <div class="flex items-center justify-between gap-8">
+  <div class="max-w-[1280px] mx-auto px-4 md:px-10 py-3">
+    <div class="flex items-center justify-between gap-8">
 
-            <!-- Logo -->
-            <a href="/index.html" class="flex items-center gap-3 shrink-0">
-                <span class="material-symbols-outlined text-[32px] text-primary">child_care</span>
-                <span class="text-lg font-bold tracking-tight text-text-main">
-                    Mel'z Baby&amp;Kids
-                </span>
-            </a>
+      <!-- Logo -->
+      <a href="/anasayfa/dist/index.html" class="flex items-center gap-2 text-text-main shrink-0">
+        <span class="size-8 text-primary flex items-center justify-center">
+          <span class="material-symbols-outlined text-[32px]">child_care</span>
+        </span>
+        <span class="text-lg font-bold leading-tight tracking-[-0.015em]">Mel'z Baby&amp;Kids</span>
+      </a>
 
-            <!-- Desktop Menu -->
-            <nav class="hidden lg:flex items-center gap-8 text-sm font-medium">
-                <a href="/index.html" class="hover:text-primary transition">Ana Sayfa</a>
+      <!-- Desktop Menu -->
+      <nav class="hidden lg:flex items-center gap-7">
+        <a class="text-text-main text-sm font-medium hover:text-primary transition-colors" href="/anasayfa/dist/index.html">Ana Sayfa</a>
+        <a class="text-text-main text-sm font-medium hover:text-primary transition-colors" href="/bebek-urunleri/dist/index.html">Shop</a>
+        <a class="text-text-main text-sm font-medium hover:text-primary transition-colors" href="/bebek-urunleri/dist/index.html">Giyim</a>
+        <a class="text-text-main text-sm font-medium hover:text-primary transition-colors" href="/blog/dist/index.html">Blog</a>
+        <a class="text-text-main text-sm font-medium hover:text-primary transition-colors" href="/iletisim/dist/index.html">İletişim</a>
+      </nav>
 
-                <!-- GİYİM (Mega Menu altyapısı hazır) -->
-                <div class="relative group">
-                    <a href="/bebek_ürünleri_ana_sayfası_9/dist/index.html" class="hover:text-primary transition">
-                        Giyim
-                    </a>
+      <!-- Actions -->
+      <div class="flex items-center gap-3 justify-end flex-1">
+        <label class="hidden md:flex flex-1 min-w-0 max-w-[420px]">
+          <div class="flex w-full items-center rounded-xl bg-[#f4f2f0] px-3 h-10">
+            <span class="material-symbols-outlined text-[20px] text-text-secondary">search</span>
+            <input
+              class="flex-1 bg-transparent outline-none px-2 text-sm text-text-main placeholder:text-text-secondary"
+              placeholder="Ürün ara..."
+            />
+          </div>
+        </label>
 
-                    <!-- ŞİMDİLİK BOŞ (sonra mega menu koyacağız) -->
-                    <div
-                        class="absolute left-0 top-full mt-4 w-[600px] bg-white rounded-2xl shadow-lg border border-[#f4f2f0] p-6 hidden group-hover:block">
-                        <p class="text-sm text-text-secondary">
-                            Giyim kategorileri buraya gelecek.
-                        </p>
-                    </div>
-                </div>
+        <button class="flex items-center justify-center rounded-xl h-10 w-10 bg-[#f4f2f0] hover:bg-[#e8e6e4] text-text-main transition-colors" aria-label="Sepet">
+          <span class="material-symbols-outlined text-[20px]">shopping_cart</span>
+        </button>
+        <button class="flex items-center justify-center rounded-xl h-10 w-10 bg-[#f4f2f0] hover:bg-[#e8e6e4] text-text-main transition-colors" aria-label="Hesap">
+          <span class="material-symbols-outlined text-[20px]">account_circle</span>
+        </button>
+      </div>
 
-                <a href="/blog_sayfası/dist/index.html" class="hover:text-primary transition">
-                    Blog
-                </a>
-
-                <a href="/iletisim_sayfasi_3/dist/index.html" class="hover:text-primary transition">
-                    İletişim
-                </a>
-            </nav>
-
-            <!-- Actions -->
-            <div class="flex items-center gap-3">
-                <button class="w-10 h-10 rounded-xl bg-[#f4f2f0] hover:bg-[#e8e6e4] flex items-center justify-center">
-                    <span class="material-symbols-outlined text-[20px]">search</span>
-                </button>
-
-                <button class="w-10 h-10 rounded-xl bg-[#f4f2f0] hover:bg-[#e8e6e4] flex items-center justify-center">
-                    <span class="material-symbols-outlined text-[20px]">shopping_cart</span>
-                </button>
-
-                <button class="w-10 h-10 rounded-xl bg-[#f4f2f0] hover:bg-[#e8e6e4] flex items-center justify-center">
-                    <span class="material-symbols-outlined text-[20px]">account_circle</span>
-                </button>
-            </div>
-
-        </div>
     </div>
+  </div>
 </header>
