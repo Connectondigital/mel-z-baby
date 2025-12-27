@@ -118,6 +118,13 @@ def get_api_script_path(page_dir: Path) -> str:
     return "../" * (depth + 1) + "assets/api.js"
 
 
+def get_api_v2_script_path(page_dir: Path) -> str:
+    """Calculate relative path to /assets/api.v2.js from page dist folder."""
+    rel = page_dir.relative_to(ROOT)
+    depth = len(rel.parts)
+    return "../" * (depth + 1) + "assets/api.v2.js"
+
+
 def build_pages():
     if not REF_PAGE.exists():
         raise RuntimeError(f"Referans sayfa yok: {REF_PAGE}")
