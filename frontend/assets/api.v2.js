@@ -710,12 +710,6 @@
         `;
       }
     }
-        <div class="mt-4 flex items-center justify-center gap-2 text-xs text-gray-400">
-          <span class="material-symbols-outlined text-sm">lock</span>
-          256-bit SSL ile korunan güvenli ödeme
-        </div>
-      `;
-    }
   }
 
   // ============================================
