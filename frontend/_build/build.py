@@ -148,8 +148,9 @@ def build_pages():
         # Eğer code.html içinde header/footer kalmışsa temizle (çift header çözümü)
         main_content = strip_blocks(main_content, ["header", "footer"])
 
-        # Calculate relative path to api.js
+        # Calculate relative path to api.js and api.v2.js
         api_script_path = get_api_script_path(page_dir)
+        api_v2_script_path = get_api_v2_script_path(page_dir)
 
         out = f"""<!doctype html>
 <html lang="tr">
@@ -164,6 +165,7 @@ def build_pages():
 
 {footer}
 <script src="{api_script_path}"></script>
+<script src="{api_v2_script_path}"></script>
 </body>
 </html>
 """
