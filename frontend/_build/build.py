@@ -109,6 +109,15 @@ def iter_code_pages():
         yield code
 
 
+def get_api_script_path(page_dir: Path) -> str:
+    """Calculate relative path to /assets/api.js from page dist folder."""
+    # Count depth from ROOT to page_dir
+    rel = page_dir.relative_to(ROOT)
+    depth = len(rel.parts)
+    # dist is one level deeper
+    return "../" * (depth + 1) + "assets/api.js"
+
+
 def build_pages():
     if not REF_PAGE.exists():
         raise RuntimeError(f"Referans sayfa yok: {REF_PAGE}")
@@ -132,6 +141,9 @@ def build_pages():
         # Eğer code.html içinde header/footer kalmışsa temizle (çift header çözümü)
         main_content = strip_blocks(main_content, ["header", "footer"])
 
+        # Calculate relative path to api.js
+        api_script_path = get_api_script_path(page_dir)
+
         out = f"""<!doctype html>
 <html lang="tr">
 <head>
@@ -144,6 +156,7 @@ def build_pages():
 {main_content}
 
 {footer}
+<script src="{api_script_path}"></script>
 </body>
 </html>
 """
