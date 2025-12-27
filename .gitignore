@@ -17,3 +17,7 @@ frontend/_partials/*.BAK.html
 frontend/**/code.BAK*.html
 
 # generated local assets (keep assets folder tracked; do NOT ignore it)
+-e 
+# Environment files
+*.env
+*.env.*
