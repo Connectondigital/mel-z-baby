@@ -21,3 +21,7 @@ frontend/**/code.BAK*.html
 # Environment files
 *.env
 *.env.*
+-e 
+# Environment files
+*.env
+*.env.*
