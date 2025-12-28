@@ -831,8 +831,10 @@
         createdAt: new Date().toISOString()
       };
       
+      // Store in both sessionStorage and localStorage for persistence
       sessionStorage.setItem('melz_last_order', JSON.stringify(orderData));
-      console.log('[MelzV2] Order saved to session:', orderId);
+      localStorage.setItem('melz_last_order', JSON.stringify(orderData));
+      console.log('[MelzV2] Order saved:', orderId);
     } catch (e) {
       console.warn('[MelzV2] Could not save order data:', e);
     }
