@@ -1,0 +1,195 @@
+<main class="flex-1">
+  <section class="px-4 py-10 md:px-10 lg:px-20 max-w-[1440px] mx-auto w-full">
+    <div class="flex flex-wrap items-center justify-between gap-4">
+      <div>
+        <h1 class="text-2xl md:text-3xl font-black text-[#181311] dark:text-white">Ürün Yönetimi</h1>
+        <p class="mt-1 text-sm text-[#896f61]">Mock ürün listesi + localStorage kayıt</p>
+      </div>
+
+      <div class="flex gap-2">
+        <a href="/admin-panel/dist/index.html" class="h-10 px-4 rounded-xl bg-[#f4f2f0] text-[#181311] font-bold text-sm hover:bg-primary/10 transition flex items-center gap-2">
+          <span class="material-symbols-outlined text-[18px]">dashboard</span> Panele Dön
+        </a>
+        <button id="addBtn" class="h-10 px-4 rounded-xl bg-primary text-white font-black text-sm hover:opacity-90 transition flex items-center gap-2">
+          <span class="material-symbols-outlined text-[18px]">add</span> Yeni Ürün
+        </button>
+      </div>
+    </div>
+
+    <div id="alert" class="hidden mt-6 rounded-xl px-4 py-3 text-sm"></div>
+
+    <div class="mt-6 overflow-hidden rounded-2xl border border-[#f4f2f0] bg-white dark:bg-white/5">
+      <div class="p-4 border-b border-[#f4f2f0] flex items-center justify-between gap-3">
+        <div class="text-sm font-black text-[#181311] dark:text-white">Ürünler</div>
+        <input id="search" placeholder="Ara..." class="h-10 px-4 rounded-xl bg-[#f4f2f0] dark:bg-white/10 text-sm w-56 focus:outline-none focus:ring-2 focus:ring-primary" />
+      </div>
+      <div class="p-4" id="list"></div>
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div id="modal" class="fixed inset-0 hidden items-center justify-center bg-black/40 p-4 z-50">
+    <div class="w-full max-w-lg rounded-2xl bg-white dark:bg-[#2a1b14] p-6 border border-[#f4f2f0] dark:border-white/10">
+      <div class="flex items-center justify-between">
+        <h2 id="modalTitle" class="text-lg font-black text-[#181311] dark:text-white">Ürün</h2>
+        <button id="closeModal" class="size-10 rounded-xl bg-[#f4f2f0] dark:bg-white/10 flex items-center justify-center hover:bg-primary/10">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+
+      <form id="form" class="mt-4 space-y-3">
+        <input type="hidden" id="pid" />
+        <label class="block">
+          <span class="text-sm font-bold text-[#181311] dark:text-white">Ad</span>
+          <input id="pname" required class="mt-1 w-full h-11 px-4 rounded-xl bg-[#f4f2f0] dark:bg-white/10 focus:outline-none focus:ring-2 focus:ring-primary" />
+        </label>
+        <label class="block">
+          <span class="text-sm font-bold text-[#181311] dark:text-white">Fiyat (₺)</span>
+          <input id="pprice" type="number" min="0" step="0.01" required class="mt-1 w-full h-11 px-4 rounded-xl bg-[#f4f2f0] dark:bg-white/10 focus:outline-none focus:ring-2 focus:ring-primary" />
+        </label>
+        <label class="block">
+          <span class="text-sm font-bold text-[#181311] dark:text-white">Görsel URL (opsiyonel)</span>
+          <input id="pimg" class="mt-1 w-full h-11 px-4 rounded-xl bg-[#f4f2f0] dark:bg-white/10 focus:outline-none focus:ring-2 focus:ring-primary" />
+        </label>
+
+        <div class="flex gap-2 pt-2">
+          <button type="submit" class="flex-1 h-11 rounded-xl bg-primary text-white font-black hover:opacity-90 transition">Kaydet</button>
+          <button type="button" id="deleteBtn" class="hidden h-11 px-4 rounded-xl border border-red-200 text-red-700 font-black hover:bg-red-50 transition">Sil</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="/assets/api.v2.js"></script>
+  <script>
+    (function () {
+      const guard = window.MelzApiV2.auth.requireAuth({ adminOnly: true });
+      if (!guard.ok) { window.location.href = "/giris/dist/index.html"; return; }
+
+      const alertBox = document.getElementById("alert");
+      function showAlert(type, msg) {
+        alertBox.className = "mt-6 rounded-xl px-4 py-3 text-sm " + (type === "error"
+          ? "bg-red-50 text-red-700 border border-red-200"
+          : "bg-green-50 text-green-700 border border-green-200");
+        alertBox.textContent = msg;
+        alertBox.classList.remove("hidden");
+        setTimeout(() => alertBox.classList.add("hidden"), 2500);
+      }
+
+      const listEl = document.getElementById("list");
+      const searchEl = document.getElementById("search");
+      const modal = document.getElementById("modal");
+      const closeModal = document.getElementById("closeModal");
+      const addBtn = document.getElementById("addBtn");
+      const form = document.getElementById("form");
+      const deleteBtn = document.getElementById("deleteBtn");
+
+      const pid = document.getElementById("pid");
+      const pname = document.getElementById("pname");
+      const pprice = document.getElementById("pprice");
+      const pimg = document.getElementById("pimg");
+      const modalTitle = document.getElementById("modalTitle");
+
+      function openModal(product) {
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+
+        if (product) {
+          modalTitle.textContent = "Ürün Düzenle";
+          pid.value = product.id || "";
+          pname.value = product.name || "";
+          pprice.value = Number(product.price || 0);
+          pimg.value = product.image || product.img || "";
+          deleteBtn.classList.remove("hidden");
+        } else {
+          modalTitle.textContent = "Yeni Ürün";
+          pid.value = "";
+          pname.value = "";
+          pprice.value = "";
+          pimg.value = "";
+          deleteBtn.classList.add("hidden");
+        }
+      }
+
+      function hideModal() {
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+      }
+
+      closeModal.addEventListener("click", hideModal);
+      modal.addEventListener("click", (e) => { if (e.target === modal) hideModal(); });
+      addBtn.addEventListener("click", () => openModal(null));
+
+      function getProducts() {
+        return window.MelzApiV2.admin.getProducts() || [];
+      }
+
+      function render() {
+        const q = (searchEl.value || "").toLowerCase();
+        const items = getProducts().filter(p => (p.name || "").toLowerCase().includes(q));
+
+        if (!items.length) {
+          listEl.innerHTML = '<div class="text-sm text-[#896f61]">Ürün bulunamadı.</div>';
+          return;
+        }
+
+        listEl.innerHTML = items.map(p => {
+          const price = window.MelzApiV2.fmtTRY ? window.MelzApiV2.fmtTRY(Number(p.price||0)) : ("₺"+(Number(p.price||0)));
+          return `
+            <div class="flex items-center justify-between gap-3 p-4 rounded-xl border border-[#f4f2f0] mb-3 hover:bg-primary/5 transition">
+              <div class="flex items-center gap-3 min-w-0">
+                <div class="size-12 rounded-xl bg-[#f4f2f0] overflow-hidden flex items-center justify-center">
+                  ${p.image ? `<img src="${p.image}" class="w-full h-full object-cover" />` : `<span class="material-symbols-outlined text-[#896f61]">image</span>`}
+                </div>
+                <div class="min-w-0">
+                  <div class="font-black text-[#181311] dark:text-white truncate">${p.name || "Ürün"}</div>
+                  <div class="text-xs text-[#896f61] truncate">#${p.id || "-"}</div>
+                </div>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="font-black text-[#181311] dark:text-white">${price}</div>
+                <button class="editBtn h-10 px-4 rounded-xl bg-[#f4f2f0] text-[#181311] font-black text-sm hover:bg-primary/10 transition" data-id="${p.id}">Düzenle</button>
+              </div>
+            </div>
+          `;
+        }).join("");
+
+        document.querySelectorAll(".editBtn").forEach(btn => {
+          btn.addEventListener("click", () => {
+            const id = btn.getAttribute("data-id");
+            const product = getProducts().find(x => x.id === id);
+            openModal(product);
+          });
+        });
+      }
+
+      searchEl.addEventListener("input", render);
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const product = {
+          id: pid.value || undefined,
+          name: pname.value.trim(),
+          price: Number(pprice.value || 0),
+          image: pimg.value.trim() || undefined,
+        };
+        const res = window.MelzApiV2.admin.upsertProduct(product);
+        if (!res.ok) { showAlert("error", res.message || "Kaydedilemedi."); return; }
+        showAlert("success", "Kaydedildi.");
+        hideModal();
+        render();
+      });
+
+      deleteBtn.addEventListener("click", () => {
+        const id = pid.value;
+        if (!id) return;
+        window.MelzApiV2.admin.deleteProduct(id);
+        showAlert("success", "Silindi.");
+        hideModal();
+        render();
+      });
+
+      render();
+    })();
+  </script>
+</main>

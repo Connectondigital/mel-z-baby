@@ -1,0 +1,160 @@
+<main class="flex-1">
+  <section class="px-4 py-10 md:px-10 lg:px-20 max-w-[1440px] mx-auto w-full">
+    <div class="flex flex-wrap items-center justify-between gap-4">
+      <div>
+        <h1 class="text-2xl md:text-3xl font-black text-[#181311] dark:text-white">Sipariş Yönetimi</h1>
+        <p class="mt-1 text-sm text-[#896f61]">Mock siparişler localStorage: <code>melz_admin_orders</code></p>
+      </div>
+
+      <div class="flex gap-2">
+        <a href="/admin-panel/dist/index.html" class="h-10 px-4 rounded-xl bg-[#f4f2f0] text-[#181311] font-bold text-sm hover:bg-primary/10 transition flex items-center gap-2">
+          <span class="material-symbols-outlined text-[18px]">dashboard</span> Panele Dön
+        </a>
+        <button id="seedBtn" class="h-10 px-4 rounded-xl bg-[#f4f2f0] text-[#181311] font-black text-sm hover:bg-primary/10 transition flex items-center gap-2">
+          <span class="material-symbols-outlined text-[18px]">science</span> Demo Sipariş Ekle
+        </button>
+      </div>
+    </div>
+
+    <div id="alert" class="hidden mt-6 rounded-xl px-4 py-3 text-sm"></div>
+
+    <div class="mt-6 overflow-hidden rounded-2xl border border-[#f4f2f0] bg-white dark:bg-white/5">
+      <div class="p-4 border-b border-[#f4f2f0] flex flex-wrap items-center justify-between gap-3">
+        <div class="text-sm font-black text-[#181311] dark:text-white">Siparişler</div>
+        <div class="flex gap-2 items-center">
+          <select id="filter" class="h-10 px-4 rounded-xl bg-[#f4f2f0] dark:bg-white/10 text-sm focus:outline-none focus:ring-2 focus:ring-primary">
+            <option value="all">Tümü</option>
+            <option value="bekle">Beklemede</option>
+            <option value="hazir">Hazırlanıyor</option>
+            <option value="kargo">Kargoda</option>
+            <option value="tamam">Tamamlandı</option>
+          </select>
+          <input id="search" placeholder="Ara (id / müşteri)..." class="h-10 px-4 rounded-xl bg-[#f4f2f0] dark:bg-white/10 text-sm w-64 focus:outline-none focus:ring-2 focus:ring-primary" />
+        </div>
+      </div>
+
+      <div class="p-4" id="list"></div>
+    </div>
+  </section>
+
+  <script src="/assets/api.v2.js"></script>
+  <script>
+    (function () {
+      const guard = window.MelzApiV2.auth.requireAuth({ adminOnly: true });
+      if (!guard.ok) { window.location.href = "/giris/dist/index.html"; return; }
+
+      const alertBox = document.getElementById("alert");
+      function showAlert(type, msg) {
+        alertBox.className = "mt-6 rounded-xl px-4 py-3 text-sm " + (type === "error"
+          ? "bg-red-50 text-red-700 border border-red-200"
+          : "bg-green-50 text-green-700 border border-green-200");
+        alertBox.textContent = msg;
+        alertBox.classList.remove("hidden");
+        setTimeout(() => alertBox.classList.add("hidden"), 2500);
+      }
+
+      const listEl = document.getElementById("list");
+      const searchEl = document.getElementById("search");
+      const filterEl = document.getElementById("filter");
+      const seedBtn = document.getElementById("seedBtn");
+
+      function getOrders() {
+        return window.MelzApiV2.admin.getOrders() || [];
+      }
+
+      function fmtMoney(v) {
+        const n = Number(v || 0) || 0;
+        return window.MelzApiV2.fmtTRY ? window.MelzApiV2.fmtTRY(n) : ("₺" + n);
+      }
+
+      function render() {
+        const q = (searchEl.value || "").toLowerCase().trim();
+        const f = filterEl.value;
+
+        let items = getOrders();
+
+        if (f !== "all") items = items.filter(o => (o.status || "").toLowerCase().includes(f));
+        if (q) {
+          items = items.filter(o => {
+            const id = String(o.id || "").toLowerCase();
+            const name = String((o.customer && o.customer.name) || o.name || "").toLowerCase();
+            return id.includes(q) || name.includes(q);
+          });
+        }
+
+        if (!items.length) {
+          listEl.innerHTML = '<div class="text-sm text-[#896f61]">Sipariş bulunamadı.</div>';
+          return;
+        }
+
+        listEl.innerHTML = items.map(o => {
+          const id = o.id || "-";
+          const name = (o.customer && o.customer.name) || o.name || "Müşteri";
+          const phone = (o.customer && o.customer.phone) || o.phone || "";
+          const status = o.status || "beklemede";
+          const total = fmtMoney(o.total || o.amount || 0);
+          const createdAt = o.createdAt ? new Date(o.createdAt).toLocaleString("tr-TR") : "";
+
+          return `
+            <div class="rounded-2xl border border-[#f4f2f0] p-4 mb-4 hover:bg-primary/5 transition">
+              <div class="flex flex-wrap items-center justify-between gap-3">
+                <div class="min-w-0">
+                  <div class="font-black text-[#181311] dark:text-white">#${id} • ${name}</div>
+                  <div class="text-xs text-[#896f61]">${phone ? phone + " • " : ""}${createdAt}</div>
+                </div>
+                <div class="flex items-center gap-3">
+                  <div class="font-black text-[#181311] dark:text-white">${total}</div>
+                  <select class="statusSel h-10 px-4 rounded-xl bg-[#f4f2f0] dark:bg-white/10 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-primary" data-id="${id}">
+                    <option value="beklemede" ${status.includes("bekle") ? "selected" : ""}>Beklemede</option>
+                    <option value="hazirlaniyor" ${status.includes("hazir") ? "selected" : ""}>Hazırlanıyor</option>
+                    <option value="kargoda" ${status.includes("kargo") ? "selected" : ""}>Kargoda</option>
+                    <option value="tamamlandi" ${status.includes("tamam") ? "selected" : ""}>Tamamlandı</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="mt-3 text-sm text-[#63534b]">
+                ${(o.items && o.items.length)
+                  ? o.items.map(it => `<div class="flex justify-between gap-3"><span>${it.name || "Ürün"} x${it.qty || 1}</span><span class="font-bold">${fmtMoney(it.price || 0)}</span></div>`).join("")
+                  : '<span class="text-[#896f61]">Ürün detayı yok (mock).</span>'
+                }
+              </div>
+            </div>
+          `;
+        }).join("");
+
+        document.querySelectorAll(".statusSel").forEach(sel => {
+          sel.addEventListener("change", () => {
+            const id = sel.getAttribute("data-id");
+            const status = sel.value;
+            const res = window.MelzApiV2.admin.updateOrderStatus(id, status);
+            if (!res.ok) showAlert("error", res.message || "Güncellenemedi.");
+            else showAlert("success", "Durum güncellendi.");
+          });
+        });
+      }
+
+      seedBtn.addEventListener("click", () => {
+        const demo = {
+          id: "ord_" + Math.random().toString(16).slice(2, 8),
+          status: "beklemede",
+          total: 1299.90,
+          createdAt: new Date().toISOString(),
+          customer: { name: "Demo Müşteri", phone: "+90 555 000 00 00" },
+          items: [
+            { name: "Demo Ürün 1", qty: 1, price: 799.95 },
+            { name: "Demo Ürün 2", qty: 1, price: 499.95 },
+          ],
+        };
+        window.MelzApiV2.admin.saveOrder(demo);
+        showAlert("success", "Demo sipariş eklendi.");
+        render();
+      });
+
+      searchEl.addEventListener("input", render);
+      filterEl.addEventListener("change", render);
+
+      render();
+    })();
+  </script>
+</main>
