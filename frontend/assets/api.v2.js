@@ -792,10 +792,51 @@
     });
   }
 
-  function simulatePayment() {
+  async function simulatePayment() {
     document.getElementById("payment-modal")?.remove();
     
     const orderId = "MLZ-" + Date.now().toString(36).toUpperCase();
+    
+    // Store order data for confirmation page
+    try {
+      const cart = getCart();
+      const products = await getCartProducts();
+      const totals = await getCartTotals();
+      
+      // Get delivery info from form
+      const nameInput = document.getElementById('checkout-name');
+      const surnameInput = document.getElementById('checkout-surname');
+      const phoneInput = document.getElementById('checkout-phone');
+      const addressInput = document.getElementById('checkout-address');
+      
+      const orderData = {
+        orderId,
+        items: products.map(p => ({
+          id: p.id,
+          name: p.name,
+          price: p.salePrice != null && Number(p.salePrice) < Number(p.price) ? p.salePrice : p.price,
+          qty: cart.find(c => c.id === String(p.id))?.qty || 1,
+          size: cart.find(c => c.id === String(p.id))?.size || null,
+          image: (p.images && p.images[0]) || null
+        })),
+        subtotal: totals.subtotal,
+        shipping: totals.shipping,
+        total: totals.total,
+        isFreeShipping: totals.isFreeShipping,
+        delivery: {
+          name: [nameInput?.value, surnameInput?.value].filter(Boolean).join(' ').trim(),
+          phone: phoneInput?.value?.trim() || '',
+          address: addressInput?.value?.trim() || ''
+        },
+        createdAt: new Date().toISOString()
+      };
+      
+      sessionStorage.setItem('melz_last_order', JSON.stringify(orderData));
+      console.log('[MelzV2] Order saved to session:', orderId);
+    } catch (e) {
+      console.warn('[MelzV2] Could not save order data:', e);
+    }
+    
     clearCart();
     window.location.href = `/siparis-onayi/dist/index.html?orderId=${orderId}&status=success`;
   }
