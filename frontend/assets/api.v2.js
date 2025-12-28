@@ -18,7 +18,7 @@
 
   const API_BASE = (window.MELZ_API_URL || "http://127.0.0.1:5050/api").replace(/\/$/, "");
   const CART_KEY = "melz_cart";
-  const USE_MOCK_FALLBACK = true; // Enable mock fallback when API unavailable
+  const USE_MOCK_FALLBACK = false; // REAL API MODE // Enable mock fallback when API unavailable
 
   // ============================================
   // MOCK DATA (fallback when API unavailable)
