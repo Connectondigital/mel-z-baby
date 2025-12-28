@@ -113,7 +113,7 @@
 </a>
 </nav>
 <div class="h-px bg-[#f4f2f0] my-4"></div>
-<button class="flex w-full items-center justify-center gap-2 rounded-xl h-10 px-4 border border-[#e6dfdb] text-[#896f61] hover:bg-[#f4f2f0] hover:text-[#181311] transition-colors text-sm font-bold">
+<button id="logoutBtn" class="flex w-full items-center justify-center gap-2 rounded-xl h-10 px-4 border border-[#e6dfdb] text-[#896f61] hover:bg-[#f4f2f0] hover:text-[#181311] transition-colors text-sm font-bold">
 <span class="material-symbols-outlined text-[18px]">logout</span>
 <span>Çıkış Yap</span>
 </button>
@@ -369,4 +369,32 @@
 </main>
 </div>
 
+  <script src="/assets/api.v2.js"></script>
+  <script>
+    (function () {
+      // Auth guard
+      try {
+        const check = window.MelzApiV2 && window.MelzApiV2.auth && window.MelzApiV2.auth.requireAuth ? window.MelzApiV2.auth.requireAuth() : null;
+        if (!check || !check.ok) {
+          window.location.href = "/giris/dist/index.html";
+          return;
+        }
+      } catch (e) {
+        window.location.href = "/giris/dist/index.html";
+        return;
+      }
+
+      // Logout
+      const btn = document.getElementById("logoutBtn");
+      if (btn) {
+        btn.addEventListener("click", function () {
+          try { window.MelzApiV2.auth.logout(); } catch (e) {
+            localStorage.removeItem("melz_session");
+            localStorage.removeItem("melz_user");
+          }
+          window.location.href = "/giris/dist/index.html";
+        });
+      }
+    })();
+  </script>
 </body></html>

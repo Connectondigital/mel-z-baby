@@ -609,3 +609,116 @@
 </div>
 </section>
 </main>
+
+<script>
+(function () {
+  function isAddToCartBtn(btn) {
+    if (!btn) return false;
+    const t = (btn.textContent || "").trim().toLowerCase();
+    return t.includes("sepete ekle");
+  }
+
+  function toast(type, msg) {
+    try {
+      if (window.MelzV2 && MelzV2.showToast) return MelzV2.showToast(type, msg);
+      if (window.MelzApiV2 && MelzApiV2.showToast) return MelzApiV2.showToast(type, msg);
+    } catch (e) {}
+    // fallback
+    alert(msg);
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const api = window.MelzV2 || window.MelzApiV2;
+    if (!api || typeof api.addToCart !== "function") {
+      console.warn("[BEBEK-URUNLERI] MelzV2.addToCart bulunamadı.");
+      return;
+    }
+
+    // Sayfadaki tüm butonlar içinde "Sepete Ekle" yazanları yakala
+    const allButtons = Array.from(document.querySelectorAll("button"));
+    const addBtns = allButtons.filter(isAddToCartBtn);
+
+    addBtns.forEach((btn, idx) => {
+      // Çift bind olmasın
+      if (btn.dataset.bound === "1") return;
+      btn.dataset.bound = "1";
+
+      // Ürün id: data-pid varsa onu kullan, yoksa p1..pN şeklinde otomatik ver
+      const pid = btn.dataset.pid || ("p" + (idx + 1));
+
+      btn.addEventListener("click", function (e) {
+        e.preventDefault();
+        try {
+          api.addToCart({ id: pid, qty: 1 });
+
+          // badge güncelle
+          try { api.updateCartBadge && api.updateCartBadge(); } catch (e2) {}
+
+          toast("success", "Sepete eklendi ✅");
+
+          // mini görsel feedback
+          btn.classList.add("opacity-80");
+          setTimeout(() => btn.classList.remove("opacity-80"), 250);
+        } catch (err) {
+          console.error(err);
+          toast("error", "Sepete eklenemedi.");
+        }
+      });
+    });
+
+    console.log("[BEBEK-URUNLERI] Sepete Ekle butonları bağlandı:", addBtns.length);
+  });
+})();
+</script>
+
+
+<script>
+(function () {
+  if (window.__melz_bebek_add_fix_v3) return;
+  window.__melz_bebek_add_fix_v3 = true;
+
+  function isAddBtn(btn){
+    const t = (btn?.textContent || "").trim().toLowerCase();
+    return t.includes("sepete ekle");
+  }
+
+  function toast(type, msg) {
+    try {
+      const api = window.MelzV2 || window.MelzApiV2;
+      if (api && api.showToast) return api.showToast(type, msg);
+    } catch (e) {}
+    alert(msg);
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const api = window.MelzV2 || window.MelzApiV2;
+    if (!api || typeof api.addToCart !== "function") return;
+
+    const buttons = Array.from(document.querySelectorAll("button")).filter(isAddBtn);
+
+    // MOCK_PRODUCTS id'leri: 1..6 (api.v2.js içinde böyle)
+    buttons.forEach((btn, idx) => {
+      if (btn.dataset.boundFix === "1") return;
+      btn.dataset.boundFix = "1";
+
+      // Ürün id'lerini sırayla bağla: 1,2,3,4,5,6 sonra tekrar 1..
+      const pid = (idx % 6) + 1;
+
+      btn.addEventListener("click", function (e) {
+        e.preventDefault();
+        try {
+          api.addToCart({ id: pid, qty: 1 });
+          try { api.updateCartBadge && api.updateCartBadge(); } catch (e2) {}
+          toast("success", "Sepete eklendi ✅");
+        } catch (err) {
+          console.error(err);
+          toast("error", "Sepete eklenemedi.");
+        }
+      });
+    });
+
+    console.log("[BEBEK-URUNLERI] AddToCart FIX bound:", buttons.length);
+  });
+})();
+</script>
+

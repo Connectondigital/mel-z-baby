@@ -4,52 +4,52 @@
     <p class="text-[#897561] dark:text-[#a89580] mt-1">Siparişinizi güvenle tamamlayın</p>
   </div>
 
-  <!-- Progress Steps -->
-  <div class="w-full max-w-3xl mx-auto mb-12">
+  <!-- Progress -->
+  <div class="w-full max-w-3xl mx-auto mb-10">
     <div class="relative">
       <div class="absolute top-1/2 left-0 w-full h-1 bg-gray-200 dark:bg-gray-800 -translate-y-1/2 rounded-full"></div>
-      <div class="absolute top-1/2 left-0 w-1/3 h-1 bg-primary -translate-y-1/2 rounded-full transition-all duration-500 shadow-[0_0_10px_rgba(238,140,43,0.3)]"></div>
+      <div class="absolute top-1/2 left-0 w-2/3 h-1 bg-primary -translate-y-1/2 rounded-full transition-all duration-500 shadow-[0_0_10px_rgba(238,140,43,0.25)]"></div>
       <div class="relative z-10 flex justify-between w-full">
-        <div class="flex flex-col items-center group cursor-pointer">
-          <div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center shadow-lg ring-[6px] ring-background-light dark:ring-background-dark transition-transform hover:scale-105">
+        <div class="flex flex-col items-center">
+          <div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center shadow-lg ring-[6px] ring-background-light dark:ring-background-dark">
             <span class="material-symbols-outlined text-lg">shopping_cart</span>
           </div>
           <span class="mt-3 text-xs font-bold uppercase tracking-wider text-primary">Sepet</span>
         </div>
-        <div class="flex flex-col items-center group cursor-pointer">
-          <div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center shadow-lg ring-[6px] ring-background-light dark:ring-background-dark scale-110">
+        <div class="flex flex-col items-center">
+          <div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center shadow-lg ring-[6px] ring-background-light dark:ring-background-dark">
             <span class="material-symbols-outlined text-lg">local_shipping</span>
           </div>
           <span class="mt-3 text-xs font-bold uppercase tracking-wider text-primary">Teslimat</span>
         </div>
-        <div class="flex flex-col items-center group">
-          <div class="w-10 h-10 rounded-full bg-white dark:bg-[#2a2a2a] border-2 border-gray-200 dark:border-gray-700 text-gray-400 dark:text-gray-500 flex items-center justify-center ring-[6px] ring-background-light dark:ring-background-dark transition-colors">
+        <div class="flex flex-col items-center">
+          <div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center shadow-lg ring-[6px] ring-background-light dark:ring-background-dark scale-110">
             <span class="material-symbols-outlined text-lg">credit_card</span>
           </div>
-          <span class="mt-3 text-xs font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors">Ödeme</span>
+          <span class="mt-3 text-xs font-bold uppercase tracking-wider text-primary">Ödeme</span>
         </div>
-        <div class="flex flex-col items-center group">
-          <div class="w-10 h-10 rounded-full bg-white dark:bg-[#2a2a2a] border-2 border-gray-200 dark:border-gray-700 text-gray-400 dark:text-gray-500 flex items-center justify-center ring-[6px] ring-background-light dark:ring-background-dark transition-colors">
+        <div class="flex flex-col items-center">
+          <div class="w-10 h-10 rounded-full bg-white dark:bg-[#2a2a2a] border-2 border-gray-200 dark:border-gray-700 text-gray-400 dark:text-gray-500 flex items-center justify-center ring-[6px] ring-background-light dark:ring-background-dark">
             <span class="material-symbols-outlined text-lg">check_circle</span>
           </div>
-          <span class="mt-3 text-xs font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors">Onay</span>
+          <span class="mt-3 text-xs font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500">Onay</span>
         </div>
       </div>
     </div>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-    <!-- Cart Items Section -->
+    <!-- Left: Cart -->
     <div class="lg:col-span-7 space-y-6">
       <div class="flex items-center justify-between pb-2 border-b border-gray-200 dark:border-gray-700">
         <h3 class="text-xl font-bold">Sepetim (<span id="cart-item-count">0</span> Ürün)</h3>
-        <button onclick="MelzV2.clearCart(); MelzV2.initCheckout();" class="text-sm text-[#897561] hover:text-red-500 transition-colors font-medium">Sepeti Temizle</button>
+        <button id="clearCartBtn" class="text-sm text-[#897561] hover:text-red-500 transition-colors font-medium">
+          Sepeti Temizle
+        </button>
       </div>
-      
-      <!-- Dynamic Cart Items Container -->
+
       <div class="space-y-4" id="checkout-cart-items">
-        <!-- Cart items will be rendered here by JS -->
-        <div class="text-center py-8 text-gray-500">
+        <div class="text-center py-10 text-gray-500">
           <span class="material-symbols-outlined text-4xl mb-2">hourglass_empty</span>
           <p>Sepet yükleniyor...</p>
         </div>
@@ -63,27 +63,24 @@
       </div>
     </div>
 
-    <!-- Checkout Sidebar -->
+    <!-- Right: Forms -->
     <div class="lg:col-span-5 relative">
       <div class="sticky top-24 space-y-6">
-        
-        <!-- Guest Checkout Banner -->
-        <div class="bg-white dark:bg-[#181411] rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 p-5 relative overflow-hidden group">
-          <div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:bg-primary/10 transition-colors"></div>
-          <div class="relative z-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+
+        <div class="bg-white dark:bg-[#181411] rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 p-5 relative overflow-hidden">
+          <div class="flex items-start gap-3">
+            <span class="material-symbols-outlined text-primary mt-0.5">info</span>
             <div>
-              <div class="flex items-center justify-center sm:justify-start gap-2 mb-1">
-                <span class="material-symbols-outlined text-primary">no_accounts</span>
-                <h3 class="font-bold text-[#181411] dark:text-white">Üyeliksiz Devam Et</h3>
-              </div>
-              <p class="text-sm text-[#897561] dark:text-[#a89580]">Vaktiniz kısıtlı mı? Giriş yapmadan sipariş verin.</p>
+              <h3 class="font-bold text-[#181411] dark:text-white">Güvenli Ödeme</h3>
+              <p class="text-sm text-[#897561] dark:text-[#a89580] mt-1">
+                Bu demo akışta ödeme simüle edilir. Canlıda İYZİCO entegre edeceğiz.
+              </p>
             </div>
           </div>
         </div>
 
-        <!-- Delivery & Payment Form -->
         <div class="bg-white dark:bg-[#181411] rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 overflow-hidden">
-          <!-- Delivery Info -->
+          <!-- Delivery -->
           <div class="border-b border-gray-100 dark:border-gray-800">
             <div class="p-4 bg-gray-50 dark:bg-gray-800 flex items-center gap-3">
               <div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold">1</div>
@@ -100,69 +97,86 @@
                   <input id="checkout-surname" class="w-full rounded-lg border-gray-300 dark:border-gray-600 bg-white dark:bg-[#222] focus:border-primary focus:ring-primary" placeholder="Soyadınız" type="text"/>
                 </div>
               </div>
+
               <div class="space-y-1">
                 <label class="text-sm font-medium text-[#897561]">Telefon</label>
                 <input id="checkout-phone" class="w-full rounded-lg border-gray-300 dark:border-gray-600 bg-white dark:bg-[#222] focus:border-primary focus:ring-primary" placeholder="0(5__) ___ __ __" type="tel"/>
               </div>
+
               <div class="space-y-1">
                 <label class="text-sm font-medium text-[#897561]">Adres</label>
                 <textarea id="checkout-address" class="w-full rounded-lg border-gray-300 dark:border-gray-600 bg-white dark:bg-[#222] focus:border-primary focus:ring-primary" placeholder="Mahalle, Cadde, Sokak, No..." rows="2"></textarea>
               </div>
+
+              <div class="space-y-1">
+                <label class="text-sm font-medium text-[#897561]">Not (Opsiyonel)</label>
+                <input id="checkout-note" class="w-full rounded-lg border-gray-300 dark:border-gray-600 bg-white dark:bg-[#222] focus:border-primary focus:ring-primary" placeholder="Kapıya bırakın, aramayın vs." type="text"/>
+              </div>
             </div>
           </div>
 
-          <!-- Payment Method -->
+          <!-- Payment -->
           <div>
             <div class="p-4 bg-gray-50 dark:bg-gray-800 flex items-center gap-3">
               <div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold">2</div>
               <h3 class="font-bold text-lg">Ödeme Yöntemi</h3>
             </div>
+
             <div class="p-6 space-y-4">
-              <div class="flex gap-2 p-1 bg-gray-100 dark:bg-gray-800 rounded-lg">
-                <button class="flex-1 py-2 px-3 rounded-md bg-white dark:bg-[#333] shadow-sm text-sm font-bold text-primary flex items-center justify-center gap-2">
-                  <span class="material-symbols-outlined text-lg">credit_card</span>
+              <div class="flex gap-2 p-1 bg-gray-50 dark:bg-gray-800 rounded-xl border border-gray-100 dark:border-gray-700">
+                <button type="button" data-pay="card" class="payBtn flex-1 py-2 rounded-lg bg-white dark:bg-[#222] shadow-sm text-sm font-bold">
+                  <span class="material-symbols-outlined text-[18px] align-[-4px] mr-1">credit_card</span>
                   Kredi Kartı
                 </button>
-                <button class="flex-1 py-2 px-3 rounded-md hover:bg-white/50 dark:hover:bg-[#444] text-sm font-medium text-gray-500 dark:text-gray-400 flex items-center justify-center gap-2" disabled title="Yakında">
-                  <span class="material-symbols-outlined text-lg">home</span>
+                <button type="button" data-pay="door" class="payBtn flex-1 py-2 rounded-lg text-sm font-medium text-[#897561] hover:bg-white/60 dark:hover:bg-[#222]/60">
+                  <span class="material-symbols-outlined text-[18px] align-[-4px] mr-1">home</span>
                   Kapıda Ödeme
                 </button>
               </div>
-              <p class="text-xs text-gray-500 text-center">Ödeme, sonraki adımda Iyzico güvenli ödeme sayfasında gerçekleştirilecektir.</p>
+
+              <div id="cardBox" class="rounded-xl border border-gray-100 dark:border-gray-700 p-4 bg-gray-50 dark:bg-gray-800">
+                <p class="text-sm text-[#897561] dark:text-[#a89580]">
+                  Demo: Kart bilgisi alınmıyor. Canlıda İYZİCO ödeme sayfasına yönlendirilecek.
+                </p>
+              </div>
+
+              <div id="doorBox" class="hidden rounded-xl border border-gray-100 dark:border-gray-700 p-4 bg-gray-50 dark:bg-gray-800">
+                <p class="text-sm text-[#897561] dark:text-[#a89580]">
+                  Kapıda ödeme seçildi. Siparişiniz oluşturulacak ve ekibimiz sizinle iletişime geçecek.
+                </p>
+              </div>
+
+              <button id="completeOrderBtn" class="w-full mt-2 h-12 rounded-xl bg-primary text-white font-extrabold hover:opacity-95 transition flex items-center justify-center gap-2">
+                <span class="material-symbols-outlined">check</span>
+                Siparişi Tamamla
+              </button>
+
+              <p class="text-xs text-[#897561] dark:text-[#a89580]">
+                “Siparişi Tamamla” butonuna basarak <a href="/yasal/mesafeli-satis/dist/index.html" class="text-primary font-bold hover:underline">Mesafeli Satış</a> ve
+                <a href="/yasal/kvkk/dist/index.html" class="text-primary font-bold hover:underline">KVKK</a> şartlarını kabul etmiş olursunuz.
+              </p>
             </div>
           </div>
         </div>
 
         <!-- Order Summary -->
-        <div class="bg-white dark:bg-[#181411] rounded-2xl shadow-lg border-2 border-primary/10 p-6" id="checkout-summary">
-          <h3 class="font-bold text-lg mb-4">Sipariş Özeti</h3>
-          
-          <!-- Free Shipping Progress -->
-          <div id="free-shipping-progress" class="mb-4">
-            <!-- Will be populated by JS -->
-          </div>
+        <div class="bg-white dark:bg-[#181411] rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 p-6">
+          <h3 class="text-lg font-bold mb-4">Sipariş Özeti</h3>
 
-          <div class="space-y-3 pb-4 border-b border-gray-100 dark:border-gray-800">
-            <div class="flex justify-between text-[#897561] dark:text-[#a89580]">
-              <span>Ara Toplam</span>
-              <span class="font-medium text-[#181411] dark:text-white" id="checkout-subtotal">₺0,00</span>
+          <div class="space-y-3 text-sm">
+            <div class="flex items-center justify-between">
+              <span class="text-[#897561] dark:text-[#a89580]">Ara Toplam</span>
+              <span class="font-bold" id="summary-subtotal">₺0</span>
             </div>
-            <div class="flex justify-between text-[#897561] dark:text-[#a89580]">
-              <span>Kargo</span>
-              <span class="font-medium" id="checkout-shipping">₺0,00</span>
+            <div class="flex items-center justify-between">
+              <span class="text-[#897561] dark:text-[#a89580]">Kargo</span>
+              <span class="font-bold" id="summary-shipping">₺0</span>
             </div>
-          </div>
-          <div class="flex justify-between items-center py-4">
-            <span class="text-lg font-bold">Genel Toplam</span>
-            <span class="text-2xl font-bold text-primary" id="checkout-total">₺0,00</span>
-          </div>
-          <button onclick="MelzV2.proceedToPayment()" class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 px-6 rounded-xl shadow-lg shadow-primary/30 transition-all active:scale-[0.98] flex items-center justify-center gap-2">
-            <span>Ödemeye Geç</span>
-            <span class="material-symbols-outlined">arrow_forward</span>
-          </button>
-          <div class="mt-4 flex items-center justify-center gap-2 text-xs text-gray-400">
-            <span class="material-symbols-outlined text-sm">lock</span>
-            256-bit SSL ile korunan güvenli ödeme
+            <div class="h-px bg-gray-200 dark:bg-gray-800 my-2"></div>
+            <div class="flex items-center justify-between">
+              <span class="text-[#181311] dark:text-white font-extrabold">Toplam</span>
+              <span class="text-primary font-extrabold text-lg" id="summary-total">₺0</span>
+            </div>
           </div>
         </div>
 
@@ -172,10 +186,228 @@
 </main>
 
 <script>
-// Initialize checkout when DOM is ready
-document.addEventListener('DOMContentLoaded', function() {
-  if (typeof MelzV2 !== 'undefined') {
-    MelzV2.initCheckout();
+(function () {
+  const $ = (id) => document.getElementById(id);
+
+  function toast(type, msg) {
+    try {
+      if (window.MelzApiV2 && MelzApiV2.showToast) return MelzApiV2.showToast(type, msg);
+      if (window.MelzV2 && MelzV2.showToast) return MelzV2.showToast(type, msg);
+    } catch (e) {}
+    alert(msg);
   }
-});
+
+  function money(n) {
+    try {
+      if (window.MelzApiV2 && MelzApiV2.fmtTRY) return MelzApiV2.fmtTRY(n);
+      if (window.MelzV2 && MelzV2.fmtTRY) return MelzV2.fmtTRY(n);
+    } catch (e) {}
+    return "₺" + (Number(n || 0).toFixed(2));
+  }
+
+  function getApi() {
+    return window.MelzApiV2 || window.MelzV2 || null;
+  }
+
+  function getCartProductsSafe(api) {
+    try {
+      if (api && api.getCartProducts) return api.getCartProducts() || [];
+    } catch (e) {}
+    return [];
+  }
+
+  function getTotalsSafe(api) {
+    try {
+      if (api && api.getCartTotals) return api.getCartTotals() || { subtotal: 0, shipping: 0, total: 0 };
+    } catch (e) {}
+    return { subtotal: 0, shipping: 0, total: 0 };
+  }
+
+  function renderCart() {
+    const api = getApi();
+    const itemsEl = $("checkout-cart-items");
+    const countEl = $("cart-item-count");
+
+    const products = getCartProductsSafe(api);
+    countEl.textContent = products.length;
+
+    if (!products.length) {
+      itemsEl.innerHTML = `
+        <div class="text-center py-12 text-gray-500">
+          <span class="material-symbols-outlined text-5xl mb-2">shopping_cart_off</span>
+          <p class="font-bold">Sepetiniz boş.</p>
+          <p class="text-sm mt-1">Ürün ekleyip tekrar deneyin.</p>
+        </div>
+      `;
+    } else {
+      itemsEl.innerHTML = products.map((p) => {
+        const img = p.image || p.img || p.photo || "";
+        const name = p.name || p.title || "Ürün";
+        const price = Number(p.price || 0);
+        const qty = Number(p.qty || p.quantity || 1);
+
+        return `
+          <div class="bg-white dark:bg-[#181411] rounded-2xl border border-gray-100 dark:border-gray-800 p-4 flex gap-4 items-center">
+            <div class="w-16 h-16 rounded-xl bg-gray-50 dark:bg-gray-800 overflow-hidden flex items-center justify-center">
+              ${img ? `<img src="${img}" alt="${name}" class="w-full h-full object-cover"/>` : `<span class="material-symbols-outlined text-gray-400">image</span>`}
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="font-bold truncate">${name}</p>
+              <p class="text-xs text-[#897561] dark:text-[#a89580] mt-0.5">Adet: ${qty}</p>
+            </div>
+            <div class="text-right">
+              <p class="font-extrabold">${money(price * qty)}</p>
+              <p class="text-[11px] text-[#897561] dark:text-[#a89580]">${money(price)} / adet</p>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    const t = getTotalsSafe(api);
+    $("summary-subtotal").textContent = money(t.subtotal || 0);
+    $("summary-shipping").textContent = money(t.shipping || 0);
+    $("summary-total").textContent = money(t.total || 0);
+  }
+
+  function clearCart() {
+    const api = getApi();
+    try {
+      if (api && api.clearCart) api.clearCart();
+    } catch (e) {}
+    renderCart();
+    toast("success", "Sepet temizlendi.");
+  }
+
+  function setPayment(method) {
+    const cardBox = $("cardBox");
+    const doorBox = $("doorBox");
+    const buttons = document.querySelectorAll(".payBtn");
+    buttons.forEach((b) => {
+      const isActive = b.getAttribute("data-pay") === method;
+      b.className = isActive
+        ? "payBtn flex-1 py-2 rounded-lg bg-white dark:bg-[#222] shadow-sm text-sm font-bold"
+        : "payBtn flex-1 py-2 rounded-lg text-sm font-medium text-[#897561] hover:bg-white/60 dark:hover:bg-[#222]/60";
+    });
+
+    if (method === "door") {
+      cardBox.classList.add("hidden");
+      doorBox.classList.remove("hidden");
+    } else {
+      doorBox.classList.add("hidden");
+      cardBox.classList.remove("hidden");
+    }
+
+    localStorage.setItem("melz_payment_method", method);
+  }
+
+  function saveOrderToAdmin(order) {
+    const api = getApi();
+
+    // 1) Prefer MelzApiV2.admin.saveOrder if exists
+    try {
+      if (api && api.admin && typeof api.admin.saveOrder === "function") {
+        api.admin.saveOrder(order);
+        return true;
+      }
+    } catch (e) {}
+
+    // 2) Fallback: localStorage "melz_admin_orders"
+    try {
+      const key = "melz_admin_orders";
+      const raw = localStorage.getItem(key);
+      const arr = raw ? JSON.parse(raw) : [];
+      arr.unshift(order);
+      localStorage.setItem(key, JSON.stringify(arr));
+      return true;
+    } catch (e) {}
+
+    return false;
+  }
+
+  function validateForm() {
+    const name = $("checkout-name").value.trim();
+    const surname = $("checkout-surname").value.trim();
+    const phone = $("checkout-phone").value.trim();
+    const address = $("checkout-address").value.trim();
+
+    if (!name || !surname || !phone || !address) {
+      toast("error", "Lütfen ad, soyad, telefon ve adres alanlarını doldurun.");
+      return null;
+    }
+
+    return { name, surname, phone, address, note: $("checkout-note").value.trim() };
+  }
+
+  function completeOrder() {
+    const api = getApi();
+    if (!api) {
+      toast("error", "Sistem dosyası yüklenemedi (api.v2.js).");
+      return;
+    }
+
+    const products = getCartProductsSafe(api);
+    if (!products.length) {
+      toast("error", "Sepetiniz boş. Ürün ekleyin ve tekrar deneyin.");
+      return;
+    }
+
+    const info = validateForm();
+    if (!info) return;
+
+    const totals = getTotalsSafe(api);
+    const paymentMethod = localStorage.getItem("melz_payment_method") || "card";
+
+    const order = {
+      id: "ORD-" + Date.now(),
+      status: "Beklemede",
+      paymentMethod: paymentMethod === "door" ? "Kapıda Ödeme" : "Kart (Demo)",
+      createdAt: new Date().toISOString(),
+      customer: info,
+      items: products,
+      totals: totals,
+    };
+
+    const ok = saveOrderToAdmin(order);
+    if (!ok) {
+      toast("error", "Sipariş kaydedilemedi (localStorage).");
+      return;
+    }
+
+    try { api.clearCart && api.clearCart(); } catch (e) {}
+    toast("success", "Siparişiniz alındı. Yönlendiriliyorsunuz...");
+    setTimeout(() => {
+      window.location.href = "/siparis-onayi/dist/index.html";
+    }, 350);
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    // init checkout if exists (won't break if not)
+    try {
+      const api = getApi();
+      if (api && api.initCheckout) api.initCheckout();
+    } catch (e) {}
+
+    // default payment method
+    const pm = localStorage.getItem("melz_payment_method") || "card";
+    setPayment(pm);
+
+    // bind buttons
+    const clearBtn = $("clearCartBtn");
+    if (clearBtn) clearBtn.addEventListener("click", clearCart);
+
+    document.querySelectorAll(".payBtn").forEach((b) => {
+      b.addEventListener("click", () => setPayment(b.getAttribute("data-pay")));
+    });
+
+    const completeBtn = $("completeOrderBtn");
+    if (completeBtn) completeBtn.addEventListener("click", completeOrder);
+
+    // render once
+    renderCart();
+
+    // re-render on cart updates
+    window.addEventListener("melz:cart:update", renderCart);
+  });
+})();
 </script>
