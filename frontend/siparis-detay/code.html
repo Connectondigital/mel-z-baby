@@ -248,10 +248,13 @@ document.addEventListener('DOMContentLoaded', async function() {
   document.getElementById('status-dot').className = 'size-2 rounded-full bg-yellow-600';
   document.getElementById('status-text').textContent = 'Hazırlanıyor';
 
-  // Try to get order data from sessionStorage
+  // Try to get order data from sessionStorage first, then localStorage
   let orderData = null;
   try {
-    const stored = sessionStorage.getItem('melz_last_order');
+    let stored = sessionStorage.getItem('melz_last_order');
+    if (!stored) {
+      stored = localStorage.getItem('melz_last_order');
+    }
     if (stored) {
       orderData = JSON.parse(stored);
     }
