@@ -1,332 +1,363 @@
-<main class="flex-1 flex flex-col items-center py-8 px-4 sm:px-8">
-<div class="w-full max-w-[1200px] flex flex-col gap-6">
-<div class="flex flex-wrap gap-2 text-sm">
-<a class="text-text-secondary hover:text-primary font-medium transition-colors" href="#">Ana Sayfa</a>
-<span class="text-text-secondary font-medium">/</span>
-<a class="text-text-secondary hover:text-primary font-medium transition-colors" href="#">Siparişler</a>
-<span class="text-text-secondary font-medium">/</span>
-<span class="text-text-main font-bold">Sipariş #10234</span>
-</div>
-<div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 pb-2 border-b border-border-color">
-<div class="flex flex-col gap-2">
-<div class="flex items-center gap-4 flex-wrap">
-<h1 class="text-text-main text-3xl md:text-4xl font-black leading-tight tracking-tight">Sipariş #10234</h1>
-<span class="flex h-8 items-center justify-center gap-x-1.5 rounded-full bg-yellow-100 px-4 text-yellow-700">
-<span class="size-2 rounded-full bg-yellow-600"></span>
-<span class="text-sm font-bold">Hazırlanıyor</span>
-</span>
-</div>
-<p class="text-text-secondary text-base font-medium flex items-center gap-2">
-<span class="material-symbols-outlined text-[18px]">calendar_today</span>
-                    12 Ekim 2023, 14:30
-                </p>
-</div>
-<div class="flex flex-wrap gap-3">
-<button class="flex items-center gap-2 px-5 py-2.5 bg-white border border-border-color rounded-lg text-text-main text-sm font-bold hover:bg-gray-50 hover:border-gray-300 transition-all shadow-sm">
-<span class="material-symbols-outlined text-[20px]">receipt</span>
-                    Fatura Oluştur
-                </button>
-<button class="flex items-center gap-2 px-5 py-2.5 bg-white border border-border-color rounded-lg text-text-main text-sm font-bold hover:bg-gray-50 hover:border-gray-300 transition-all shadow-sm">
-<span class="material-symbols-outlined text-[20px]">local_shipping</span>
-                    Etiket Yazdır
-                </button>
-</div>
-</div>
-<div class="bg-surface-light p-6 rounded-xl border border-border-color shadow-sm">
-<div class="flex flex-col md:flex-row gap-8">
-<div class="flex-1 flex flex-col gap-5">
-<div class="flex items-center justify-between pb-2 border-b border-border-color">
-<div class="flex items-center gap-2">
-<span class="material-symbols-outlined text-primary">update</span>
-<h3 class="text-lg font-bold text-text-main">Durum Güncelleme</h3>
-</div>
-<span class="text-xs font-semibold bg-green-50 text-green-700 px-2 py-1 rounded border border-green-100 flex items-center gap-1">
-<span class="material-symbols-outlined text-[14px]">check</span>
-                             Sistem hazır
-                        </span>
-</div>
-<div class="flex flex-col gap-4">
-<div class="flex flex-col gap-1.5">
-<label class="text-sm font-bold text-text-secondary">Yeni Durum Seçin</label>
-<div class="relative">
-<select class="form-select w-full rounded-lg border-border-color bg-background-light text-text-main focus:border-primary focus:ring-primary h-11 pl-4 pr-10 appearance-none cursor-pointer font-medium shadow-sm transition-shadow focus:shadow-md">
-<option value="beklemede">Beklemede</option>
-<option value="hazirlaniyor">Hazırlanıyor</option>
-<option selected="" value="kargolandi">Kargolandı</option>
-<option value="teslim_edildi">Teslim Edildi</option>
-<option value="iptal">İptal Edildi</option>
-</select>
-<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-text-secondary">
-<span class="material-symbols-outlined">expand_more</span>
-</div>
-</div>
-</div>
-<div class="bg-background-light p-5 rounded-lg border border-border-color border-dashed flex flex-col gap-4">
-<p class="text-xs text-primary font-bold uppercase tracking-wide mb-1">Kargo Bilgileri</p>
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-<div class="flex flex-col gap-1.5">
-<label class="text-sm font-bold text-text-secondary flex items-center gap-2">
-<span class="material-symbols-outlined text-[16px]">local_shipping</span>
-                                        Kargo Firması
-                                    </label>
-<select class="form-select w-full rounded-lg border-border-color bg-white text-text-main text-sm focus:border-primary focus:ring-primary h-10">
-<option>Yurtiçi Kargo</option>
-<option>Aras Kargo</option>
-<option>MNG Kargo</option>
-</select>
-</div>
-<div class="flex flex-col gap-1.5">
-<label class="text-sm font-bold text-text-secondary flex items-center gap-2">
-<span class="material-symbols-outlined text-[16px]">barcode</span>
-                                        Takip Numarası
-                                    </label>
-<input class="form-input w-full rounded-lg border-border-color bg-white text-text-main text-sm focus:border-primary focus:ring-primary h-10 placeholder:text-gray-400" placeholder="Örn: 123456789012" type="text"/>
-</div>
-</div>
-</div>
-<div class="flex items-center gap-4 mt-2">
-<button class="flex-1 bg-primary text-white hover:bg-[#d68535] h-12 rounded-lg font-bold text-sm shadow-md shadow-primary/20 transition-all flex items-center justify-center gap-2 group">
-<span class="material-symbols-outlined group-hover:scale-110 transition-transform">save</span>
-                                Durumu Güncelle
-                            </button>
-<div class="hidden sm:flex flex-col text-xs text-text-secondary text-right">
-<span>Son değişiklik:</span>
-<span class="font-bold text-text-main">Bugün, 14:30</span>
-</div>
-</div>
-</div>
-</div>
-<div class="flex-1 border-l border-border-color pl-0 md:pl-8 flex flex-col gap-5 pt-8 md:pt-0 border-t md:border-t-0 mt-4 md:mt-0">
-<div class="flex items-center gap-2 pb-2 border-b border-border-color">
-<span class="material-symbols-outlined text-primary">history</span>
-<h3 class="text-lg font-bold text-text-main">Sipariş Geçmişi</h3>
-</div>
-<div class="relative pl-2">
-<div class="absolute top-2 bottom-0 left-[7px] w-0.5 bg-border-color"></div>
-<div class="relative flex gap-4 mb-8 group">
-<div class="relative z-10 size-4 rounded-full bg-yellow-500 border-2 border-white ring-4 ring-yellow-500/20 shadow-sm mt-1"></div>
-<div class="flex flex-col">
-<span class="text-sm font-bold text-text-main">Hazırlanıyor</span>
-<span class="text-xs text-text-secondary font-medium">12 Ekim 2023, 14:30</span>
-<div class="mt-2 text-xs text-text-main bg-background-light p-3 rounded-lg border border-border-color relative">
-<div class="absolute top-0 left-4 -mt-1 size-2 bg-background-light border-t border-l border-border-color rotate-45"></div>
-                                    Sipariş paketleme aşamasına alındı. Depo personeli bilgilendirildi.
-                                </div>
-</div>
-</div>
-<div class="relative flex gap-4 mb-8 group">
-<div class="relative z-10 size-4 rounded-full bg-green-500 border-2 border-white shadow-sm mt-1"></div>
-<div class="flex flex-col">
-<span class="text-sm font-bold text-text-secondary">Ödeme Onaylandı</span>
-<span class="text-xs text-text-secondary">12 Ekim 2023, 14:05</span>
-</div>
-</div>
-<div class="relative flex gap-4 group">
-<div class="relative z-10 size-4 rounded-full bg-gray-300 border-2 border-white shadow-sm mt-1"></div>
-<div class="flex flex-col">
-<span class="text-sm font-bold text-text-secondary">Sipariş Oluşturuldu</span>
-<span class="text-xs text-text-secondary">12 Ekim 2023, 14:00</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-<div class="bg-surface-light p-6 rounded-xl border border-border-color shadow-sm flex flex-col gap-4">
-<div class="flex items-center gap-3 mb-2">
-<div class="size-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center">
-<span class="material-symbols-outlined">summarize</span>
-</div>
-<h3 class="text-lg font-bold text-text-main">Sipariş Özeti</h3>
-</div>
-<div class="flex flex-col gap-3">
-<div class="flex justify-between items-center text-sm">
-<span class="text-text-secondary">Sipariş Tarihi</span>
-<span class="text-text-main font-medium">12.10.2023</span>
-</div>
-<div class="flex justify-between items-center text-sm">
-<span class="text-text-secondary">Ödeme Yöntemi</span>
-<span class="text-text-main font-medium flex items-center gap-1">
-<span class="material-symbols-outlined text-[16px]">credit_card</span>
-                            Kredi Kartı (**** 4242)
-                        </span>
-</div>
-<div class="flex justify-between items-center text-sm">
-<span class="text-text-secondary">Kargo Firması</span>
-<span class="text-text-main font-medium">Yurtiçi Kargo</span>
-</div>
-<div class="h-px bg-border-color my-1"></div>
-<div class="flex justify-between items-center text-base">
-<span class="text-text-main font-bold">Toplam Tutar</span>
-<span class="text-primary font-black text-xl">1.250,00 TL</span>
-</div>
-</div>
-</div>
-<div class="bg-surface-light p-6 rounded-xl border border-border-color shadow-sm flex flex-col gap-4">
-<div class="flex items-center gap-3 mb-2">
-<div class="size-10 rounded-full bg-purple-50 text-purple-600 flex items-center justify-center">
-<span class="material-symbols-outlined">person</span>
-</div>
-<h3 class="text-lg font-bold text-text-main">Müşteri Bilgileri</h3>
-</div>
-<div class="flex flex-col items-center sm:items-start gap-4">
-<div class="flex items-center gap-4 w-full">
-<div class="size-12 rounded-full bg-gray-200 bg-cover bg-center shrink-0" data-alt="Customer portrait" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuABDzXCdAWF7mOuHJBkDC83aDStZt2ndKXMEVZWyahvxFU7CaDCCeb8tLCB-LY_M0yyWzIwLqQ7NL5YNfFNb6xGmVdTljWynuPW6fEeHEkrgPEY5iA7_yANW4z7BkBK5lw-KWDK-zF6xdOlYgB_08qsHcmkdx6iyogRcHs8Z91c6yKIXXkuVM4BSmBQYt7vJ5zsF_btCXDYqn7Yv1ErSw9cPo_ecHYfggEzP34jYr-NgCbgqJX2bJ-TcGsOQo4jB89O3CXgqCIEL8gB");'></div>
-<div class="flex flex-col">
-<span class="text-text-main font-bold text-lg">Zeynep Yılmaz</span>
-<span class="text-text-secondary text-sm">Kayıtlı Müşteri</span>
-</div>
-</div>
-<div class="flex flex-col gap-3 w-full mt-2">
-<a class="flex items-center gap-3 text-sm text-text-secondary hover:text-primary transition-colors p-2 rounded-lg hover:bg-background-light" href="mailto:zeynep.yilmaz@example.com">
-<span class="material-symbols-outlined text-[18px]">mail</span>
-                            zeynep.yilmaz@example.com
-                        </a>
-<a class="flex items-center gap-3 text-sm text-text-secondary hover:text-primary transition-colors p-2 rounded-lg hover:bg-background-light" href="tel:+905551234567">
-<span class="material-symbols-outlined text-[18px]">call</span>
-                            +90 555 123 45 67
-                        </a>
-</div>
-</div>
-</div>
-<div class="bg-surface-light p-6 rounded-xl border border-border-color shadow-sm flex flex-col gap-4">
-<div class="flex items-center gap-3 mb-2">
-<div class="size-10 rounded-full bg-green-50 text-green-600 flex items-center justify-center">
-<span class="material-symbols-outlined">location_on</span>
-</div>
-<h3 class="text-lg font-bold text-text-main">Teslimat Adresi</h3>
-</div>
-<div class="flex flex-col gap-4 h-full">
-<p class="text-text-main text-sm leading-relaxed">
-<span class="font-bold block mb-1">Ev Adresi:</span>
-                        Papatya Sokak, Güneş Apartmanı No: 5, Daire: 2<br/>
-                        Fenerbahçe Mahallesi<br/>
-                        Kadıköy / İstanbul / Türkiye<br/>
-                        34726
-                    </p>
-<div class="mt-auto">
-<div class="w-full h-24 rounded-lg bg-gray-200 bg-cover bg-center relative overflow-hidden group cursor-pointer" data-location="Istanbul Map" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAkMRM9dAX-ISVRK911zixnfVSqzFDea5Bccy0lIlBMUgNqzGEqL9Mzrj2B0rrs6KasyCqel0rpSs4vO8xNxZr3KO4gAw9J8rEdtqa1Zpef9MeOa7U-ym67eIBO-tNGE_KeuXfu1P2WUFcgz0l7mgSwlxOmKwCIHnHiwDD6n-tp-o0Kub6W8DpQrL75rbeSZrGl-TCCtdVOPErZHzaRhgvStCPJGY9qxjFZwSUPyVESOz4UNe8pF8FgURCaDxhptTn-YWASU_t-Z9Ri");'>
-<div class="absolute inset-0 bg-background-dark/10 group-hover:bg-background-dark/20 transition-all flex items-center justify-center">
-<span class="bg-white px-3 py-1 rounded-full text-xs font-bold shadow-md flex items-center gap-1">
-<span class="material-symbols-outlined text-[14px]">map</span>
-                                    Haritada Göster
-                                </span>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="bg-surface-light rounded-xl border border-border-color shadow-sm overflow-hidden">
-<div class="p-6 border-b border-border-color flex justify-between items-center">
-<h3 class="text-lg font-bold text-text-main flex items-center gap-2">
-<span class="material-symbols-outlined text-primary">shopping_bag</span>
-                    Sipariş Edilen Ürünler
-                </h3>
-<span class="text-sm text-text-secondary bg-background-light px-3 py-1 rounded-full border border-border-color">2 Ürün</span>
-</div>
-<div class="overflow-x-auto">
-<table class="w-full text-left border-collapse">
-<thead>
-<tr class="bg-background-light text-text-secondary text-xs uppercase tracking-wider">
-<th class="p-4 font-bold border-b border-border-color">Ürün Detayı</th>
-<th class="p-4 font-bold border-b border-border-color text-center">Birim Fiyat</th>
-<th class="p-4 font-bold border-b border-border-color text-center">Adet</th>
-<th class="p-4 font-bold border-b border-border-color text-right">Ara Toplam</th>
-</tr>
-</thead>
-<tbody class="divide-y divide-border-color">
-<tr class="group hover:bg-background-light/50 transition-colors">
-<td class="p-4">
-<div class="flex items-center gap-4 min-w-[240px]">
-<div class="size-16 rounded-lg border border-border-color bg-white p-1 shrink-0">
-<div class="w-full h-full rounded bg-cover bg-center" data-alt="Organic beige baby romper suit" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAYfvrLpfb_JW0RUxHLDzUFPC1LOUZiOnPvjzL_b0ZP-H8uGt24Ogm7CGFeRzw8KRJpKhS0XXqfYqOK9qUpLpAdxqNZvrGnpNjk95zXWor_3gEIh5RKh8s3T9tLUyDX8q3T74YStS4Tkz2MqwtR2d0wVntmGDVhj94KWQuUsew3f4-zX4atGmt9CXzbAq-pNSfsrygwa7TBXaiZjXpJ85wUwTuWq_weJL2GTXxGLg3GbaoIjLAs51nTuhGQgC7OSBBx68K97V7b4P_U");'></div>
-</div>
-<div class="flex flex-col">
-<span class="text-text-main font-bold text-sm">Organik Pamuk Bebek Tulumu</span>
-<span class="text-text-secondary text-xs mt-1">Beden: 6-9 Ay | Renk: Krem</span>
-<span class="text-text-secondary text-xs">SKU: MBK-0012</span>
-</div>
-</div>
-</td>
-<td class="p-4 text-center">
-<span class="text-text-main font-medium text-sm">450,00 TL</span>
-</td>
-<td class="p-4 text-center">
-<span class="inline-flex items-center justify-center bg-white border border-border-color rounded-md px-3 py-1 text-sm font-bold text-text-main">1</span>
-</td>
-<td class="p-4 text-right">
-<span class="text-text-main font-bold text-sm">450,00 TL</span>
-</td>
-</tr>
-<tr class="group hover:bg-background-light/50 transition-colors">
-<td class="p-4">
-<div class="flex items-center gap-4 min-w-[240px]">
-<div class="size-16 rounded-lg border border-border-color bg-white p-1 shrink-0">
-<div class="w-full h-full rounded bg-cover bg-center" data-alt="Wooden baby teether toy" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC92Fynj0y575WYd25jAc7cSULc-oYF_OA3cmmlgsxpRZYbFKJcEWPcSKOWVMBipQCHBOyiiHCLX8MD7TzCCRaXjKUqoRJq5hW9f8-atZGAEgzH9dJYmeXsDG3Xn_BJgxkGDsx60aJeKsk3HizBzFBRUY5cg0f-Y_njM6wbOYiryPrv33LseACvt9srnTA_gpsvA2RpPBy5JkzG2ZcYONtTnIJ0_DWcQY2ukmOUd_sxhHiS-6M9OW5Sd32ULUABDYlxhro2OlyP3gNU");'></div>
-</div>
-<div class="flex flex-col">
-<span class="text-text-main font-bold text-sm">Doğal Ahşap Diş Kaşıyıcı</span>
-<span class="text-text-secondary text-xs mt-1">Malzeme: Akçaağaç</span>
-<span class="text-text-secondary text-xs">SKU: MBK-0045</span>
-</div>
-</div>
-</td>
-<td class="p-4 text-center">
-<span class="text-text-main font-medium text-sm">150,00 TL</span>
-</td>
-<td class="p-4 text-center">
-<span class="inline-flex items-center justify-center bg-white border border-border-color rounded-md px-3 py-1 text-sm font-bold text-text-main">2</span>
-</td>
-<td class="p-4 text-right">
-<span class="text-text-main font-bold text-sm">300,00 TL</span>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="bg-background-light/30 p-6 flex flex-col md:flex-row justify-end items-end md:items-start gap-8">
-<div class="flex-1 w-full md:w-auto text-sm text-text-secondary pr-0 md:pr-12 hidden md:block">
-<p class="font-bold mb-1">Yönetici Notu:</p>
-<div class="bg-yellow-50 border border-yellow-100 rounded-lg p-3 text-yellow-800 text-xs leading-relaxed">
-                        Müşteri hediye paketi talep etti. Lütfen pakete not eklemeyi unutmayın: "Hoş geldin bebek!"
-                    </div>
-</div>
-<div class="w-full md:w-80 flex flex-col gap-3">
-<div class="flex justify-between items-center text-sm">
-<span class="text-text-secondary">Ara Toplam</span>
-<span class="text-text-main font-medium">750,00 TL</span>
-</div>
-<div class="flex justify-between items-center text-sm">
-<span class="text-text-secondary">Kargo Ücreti</span>
-<span class="text-text-main font-medium">29,90 TL</span>
-</div>
-<div class="flex justify-between items-center text-sm">
-<span class="text-text-secondary">KDV (%18)</span>
-<span class="text-text-main font-medium">135,00 TL</span>
-</div>
-<div class="flex justify-between items-center text-sm text-green-600">
-<span class="flex items-center gap-1">
-<span class="material-symbols-outlined text-[16px]">local_offer</span>
-                            İndirim (HOŞGELDİN20)
-                        </span>
-<span class="font-bold">-64,90 TL</span>
-</div>
-<div class="h-px bg-border-color my-2"></div>
-<div class="flex justify-between items-center">
-<span class="text-text-main font-bold text-lg">Genel Toplam</span>
-<span class="text-primary font-black text-2xl">850,00 TL</span>
-</div>
-<p class="text-xs text-text-secondary text-right mt-1">KDV Dahildir</p>
-</div>
-</div>
-</div>
-<div class="flex justify-center md:justify-end pb-8">
-<button class="text-red-500 hover:text-red-700 text-sm font-medium flex items-center gap-2 px-4 py-2 hover:bg-red-50 rounded-lg transition-colors">
-<span class="material-symbols-outlined text-[18px]">delete</span>
-                Siparişi İptal Et
-            </button>
-</div>
-</div>
+<main class="flex-1 flex flex-col items-center py-8 px-4 sm:px-8" id="order-detail-page">
+  <div class="w-full max-w-[1200px] flex flex-col gap-6">
+    
+    <!-- Breadcrumb -->
+    <div class="flex flex-wrap gap-2 text-sm">
+      <a class="text-text-secondary hover:text-primary font-medium transition-colors" href="/anasayfa/dist/index.html">Ana Sayfa</a>
+      <span class="text-text-secondary font-medium">/</span>
+      <a class="text-text-secondary hover:text-primary font-medium transition-colors" href="/hesabim/dist/index.html">Hesabım</a>
+      <span class="text-text-secondary font-medium">/</span>
+      <span class="text-text-main font-bold" id="breadcrumb-order">Sipariş Detayı</span>
+    </div>
+
+    <!-- Order Header -->
+    <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 pb-2 border-b border-border-color">
+      <div class="flex flex-col gap-2">
+        <div class="flex items-center gap-4 flex-wrap">
+          <h1 class="text-text-main text-3xl md:text-4xl font-black leading-tight tracking-tight" id="order-title">Sipariş Detayı</h1>
+          <span class="flex h-8 items-center justify-center gap-x-1.5 rounded-full px-4" id="order-status">
+            <span class="size-2 rounded-full" id="status-dot"></span>
+            <span class="text-sm font-bold" id="status-text">Yükleniyor</span>
+          </span>
+        </div>
+        <p class="text-text-secondary text-base font-medium flex items-center gap-2" id="order-date-display">
+          <span class="material-symbols-outlined text-[18px]">calendar_today</span>
+          <span id="order-date-text">--</span>
+        </p>
+      </div>
+      <div class="flex flex-wrap gap-3">
+        <button onclick="window.print()" class="flex items-center gap-2 px-5 py-2.5 bg-white border border-border-color rounded-lg text-text-main text-sm font-bold hover:bg-gray-50 hover:border-gray-300 transition-all shadow-sm">
+          <span class="material-symbols-outlined text-[20px]">print</span>
+          Yazdır
+        </button>
+        <a href="/iletisim/dist/index.html" class="flex items-center gap-2 px-5 py-2.5 bg-white border border-border-color rounded-lg text-text-main text-sm font-bold hover:bg-gray-50 hover:border-gray-300 transition-all shadow-sm">
+          <span class="material-symbols-outlined text-[20px]">support_agent</span>
+          Destek Al
+        </a>
+      </div>
+    </div>
+
+    <!-- Order Timeline -->
+    <div class="bg-surface-light p-6 rounded-xl border border-border-color shadow-sm">
+      <div class="flex items-center gap-2 mb-6">
+        <span class="material-symbols-outlined text-primary">local_shipping</span>
+        <h3 class="text-lg font-bold text-text-main">Sipariş Durumu</h3>
+      </div>
+      
+      <!-- Progress Bar -->
+      <div class="relative mb-8">
+        <div class="flex justify-between relative z-10">
+          <div class="flex flex-col items-center">
+            <div class="size-10 rounded-full bg-green-500 text-white flex items-center justify-center shadow-lg">
+              <span class="material-symbols-outlined text-[20px]">check</span>
+            </div>
+            <span class="text-xs font-bold mt-2 text-green-600">Sipariş Alındı</span>
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="size-10 rounded-full bg-yellow-500 text-white flex items-center justify-center shadow-lg" id="step-preparing">
+              <span class="material-symbols-outlined text-[20px]">inventory_2</span>
+            </div>
+            <span class="text-xs font-bold mt-2 text-yellow-600" id="step-preparing-text">Hazırlanıyor</span>
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="size-10 rounded-full bg-gray-200 text-gray-500 flex items-center justify-center" id="step-shipped">
+              <span class="material-symbols-outlined text-[20px]">local_shipping</span>
+            </div>
+            <span class="text-xs font-bold mt-2 text-gray-400" id="step-shipped-text">Kargoda</span>
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="size-10 rounded-full bg-gray-200 text-gray-500 flex items-center justify-center" id="step-delivered">
+              <span class="material-symbols-outlined text-[20px]">home</span>
+            </div>
+            <span class="text-xs font-bold mt-2 text-gray-400" id="step-delivered-text">Teslim Edildi</span>
+          </div>
+        </div>
+        <!-- Progress Line -->
+        <div class="absolute top-5 left-[5%] right-[5%] h-1 bg-gray-200 -z-0">
+          <div class="h-full bg-primary rounded-full" style="width: 33%" id="progress-bar"></div>
+        </div>
+      </div>
+
+      <!-- Estimated Delivery -->
+      <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg flex items-center gap-3">
+        <span class="material-symbols-outlined text-blue-500 text-[28px]">schedule</span>
+        <div>
+          <p class="text-sm font-bold text-blue-700 dark:text-blue-300">Tahmini Teslimat</p>
+          <p class="text-lg font-black text-blue-900 dark:text-blue-100" id="estimated-delivery">3-5 İş Günü</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Info Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Order Summary -->
+      <div class="bg-surface-light p-6 rounded-xl border border-border-color shadow-sm flex flex-col gap-4">
+        <div class="flex items-center gap-3 mb-2">
+          <div class="size-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center">
+            <span class="material-symbols-outlined">summarize</span>
+          </div>
+          <h3 class="text-lg font-bold text-text-main">Sipariş Özeti</h3>
+        </div>
+        <div class="flex flex-col gap-3">
+          <div class="flex justify-between items-center text-sm">
+            <span class="text-text-secondary">Sipariş No</span>
+            <span class="text-text-main font-medium" id="summary-order-id">#---</span>
+          </div>
+          <div class="flex justify-between items-center text-sm">
+            <span class="text-text-secondary">Sipariş Tarihi</span>
+            <span class="text-text-main font-medium" id="summary-date">--</span>
+          </div>
+          <div class="flex justify-between items-center text-sm">
+            <span class="text-text-secondary">Ödeme Yöntemi</span>
+            <span class="text-text-main font-medium flex items-center gap-1">
+              <span class="material-symbols-outlined text-[16px]">credit_card</span>
+              Kredi Kartı
+            </span>
+          </div>
+          <div class="h-px bg-border-color my-1"></div>
+          <div class="flex justify-between items-center text-base">
+            <span class="text-text-main font-bold">Toplam Tutar</span>
+            <span class="text-primary font-black text-xl" id="summary-total">₺0,00</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Customer Info -->
+      <div class="bg-surface-light p-6 rounded-xl border border-border-color shadow-sm flex flex-col gap-4">
+        <div class="flex items-center gap-3 mb-2">
+          <div class="size-10 rounded-full bg-purple-50 text-purple-600 flex items-center justify-center">
+            <span class="material-symbols-outlined">person</span>
+          </div>
+          <h3 class="text-lg font-bold text-text-main">Müşteri Bilgileri</h3>
+        </div>
+        <div class="flex flex-col gap-3 w-full" id="customer-info">
+          <p class="text-text-main font-bold text-lg" id="customer-name">Müşteri</p>
+          <div class="flex items-center gap-3 text-sm text-text-secondary">
+            <span class="material-symbols-outlined text-[18px]">mail</span>
+            <span id="customer-email">--</span>
+          </div>
+          <div class="flex items-center gap-3 text-sm text-text-secondary">
+            <span class="material-symbols-outlined text-[18px]">call</span>
+            <span id="customer-phone">--</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Delivery Address -->
+      <div class="bg-surface-light p-6 rounded-xl border border-border-color shadow-sm flex flex-col gap-4">
+        <div class="flex items-center gap-3 mb-2">
+          <div class="size-10 rounded-full bg-green-50 text-green-600 flex items-center justify-center">
+            <span class="material-symbols-outlined">location_on</span>
+          </div>
+          <h3 class="text-lg font-bold text-text-main">Teslimat Adresi</h3>
+        </div>
+        <div class="flex flex-col gap-2" id="delivery-address-card">
+          <p class="text-text-main text-sm leading-relaxed" id="delivery-address">
+            Adres bilgisi belirtilmemiş.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Order Items Table -->
+    <div class="bg-surface-light rounded-xl border border-border-color shadow-sm overflow-hidden">
+      <div class="p-6 border-b border-border-color flex justify-between items-center">
+        <h3 class="text-lg font-bold text-text-main flex items-center gap-2">
+          <span class="material-symbols-outlined text-primary">shopping_bag</span>
+          Sipariş Edilen Ürünler
+        </h3>
+        <span class="text-sm text-text-secondary bg-background-light px-3 py-1 rounded-full border border-border-color" id="item-count">0 Ürün</span>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="bg-background-light text-text-secondary text-xs uppercase tracking-wider">
+              <th class="p-4 font-bold border-b border-border-color">Ürün Detayı</th>
+              <th class="p-4 font-bold border-b border-border-color text-center">Birim Fiyat</th>
+              <th class="p-4 font-bold border-b border-border-color text-center">Adet</th>
+              <th class="p-4 font-bold border-b border-border-color text-right">Ara Toplam</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-border-color" id="items-table-body">
+            <tr>
+              <td colspan="4" class="p-8 text-center text-gray-400">
+                <span class="material-symbols-outlined mr-2">hourglass_empty</span>
+                Yükleniyor...
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Totals Footer -->
+      <div class="bg-background-light/30 p-6 flex flex-col md:flex-row justify-end items-end md:items-start gap-8">
+        <div class="w-full md:w-80 flex flex-col gap-3" id="totals-section">
+          <div class="flex justify-between items-center text-sm">
+            <span class="text-text-secondary">Ara Toplam</span>
+            <span class="text-text-main font-medium" id="total-subtotal">₺0,00</span>
+          </div>
+          <div class="flex justify-between items-center text-sm">
+            <span class="text-text-secondary">Kargo Ücreti</span>
+            <span class="text-text-main font-medium" id="total-shipping">₺0,00</span>
+          </div>
+          <div class="h-px bg-border-color my-2"></div>
+          <div class="flex justify-between items-center">
+            <span class="text-text-main font-bold text-lg">Genel Toplam</span>
+            <span class="text-primary font-black text-2xl" id="total-final">₺0,00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="flex flex-col sm:flex-row justify-between items-center gap-4 pt-4">
+      <a href="/bebek-urunleri/dist/index.html" class="flex items-center gap-2 text-primary font-bold hover:underline">
+        <span class="material-symbols-outlined">arrow_back</span>
+        Alışverişe Devam Et
+      </a>
+      <div class="flex gap-3">
+        <a href="/iletisim/dist/index.html" class="text-text-secondary hover:text-primary text-sm font-medium flex items-center gap-2 px-4 py-2 hover:bg-gray-50 rounded-lg transition-colors">
+          <span class="material-symbols-outlined text-[18px]">help</span>
+          Yardım Al
+        </a>
+      </div>
+    </div>
+  </div>
 </main>
+
+<script>
+// Order Detail Page Logic
+document.addEventListener('DOMContentLoaded', async function() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const orderId = urlParams.get('orderId') || 'MLZ-DEMO';
+  
+  // Update order ID displays
+  document.getElementById('order-title').textContent = 'Sipariş #' + orderId;
+  document.getElementById('breadcrumb-order').textContent = 'Sipariş #' + orderId;
+  document.getElementById('summary-order-id').textContent = '#' + orderId;
+
+  // Set order date
+  const now = new Date();
+  const dateStr = now.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+  document.getElementById('order-date-text').textContent = dateStr;
+  document.getElementById('summary-date').textContent = now.toLocaleDateString('tr-TR');
+
+  // Set status (mock - always "preparing")
+  const statusEl = document.getElementById('order-status');
+  statusEl.className = 'flex h-8 items-center justify-center gap-x-1.5 rounded-full bg-yellow-100 px-4 text-yellow-700';
+  document.getElementById('status-dot').className = 'size-2 rounded-full bg-yellow-600';
+  document.getElementById('status-text').textContent = 'Hazırlanıyor';
+
+  // Try to get order data from sessionStorage
+  let orderData = null;
+  try {
+    const stored = sessionStorage.getItem('melz_last_order');
+    if (stored) {
+      orderData = JSON.parse(stored);
+    }
+  } catch (e) {
+    console.warn('[OrderDetail] Could not parse stored order data');
+  }
+
+  // Use mock data if no stored order
+  if (!orderData && typeof MelzV2 !== 'undefined') {
+    const mockProducts = MelzV2.MOCK_PRODUCTS || [];
+    orderData = {
+      items: mockProducts.slice(0, 2).map(p => ({
+        id: p.id,
+        name: p.name,
+        price: p.salePrice || p.price,
+        qty: 1,
+        size: p.sizes?.[0] || null,
+        image: p.images?.[0] || null
+      })),
+      subtotal: 600,
+      shipping: 0,
+      total: 600,
+      isFreeShipping: true,
+      delivery: {
+        name: 'Müşteri Adı',
+        phone: '+90 5XX XXX XX XX',
+        address: 'Adres bilgisi'
+      }
+    };
+  }
+
+  if (!orderData) {
+    orderData = { items: [], subtotal: 0, shipping: 0, total: 0 };
+  }
+
+  // Render items table
+  const tableBody = document.getElementById('items-table-body');
+  const PLACEHOLDER = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Crect fill='%23f4f2f0' width='64' height='64'/%3E%3C/svg%3E";
+
+  if (orderData.items?.length > 0) {
+    tableBody.innerHTML = orderData.items.map(item => {
+      const lineTotal = (item.price || 0) * (item.qty || 1);
+      return `
+        <tr class="group hover:bg-background-light/50 transition-colors">
+          <td class="p-4">
+            <div class="flex items-center gap-4 min-w-[240px]">
+              <div class="size-16 rounded-lg border border-border-color bg-white p-1 shrink-0">
+                <div class="w-full h-full rounded bg-cover bg-center" style="background-image: url('${item.image || PLACEHOLDER}');"></div>
+              </div>
+              <div class="flex flex-col">
+                <span class="text-text-main font-bold text-sm">${escapeHtml(item.name)}</span>
+                ${item.size ? `<span class="text-text-secondary text-xs mt-1">Beden: ${escapeHtml(item.size)}</span>` : ''}
+              </div>
+            </div>
+          </td>
+          <td class="p-4 text-center">
+            <span class="text-text-main font-medium text-sm">${formatTRY(item.price)}</span>
+          </td>
+          <td class="p-4 text-center">
+            <span class="inline-flex items-center justify-center bg-white border border-border-color rounded-md px-3 py-1 text-sm font-bold text-text-main">${item.qty}</span>
+          </td>
+          <td class="p-4 text-right">
+            <span class="text-text-main font-bold text-sm">${formatTRY(lineTotal)}</span>
+          </td>
+        </tr>
+      `;
+    }).join('');
+
+    document.getElementById('item-count').textContent = orderData.items.length + ' Ürün';
+  } else {
+    tableBody.innerHTML = '<tr><td colspan="4" class="p-8 text-center text-gray-400">Sipariş detayı bulunamadı.</td></tr>';
+  }
+
+  // Update totals
+  document.getElementById('total-subtotal').textContent = formatTRY(orderData.subtotal);
+  const shippingEl = document.getElementById('total-shipping');
+  if (orderData.isFreeShipping) {
+    shippingEl.textContent = 'Ücretsiz';
+    shippingEl.className = 'text-green-600 font-medium';
+  } else {
+    shippingEl.textContent = formatTRY(orderData.shipping);
+  }
+  document.getElementById('total-final').textContent = formatTRY(orderData.total);
+  document.getElementById('summary-total').textContent = formatTRY(orderData.total);
+
+  // Update delivery info
+  if (orderData.delivery) {
+    document.getElementById('customer-name').textContent = orderData.delivery.name || 'Müşteri';
+    document.getElementById('customer-phone').textContent = orderData.delivery.phone || '--';
+    document.getElementById('delivery-address').textContent = orderData.delivery.address || 'Adres belirtilmemiş';
+  }
+
+  function formatTRY(n) {
+    if (typeof MelzV2 !== 'undefined' && MelzV2.fmtTRY) {
+      return MelzV2.fmtTRY(n);
+    }
+    try {
+      return new Intl.NumberFormat('tr-TR', { style: 'currency', currency: 'TRY' }).format(Number(n || 0));
+    } catch {
+      return '₺' + Number(n || 0).toFixed(2);
+    }
+  }
+
+  function escapeHtml(str) {
+    if (!str) return '';
+    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+});
+</script>
