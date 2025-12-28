@@ -554,39 +554,71 @@
   }
 
   // ============================================
-  // RELATED PRODUCTS
+  // RELATED PRODUCTS (Improved: 2-4 items from same category, fallback to random)
   // ============================================
   async function loadRelatedProducts(currentProduct) {
-    const container = document.querySelector(".mt-8 .grid.grid-cols-2.gap-3");
+    const section = document.querySelector("[data-related-section]");
+    const container = section?.querySelector(".grid.grid-cols-2.gap-3");
     if (!container) return;
 
     try {
-      const data = await fetchProducts({ limit: 4, category: currentProduct.category?.slug });
-      const related = (data.products || []).filter(p => String(p.id) !== String(currentProduct.id)).slice(0, 2);
+      // Get all products
+      const allData = await fetchProducts({ limit: 20 });
+      const allProducts = allData.products || [];
+      
+      // Filter: same category, exclude current product
+      let related = [];
+      if (currentProduct.category?.id) {
+        related = allProducts.filter(p => 
+          String(p.id) !== String(currentProduct.id) && 
+          p.category?.id === currentProduct.category.id
+        );
+      }
+
+      // If not enough from same category (< 2), add random products from other categories
+      if (related.length < 2) {
+        const otherProducts = allProducts.filter(p => 
+          String(p.id) !== String(currentProduct.id) &&
+          !related.some(r => r.id === p.id)
+        );
+        // Shuffle and take what we need
+        const shuffled = otherProducts.sort(() => Math.random() - 0.5);
+        const needed = Math.min(4 - related.length, shuffled.length);
+        related = [...related, ...shuffled.slice(0, needed)];
+      }
+
+      // Limit to 2-4 products
+      related = related.slice(0, 4);
 
       if (related.length === 0) {
-        // If no related in same category, get any other products
-        const fallbackData = await fetchProducts({ limit: 4 });
-        related.push(...(fallbackData.products || []).filter(p => String(p.id) !== String(currentProduct.id)).slice(0, 2));
+        // Hide section if no related products
+        if (section) section.style.display = "none";
+        return;
       }
 
-      if (related.length > 0) {
-        container.innerHTML = related.map(p => {
-          const img = (p.images && p.images[0]) || PLACEHOLDER_IMAGE;
-          const hasSale = p.salePrice != null && Number(p.salePrice) < Number(p.price);
-          const price = hasSale ? p.salePrice : p.price;
-          
-          return `
-            <a href="/urun/dist/index.html?id=${p.id}" class="rounded-3xl border border-[#f4f2f0] bg-white p-3 hover:shadow-md transition group">
-              <img src="${img}" alt="${safeText(p.name)}" class="w-full aspect-[4/5] object-cover rounded-2xl bg-[#f4f2f0]" onerror="this.src='${PLACEHOLDER_IMAGE}'" />
-              <div class="mt-3 font-semibold text-text-main group-hover:text-primary transition">${safeText(p.name)}</div>
-              <div class="text-sm text-text-secondary">${fmtTRY(price)}</div>
-            </a>
-          `;
-        }).join("");
-      }
+      // Render related products (2 or more columns based on count)
+      const gridCols = related.length >= 3 ? "grid-cols-2 sm:grid-cols-4" : "grid-cols-2";
+      container.className = `mt-3 grid ${gridCols} gap-3`;
+      
+      container.innerHTML = related.map(p => {
+        const img = (p.images && p.images[0]) || PLACEHOLDER_IMAGE;
+        const hasSale = p.salePrice != null && Number(p.salePrice) < Number(p.price);
+        const price = hasSale ? p.salePrice : p.price;
+        
+        return `
+          <a href="/urun/dist/index.html?id=${p.id}" class="rounded-3xl border border-[#f4f2f0] bg-white p-3 hover:shadow-md transition group">
+            <img src="${img}" alt="${safeText(p.name)}" class="w-full aspect-[4/5] object-cover rounded-2xl bg-[#f4f2f0]" onerror="this.src='${PLACEHOLDER_IMAGE}'" />
+            <div class="mt-3 font-semibold text-text-main group-hover:text-primary transition line-clamp-2">${safeText(p.name)}</div>
+            <div class="text-sm text-primary font-bold mt-1">${fmtTRY(price)}</div>
+            ${hasSale ? `<div class="text-xs text-gray-400 line-through">${fmtTRY(p.price)}</div>` : ""}
+          </a>
+        `;
+      }).join("");
+
+      console.log(`[MelzV2] Loaded ${related.length} related products for category: ${currentProduct.category?.name || 'N/A'}`);
     } catch (e) {
       console.warn("[MelzV2] Failed to load related products:", e.message);
+      if (section) section.style.display = "none";
     }
   }
 
@@ -934,6 +966,117 @@
   }
 
   // ============================================
+  // SHOP PAGE (Dynamic Product Grid)
+  // ============================================
+  async function initShopPage() {
+    const gridContainer = document.getElementById("shop-products-grid");
+    if (!gridContainer) return;
+
+    // Show loading state
+    gridContainer.innerHTML = `
+      <div class="col-span-full flex flex-col items-center justify-center py-16">
+        <div class="animate-spin rounded-full h-12 w-12 border-4 border-primary border-t-transparent mb-4"></div>
+        <p class="text-gray-500">Ürünler yükleniyor...</p>
+      </div>
+    `;
+
+    try {
+      const data = await fetchProducts({ limit: 8 });
+      const products = data.products || [];
+
+      if (products.length === 0) {
+        gridContainer.innerHTML = `
+          <div class="col-span-full text-center py-16">
+            <span class="material-symbols-outlined text-6xl text-gray-300 mb-4">inventory_2</span>
+            <h3 class="text-xl font-bold text-gray-600 mb-2">Ürün Bulunamadı</h3>
+            <p class="text-gray-500">Henüz bu kategoride ürün bulunmuyor.</p>
+          </div>
+        `;
+        return;
+      }
+
+      gridContainer.innerHTML = products.map(p => renderProductCard(p)).join("");
+      
+      // Wire up "Add to Cart" buttons
+      gridContainer.querySelectorAll("[data-add-to-cart-btn]").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const productId = btn.dataset.productId;
+          const productName = btn.dataset.productName;
+          addToCart(productId, 1);
+          showToast(`${productName} sepete eklendi!`);
+          updateCartBadge();
+        });
+      });
+
+      console.log(`[MelzV2] Shop page loaded ${products.length} products`);
+    } catch (e) {
+      console.error("[MelzV2] Failed to load shop products:", e);
+      gridContainer.innerHTML = `
+        <div class="col-span-full text-center py-16">
+          <span class="material-symbols-outlined text-6xl text-red-300 mb-4">error</span>
+          <h3 class="text-xl font-bold text-gray-600 mb-2">Yükleme Hatası</h3>
+          <p class="text-gray-500">Ürünler yüklenirken bir hata oluştu.</p>
+        </div>
+      `;
+    }
+  }
+
+  function renderProductCard(product) {
+    const img = (product.images && product.images[0]) || PLACEHOLDER_IMAGE;
+    const hasSale = product.salePrice != null && Number(product.salePrice) < Number(product.price);
+    const price = hasSale ? product.salePrice : product.price;
+    const originalPrice = product.price;
+    const categoryName = product.category?.name || "Ürün";
+    
+    // Determine badge
+    let badge = "";
+    if (hasSale) {
+      const discount = Math.round((1 - product.salePrice / product.price) * 100);
+      badge = `<span class="absolute top-3 left-3 bg-[#e87c7c] text-white text-xs font-bold px-2 py-1 rounded-md z-10">%${discount} İndirim</span>`;
+    } else if (product.stock && product.stock < 10) {
+      badge = `<span class="absolute top-3 left-3 bg-orange-400 text-white text-xs font-bold px-2 py-1 rounded-md z-10">Son ${product.stock} Adet</span>`;
+    }
+
+    // Stock status
+    const inStock = product.stock == null || product.stock > 0;
+
+    return `
+      <div class="bg-white dark:bg-gray-800 rounded-2xl p-4 shadow-sm border border-[var(--melz-beige-dark)] dark:border-gray-700 hover:shadow-xl hover:border-primary/30 transition-all duration-300 group flex flex-col">
+        <a href="/urun/dist/index.html?id=${product.id}" class="relative w-full aspect-[4/5] rounded-xl overflow-hidden bg-[var(--melz-beige)] dark:bg-gray-700 block">
+          ${badge}
+          <button class="absolute top-3 right-3 bg-white/90 dark:bg-black/50 p-1.5 rounded-full text-gray-400 hover:text-[#e87c7c] transition-colors z-10 backdrop-blur-sm shadow-sm">
+            <span class="material-symbols-outlined text-[20px]">favorite</span>
+          </button>
+          <img alt="${safeText(product.name)}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="${img}" onerror="this.src='${PLACEHOLDER_IMAGE}'"/>
+          ${inStock ? `
+          <div class="absolute bottom-4 left-4 right-4 translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+            <button data-add-to-cart-btn data-product-id="${product.id}" data-product-name="${safeText(product.name)}" class="w-full h-10 bg-primary text-white font-bold text-sm rounded-lg shadow-lg hover:bg-white hover:text-primary transition-colors border border-primary">
+              Sepete Ekle
+            </button>
+          </div>
+          ` : `
+          <div class="absolute bottom-4 left-4 right-4">
+            <div class="w-full h-10 bg-gray-400 text-white font-bold text-sm rounded-lg flex items-center justify-center">
+              Tükendi
+            </div>
+          </div>
+          `}
+        </a>
+        <div class="pt-5 px-1 pb-2 flex-1 flex flex-col">
+          <p class="text-xs text-primary/80 dark:text-primary font-bold mb-1 uppercase tracking-wide">${safeText(categoryName)}</p>
+          <a href="/urun/dist/index.html?id=${product.id}" class="text-[#4a4a4a] dark:text-white font-bold text-lg leading-snug mb-auto group-hover:text-primary transition-colors">${safeText(product.name)}</a>
+          <div class="flex items-center gap-3 mt-3">
+            <span class="text-[#4a4a4a] dark:text-white font-black text-xl">${fmtTRY(price)}</span>
+            ${hasSale ? `<span class="text-gray-400 text-sm line-through">${fmtTRY(originalPrice)}</span>` : ""}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  // ============================================
   // AUTO INIT
   // ============================================
   window.addEventListener("DOMContentLoaded", () => {
@@ -946,6 +1089,7 @@
     window.addEventListener("melz:cart:update", updateCartBadge);
 
     // Page-specific init
+    if (path.includes("/bebek-urunleri/")) initShopPage();
     if (path.includes("/urun/")) initProductDetail();
     if (path.includes("/odeme/")) initCheckout();
     if (path.includes("/siparis-onayi/")) initOrderConfirmation();
@@ -971,6 +1115,7 @@
     fetchProducts,
 
     // Pages
+    initShopPage,
     initProductDetail,
     initCheckout,
     initOrderConfirmation,
@@ -985,6 +1130,7 @@
     showToast,
     updateCartBadge,
     getConfig,
+    renderProductCard,
 
     // Mock data (for debugging)
     MOCK_PRODUCTS,
