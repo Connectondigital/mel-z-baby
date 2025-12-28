@@ -18,7 +18,7 @@
 
   const API_BASE = (window.MELZ_API_URL || "http://127.0.0.1:5050/api").replace(/\/$/, "");
   const CART_KEY = "melz_cart";
-  const USE_MOCK_FALLBACK = false; // REAL API MODE // Enable mock fallback when API unavailable
+  const USE_MOCK_FALLBACK = true; // REAL API MODE // Enable mock fallback when API unavailable
 
   // ============================================
   // MOCK DATA (fallback when API unavailable)
@@ -908,11 +908,178 @@
     if (path.includes("/siparis-onayi/")) initOrderConfirmation();
     if (path.includes("/siparis-detay/")) initOrderDetail();
   });
+  // ============================================
+  // AUTH + ADMIN (MOCK - localStorage)
+  // ============================================
+  const LS_USER = "melz_user";
+  const LS_SESSION = "melz_session";
+  const LS_ALL_USERS = "melz_all_users";
+  const LS_ADMIN_ORDERS = "melz_admin_orders";
+
+  function _readJSON(key, fallback) {
+    try {
+      const raw = localStorage.getItem(key);
+      return raw ? JSON.parse(raw) : fallback;
+    } catch (e) {
+      return fallback;
+    }
+  }
+
+  function _writeJSON(key, value) {
+    localStorage.setItem(key, JSON.stringify(value));
+  }
+
+  function _nowISO() {
+    return new Date().toISOString();
+  }
+
+  function getSession() {
+    return _readJSON(LS_SESSION, null);
+  }
+
+  function getCurrentUser() {
+    return _readJSON(LS_USER, null);
+  }
+
+  function logout() {
+    localStorage.removeItem(LS_SESSION);
+    localStorage.removeItem(LS_USER);
+    return { ok: true };
+  }
+
+  function register({ email, password, name }) {
+    const e = (email || "").trim().toLowerCase();
+    const p = password || "";
+    if (!e || !e.includes("@")) return { ok: false, message: "Geçerli bir e-posta girin." };
+    if (p.length < 6) return { ok: false, message: "Şifre en az 6 karakter olmalı." };
+
+    const users = _readJSON(LS_ALL_USERS, []);
+    const exists = users.find(u => (u.email || "").toLowerCase() === e);
+    if (exists) return { ok: false, message: "Bu e-posta ile zaten kayıt var." };
+
+    const role = e.includes("admin") ? "admin" : "user";
+    const user = {
+      id: "u_" + Math.random().toString(16).slice(2),
+      email: e,
+      password: p,
+      name: name || e.split("@")[0],
+      role,
+      createdAt: _nowISO()
+    };
+
+    users.push(user);
+    _writeJSON(LS_ALL_USERS, users);
+
+    // Auto login after register
+    const session = { token: "s_" + Math.random().toString(16).slice(2), createdAt: _nowISO() };
+    _writeJSON(LS_SESSION, session);
+    _writeJSON(LS_USER, { id: user.id, email: user.email, name: user.name, role: user.role });
+
+    return { ok: true, user: { id: user.id, email: user.email, name: user.name, role: user.role } };
+  }
+
+  function login({ email, password }) {
+    const e = (email || "").trim().toLowerCase();
+    const p = password || "";
+    const users = _readJSON(LS_ALL_USERS, []);
+    const user = users.find(u => (u.email || "").toLowerCase() === e);
+    if (!user) return { ok: false, message: "Kullanıcı bulunamadı." };
+    if ((user.password || "") !== p) return { ok: false, message: "Şifre hatalı." };
+
+    const session = { token: "s_" + Math.random().toString(16).slice(2), createdAt: _nowISO() };
+    _writeJSON(LS_SESSION, session);
+    _writeJSON(LS_USER, { id: user.id, email: user.email, name: user.name, role: user.role });
+
+    return { ok: true, user: { id: user.id, email: user.email, name: user.name, role: user.role } };
+  }
+
+  function requireAuth({ adminOnly } = {}) {
+    const session = getSession();
+    const user = getCurrentUser();
+    if (!session || !user) return { ok: false, code: "NO_AUTH" };
+    if (adminOnly && user.role !== "admin") return { ok: false, code: "NOT_ADMIN" };
+    return { ok: true, user };
+  }
+
+  function adminGetOrders() {
+    return _readJSON(LS_ADMIN_ORDERS, []);
+  }
+
+  function adminSaveOrder(order) {
+    const orders = _readJSON(LS_ADMIN_ORDERS, []);
+    orders.unshift(order);
+    _writeJSON(LS_ADMIN_ORDERS, orders);
+    return { ok: true };
+  }
+
+  function adminUpdateOrderStatus(orderId, status) {
+    const orders = _readJSON(LS_ADMIN_ORDERS, []);
+    const idx = orders.findIndex(o => o && o.id === orderId);
+    if (idx === -1) return { ok: false, message: "Sipariş bulunamadı." };
+    orders[idx].status = status;
+    orders[idx].updatedAt = _nowISO();
+    _writeJSON(LS_ADMIN_ORDERS, orders);
+    return { ok: true };
+  }
+
+  function adminGetProducts() {
+    // Use MOCK_PRODUCTS for now
+    return (Array.isArray(MOCK_PRODUCTS) ? MOCK_PRODUCTS : []);
+  }
+
+  function adminUpsertProduct(product) {
+    // Simple in-memory mock: store in localStorage as melz_admin_products
+    const key = "melz_admin_products";
+    const list = _readJSON(key, []);
+    const p = { ...(product || {}) };
+    if (!p.id) p.id = "p_" + Math.random().toString(16).slice(2);
+    const i = list.findIndex(x => x.id === p.id);
+    if (i >= 0) list[i] = { ...list[i], ...p };
+    else list.unshift(p);
+    _writeJSON(key, list);
+    return { ok: true, product: p };
+  }
+
+  function adminDeleteProduct(productId) {
+    const key = "melz_admin_products";
+    const list = _readJSON(key, []);
+    _writeJSON(key, list.filter(x => x && x.id !== productId));
+    return { ok: true };
+  }
+
+  function adminGetStoredProducts() {
+    const key = "melz_admin_products";
+    const stored = _readJSON(key, []);
+    if (stored.length) return stored;
+    return adminGetProducts();
+  }
+
+  const auth = { register, login, logout, getSession, getCurrentUser, requireAuth };
+  const admin = {
+    getOrders: adminGetOrders,
+    saveOrder: adminSaveOrder,
+    updateOrderStatus: adminUpdateOrderStatus,
+    getProducts: adminGetStoredProducts,
+    upsertProduct: adminUpsertProduct,
+    deleteProduct: adminDeleteProduct,
+  };
+
+  // helper: when checkout completes, call this to sync into admin orders
+  function pushOrderToAdminOrders(order) {
+    return adminSaveOrder(order);
+  }
+
+
 
   // ============================================
   // EXPOSE API
   // ============================================
   window.MelzV2 = {
+    // Auth + Admin
+    auth,
+    admin,
+    pushOrderToAdminOrders,
+
     // Cart
     getCart,
     addToCart,
@@ -947,6 +1114,9 @@
     MOCK_PRODUCTS,
     MOCK_CATEGORIES,
   };
+
+  // Backward-compatible alias for pages using MelzApiV2
+  window.MelzApiV2 = window.MelzV2;
 
   console.log("[MelzV2] Loaded. Cart count:", getCartCount(), "| API:", API_BASE, "| Mock fallback:", USE_MOCK_FALLBACK);
 })();
