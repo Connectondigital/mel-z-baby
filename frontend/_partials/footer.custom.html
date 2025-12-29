@@ -1,48 +1,56 @@
 <footer class="bg-white border-t border-[#f4f2f0] mt-16">
   <div class="max-w-[1280px] mx-auto px-4 md:px-10 py-10">
     <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
-
-      <!-- Brand -->
       <div>
         <div class="flex items-center gap-2">
-          <span class="material-symbols-outlined text-[26px] text-primary">child_care</span>
-          <span class="font-bold text-text-main">Mel'z Baby&amp;Kids</span>
+          <img src="/assets/melz-logo.png" alt="Melz Baby Logo" class="h-8 w-auto" />
+          <span class="font-bold text-text-main">Mel'z Baby&Kids</span>
         </div>
-        <p class="text-sm text-text-secondary mt-3">© 2024 Tüm hakları saklıdır.</p>
+        <p class="text-sm text-text-secondary mt-3 leading-relaxed">
+          Bebek & çocuk ürünlerinde güvenli, şık ve konforlu seçimler.
+        </p>
       </div>
 
-      <!-- Kurumsal -->
       <div>
-        <div class="font-semibold text-text-main mb-3">Kurumsal</div>
+        <h4 class="font-bold text-text-main mb-3">Kurumsal</h4>
         <ul class="space-y-2 text-sm">
-          <li><a class="hover:text-primary transition" href="/hakkimizda/dist/index.html">Hakkımızda</a></li>
-          <li><a class="hover:text-primary transition" href="/iletisim/dist/index.html">İletişim</a></li>
+          <li><a class="text-text-secondary hover:text-primary" href="/hakkimizda/dist/index.html">Hakkımızda</a></li>
+          <li><a class="text-text-secondary hover:text-primary" href="/iletisim/dist/index.html">İletişim</a></li>
+          <li><a class="text-text-secondary hover:text-primary" href="/blog/dist/index.html">Blog</a></li>
         </ul>
       </div>
 
-      <!-- Yasal -->
       <div>
-        <div class="font-semibold text-text-main mb-3">Yasal</div>
+        <h4 class="font-bold text-text-main mb-3">Yasal</h4>
         <ul class="space-y-2 text-sm">
-          <li><a class="hover:text-primary transition" href="/yasal/kvkk/dist/index.html">KVKK</a></li>
-          <li><a class="hover:text-primary transition" href="/yasal/gizlilik/dist/index.html">Gizlilik</a></li>
-          <li><a class="hover:text-primary transition" href="/yasal/mesafeli-satis/dist/index.html">Kullanım / Mesafeli Satış</a></li>
+          <li><a class="text-text-secondary hover:text-primary" href="/yasal/kvkk/dist/index.html">KVKK</a></li>
+          <li><a class="text-text-secondary hover:text-primary" href="/yasal/gizlilik/dist/index.html">Gizlilik</a></li>
+          <li><a class="text-text-secondary hover:text-primary" href="/yasal/mesafeli-satis/dist/index.html">Mesafeli Satış</a></li>
         </ul>
       </div>
 
-      <!-- Sosyal -->
       <div>
-        <div class="font-semibold text-text-main mb-3">Bizi Takip Edin</div>
-        <div class="flex items-center gap-3">
-          <a href="#" class="w-10 h-10 rounded-xl bg-[#f4f2f0] hover:bg-[#e8e6e4] flex items-center justify-center">
-            <span class="material-symbols-outlined text-[20px]">public</span>
-          </a>
-          <a href="#" class="w-10 h-10 rounded-xl bg-[#f4f2f0] hover:bg-[#e8e6e4] flex items-center justify-center">
-            <span class="material-symbols-outlined text-[20px]">photo_camera</span>
-          </a>
-        </div>
+        <h4 class="font-bold text-text-main mb-3">Sosyal</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a class="text-text-secondary hover:text-primary" href="#">Instagram</a></li>
+          <li><a class="text-text-secondary hover:text-primary" href="#">TikTok</a></li>
+          <li><a class="text-text-secondary hover:text-primary" href="#">YouTube</a></li>
+        </ul>
       </div>
+    </div>
 
+    <div class="border-t border-[#f4f2f0] mt-10 pt-6 text-sm text-text-secondary">
+      © <span id="year"></span> Mel'z Baby&Kids. Tüm hakları saklıdır.
     </div>
   </div>
+
+  <script>
+    (function () {
+      var el = document.getElementById("year");
+      if (el) el.textContent = new Date().getFullYear();
+    })();
+  </script>
+
+  <!-- ✅ ADD TO CART (ZORUNLU – EN ALTTA) -->
+  <script src="/assets/js/add-to-cart.js?v=1"></script>
 </footer>
