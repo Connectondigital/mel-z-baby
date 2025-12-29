@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="/assets/style.css" />
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@300;400;600&display=swap" />
+
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          primary: "var(--primary)",
+          "primary-300": "var(--primary-300)"
+        }
+      }
+    }
+  }
+</script>
+</head>
+<body>
+<header class="bg-white border-b border-[#f4f2f0] sticky top-0 z-50">
+  <div class="max-w-[1280px] mx-auto px-4 md:px-10 py-3">
+    <div class="flex items-center justify-between gap-8">
+
+      <!-- Logo -->
+      <a
+        href="/anasayfa/dist/index.html"
+        class="flex items-center gap-2 text-text-main shrink-0"
+      >
+        <img
+          src="/assets/melz-logo.png"
+          alt="Melz Baby Logo"
+          class="h-8 md:h-10 w-auto object-contain"
+        />
+        <span class="text-lg font-bold leading-tight tracking-[-0.015em]">
+          Mel'z Baby&Kids
+        </span>
+      </a>
+
+      <!-- Desktop Menu -->
+      <nav class="hidden lg:flex items-center gap-7">
+        <a class="text-text-main text-sm font-medium hover:text-primary transition-colors" href="/anasayfa/dist/index.html">Ana Sayfa</a>
+        <a class="text-text-main text-sm font-medium hover:text-primary transition-colors" href="/bebek-urunleri/dist/index.html">Shop</a>
+        <a class="text-text-main text-sm font-medium hover:text-primary transition-colors" href="/bebek-urunleri/dist/index.html">Giyim</a>
+        <a class="text-text-main text-sm font-medium hover:text-primary transition-colors" href="/blog/dist/index.html">Blog</a>
+        <a class="text-text-main text-sm font-medium hover:text-primary transition-colors" href="/iletisim/dist/index.html">İletişim</a>
+      </nav>
+
+      <!-- Actions -->
+      <div class="flex items-center gap-3 justify-end flex-1">
+        <label class="hidden md:flex flex-1 min-w-0 max-w-[420px]">
+          <div class="flex w-full items-center rounded-xl bg-[#f4f2f0] px-3 h-10">
+            <span class="material-symbols-outlined text-[20px] text-text-secondary">search</span>
+            <input
+              class="flex-1 bg-transparent outline-none px-2 text-sm text-text-main placeholder:text-text-secondary"
+              placeholder="Ürün ara..."
+            />
+          </div>
+        </label>
+
+        <button class="flex items-center justify-center rounded-xl h-10 w-10 bg-[#f4f2f0] hover:bg-[#e8e6e4] text-text-main transition-colors" aria-label="Sepet">
+          <span class="material-symbols-outlined text-[20px]">shopping_cart</span>
+        </button>
+
+        <button class="flex items-center justify-center rounded-xl h-10 w-10 bg-[#f4f2f0] hover:bg-[#e8e6e4] text-text-main transition-colors" aria-label="Hesap">
+          <span class="material-symbols-outlined text-[20px]">account_circle</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+
+<main class="flex-1">
+  <!-- HERO -->
+  <section class="px-4 py-6 md:px-10 lg:px-20 max-w-[1440px] mx-auto w-full">
+    <div class="relative w-full min-h-[520px] md:h-[620px] rounded-2xl md:rounded-[2rem] overflow-hidden group">
+      <div
+        class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+        style="background-image:url('https://lh3.googleusercontent.com/aida-public/AB6AXuDJ1aj5bYs8lPpSmJkafmvBIzmXTM3EmqfiaOYOgwIsl0j6vghtISbB6JdKsbz7hvW7PIwLuYSBTMJBY9lUrl-nCrHT065iUGMkPaz_wp73yYeXc-emHZc_GKT4vhH5xdK7RZU6XTgBZfZIRPEm68SqbqxAPieDqNHhesAl7UU9S81al9Z3gvOqKbr7QUAzjxfvBl8O_upMZt7qNkWZnrrLp8UFpxp44lEYPO92db-DaqGyPl65bIFdauXefXwEulcV1cYjS2mXEfRe');"
+        aria-label="Happy baby sitting on a soft white bed playing with a wooden toy"
+        role="img"
+      ></div>
+
+      <div class="absolute inset-0 bg-gradient-to-r from-black/65 via-black/30 to-transparent"></div>
+
+      <div class="relative z-10 h-full flex flex-col justify-center items-start px-6 md:px-16 max-w-2xl gap-6">
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm text-white text-xs font-bold uppercase tracking-wider border border-white/30">
+          Yeni Sezon
+        </span>
+
+        <h1 class="text-4xl md:text-6xl font-black text-white leading-[1.05] tracking-tight">
+          Minikleriniz İçin <br />
+          <span class="text-[#f0dcc5]">En Saf Dokunuşlar</span>
+        </h1>
+
+        <p class="text-lg text-white/90 font-medium max-w-lg leading-relaxed">
+          Konforlu giyimden eğlenceli oyuncaklara, bebeğinizin ihtiyacı olan her şey burada.
+          Güvenli, doğal ve sevgi dolu.
+        </p>
+
+        <div class="flex flex-wrap gap-4 pt-2">
+          <a
+            href="#one-cikanlar"
+            class="h-12 px-8 rounded-xl bg-primary text-white text-base font-bold hover:bg-white hover:text-primary transition-all duration-300 shadow-[0_0_20px_rgba(212,163,115,0.4)] inline-flex items-center justify-center"
+          >
+            Koleksiyonu Keşfet
+          </a>
+
+          <a
+            href="#one-cikanlar"
+            class="h-12 px-8 rounded-xl bg-white/10 backdrop-blur-md border border-white/30 text-white text-base font-bold hover:bg-white hover:text-[#4a4a4a] transition-all duration-300 inline-flex items-center justify-center"
+          >
+            İndirimleri Gör
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POPÜLER KATEGORİLER -->
+  <section class="py-12 px-4 md:px-10 max-w-[1440px] mx-auto w-full">
+    <div class="flex items-center justify-between mb-8">
+      <h2 class="text-2xl md:text-3xl font-bold text-[#4a4a4a] dark:text-white tracking-tight">Popüler Kategoriler</h2>
+      <a class="text-primary font-bold text-sm hover:underline flex items-center gap-1" href="#">
+        Tümünü Gör <span class="material-symbols-outlined text-base">arrow_forward</span>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+      <!-- KATEGORİ ITEM TEMPLATE -->
+      <a class="group flex flex-col items-center gap-4 text-center" href="#">
+        <div class="w-full aspect-square rounded-full overflow-hidden border-4 border-white dark:border-gray-800 shadow-lg group-hover:shadow-xl group-hover:border-primary transition-all duration-300">
+          <div
+            class="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
+            style="background-image:url('https://lh3.googleusercontent.com/aida-public/AB6AXuDi2b_DzW_7cFPvucQJChvzXHpufsJqZWcjPJLoOzPEn1Ixb1GTaEY-t8ajS6ow2l8yQO6W1nf2HMmjiloK02lOwnjmYxl6DaNlhr7MhRp9gnTSskkvubOxitOKm8sqFmDVEGVbmmz4x3QvLR0Vg79iQu_EvyqmxKKrIcHAIWGNYjnHIWRUsUUb68b0DScrutCl0cFRUSP1zGIfCeTrLKgS-FwS18iNzEzECzL6W4IFjFzb-1-Ywz6Q0BoVyW8YZyhwwK9-iu9a1-Uq');"
+            aria-label="Close up of newborn baby sleeping peacefully"
+            role="img"
+          ></div>
+        </div>
+        <div>
+          <h3 class="font-bold text-[#4a4a4a] dark:text-white text-lg group-hover:text-primary transition-colors">Yenidoğan</h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400">0–12 Ay</p>
+        </div>
+      </a>
+
+      <a class="group flex flex-col items-center gap-4 text-center" href="#">
+        <div class="w-full aspect-square rounded-full overflow-hidden border-4 border-white dark:border-gray-800 shadow-lg group-hover:shadow-xl group-hover:border-primary transition-all duration-300">
+          <div
+            class="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
+            style="background-image:url('https://lh3.googleusercontent.com/aida-public/AB6AXuDnNOyQUZw-iRfHnwF45_cYLEZ7ZL8roouAvycHJpsDyocBGAYT6bBMpfHskW1zRhUv4M2qVLQy17e5luCxyLBbJREUR9mc_IMl0ek_CulcmFaUGZ9TiOqkBcsrO2kHAPEpLV6Eg8PSPn35ViSB_dSCHUo8_xwzUIHbsRzLyif8fy_yxV1YdCt1CDdpEMxXVMuZW2AlagGClevkw7rndQU6U5qfVJVjaRtN4UtQpFMl7W0H3WdmfWb5f2SvWh1IuUfn9Qf5M0breCMP');"
+            aria-label="Toddler girl wearing cute denim dress"
+            role="img"
+          ></div>
+        </div>
+        <div>
+          <h3 class="font-bold text-[#4a4a4a] dark:text-white text-lg group-hover:text-primary transition-colors">Bebek Giyim</h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400">Konforlu Stiller</p>
+        </div>
+      </a>
+
+      <a class="group flex flex-col items-center gap-4 text-center" href="#">
+        <div class="w-full aspect-square rounded-full overflow-hidden border-4 border-white dark:border-gray-800 shadow-lg group-hover:shadow-xl group-hover:border-primary transition-all duration-300">
+          <div
+            class="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
+            style="background-image:url('https://lh3.googleusercontent.com/aida-public/AB6AXuDqbxeH3LfCYKu1KgXVnYaZjw0yyvKa01FXCTNFy0BKUt1AMLkkKiZAE6TLF1gQ184q0cNNU6oz1xobvEQbo09fF-xFJm9BLybfq2j6Fb75E0sVuSjP01vc26zqUDX5Q40K2Q2_-ABz4YbG-ymtrXOL68dUUrciltqeMeKd4J4EbS2M1mLBKL6Pk6ItGZz756d4YfhBDvIltOMxLeibZpQugGdrTMEIxYq7l-Q2A2lveMavPnyp0C-ROrUNJZUFUAdUKfG9Bk8nkjRN');"
+            aria-label="Wooden educational toys on a beige background"
+            role="img"
+          ></div>
+        </div>
+        <div>
+          <h3 class="font-bold text-[#4a4a4a] dark:text-white text-lg group-hover:text-primary transition-colors">Oyuncak</h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400">Eğitici Oyunlar</p>
+        </div>
+      </a>
+
+      <a class="group flex flex-col items-center gap-4 text-center" href="#">
+        <div class="w-full aspect-square rounded-full overflow-hidden border-4 border-white dark:border-gray-800 shadow-lg group-hover:shadow-xl group-hover:border-primary transition-all duration-300">
+          <div
+            class="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
+            style="background-image:url('https://lh3.googleusercontent.com/aida-public/AB6AXuDPnEyE2wVBPfjbnEFskyh1obO3ClbaBrpjgBu8L02D8Lc-ZvGYfH-cqqZS80miE4TXiOh0xp7ZHzD0dTlUhszwx6ReRRgbtm9Cb2it7r6KxJZbbTemCa5YEH3l-7mtOpCf6pb3qiGS-yIj6fyrEVoqx6C2GmTKE3SlnMtv8S9GmNk8b3QWrU4fUspzM7PLSGyyLynB4t5LFmyL_1e9yDo5o3mDZnwrCA4VBc34gcGlIMy0AcU9J4qgAT3kKufdL8E5NRjiiS7LlLha');"
+            aria-label="Baby bottles and healthy baby food jars"
+            role="img"
+          ></div>
+        </div>
+        <div>
+          <h3 class="font-bold text-[#4a4a4a] dark:text-white text-lg group-hover:text-primary transition-colors">Beslenme</h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400">Sağlıklı Öğünler</p>
+        </div>
+      </a>
+
+      <a class="group flex flex-col items-center gap-4 text-center" href="#">
+        <div class="w-full aspect-square rounded-full overflow-hidden border-4 border-white dark:border-gray-800 shadow-lg group-hover:shadow-xl group-hover:border-primary transition-all duration-300">
+          <div
+            class="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
+            style="background-image:url('https://lh3.googleusercontent.com/aida-public/AB6AXuAn6FJRdonO4jbLAeWats_hvFsKv7D3Gm4nOFjYW75cGkCG6z5Me5fbp3SgF6XDrxQMQzzZFgWlQB75WHUbqJ7ti934-x-T8YXDUJWxd_ef4MXUBcVB7MpESpinC8RtqQigkM03nK9jHoD9dxOTdCpA8SklkGA6rkrF3aNFmzrKqFoMj9mraKZ85O6DL9PlUYeIKW_p1TUljGX8Ed17by7bWR9Glieg1JqFxgmwokm5aiPgZRNwCWKSGBmMmiLo0FD76EIVNDzJbS9F');"
+            aria-label="Baby bath tub with bubbles and yellow duck"
+            role="img"
+          ></div>
+        </div>
+        <div>
+          <h3 class="font-bold text-[#4a4a4a] dark:text-white text-lg group-hover:text-primary transition-colors">Banyo</h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400">Hassas Temizlik</p>
+        </div>
+      </a>
+
+      <a class="group flex flex-col items-center gap-4 text-center" href="#">
+        <div class="w-full aspect-square rounded-full overflow-hidden border-4 border-white dark:border-gray-800 shadow-lg group-hover:shadow-xl group-hover:border-primary transition-all duration-300">
+          <div
+            class="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
+            style="background-image:url('https://lh3.googleusercontent.com/aida-public/AB6AXuDJr6UHzrjZyoHQwfDLs7_d4ZXdq1fP7swT60SZuu8bJc4FNbG-ovny_NFI1pN-J3qkp-hX7Ui3hpXHMoIIanChhH85KgaPK4CgZBfZE8bvy0GOvYvYXR_sklv_d8cEjUNl--C9GraxCJfNLe_QjbhUy0An2QtYPXr37blwP_TQr2GwSQH6oqNsQ6uBMriAhNm73QKs1sW34YSecJRf0up5f2gaHNEs37rBsSr3P5oFDjJo-zTNIfPhIeS5eCb8zAGAOIaWnDRyh40u');"
+            aria-label="Happy mother holding her baby close"
+            role="img"
+          ></div>
+        </div>
+        <div>
+          <h3 class="font-bold text-[#4a4a4a] dark:text-white text-lg group-hover:text-primary transition-colors">Anne Ürünleri</h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400">Annelere Özel</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- HAFTANIN ÖNE ÇIKANLARI -->
+  <section id="one-cikanlar" class="py-12 px-4 md:px-10 bg-[var(--melz-beige-light)] dark:bg-surface-dark/50">
+    <div class="max-w-[1440px] mx-auto w-full">
+      <div class="flex items-end justify-between mb-8">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-bold text-[#4a4a4a] dark:text-white tracking-tight mb-2">Haftanın Öne Çıkanları</h2>
+          <p class="text-gray-500 dark:text-gray-400">Bu hafta en çok tercih edilen ürünleri keşfedin.</p>
+        </div>
+        <div class="hidden md:flex gap-2">
+          <button class="size-10 rounded-full border border-[var(--melz-beige-dark)] bg-white dark:bg-gray-800 dark:border-gray-700 flex items-center justify-center hover:bg-[var(--melz-beige)] dark:hover:bg-gray-700 transition-colors text-[#4a4a4a] dark:text-white" type="button">
+            <span class="material-symbols-outlined">chevron_left</span>
+          </button>
+          <button class="size-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20" type="button">
+            <span class="material-symbols-outlined">chevron_right</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- PRODUCT CARD (data-pid şart) -->
+        <article class="bg-white dark:bg-gray-800 rounded-2xl p-4 shadow-sm border border-[var(--melz-beige-dark)] dark:border-gray-700 hover:shadow-xl hover:border-primary/30 transition-all duration-300 group flex flex-col">
+          <div class="relative w-full aspect-[4/5] rounded-xl overflow-hidden bg-[var(--melz-beige)] dark:bg-gray-700">
+            <span class="absolute top-3 left-3 bg-[#e87c7c] text-white text-xs font-bold px-2 py-1 rounded-md z-10">%20 İndirim</span>
+            <button class="absolute top-3 right-3 bg-white/90 dark:bg-black/50 p-1.5 rounded-full text-gray-400 hover:text-[#e87c7c] transition-colors z-10 backdrop-blur-sm shadow-sm" type="button" aria-label="Favorilere ekle">
+              <span class="material-symbols-outlined text-[20px]">favorite</span>
+            </button>
+
+            <img
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuARYGHiRtdlfCot2wwyNQKVH-dmAbRW61HiyJoZ79U9dK-6mXxM4PEouAkEPrDfavY1FqkDpD9p30aQZlJbGWGtQi1PQdND1uwPD5_HW3zRELzBrq5S8Y69m_HMb6Y6sDAkTmCraqvwJk786w_tb0v2-ToXECAjv0geRMT8_uI6ox1JGwBh-rKPe87-UBbDTlVC7DL3mf2gmnEb_x7zE-V-uSNX3eCqG4isgyUOa71gmw4dXqV6infOY32KEiHlGSnIKQp9S81dJBiW"
+              alt="Organik Pamuk Tulum - Bej"
+              loading="lazy"
+            />
+
+            <div class="absolute bottom-4 left-4 right-4 translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+              <button
+                class="w-full h-10 bg-primary text-white font-bold text-sm rounded-lg shadow-lg hover:bg-white hover:text-primary transition-colors border border-primary js-add-to-cart"
+                type="button"
+                data-pid="1"
+              >
+                Sepete Ekle
+              </button>
+            </div>
+          </div>
+
+          <div class="pt-5 px-1 pb-2 flex-1 flex flex-col">
+            <p class="text-xs text-primary/80 dark:text-primary font-bold mb-1 uppercase tracking-wide">Giyim</p>
+            <h3 class="text-[#4a4a4a] dark:text-white font-bold text-lg leading-snug mb-auto group-hover:text-primary transition-colors">
+              Organik Pamuk Tulum - Bej
+            </h3>
+            <div class="flex items-center gap-1 mt-2 mb-3">
+              <span class="material-symbols-outlined text-yellow-400 text-sm">star</span>
+              <span class="material-symbols-outlined text-yellow-400 text-sm">star</span>
+              <span class="material-symbols-outlined text-yellow-400 text-sm">star</span>
+              <span class="material-symbols-outlined text-yellow-400 text-sm">star</span>
+              <span class="material-symbols-outlined text-gray-300 text-sm">star</span>
+              <span class="text-xs text-gray-400 ml-1">(42)</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-[#4a4a4a] dark:text-white font-black text-xl">₺450.00</span>
+              <span class="text-gray-400 text-sm line-through">₺560.00</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 2 -->
+        <article class="bg-white dark:bg-gray-800 rounded-2xl p-4 shadow-sm border border-[var(--melz-beige-dark)] dark:border-gray-700 hover:shadow-xl hover:border-primary/30 transition-all duration-300 group flex flex-col">
+          <div class="relative w-full aspect-[4/5] rounded-xl overflow-hidden bg-[var(--melz-beige)] dark:bg-gray-700">
+            <span class="absolute top-3 left-3 bg-[#d4a373] text-white text-xs font-bold px-2 py-1 rounded-md z-10">Yeni</span>
+            <button class="absolute top-3 right-3 bg-white/90 dark:bg-black/50 p-1.5 rounded-full text-gray-400 hover:text-[#e87c7c] transition-colors z-10 backdrop-blur-sm shadow-sm" type="button" aria-label="Favorilere ekle">
+              <span class="material-symbols-outlined text-[20px]">favorite</span>
+            </button>
+
+            <img
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYn41MjjMx0JJtY50LIaCri5Y9NfRVKGGwhv1hTNN56BZanYAnUIJY4dZxtepvHH5PsRlo6I_IVZZh05f55JixREoU7OwI2l2-J_Kq_B2CF-F-QwJe6apCX7QIQItmyK8PXcVV6VB7wuVyHvBtM2YgEm2uFfhiKkKR4FqRXdMN-mvcOxZdcuhGDEn1TBcl80VxyzmW8-A1JBx8feoCkWXkDvXldQGBrkmJkvenYSFP28UFYVmNkXtxeyoMqLJZ5dRHMfhytZYMEUXQ"
+              alt="Ahşap Halka Kulesi"
+              loading="lazy"
+            />
+
+            <div class="absolute bottom-4 left-4 right-4 translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+              <button class="w-full h-10 bg-primary text-white font-bold text-sm rounded-lg shadow-lg hover:bg-white hover:text-primary transition-colors border border-primary js-add-to-cart" type="button" data-pid="2">
+                Sepete Ekle
+              </button>
+            </div>
+          </div>
+
+          <div class="pt-5 px-1 pb-2 flex-1 flex flex-col">
+            <p class="text-xs text-primary/80 dark:text-primary font-bold mb-1 uppercase tracking-wide">Oyuncak</p>
+            <h3 class="text-[#4a4a4a] dark:text-white font-bold text-lg leading-snug mb-auto group-hover:text-primary transition-colors">
+              Ahşap Halka Kulesi
+            </h3>
+            <div class="flex items-center gap-1 mt-2 mb-3">
+              <span class="material-symbols-outlined text-yellow-400 text-sm">star</span>
+              <span class="material-symbols-outlined text-yellow-400 text-sm">star</span>
+              <span class="material-symbols-outlined text-yellow-400 text-sm">star</span>
+              <span class="material-symbols-outlined text-yellow-400 text-sm">star</span>
+              <span class="material-symbols-outlined text-yellow-400 text-sm">star</span>
+              <span class="text-xs text-gray-400 ml-1">(128)</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-[#4a4a4a] dark:text-white font-black text-xl">₺320.00</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 3 -->
+        <article class="bg-white dark:bg-gray-800 rounded-2xl p-4 shadow-sm border border-[var(--melz-beige-dark)] dark:border-gray-700 hover:shadow-xl hover:border-primary/30 transition-all duration-300 group flex flex-col">
+          <div class="relative w-full aspect-[4/5] rounded-xl overflow-hidden bg-[var(--melz-beige)] dark:bg-gray-700">
+            <button class="absolute top-3 right-3 bg-white/90 dark:bg-black/50 p-1.5 rounded-full text-gray-400 hover:text-[#e87c7c] transition-colors z-10 backdrop-blur-sm shadow-sm" type="button" aria-label="Favorilere ekle">
+              <span class="material-symbols-outlined text-[20px]">favorite</span>
+            </button>
+
+            <img
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfNbPJCmzXiIPSprVUTsTCl2G77IGvr2eSSLWWOanHX8KjXDwUAOavRbOV6KUIiMQWzZuZ1PLqpMyL0sAjVAUSpCyBL1as3dirL-ZER11qK3xfLjdjnFoawESR8EeLlVPwmI2o2-CXlr6Ic68WrIACfZxszy3h9td2rEHTa5HqGjZK2DzWUfX0od5BWI41JZyASrScLsWwSkiJw2BZ_jnwODfGT35a0l0wMcUMNU50UnFR9L-fv_eX1TZ0W6HiQUOpFwilANkC-sTX"
+              alt="Ergonomik Kanguru - Gri"
+              loading="lazy"
+            />
+
+            <div class="absolute bottom-4 left-4 right-4 translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+              <button class="w-full h-10 bg-primary text-white font-bold text-sm rounded-lg shadow-lg hover:bg-white hover:text-primary transition-colors border border-primary js-add-to-cart" type="button" data-pid="3">
+                Sepete Ekle
+              </button>
+            </div>
+          </div>
+
+          <div class="pt-5 px-1 pb-2 flex-1 flex flex-col">
+            <p class="text-xs text-primary/80 dark:text-primary font-bold mb-1 uppercase tracking-wide">Seyahat</p>
+            <h3 class="text-[#4a4a4a] dark:text-white font-bold text-lg leading-snug mb-auto group-hover:text-primary transition-colors">
+              Ergonomik Kanguru - Gri
+            </h3>
+            <div class="flex items-center gap-1 mt-2 mb-3">
+              <span class="material-symbols-outlined text-yellow-400 text-sm">star</span>
+              <span class="material-symbols-outlined text-yellow-400 text-sm">star</span>
+              <span class="material-symbols-outlined text-yellow-400 text-sm">star</span>
+              <span class="material-symbols-outlined text-yellow-400 text-sm">star</span>
+              <span class="material-symbols-outlined text-gray-300 text-sm">star_half</span>
+              <span class="text-xs text-gray-400 ml-1">(85)</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-[#4a4a4a] dark:text-white font-black text-xl">₺1,250.00</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 4 -->
+        <article class="bg-white dark:bg-gray-800 rounded-2xl p-4 shadow-sm border border-[var(--melz-beige-dark)] dark:border-gray-700 hover:shadow-xl hover:border-primary/30 transition-all duration-300 group flex flex-col">
+          <div class="relative w-full aspect-[4/5] rounded-xl overflow-hidden bg-[var(--melz-beige)] dark:bg-gray-700">
+            <button class="absolute top-3 right-3 bg-white/90 dark:bg-black/50 p-1.5 rounded-full text-gray-400 hover:text-[#e87c7c] transition-colors z-10 backdrop-blur-sm shadow-sm" type="button" aria-label="Favorilere ekle">
+              <span class="material-symbols-outlined text-[20px]">favorite</span>
+            </button>
+
+            <img
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhSlO_CbIwSORgQCBxrn4csQEsr_Y72jPZ0dczOojT8KdPOSIvCGMS_Wp_nH25h0KR3XXrKPLNaoGwoYqopBSmilBwaYE4GP0_bP9myOdIk6kPul4mfCxilFcLj_6_z9nsxBSR6aw0KqHKPK4bnIrk0vtJ7256feKQMlu2yOq3NWPN0AuDrx6UoRsJROZzeRqGjNpFFYl9YPD1KUYt0uqcUJOAXYagPi3aj9pHVfIrQ4LVAOCZSNMoWiyjk-dsD6ephdSzPM0BSQxG"
+              alt="Hassas Cilt Losyonu"
+              loading="lazy"
+            />
+
+            <div class="absolute bottom-4 left-4 right-4 translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+              <button class="w-full h-10 bg-primary text-white font-bold text-sm rounded-lg shadow-lg hover:bg-white hover:text-primary transition-colors border border-primary js-add-to-cart" type="button" data-pid="4">
+                Sepete Ekle
+              </button>
+            </div>
+          </div>
+
+          <div class="pt-5 px-1 pb-2 flex-1 flex flex-col">
+            <p class="text-xs text-primary/80 dark:text-primary font-bold mb-1 uppercase tracking-wide">Bakım</p>
+            <h3 class="text-[#4a4a4a] dark:text-white font-bold text-lg leading-snug mb-auto group-hover:text-primary transition-colors">
+              Hassas Cilt Losyonu
+            </h3>
+            <div class="flex items-center gap-1 mt-2 mb-3">
+              <span class="material-symbols-outlined text-yellow-400 text-sm">star</span>
+              <span class="material-symbols-outlined text-yellow-400 text-sm">star</span>
+              <span class="material-symbols-outlined text-yellow-400 text-sm">star</span>
+              <span class="material-symbols-outlined text-yellow-400 text-sm">star</span>
+              <span class="material-symbols-outlined text-yellow-400 text-sm">star</span>
+              <span class="text-xs text-gray-400 ml-1">(210)</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-[#4a4a4a] dark:text-white font-black text-xl">₺180.00</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- HİKAYE -->
+  <section class="py-12 px-4 md:px-10 max-w-[1440px] mx-auto w-full">
+    <div class="bg-[var(--melz-beige)] dark:bg-primary/10 rounded-[2rem] p-6 md:p-12 flex flex-col lg:flex-row items-center gap-10 lg:gap-20 overflow-hidden relative border border-[var(--melz-beige-dark)] dark:border-gray-700">
+      <div class="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 bg-primary/20 rounded-full blur-[100px] pointer-events-none"></div>
+      <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-60 h-60 bg-yellow-200/30 rounded-full blur-[80px] pointer-events-none"></div>
+
+      <div class="flex-1 flex flex-col items-start gap-6 relative z-10">
+        <div class="flex items-center gap-2 text-primary font-bold uppercase tracking-wider text-sm">
+          <span class="w-8 h-[2px] bg-primary"></span>
+          Mel'z Baby&amp;Kids Hikayesi
+        </div>
+
+        <h2 class="text-3xl md:text-5xl font-black text-[#4a4a4a] dark:text-white leading-tight">
+          Doğal ve Güvenli Seçimler, <br /> Mutlu Bebekler.
+        </h2>
+
+        <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+          Her ürünümüzü, kendi bebeğimiz için seçiyormuşçasına titizlikle inceliyoruz.
+          Organik kumaşlardan, BPA içermeyen oyuncaklara kadar; güvenliğiniz bizim önceliğimiz.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-8 pt-2">
+          <div class="flex items-center gap-3">
+            <div class="size-12 rounded-full bg-white dark:bg-gray-800 flex items-center justify-center text-primary shadow-sm">
+              <span class="material-symbols-outlined">eco</span>
+            </div>
+            <div>
+              <h4 class="font-bold text-[#4a4a4a] dark:text-white">%100 Organik</h4>
+              <p class="text-sm text-gray-500">Sertifikalı ürünler</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <div class="size-12 rounded-full bg-white dark:bg-gray-800 flex items-center justify-center text-primary shadow-sm">
+              <span class="material-symbols-outlined">verified_user</span>
+            </div>
+            <div>
+              <h4 class="font-bold text-[#4a4a4a] dark:text-white">Güvenli</h4>
+              <p class="text-sm text-gray-500">Test edilmiş kalite</p>
+            </div>
+          </div>
+        </div>
+
+        <a href="#" class="mt-2 px-6 py-3 rounded-xl bg-[#4a4a4a] dark:bg-white text-white dark:text-[#4a4a4a] font-bold hover:opacity-90 transition-opacity">
+          Hikayemizi Oku
+        </a>
+      </div>
+
+      <div class="flex-1 w-full lg:w-auto relative">
+        <div class="relative rounded-3xl overflow-hidden shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-500">
+          <img
+            class="w-full object-cover"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBITrYPXxYBIbpDwq0B95CttqijTJ45AkOBqjyaaLKw3Tc72dhxDXLD_cKWpsGfsW8YwPlPz1FEb89_PGBumBkl46rjDY68xUM1CsjrdxdH_1-vvqmlKsp10kSSDpuGIh826juq7HlUnSe2hmEzAWkiYL4I6poFZGQIl-Quz1LSFbKlUIzHMbmGAgDGhv-LtlCFvY5ikwApjMuvZ05uYA5hmsVpfkvmQsltX2Ms4GRhYNk8MKttbAOruAhCY8SCbH6x58Lvar5IJJPD"
+            alt="Anne bebeğiyle oynuyor"
+            loading="lazy"
+          />
+        </div>
+
+        <div class="absolute -bottom-6 -left-6 bg-white dark:bg-gray-800 p-4 rounded-2xl shadow-xl flex items-center gap-4 animate-bounce duration-[3000ms]">
+          <div class="bg-green-100 dark:bg-green-900/30 text-green-600 p-2 rounded-lg">
+            <span class="material-symbols-outlined">thumb_up</span>
+          </div>
+          <div>
+            <p class="text-xs text-gray-500 font-bold uppercase">Müşteri Memnuniyeti</p>
+            <p class="text-lg font-black text-[#4a4a4a] dark:text-white">4.9/5</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="py-20 px-4 bg-background-light dark:bg-background-dark border-t border-gray-200 dark:border-gray-800">
+    <div class="max-w-4xl mx-auto text-center">
+      <span class="material-symbols-outlined text-6xl text-primary mb-4">mail</span>
+      <h2 class="text-3xl md:text-4xl font-bold text-[#4a4a4a] dark:text-white mb-4">Ebeveyn Kulübüne Katılın</h2>
+      <p class="text-gray-600 dark:text-gray-400 mb-8 max-w-xl mx-auto">
+        Yeni ürünlerden, indirimlerden ve uzman ebeveynlik ipuçlarından ilk sizin haberiniz olsun.
+        İlk siparişinize özel %10 indirim kazanın.
+      </p>
+
+      <form class="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto" id="newsletterForm">
+        <input class="flex-1 h-12 px-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 focus:ring-2 ring-primary border-none outline-none" placeholder="E-posta adresiniz" type="email" required />
+        <button class="h-12 px-8 rounded-xl bg-primary text-white font-bold hover:bg-primary/90 transition-colors shadow-lg shadow-primary/25" type="submit">
+          Abone Ol
+        </button>
+      </form>
+
+      <p class="text-xs text-gray-400 mt-4">İstediğiniz zaman abonelikten çıkabilirsiniz.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="bg-white border-t border-[#f4f2f0] mt-16">
+  <div class="max-w-[1280px] mx-auto px-4 md:px-10 py-10">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+
+      <!-- Brand -->
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-[26px] text-primary">child_care</span>
+          <span class="font-bold text-text-main">Mel'z Baby&amp;Kids</span>
+        </div>
+        <p class="text-sm text-text-secondary mt-3">© 2024 Tüm hakları saklıdır.</p>
+      </div>
+
+      <!-- Kurumsal -->
+      <div>
+        <div class="font-semibold text-text-main mb-3">Kurumsal</div>
+        <ul class="space-y-2 text-sm">
+          <li><a class="hover:text-primary transition" href="/hakkimizda/dist/index.html">Hakkımızda</a></li>
+          <li><a class="hover:text-primary transition" href="/iletisim/dist/index.html">İletişim</a></li>
+        </ul>
+      </div>
+
+      <!-- Yasal -->
+      <div>
+        <div class="font-semibold text-text-main mb-3">Yasal</div>
+        <ul class="space-y-2 text-sm">
+          <li><a class="hover:text-primary transition" href="/yasal/kvkk/dist/index.html">KVKK</a></li>
+          <li><a class="hover:text-primary transition" href="/yasal/gizlilik/dist/index.html">Gizlilik</a></li>
+          <li><a class="hover:text-primary transition" href="/yasal/mesafeli-satis/dist/index.html">Kullanım / Mesafeli Satış</a></li>
+        </ul>
+      </div>
+
+      <!-- Sosyal -->
+      <div>
+        <div class="font-semibold text-text-main mb-3">Bizi Takip Edin</div>
+        <div class="flex items-center gap-3">
+          <a href="#" class="w-10 h-10 rounded-xl bg-[#f4f2f0] hover:bg-[#e8e6e4] flex items-center justify-center">
+            <span class="material-symbols-outlined text-[20px]">public</span>
+          </a>
+          <a href="#" class="w-10 h-10 rounded-xl bg-[#f4f2f0] hover:bg-[#e8e6e4] flex items-center justify-center">
+            <span class="material-symbols-outlined text-[20px]">photo_camera</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</footer>
+
+<script src="../../assets/api.js"></script>
+<script src="../../assets/api.v2.js"></script>
+</body>
+</html>
