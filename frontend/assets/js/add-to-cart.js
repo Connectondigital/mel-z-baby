@@ -1,82 +1,171 @@
+/**
+ * Add-to-Cart Module for Mel'z Baby & Kids
+ * Works with MelzV2 API
+ * Handles cart badge updates and add-to-cart button clicks
+ */
 (function () {
-  // Tek sefer çalışsın
-  if (window.__melz_addtocart_final_v1) return;
-  window.__melz_addtocart_final_v1 = true;
+  'use strict';
 
-  function isAddBtn(el) {
-    const t = (el?.textContent || "").trim().toLowerCase();
-    return t.includes("sepete ekle");
-  }
+  // Prevent multiple initializations
+  if (window.__melz_addtocart_v2_loaded) return;
+  window.__melz_addtocart_v2_loaded = true;
 
+  /**
+   * Get the API instance (MelzV2 or MelzApiV2)
+   */
   function getApi() {
-    return window.MelzV2 || window.MelzApiV2;
+    return window.MelzV2 || window.MelzApiV2 || null;
   }
 
-  function toast(type, msg) {
+  /**
+   * Get cart count from localStorage (fallback if API not ready)
+   */
+  function getLocalCartCount() {
     const api = getApi();
+    if (api && typeof api.getCartCount === 'function') {
+      return api.getCartCount();
+    }
+    // Fallback: read directly from localStorage
     try {
-      if (api?.showToast) return api.showToast(type, msg);
-    } catch (e) {}
-    alert(msg);
+      const cart = JSON.parse(localStorage.getItem('melz_cart') || '[]');
+      return cart.reduce((sum, item) => sum + (item.qty || 0), 0);
+    } catch (e) {
+      return 0;
+    }
   }
 
-  function ensureApiThenBind() {
-    let tries = 0;
+  /**
+   * Force update the cart badge element
+   */
+  function updateBadgeHard() {
+    const badge = document.getElementById('cart-badge');
+    if (!badge) {
+      console.warn('[ADD_TO_CART] cart-badge element not found in DOM');
+      return;
+    }
+    const count = getLocalCartCount();
+    badge.textContent = String(count);
+    badge.style.display = count > 0 ? 'flex' : 'none';
+    console.log('[ADD_TO_CART] Badge updated to:', count);
+  }
 
-    const timer = setInterval(() => {
-      tries++;
+  /**
+   * Show toast notification
+   */
+  function showToast(message, type) {
+    const api = getApi();
+    if (api && typeof api.showToast === 'function') {
+      api.showToast(message, type);
+      return;
+    }
+    // Fallback: simple console log
+    console.log('[ADD_TO_CART] Toast:', type, message);
+  }
+
+  /**
+   * Check if element is an add-to-cart button
+   */
+  function isAddToCartButton(el) {
+    if (!el) return false;
+    // Check for explicit class
+    if (el.classList.contains('js-add-to-cart')) return true;
+    // Check button text
+    const text = (el.textContent || '').trim().toLowerCase();
+    return text.includes('sepete ekle');
+  }
+
+  /**
+   * Handle add to cart click
+   */
+  function handleAddToCart(btn) {
+    const pid = btn.dataset.pid;
+    if (!pid) {
+      console.warn('[ADD_TO_CART] Button missing data-pid attribute');
+      return;
+    }
+
+    const api = getApi();
+    if (!api || typeof api.addToCart !== 'function') {
+      console.error('[ADD_TO_CART] MelzV2 API not available');
+      showToast('Hata: API yüklenemedi', 'error');
+      return;
+    }
+
+    try {
+      // Add to cart using MelzV2 API
+      api.addToCart(pid, 1);
+      console.log('[ADD_TO_CART] Product added:', pid);
+
+      // Update badge immediately
+      setTimeout(updateBadgeHard, 10);
+
+      // Show success toast
+      showToast('Sepete eklendi ✓', 'success');
+
+      // Visual feedback
+      btn.classList.add('opacity-70');
+      setTimeout(() => btn.classList.remove('opacity-70'), 250);
+
+    } catch (err) {
+      console.error('[ADD_TO_CART] Error:', err);
+      showToast('Sepete eklenemedi', 'error');
+    }
+  }
+
+  /**
+   * Initialize the module
+   */
+  function init() {
+    console.log('[ADD_TO_CART] Initializing...');
+
+    // Wait for API to be available
+    let attempts = 0;
+    const maxAttempts = 100;
+    
+    const waitForApi = setInterval(() => {
+      attempts++;
       const api = getApi();
 
-      if (api && typeof api.addToCart === "function") {
-        clearInterval(timer);
+      if (api && typeof api.addToCart === 'function') {
+        clearInterval(waitForApi);
+        console.log('[ADD_TO_CART] API ready, binding events');
 
-        // Event delegation (dinamik butonlarda da çalışır)
-        document.addEventListener("click", function (e) {
-          const btn = e.target?.closest?.("button");
-          if (!btn || !isAddBtn(btn)) return;
+        // Update badge on load
+        updateBadgeHard();
 
-          e.preventDefault();
-
-          // data-pid varsa onu kullan; yoksa buton sırasına göre 1..6
-          if (!btn.dataset.pid) {
-            const buttons = Array.from(document.querySelectorAll("button")).filter(isAddBtn);
-            const idx = Math.max(0, buttons.indexOf(btn));
-            btn.dataset.pid = String((idx % 6) + 1);
+        // Use event delegation for click handling
+        document.addEventListener('click', function(e) {
+          const btn = e.target.closest('.js-add-to-cart');
+          if (btn) {
+            e.preventDefault();
+            e.stopPropagation();
+            handleAddToCart(btn);
           }
+        }, true);
 
-          const pid = btn.dataset.pid;
+        // Listen for cart update events
+        window.addEventListener('melz:cart:update', updateBadgeHard);
 
-          try {
-            // MelzV2 signature: addToCart(productId, qty, options)
-            api.addToCart(pid, 1);
-
-            try { api.updateCartBadge && api.updateCartBadge(); } catch (e2) {}
-
-            toast("success", "Sepete eklendi ✅");
-
-            // küçük görsel feedback
-            btn.classList.add("opacity-80");
-            setTimeout(() => btn.classList.remove("opacity-80"), 200);
-          } catch (err) {
-            console.error("[ADD_TO_CART_ERROR]", err);
-            toast("error", "Sepete eklenemedi.");
-          }
-        }, { capture: true });
-
-        console.log("[ADD_TO_CART] Bound ✅");
+        console.log('[ADD_TO_CART] Initialized ✓');
       }
 
-      // çok beklemesin
-      if (tries > 80) {
-        clearInterval(timer);
-        console.warn("[ADD_TO_CART] API bulunamadı (timeout).");
+      if (attempts >= maxAttempts) {
+        clearInterval(waitForApi);
+        console.warn('[ADD_TO_CART] Timeout waiting for API');
       }
     }, 50);
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", ensureApiThenBind);
+  // Start initialization when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
   } else {
-    ensureApiThenBind();
+    init();
   }
+
+  // Expose functions globally (as required by problem statement)
+  window.getApi = getApi;
+  window.getLocalCartCount = getLocalCartCount;
+  window.updateBadgeHard = updateBadgeHard;
+
 })();
