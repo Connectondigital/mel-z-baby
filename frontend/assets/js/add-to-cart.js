@@ -1,112 +1,115 @@
-/* Melz Add-to-Cart + Badge (Hard Update)
-   - Event delegation
-   - Works with MelzV2 / MelzApiV2
-*/
+/* assets/js/add-to-cart.js */
+(() => {
+  "use strict";
 
-(function () {
-  if (window.__melz_add_to_cart_hard) return;
-  window.__melz_add_to_cart_hard = true;
+  const CART_KEY = "melz_cart";
 
-  function getApi() {
-    return window.MelzApiV2 || window.MelzV2 || null;
-  }
+  const safeJsonParse = (s) => {
+    try { return JSON.parse(s); } catch { return null; }
+  };
 
-  function getLocalCartCount() {
-    const api = getApi();
-    try {
-      if (api && typeof api.getCart === "function") {
-        const cart = api.getCart() || [];
-        return cart.reduce((sum, item) => sum + (Number(item.qty) || 0), 0);
-      }
-    } catch (e) {}
-    return 0;
-  }
+  const readCart = () => {
+    const raw = localStorage.getItem(CART_KEY);
+    const obj = safeJsonParse(raw);
+    if (!obj || typeof obj !== "object") return { items: [] };
+    if (!Array.isArray(obj.items)) obj.items = [];
+    return obj;
+  };
 
-  function updateBadgeHard() {
+  const writeCart = (cart) => {
+    localStorage.setItem(CART_KEY, JSON.stringify(cart));
+  };
+
+  const getCount = () => {
+    const cart = readCart();
+    return cart.items.reduce((sum, it) => sum + (Number(it.qty) || 0), 0);
+  };
+
+  const updateBadge = () => {
     const badge = document.getElementById("cart-badge");
-    if (!badge) {
-      console.warn("[MELZ] cart-badge element not found in DOM.");
+    if (!badge) return;
+    const count = getCount();
+    badge.textContent = String(count);
+    badge.classList.toggle("hidden", count <= 0);
+  };
+
+  // Butondan ürün id yakalama: data-product-id / data-id / href içinden vs.
+  const detectProductId = (btn) => {
+    const direct =
+      btn.getAttribute("data-product-id") ||
+      btn.getAttribute("data-id") ||
+      btn.getAttribute("data-pid");
+
+    if (direct) return direct;
+
+    const holder = btn.closest("[data-product-id],[data-id],[data-pid]");
+    if (holder) {
+      return (
+        holder.getAttribute("data-product-id") ||
+        holder.getAttribute("data-id") ||
+        holder.getAttribute("data-pid")
+      );
+    }
+
+    // ürün detay sayfası ise url'den dene: ?id=7
+    const u = new URL(location.href);
+    const qid = u.searchParams.get("id");
+    if (qid) return qid;
+
+    return null;
+  };
+
+  const addToCart = (pid, qty = 1) => {
+    const cart = readCart();
+    const id = String(pid);
+
+    const existing = cart.items.find((x) => String(x.id) === id);
+    if (existing) existing.qty = (Number(existing.qty) || 0) + qty;
+    else cart.items.push({ id, qty });
+
+    writeCart(cart);
+    updateBadge();
+  };
+
+  // Event delegation: sayfada sonradan gelen butonları da yakalar
+  document.addEventListener("click", (e) => {
+    const btn = e.target.closest(
+      '[data-add-to-cart], .js-add-to-cart, button, a'
+    );
+    if (!btn) return;
+
+    // Sadece “Sepete Ekle” niyetli olanları yakala
+    const t = (btn.textContent || "").toLowerCase();
+    const isCartBtn =
+      btn.hasAttribute("data-add-to-cart") ||
+      btn.classList.contains("js-add-to-cart") ||
+      t.includes("sepete ekle");
+
+    if (!isCartBtn) return;
+
+    const pid = detectProductId(btn);
+    if (!pid) {
+      console.warn("[ADD_TO_CART] Product id bulunamadı:", btn);
       return;
     }
 
-    const count = getLocalCartCount();
-    badge.textContent = String(count);
-
-    if (count > 0) badge.classList.remove("hidden");
-    else badge.classList.add("hidden");
-  }
-
-  function waitForApi(maxMs = 4000) {
-    return new Promise((resolve, reject) => {
-      const start = Date.now();
-      const tick = () => {
-        const api = getApi();
-        if (api && typeof api.addToCart === "function") return resolve(api);
-        if (Date.now() - start > maxMs) return reject(new Error("API not ready"));
-        setTimeout(tick, 50);
-      };
-      tick();
-    });
-  }
-
-  function toast(msg) {
-    // basit
-    try { console.log("[MELZ]", msg); } catch (e) {}
-  }
-
-  function bindClicks() {
-    document.addEventListener("click", function (e) {
-      const btn = e.target.closest(".js-add-to-cart");
-      if (!btn) return;
-
-      e.preventDefault();
-
-      const pid = btn.dataset.pid;
-      if (!pid) return;
-
-      const api = getApi();
-      if (!api || typeof api.addToCart !== "function") {
-        console.warn("[MELZ] API not available for addToCart");
-        return;
-      }
-
-      const old = btn.textContent;
-      btn.disabled = true;
-      btn.textContent = "Ekleniyor...";
-
-      try {
-        api.addToCart(String(pid), 1);
-        updateBadgeHard();
-        toast("Sepete eklendi ✅");
-        btn.textContent = "Eklendi ✅";
-      } catch (err) {
-        console.error("[MELZ] addToCart error:", err);
-        btn.textContent = old;
-      } finally {
-        setTimeout(() => {
-          btn.disabled = false;
-          btn.textContent = old;
-        }, 900);
-      }
-    });
-  }
-
-  function onReady(fn) {
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", fn, { once: true });
-    } else {
-      fn();
-    }
-  }
-
-  onReady(async () => {
-    try {
-      await waitForApi();
-      bindClicks();
-      updateBadgeHard();
-      console.log("[ADD_TO_CART] Initialized ✓");
-    } catch (e) {
-      console.warn("[ADD_TO_CART] API not ready, badge/clicks may not work.", e);
-    }
+    e.preventDefault();
+    addToCart(pid, 1);
+    console.log("[ADD_TO_CART] Added:", pid);
   });
+
+  // ilk yüklemede badge güncelle
+  window.addEventListener("DOMContentLoaded", () => {
+    updateBadge();
+    console.log("[ADD_TO_CART] Initialized ✓ key=", CART_KEY);
+  });
+
+  // debug için dışarı aç
+  window.MELZ_CART = {
+    readCart,
+    writeCart,
+    addToCart,
+    updateBadge,
+    clear: () => { localStorage.removeItem(CART_KEY); updateBadge(); }
+  };
 })();

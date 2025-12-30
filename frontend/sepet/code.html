@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sepet – Mel'z Baby&Kids</title>
+
+    <link rel="stylesheet" href="/assets/style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@300;400;600&display=swap" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+      tailwind.config = {
+        theme: { extend: { colors: { primary: "var(--primary)", "primary-300": "var(--primary-300)" } } }
+      };
+    </script>
+  </head>
+
+  <body class="bg-white text-text-main">
+    {{> header}}
+
+    <main class="max-w-[1280px] mx-auto px-4 md:px-10 py-10">
+      <div class="flex items-end justify-between gap-4 mb-6">
+        <h1 class="text-3xl font-black">Sepet</h1>
+        <a href="/bebek-urunleri/dist/index.html" class="text-sm font-semibold text-primary hover:underline">
+          Alışverişe devam et
+        </a>
+      </div>
+
+      <!-- EMPTY STATE -->
+      <div id="cart-empty" class="hidden rounded-2xl border border-[#e8e6e4] p-8 text-center">
+        <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#f4f2f0] mb-3">
+          <span class="material-symbols-outlined text-[26px]">shopping_cart</span>
+        </div>
+        <p class="text-lg font-bold mb-1">Sepetin şu an boş</p>
+        <p class="text-text-secondary text-sm mb-5">Hadi birkaç ürün ekleyelim 🙂</p>
+        <a
+          href="/bebek-urunleri/dist/index.html"
+          class="inline-flex h-11 items-center justify-center px-6 rounded-xl bg-primary text-white font-bold hover:bg-gray-900 transition-colors"
+        >
+          Ürünlere git
+        </a>
+      </div>
+
+      <!-- CART -->
+      <div id="cart-wrap" class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- Items -->
+        <section class="lg:col-span-2 rounded-2xl border border-[#e8e6e4] p-4 md:p-6">
+          <div class="flex items-center justify-between mb-4">
+            <div class="font-bold text-lg">Ürünler</div>
+            <button
+              id="cart-clear"
+              type="button"
+              class="text-sm font-semibold text-text-secondary hover:text-primary"
+            >
+              Sepeti temizle
+            </button>
+          </div>
+
+          <div id="cart-items" class="space-y-4"></div>
+        </section>
+
+        <!-- Summary -->
+        <aside class="rounded-2xl border border-[#e8e6e4] p-4 md:p-6 h-fit">
+          <div class="font-bold text-lg mb-4">Sipariş Özeti</div>
+
+          <div class="space-y-2 text-sm">
+            <div class="flex items-center justify-between">
+              <span class="text-text-secondary">Ara Toplam</span>
+              <span id="sum-subtotal" class="font-bold">₺0</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-text-secondary">Kargo</span>
+              <span id="sum-shipping" class="font-bold">₺0</span>
+            </div>
+            <div class="pt-3 border-t border-[#f4f2f0] flex items-center justify-between">
+              <span class="text-text-secondary">Toplam</span>
+              <span id="sum-total" class="text-lg font-black">₺0</span>
+            </div>
+          </div>
+
+          <button
+            id="checkout-btn"
+            type="button"
+            class="mt-5 w-full h-12 rounded-xl bg-primary text-white font-bold hover:bg-gray-900 transition-colors"
+          >
+            Ödeme Adımına Geç
+          </button>
+
+          <p class="mt-3 text-xs text-text-secondary leading-relaxed">
+            * Bu sayfa demo/test amaçlıdır. Sipariş altyapısı hazırlık aşamasındadır.
+          </p>
+        </aside>
+      </div>
+    </main>
+
+    {{> footer}}
+  </body>
+</html>

@@ -149,8 +149,6 @@ def build_pages():
         main_content = strip_blocks(main_content, ["header", "footer"])
 
         # Calculate relative path to api.js and api.v2.js
-        api_script_path = get_api_script_path(page_dir)
-        api_v2_script_path = get_api_v2_script_path(page_dir)
 
         out = f"""<!doctype html>
 <html lang="tr">
@@ -164,8 +162,6 @@ def build_pages():
 {main_content}
 
 {footer}
-<script src="{api_script_path}"></script>
-<script src="{api_v2_script_path}"></script>
 </body>
 </html>
 """
