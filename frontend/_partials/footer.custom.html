@@ -1,33 +1,26 @@
-<footer class="border-t border-[#e8e6e4] bg-white">
-  <div class="max-w-[1280px] mx-auto px-4 md:px-10 py-12">
+<!-- ================= FOOTER (CUSTOM) ================= -->
+<footer class="border-t border-[#e8e6e4] mt-16">
+  <div class="max-w-[1280px] mx-auto px-4 md:px-10 py-10">
     <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
       <!-- Brand -->
-      <div>
-        <div class="flex items-center gap-3 mb-3">
-          <img src="/assets/img/logo.png" alt="Mel'z Baby&Kids" class="w-10 h-10 rounded-full object-cover" />
-          <div class="font-black text-lg">Mel'z Baby&Kids</div>
-        </div>
-        <p class="text-sm text-text-secondary">Minikler için en güzel seçimler</p>
+      <div class="md:col-span-1">
+        <a href="/anasayfa/dist/index.html" class="inline-flex items-center gap-3">
+          <img src="/assets/img/logo.png" alt="Melz Baby" class="h-10 w-auto" />
+          <span class="font-black text-lg tracking-tight">Mel'z Baby</span>
+        </a>
+        <p class="text-sm text-text-secondary mt-3">
+          Bebek & çocuk giyiminde şık, rahat ve kaliteli seçenekler.
+        </p>
       </div>
 
-      <!-- Quick Menu -->
+      <!-- Links -->
       <div>
-        <div class="font-bold mb-3">Hızlı Menü</div>
+        <div class="font-bold mb-3">Menü</div>
         <ul class="space-y-2 text-sm">
-          <li><a class="hover:text-primary" href="/anasayfa/dist/index.html">Ana Sayfa</a></li>
-          <li><a class="hover:text-primary" href="/bebek-urunleri/dist/index.html">Shop</a></li>
-          <li><a class="hover:text-primary" href="/blog/dist/index.html">Blog</a></li>
-          <li><a class="hover:text-primary" href="/iletisim/dist/index.html">İletişim</a></li>
-        </ul>
-      </div>
-
-      <!-- Legal -->
-      <div>
-        <div class="font-bold mb-3">Yasal</div>
-        <ul class="space-y-2 text-sm">
-          <li><a class="hover:text-primary" href="/yasal/kvkk/dist/index.html">KVKK</a></li>
-          <li><a class="hover:text-primary" href="/yasal/gizlilik/dist/index.html">Gizlilik</a></li>
-          <li><a class="hover:text-primary" href="/yasal/mesafeli-satis/dist/index.html">Mesafeli Satış</a></li>
+          <li><a class="hover:text-primary transition" href="/anasayfa/dist/index.html">Ana Sayfa</a></li>
+          <li><a class="hover:text-primary transition" href="/bebek-urunleri/dist/index.html">Ürünler</a></li>
+          <li><a class="hover:text-primary transition" href="/blog/dist/index.html">Blog</a></li>
+          <li><a class="hover:text-primary transition" href="/iletisim/dist/index.html">İletişim</a></li>
         </ul>
       </div>
 
@@ -40,15 +33,32 @@
             <span class="font-semibold text-text-main">Adres:</span>
             Taşdelen Mah. Turgut Özal Cad. No:112-118 Ofis.44 Zentra İş Merkezi Çekmeköy/İSTANBUL
           </li>
-          <li><a class="hover:text-primary" href="https://www.instagram.com/melzbaby.bebek/" target="_blank" rel="noreferrer">Instagram</a></li>
-          <li><a class="hover:text-primary" href="https://melzbaby.com" target="_blank" rel="noreferrer">melzbaby.com</a></li>
+          <li><span class="font-semibold text-text-main">Web:</span> melzbaby.com</li>
         </ul>
+      </div>
+
+      <!-- Social -->
+      <div>
+        <div class="font-bold mb-3">Sosyal</div>
+        <a
+          href="https://www.instagram.com/melzbaby.bebek/"
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center gap-2 text-sm font-semibold hover:text-primary transition"
+        >
+          <span class="material-symbols-outlined text-[18px]">link</span>
+          Instagram
+        </a>
       </div>
     </div>
 
-    <div class="mt-10 pt-6 border-t border-[#e8e6e4] flex flex-col md:flex-row items-start md:items-center justify-between gap-3 text-sm text-text-secondary">
-      <div>© <span id="year"></span> Mel'z Baby&Kids</div>
-      <div>Bu site demo amaçlıdır.</div>
+    <div class="mt-10 pt-6 border-t border-[#e8e6e4] flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <div class="text-sm text-text-secondary">
+        © <span id="year"></span> Mel'z Baby. Tüm hakları saklıdır.
+      </div>
+      <div class="text-sm text-text-secondary">
+        Tasarım & geliştirme: Connect on Digital
+      </div>
     </div>
   </div>
 </footer>
@@ -61,7 +71,13 @@
 <!-- 2) ADD TO CART + BADGE -->
 <script src="/assets/js/add-to-cart.js?v=1" defer></script>
 
-<!-- 3) CART PAGE (SADECE sepet sayfasında yükle) -->
+<!-- 3) PRODUCTS PAGE RENDER (HER SAYFADA YÜKLENEBİLİR; grid yoksa noop) -->
+<script src="/assets/js/products-page.js?v=1" defer></script>
+
+<!-- 4) PRODUCT DETAIL (HER SAYFADA YÜKLENEBİLİR; container yoksa noop) -->
+<script src="/assets/js/product-detail.js?v=1" defer></script>
+
+<!-- 5) CART PAGE (SADECE sepet sayfasında yükle) -->
 <script>
   (function () {
     var isCartPage =
@@ -78,6 +94,7 @@
 </script>
 
 <script>
+  // yıl otomatik
   var y = document.getElementById("year");
   if (y) y.textContent = new Date().getFullYear();
 </script>

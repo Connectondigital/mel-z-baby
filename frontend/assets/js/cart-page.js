@@ -49,23 +49,63 @@
     window.dispatchEvent(new CustomEvent("melz:cart:updated", { detail: payload }));
   }
 
-  // Ürün datası varsa fiyat+isim çek, yoksa placeholder bas
-  function getProductById(id) {
-    const m = window.MelzV2 || {};
-    const pools = [
-      m.products,
-      m.PRODUCTS,
-      m.MOCK_PRODUCTS,
-      m.mockProducts,
-      m.__products,
-    ].filter(Array.isArray);
-
-    for (const arr of pools) {
-      const p = arr.find((x) => String(x.id) === String(id));
-      if (p) return p;
+  // Güvenli ürün bulma fonksiyonu: window.MELZ_PRODUCTS, window.MelzV2.products, window.MELZ_PRODUCTS_BY_ID
+  function getProductByIdSafe(id) {
+    const sid = String(id);
+    const list = Array.isArray(window.MELZ_PRODUCTS)
+      ? window.MELZ_PRODUCTS
+      : Array.isArray(window.MelzV2?.products)
+      ? window.MelzV2.products
+      : [];
+    let p = list.find((x) => String(x.id ?? x._id) === sid);
+    if (!p && window.MELZ_PRODUCTS_BY_ID) {
+      try {
+        p = window.MELZ_PRODUCTS_BY_ID.get
+          ? window.MELZ_PRODUCTS_BY_ID.get(sid)
+          : window.MELZ_PRODUCTS_BY_ID[sid];
+      } catch (e) {}
     }
-    return null;
+    return p || null;
   }
+
+  // Removed top-level usage of items to fix ReferenceError
+  // els.items.innerHTML = items.map(({ id, qty }) => {
+  //   const p = getProductById(id);
+  //   const name = p?.title || p?.name || `Ürün #${id}`;
+  //   const img = (p?.images && p.images[0]) || "https://via.placeholder.com/120x120?text=Melz";
+  //   const line = calcLinePrice(p, qty);
+  //   subtotal += line;
+
+  //   return `
+  //   <div class="flex gap-4 py-4 border-b border-[#eee]">
+  //     <div class="w-20 h-20 rounded-xl overflow-hidden bg-[#f4f2f0] shrink-0">
+  //       <img src="${img}" alt="${name}" class="w-full h-full object-cover" />
+  //     </div>
+
+  //     <div class="flex-1 min-w-0">
+  //       <div class="flex items-start justify-between gap-3">
+  //         <div class="min-w-0">
+  //           <div class="font-bold truncate">${name}</div>
+  //           <div class="text-sm text-text-secondary mt-1">ID: ${id}</div>
+  //         </div>
+  //         <div class="font-bold">${formatTRY(line)}</div>
+  //       </div>
+
+  //       <div class="flex items-center justify-between mt-3">
+  //         <div class="inline-flex items-center gap-2 rounded-xl bg-[#f4f2f0] px-2 py-2">
+  //           <button class="w-8 h-8 rounded-lg bg-white hover:bg-[#eee] font-black" data-action="dec" data-id="${id}">-</button>
+  //           <div class="w-8 text-center font-bold">${qty}</div>
+  //           <button class="w-8 h-8 rounded-lg bg-white hover:bg-[#eee] font-black" data-action="inc" data-id="${id}">+</button>
+  //         </div>
+
+  //         <button class="text-red-600 font-semibold hover:underline" data-action="remove" data-id="${id}">
+  //           Kaldır
+  //         </button>
+  //       </div>
+  //     </div>
+  //   </div>
+  //   `;
+  // }).join("");
 
   function formatTRY(n) {
     const v = Number(n || 0);
@@ -97,8 +137,8 @@
     let subtotal = 0;
 
     els.items.innerHTML = items.map(({ id, qty }) => {
-      const p = getProductById(id);
-      const name = p?.name || `Ürün #${id}`;
+      const p = getProductByIdSafe(id);
+      const name = p?.title || p?.name || `Ürün #${id}`;
       const img = (p?.images && p.images[0]) || "https://via.placeholder.com/120x120?text=Melz";
       const line = calcLinePrice(p, qty);
       subtotal += line;

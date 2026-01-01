@@ -1,13 +1,11 @@
-/* assets/api.v2.js (FINAL) */
+/* frontend/assets/api.v2.js (CLEAN + STABLE: local products.json) */
 (() => {
   "use strict";
 
   // =========================
   // CONFIG
   // =========================
-  const API_BASE = String(window.MELZ_API_URL || "http://127.0.0.1:5050/api").replace(/\/$/, "");
   const CART_KEY = "melz_cart";
-  const USE_MOCK_FALLBACK = true;
 
   const CONFIG = {
     FREE_SHIPPING_THRESHOLD: window.MELZ_CONFIG?.FREE_SHIPPING_THRESHOLD ?? 1000,
@@ -20,40 +18,25 @@
   // HELPERS
   // =========================
   const safeJsonParse = (str) => {
-    try { return JSON.parse(str); } catch { return null; }
+    try {
+      return JSON.parse(str);
+    } catch {
+      return null;
+    }
   };
 
   const formatTRY = (value) => {
     const n = Number(value || 0);
-    return new Intl.NumberFormat(CONFIG.LOCALE, { style: "currency", currency: CONFIG.CURRENCY }).format(n);
+    return new Intl.NumberFormat(CONFIG.LOCALE, {
+      style: "currency",
+      currency: CONFIG.CURRENCY,
+    }).format(n);
   };
 
   const normalizeId = (id) => String(id ?? "").trim();
 
   const readCartRaw = () => safeJsonParse(localStorage.getItem(CART_KEY));
-
   const writeCartRaw = (obj) => localStorage.setItem(CART_KEY, JSON.stringify(obj));
-
-  // localStorage’daki eski/bozuk formatları da toparlar:
-  // - array saklanmış olabilir
-  // - {cart:[...]} olabilir
-  // - {items:[...]} içinde id number olabilir vs.
-  const normalizeCartObj = (raw) => {
-    // hedef format: { items: [ {id:"", qty: number, variant?: {..}} ] }
-    if (!raw) return { items: [] };
-
-    // direkt array ise
-    if (Array.isArray(raw)) return { items: raw.map(normalizeLineItem).filter(Boolean) };
-
-    // object ama items array değilse yakala
-    if (typeof raw === "object") {
-      if (Array.isArray(raw.items)) return { items: raw.items.map(normalizeLineItem).filter(Boolean) };
-      if (Array.isArray(raw.cart)) return { items: raw.cart.map(normalizeLineItem).filter(Boolean) };
-      if (Array.isArray(raw.lines)) return { items: raw.lines.map(normalizeLineItem).filter(Boolean) };
-    }
-
-    return { items: [] };
-  };
 
   const normalizeLineItem = (it) => {
     if (!it || typeof it !== "object") return null;
@@ -62,10 +45,8 @@
 
     const qty = Number(it.qty ?? it.quantity ?? 1) || 1;
 
-    // variant opsiyonel
     let variant = it.variant && typeof it.variant === "object" ? it.variant : null;
     if (variant) {
-      // temizle
       variant = {
         ...(variant.size ? { size: String(variant.size) } : {}),
         ...(variant.color ? { color: String(variant.color) } : {}),
@@ -76,95 +57,180 @@
     return variant ? { id, qty, variant } : { id, qty };
   };
 
-  // =========================
-  // MOCK PRODUCTS (API yoksa)
-  // =========================
-  const MOCK_PRODUCTS = [
-    {
-      id: "1",
-      name: "Organik Pamuk Tulum",
-      price: 450,
-      images: ["/assets/img/products/p1.jpg"],
-      sizes: ["0-3 Ay", "3-6 Ay", "6-9 Ay", "9-12 Ay"],
-      colors: ["Bej", "Beyaz", "Krem"],
-    },
-    {
-      id: "2",
-      name: "Miniborn Bebeğin Body (Zıbın)",
-      price: 199,
-      images: ["/assets/img/products/p2.jpg"],
-      sizes: ["0-3 Ay", "3-6 Ay", "6-9 Ay"],
-      colors: ["Beyaz", "Krem"],
-    },
-    {
-      id: "3",
-      name: "Ahşap Oyuncak",
-      price: 320,
-      images: ["/assets/img/products/p3.jpg"],
-      sizes: [],
-      colors: [],
-    },
-    {
-      id: "4",
-      name: "Yeni Sezon Set",
-      price: 398,
-      images: ["/assets/img/products/p4.jpg"],
-      sizes: ["0-3 Ay", "3-6 Ay"],
-      colors: ["Pembe", "Bej"],
-    },
-  ];
+  const normalizeCartObj = (raw) => {
+    if (!raw) return { items: [] };
 
-  const mockGetProducts = async () => MOCK_PRODUCTS;
-  const mockGetProductById = async (id) => MOCK_PRODUCTS.find((p) => String(p.id) === String(id)) || null;
+    if (Array.isArray(raw)) return { items: raw.map(normalizeLineItem).filter(Boolean) };
 
-  // =========================
-  // API (opsiyonel) + FALLBACK
-  // =========================
-  const apiGetJSON = async (url) => {
-    const res = await fetch(url, { headers: { "Accept": "application/json" } });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    return await res.json();
-  };
-
-  const getProducts = async () => {
-    try {
-      const data = await apiGetJSON(`${API_BASE}/products`);
-      // API şekline göre normalize (data direkt array değilse)
-      const list = Array.isArray(data) ? data : (data?.items || data?.data || []);
-      if (Array.isArray(list) && list.length) return list.map(normalizeProduct);
-      throw new Error("Empty products");
-    } catch (e) {
-      if (!USE_MOCK_FALLBACK) throw e;
-      console.warn("[MelzV2] API products failed, using mock.", e?.message || e);
-      return await mockGetProducts();
+    if (typeof raw === "object") {
+      if (Array.isArray(raw.items)) return { items: raw.items.map(normalizeLineItem).filter(Boolean) };
+      if (Array.isArray(raw.cart)) return { items: raw.cart.map(normalizeLineItem).filter(Boolean) };
+      if (Array.isArray(raw.lines)) return { items: raw.lines.map(normalizeLineItem).filter(Boolean) };
     }
+
+    return { items: [] };
   };
 
-  const getProductById = async (id) => {
-    try {
-      const data = await apiGetJSON(`${API_BASE}/product?id=${encodeURIComponent(id)}`);
-      const obj = data?.item || data?.data || data;
-      const p = normalizeProduct(obj);
-      if (p) return p;
-      throw new Error("Product not found");
-    } catch (e) {
-      if (!USE_MOCK_FALLBACK) throw e;
-      return await mockGetProductById(id);
-    }
+  const sameVariant = (a, b) => {
+    const av = a?.variant || null;
+    const bv = b?.variant || null;
+    if (!av && !bv) return true;
+    if (!av || !bv) return false;
+    return String(av.size || "") === String(bv.size || "") && String(av.color || "") === String(bv.color || "");
   };
+
+  // =========================
+  // LOCAL PRODUCTS (JSON)
+  // =========================
+  async function loadLocalProducts() {
+    // dist altından açıldığı için root path çalışır: /assets/data/products.json
+    const res = await fetch("/assets/data/products.json", { cache: "no-store" });
+    if (!res.ok) throw new Error("products.json okunamadı");
+    const data = await res.json();
+    return Array.isArray(data) ? data : (data?.items || data?.data || []);
+  }
 
   const normalizeProduct = (p) => {
     if (!p || typeof p !== "object") return null;
+
     const id = normalizeId(p.id ?? p._id ?? p.productId);
     if (!id) return null;
 
-    const price = Number(p.price ?? p.salePrice ?? p.amount ?? 0) || 0;
-    const name = String(p.name ?? p.title ?? `Ürün #${id}`);
-    const images = Array.isArray(p.images) ? p.images : (p.image ? [p.image] : []);
+    const title = String(p.title ?? p.name ?? p.productName ?? `Ürün #${id}`);
+
+    // Price normalization helper
+    const parsePrice = (val) => {
+      if (val == null) return 0;
+      if (typeof val === "number") return val;
+      if (typeof val === "string") {
+        // Remove currency symbols and spaces, replace comma with dot
+        const cleaned = val.replace(/[^\d,.-]/g, "").replace(",", ".");
+        const num = parseFloat(cleaned);
+        return isNaN(num) ? 0 : num;
+      }
+      if (typeof val === "object") {
+        return parsePrice(val.value ?? val.amount ?? val.current ?? 0);
+      }
+      return 0;
+    };
+
+    const price = parsePrice(p.price ?? p.salePrice ?? p.amount ?? 0);
+
+    const category = String(p.category ?? p.tag ?? p.group ?? "");
+    const slug = String(p.slug ?? p.handle ?? "");
+
+    // Description normalization
+    const shortDescription =
+      String(
+        p.shortDescription ??
+        p.short_description ??
+        p.subtitle ??
+        p.summary ??
+        p.shortDesc ??
+        ""
+      );
+
+    const description =
+      String(
+        p.description ??
+        p.longDescription ??
+        p.long_description ??
+        p.details ??
+        p.detail ??
+        p.desc ??
+        ""
+      );
+
+    // Images normalization
+    let images = [];
+    if (Array.isArray(p.images) && p.images.length) images = p.images;
+    else if (Array.isArray(p.imageUrls) && p.imageUrls.length) images = p.imageUrls;
+    else if (Array.isArray(p.gallery) && p.gallery.length) images = p.gallery;
+    else {
+      const singleImages = [];
+      if (typeof p.image === "string") singleImages.push(p.image);
+      if (typeof p.img === "string") singleImages.push(p.img);
+      if (typeof p.mainImage === "string") singleImages.push(p.mainImage);
+      images = singleImages;
+    }
+
+    const image = images[0] || "";
+
     const sizes = Array.isArray(p.sizes) ? p.sizes : [];
     const colors = Array.isArray(p.colors) ? p.colors : [];
 
-    return { id, name, price, images, sizes, colors, raw: p };
+    return {
+      id,
+      title,
+      name: String(p.name ?? p.title ?? title),
+
+      price,
+
+      category,
+      slug,
+
+      shortDescription,
+      description,
+
+      image,
+      images,
+
+      sizes,
+      colors,
+
+      url: p.url ? String(p.url) : "",
+
+      raw: p,
+    };
+  };
+
+  const setGlobalProducts = (list) => {
+    const arr = Array.isArray(list) ? list.filter(Boolean) : [];
+    window.MELZ_PRODUCTS = arr;
+
+    const byId = Object.create(null);
+    for (const p of arr) byId[String(p.id)] = p;
+    window.MELZ_PRODUCTS_BY_ID = byId;
+
+    try {
+      window.dispatchEvent(new CustomEvent("melz:products-ready", { detail: { count: arr.length } }));
+    } catch {}
+  };
+
+  // Cache promise: sayfalar arası aynı anda çağrılırsa tek fetch
+  let _productsPromise = null;
+
+  const getProducts = async () => {
+    if (_productsPromise) return _productsPromise;
+
+    _productsPromise = (async () => {
+      try {
+        const list = await loadLocalProducts();
+        const normalized = Array.isArray(list) ? list.map(normalizeProduct).filter(Boolean) : [];
+        setGlobalProducts(normalized);
+        return normalized;
+      } catch (e) {
+        console.error("[MelzV2] Local products failed", e);
+        setGlobalProducts([]);
+        return [];
+      }
+    })();
+
+    return _productsPromise;
+  };
+
+  const getProductById = async (id) => {
+    const pid = normalizeId(id);
+    if (!pid) return null;
+
+    // önce cache
+    const cached = window.MELZ_PRODUCTS_BY_ID?.[String(pid)];
+    if (cached) return cached;
+
+    // cache yoksa yükle
+    const list = await getProducts();
+    const byId = new Map(list.map((p) => [String(p.id), p]));
+    return byId.get(String(pid)) || null;
   };
 
   // =========================
@@ -172,8 +238,14 @@
   // =========================
   const getCartObj = () => normalizeCartObj(readCartRaw());
 
-  // DİKKAT: add-to-cart / badge tarafı için getCart() => ARRAY döndürür
+  // dışarıya ARRAY dönsün (badge, add-to-cart vs)
   const getCart = () => getCartObj().items;
+
+  const dispatchCartChanged = () => {
+    try {
+      window.dispatchEvent(new CustomEvent("melz:cart-changed", { detail: { key: CART_KEY } }));
+    } catch {}
+  };
 
   const setCartItems = (itemsArray) => {
     const items = Array.isArray(itemsArray) ? itemsArray.map(normalizeLineItem).filter(Boolean) : [];
@@ -187,14 +259,6 @@
     dispatchCartChanged();
   };
 
-  const sameVariant = (a, b) => {
-    const av = a?.variant || null;
-    const bv = b?.variant || null;
-    if (!av && !bv) return true;
-    if (!av || !bv) return false;
-    return String(av.size || "") === String(bv.size || "") && String(av.color || "") === String(bv.color || "");
-  };
-
   const addToCart = (id, qty = 1, variant = null) => {
     const pid = normalizeId(id);
     const q = Number(qty || 1) || 1;
@@ -203,13 +267,11 @@
     const items = cart.items.slice();
 
     const incoming = normalizeLineItem({ id: pid, qty: q, variant: variant || null });
+    if (!incoming) return getCart();
 
     const idx = items.findIndex((it) => String(it.id) === String(pid) && sameVariant(it, incoming));
-    if (idx >= 0) {
-      items[idx].qty = (Number(items[idx].qty) || 0) + q;
-    } else {
-      items.push(incoming);
-    }
+    if (idx >= 0) items[idx].qty = (Number(items[idx].qty) || 0) + q;
+    else items.push(incoming);
 
     setCartItems(items);
     return getCart();
@@ -219,8 +281,7 @@
     const pid = normalizeId(id);
     const newQty = Number(qty || 0) || 0;
 
-    const items = getCart();
-    const updated = items
+    const items = getCart()
       .map((it) => {
         if (String(it.id) !== String(pid)) return it;
         if (!sameVariant(it, { id: pid, variant })) return it;
@@ -228,7 +289,7 @@
       })
       .filter((it) => (Number(it.qty) || 0) > 0);
 
-    setCartItems(updated);
+    setCartItems(items);
     return getCart();
   };
 
@@ -236,16 +297,20 @@
     const pid = normalizeId(id);
     const items = getCart().filter((it) => {
       if (String(it.id) !== String(pid)) return true;
-      // aynı varyant ise kaldır
       return !sameVariant(it, { id: pid, variant });
     });
     setCartItems(items);
     return getCart();
   };
 
-  const getCartCount = () => {
-    const items = getCart(); // ARRAY garanti
-    return items.reduce((sum, it) => sum + (Number(it.qty) || 0), 0);
+  const getCartCount = () => getCart().reduce((sum, it) => sum + (Number(it.qty) || 0), 0);
+
+  const updateCartBadge = () => {
+    const el = document.getElementById("cart-badge");
+    if (!el) return;
+    const c = getCartCount();
+    el.textContent = String(c);
+    el.classList.toggle("hidden", c <= 0);
   };
 
   const calculateTotals = async () => {
@@ -261,7 +326,6 @@
       };
     }
 
-    // ürünleri yükle (API veya mock)
     const products = await getProducts();
     const byId = new Map(products.map((p) => [String(p.id), p]));
 
@@ -285,32 +349,22 @@
   };
 
   // =========================
-  // EVENTS / BADGE HOOK
+  // BOOT
   // =========================
-  const dispatchCartChanged = () => {
-    try {
-      window.dispatchEvent(new CustomEvent("melz:cart-changed", { detail: { key: CART_KEY } }));
-    } catch {}
-  };
-
-  const updateCartBadge = () => {
-    const el = document.getElementById("cart-badge");
-    if (!el) return;
-    const c = getCartCount();
-    el.textContent = String(c);
-    el.classList.toggle("hidden", c <= 0);
-  };
-
-  // ilk yüklemede badge
-  const boot = async () => {
+  const boot = () => {
+    // badge ilk kez
     updateCartBadge();
 
-    // Sepet değişince badge güncelle
+    // sepet değişince badge güncelle
     window.addEventListener("melz:cart-changed", updateCartBadge);
 
-    // debug log (istersen kaldır)
+    // ürünleri sayfa açılışında preload et (products-page.js beklemeden)
+    // hata olsa bile boş array set eder
+    getProducts();
+
+    // debug
     try {
-      console.log(`[MelzV2] Loaded. Cart count: ${getCartCount()} | API: ${API_BASE} | Mock fallback: ${USE_MOCK_FALLBACK}`);
+      console.log(`[MelzV2] Loaded. Cart count: ${getCartCount()} | Products source: /assets/data/products.json`);
     } catch {}
   };
 
@@ -318,7 +372,6 @@
   // PUBLIC API
   // =========================
   window.MelzV2 = {
-    API_BASE,
     CART_KEY,
     config: CONFIG,
 
@@ -328,7 +381,7 @@
 
     // cart
     getCartObj,
-    getCart,        // ARRAY
+    getCart, // ARRAY
     getCartCount,
     addToCart,
     updateQty,
@@ -344,6 +397,8 @@
     updateCartBadge,
   };
 
-  // DOM ready değilse de çalışır; badge element’i sonra gelirse de cart-changed ile güncellersin.
+  // legacy alias (bazı yerlerde MELZ_CART aranıyordu)
+  window.MELZ_CART = { key: CART_KEY };
+
   boot();
 })();
