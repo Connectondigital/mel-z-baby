@@ -1,14 +1,16 @@
 #!/usr/bin/env node
 /**
- * Trendyol importer (no-login, best-effort)
- * - URLs'den ürün adı / fiyat / açıklama / görsel linklerini çekmeye çalışır
- * - assets/data/products.json üretir
- * - assets/img/products/<id>/... içine 1-2 görsel indirir (bulursa)
+ * Trendyol Importer (Phase-1 safe)
+ * - Reads product page URLs from a file (urls.txt) or from CLI args
+ * - Fetches product HTML (no login, best-effort)
+ * - Extracts: title, description, price (best-effort), images (best-effort)
+ * - Writes to: frontend/assets/data/products.next.json (atomic write)
+ * - Optionally downloads images to: frontend/assets/img/products/<id>/<n>.jpg
  *
- * Kullanım:
- *   node tools/trendyol-import.mjs urls.txt
- *   # veya
- *   node tools/trendyol-import.mjs "<url1>" "<url2>" ...
+ * Usage:
+ *   cd frontend
+ *   node tools/trendyol-import.mjs urls.txt --downloadImages=0 --delayMs=400
+ *   node tools/trendyol-import.mjs "https://www.trendyol.com/...-p-123" --downloadImages=1
  */
 
 import fs from "node:fs/promises";
@@ -19,7 +21,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const FRONTEND_ROOT = path.resolve(__dirname, "..");
-const OUT_JSON = path.join(FRONTEND_ROOT, "assets", "data", "products.json");
+const OUT_JSON = path.join(FRONTEND_ROOT, "assets", "data", "products.next.json");
+const OUT_JSON_TMP = path.join(FRONTEND_ROOT, "assets", "data", "products.next.json.tmp");
 const IMG_ROOT = path.join(FRONTEND_ROOT, "assets", "img", "products");
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -39,10 +42,8 @@ function slugifyTR(s) {
 }
 
 function extractProductIdFromUrl(u) {
-  // ...-p-1058776240
   const m = String(u).match(/-p-(\d+)/i);
   if (m?.[1]) return m[1];
-  // fallback: last path segment
   try {
     const url = new URL(u);
     const seg = url.pathname.split("/").filter(Boolean).pop() || "";
@@ -53,11 +54,28 @@ function extractProductIdFromUrl(u) {
 }
 
 function safeJsonParse(txt) {
-  try { return JSON.parse(txt); } catch { return null; }
+  try {
+    return JSON.parse(txt);
+  } catch {
+    return null;
+  }
+}
+
+function parsePrice(val) {
+  // "1.299,90 TL" -> 1299.90
+  const cleaned = String(val || "")
+    .replace(/[^\d.,]/g, "")
+    .replace(/\./g, "")
+    .replace(",", ".");
+  const n = Number(cleaned);
+  return Number.isFinite(n) ? n : 0;
+}
+
+async function ensureDir(p) {
+  await fs.mkdir(p, { recursive: true });
 }
 
 async function fetchHtml(url) {
-  // Trendyol bazen bot kontrolü yapabiliyor; header'ları biraz insan gibi atalım
   const res = await fetch(url, {
     headers: {
       "User-Agent":
@@ -70,12 +88,12 @@ async function fetchHtml(url) {
     },
     redirect: "follow",
   });
+
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   return await res.text();
 }
 
 function extractMeta(html, nameOrProp) {
-  // <meta property="og:title" content="...">
   const re = new RegExp(
     `<meta[^>]+(?:property|name)=["']${nameOrProp}["'][^>]+content=["']([^"']+)["'][^>]*>`,
     "i"
@@ -86,7 +104,9 @@ function extractMeta(html, nameOrProp) {
 
 function extractJsonLd(html) {
   const blocks = [];
-  const re = /<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi;
+  const re =
+    /<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi;
+
   let m;
   while ((m = re.exec(html))) {
     const raw = (m[1] || "").trim();
@@ -97,24 +117,34 @@ function extractJsonLd(html) {
 }
 
 function pickProductFromJsonLd(blocks) {
-  // Bazı sayfalarda array veya @graph oluyor
   const flat = [];
   for (const b of blocks) {
     if (Array.isArray(b)) flat.push(...b);
     else if (b?.["@graph"] && Array.isArray(b["@graph"])) flat.push(...b["@graph"]);
     else flat.push(b);
   }
-  // Product türünü yakala
   return flat.find((x) => String(x?.["@type"] || "").toLowerCase() === "product") || null;
 }
 
-function parsePrice(val) {
-  const n = Number(String(val).replace(/[^\d.,]/g, "").replace(/\./g, "").replace(",", "."));
-  return Number.isFinite(n) ? n : 0;
-}
+function extractImageUrls(html) {
+  const urls = new Set();
 
-async function ensureDir(p) {
-  await fs.mkdir(p, { recursive: true });
+  // 1) JSON-LD image
+  const jsonlds = extractJsonLd(html);
+  for (const block of jsonlds) {
+    if (!block) continue;
+    if (Array.isArray(block.image)) {
+      for (const img of block.image) if (typeof img === "string") urls.add(img);
+    } else if (typeof block.image === "string") {
+      urls.add(block.image);
+    }
+  }
+
+  // 2) direct CDN matches from HTML
+  const regex = /https:\/\/cdn\.dsmcdn\.com\/[^\s"'<>]+/gi;
+  for (const m of html.match(regex) || []) urls.add(m);
+
+  return Array.from(urls).slice(0, 4);
 }
 
 async function downloadImage(url, outPath) {
@@ -127,44 +157,17 @@ async function downloadImage(url, outPath) {
     },
     redirect: "follow",
   });
+
   if (!res.ok) throw new Error(`img HTTP ${res.status}`);
   const buf = Buffer.from(await res.arrayBuffer());
   await fs.writeFile(outPath, buf);
 }
 
-function extractImageUrls(html) {
-  const urls = new Set();
-
-  // JSON-LD içindeki image alanları
-  const jsonlds = extractJsonLd(html);
-  for (const block of jsonlds) {
-    if (block) {
-      if (Array.isArray(block.image)) {
-        for (const img of block.image) {
-          if (typeof img === "string") urls.add(img);
-        }
-      } else if (typeof block.image === "string") {
-        urls.add(block.image);
-      }
-    }
-  }
-
-  // HTML içindeki https://cdn.dsmcdn.com/... görselleri regex ile yakala
-  const regex = /https:\/\/cdn\.dsmcdn\.com\/[^\s"'<>]+/gi;
-  const matches = html.match(regex) || [];
-  for (const m of matches) {
-    urls.add(m);
-  }
-
-  // Unique ve ilk 2-4 görseli seç
-  const arr = Array.from(urls);
-  return arr.slice(0, 4);
-}
-
-async function importOne(url) {
+async function importOne(url, options) {
   const id = extractProductIdFromUrl(url);
 
   const html = await fetchHtml(url);
+
   const titleOg = extractMeta(html, "og:title");
   const descOg = extractMeta(html, "og:description");
   const imgOg = extractMeta(html, "og:image");
@@ -174,66 +177,43 @@ async function importOne(url) {
   const title = (p?.name || titleOg || "").trim() || `Ürün ${id}`;
   const description = (p?.description || descOg || "").trim();
 
-  // Fiyat bilgisi için güvenli çekme ve HTML içinden regex ile arama
+  // price best-effort
   let priceValue = 0;
   try {
-    if (p?.salePrice != null) priceValue = parsePrice(p.salePrice);
-    else if (p?.sellingPrice != null) priceValue = parsePrice(p.sellingPrice);
-    else if (p?.discountedPrice != null) priceValue = parsePrice(p.discountedPrice);
+    if (p?.offers?.price != null) priceValue = parsePrice(p.offers.price);
     else if (p?.price != null) priceValue = parsePrice(p.price);
-    else if (p?.priceWithTax != null) priceValue = parsePrice(p.priceWithTax);
-    else if (p?.marketPrice != null) priceValue = parsePrice(p.marketPrice);
     else {
-      // Structured data yoksa HTML içinden JSON stringlerinde price arama
       const priceMatches = [...html.matchAll(/"price"\s*:\s*"?(\d+)[.,]?\d*"?/gi)];
-      if (priceMatches.length > 0) {
-        priceValue = parseInt(priceMatches[0][1], 10);
-      } else {
-        priceValue = 0;
-        console.warn(`[WARN] ${id} price not found in structured data or HTML`);
-      }
+      if (priceMatches.length > 0) priceValue = parseInt(priceMatches[0][1], 10);
     }
-  } catch (e) {
-    console.warn(`[WARN] ${id} price parse failed:`, e.message);
+  } catch {
     priceValue = 0;
   }
 
-  // Görselleri extractImageUrls ile al
+  // images
   let imagesRemote = extractImageUrls(html);
-  if (imagesRemote.length === 0) {
-    if (Array.isArray(p?.image)) imagesRemote.push(...p.image);
-    else if (typeof p?.image === "string") imagesRemote.push(p.image);
-    if (imgOg) imagesRemote.push(imgOg);
-    imagesRemote = uniq(imagesRemote);
-  }
+  if (imagesRemote.length === 0 && imgOg) imagesRemote = [imgOg];
 
   const slug = slugifyTR(title) || `urun-${id}`;
 
-  // lokal path'ler (indirirsek)
   const localFolder = path.join(IMG_ROOT, id);
   await ensureDir(localFolder);
 
   const localImages = [];
-  for (let i = 0; i < imagesRemote.length; i++) {
-    const remote = imagesRemote[i];
-    const out = path.join(localFolder, `${i + 1}.jpg`);
-    try {
-      await downloadImage(remote, out);
-      localImages.push(`/assets/img/products/${id}/${i + 1}.jpg`);
-      // küçük bir nefes
-      await sleep(250);
-    } catch (e) {
-      // İndiremezsek geç (json yine yazılsın)
-      // console.warn(`[WARN] ${id} image download failed:`, e.message);
+  if (options.downloadImages) {
+    for (let i = 0; i < imagesRemote.length; i++) {
+      const remote = imagesRemote[i];
+      const out = path.join(localFolder, `${i + 1}.jpg`);
+      try {
+        await downloadImage(remote, out);
+        localImages.push(`/assets/img/products/${id}/${i + 1}.jpg`);
+        if (options.delayMs > 0) await sleep(options.delayMs);
+      } catch {
+        // ignore
+      }
     }
   }
 
-  // shortDescription yoksa description’dan kırp
-  const shortDescription =
-    (description ? description.split("\n")[0] : "").slice(0, 140) ||
-    "Yeni sezon özel tasarım. Konforlu ve şık.";
-
-  // En az 2 görsel olacak şekilde ayarla
   const finalImages =
     localImages.length >= 2
       ? localImages
@@ -245,6 +225,11 @@ async function importOne(url) {
       ? [imagesRemote[0]]
       : [];
 
+  const shortDescription =
+    (description ? description.split("\n")[0] : "").slice(0, 140) ||
+    "Yeni sezon özel tasarım. Konforlu ve şık.";
+
+  // Map to your current working schema
   return {
     id: String(id),
     title,
@@ -254,47 +239,110 @@ async function importOne(url) {
     images: finalImages,
     slug,
     url,
+
+    // Keep these keys (fallback empty) so frontend doesn't break
+    category: "",
+    gender: "",
+    ageRange: "",
+    colors: [],
+    sizes: [],
+    tags: [],
   };
 }
 
+function parseArgs(argv) {
+  // supports:
+  // --downloadImages=0  OR  --downloadImages 0
+  // --delayMs=400       OR  --delayMs 400
+  const flags = { downloadImages: 1, delayMs: 250 };
+  const positional = [];
+
+  for (let i = 0; i < argv.length; i++) {
+    const a = argv[i];
+    if (!a.startsWith("--")) {
+      positional.push(a);
+      continue;
+    }
+
+    const eq = a.indexOf("=");
+    if (eq !== -1) {
+      const key = a.slice(2, eq);
+      const val = a.slice(eq + 1);
+      if (key === "downloadImages") flags.downloadImages = Number(val);
+      if (key === "delayMs") flags.delayMs = Number(val);
+      continue;
+    }
+
+    const key = a.slice(2);
+    const val = argv[i + 1];
+    if (key === "downloadImages") {
+      flags.downloadImages = Number(val);
+      i++;
+    } else if (key === "delayMs") {
+      flags.delayMs = Number(val);
+      i++;
+    }
+  }
+
+  flags.downloadImages = Number(flags.downloadImages) ? 1 : 0;
+  flags.delayMs = Number.isFinite(Number(flags.delayMs)) ? Number(flags.delayMs) : 250;
+
+  return { flags, positional };
+}
+
+async function loadUrls(positional) {
+  if (positional.length === 1 && (positional[0].endsWith(".txt") || positional[0].endsWith(".list"))) {
+    const filePath = path.resolve(process.cwd(), positional[0]);
+    const txt = await fs.readFile(filePath, "utf-8");
+    return txt.split(/\r?\n/).map((s) => s.trim()).filter(Boolean);
+  }
+  return positional.map((s) => s.trim()).filter(Boolean);
+}
+
 async function main() {
-  const args = process.argv.slice(2);
-  if (!args.length) {
-    console.error("Kullanım: node tools/trendyol-import.mjs urls.txt  (veya url url ...)");
+  const argv = process.argv.slice(2);
+  if (!argv.length) {
+    console.error("Usage: node tools/trendyol-import.mjs urls.txt --downloadImages=0 --delayMs=400");
     process.exit(1);
   }
 
-  let urls = [];
-  if (args.length === 1 && (args[0].endsWith(".txt") || args[0].endsWith(".list"))) {
-    const txt = await fs.readFile(path.resolve(process.cwd(), args[0]), "utf-8");
-    urls = txt.split(/\r?\n/).map((s) => s.trim()).filter(Boolean);
-  } else {
-    urls = args.map((s) => s.trim()).filter(Boolean);
-  }
+  const { flags, positional } = parseArgs(argv);
+  const rawUrls = await loadUrls(positional);
 
-  // uniq
+  let urls = rawUrls
+    .filter((u) => u.startsWith("http") && u.includes("trendyol.com") && u.includes("-p-"))
+    .map((u) => u.split("?")[0]); // remove query
+
   urls = uniq(urls);
+
+  console.log(`Loaded ${urls.length} urls`);
+  console.log(`downloadImages=${flags.downloadImages} delayMs=${flags.delayMs}`);
 
   await ensureDir(path.dirname(OUT_JSON));
   await ensureDir(IMG_ROOT);
 
   const products = [];
+
   for (const u of urls) {
     try {
       console.log("-> importing:", u);
-      const prod = await importOne(u);
+      const prod = await importOne(u, { downloadImages: flags.downloadImages, delayMs: flags.delayMs });
       products.push(prod);
       console.log(`   OK: ${prod.id} | ${prod.title} | ${prod.price}`);
     } catch (e) {
       console.log(`   FAIL: ${u} (${e.message})`);
     }
+
+    // polite delay between pages too
+    if (flags.delayMs > 0) await sleep(flags.delayMs);
   }
 
-  // boşlar varsa yine de yaz
-  await fs.writeFile(OUT_JSON, JSON.stringify(products, null, 2), "utf-8");
-  console.log("\n✅ products.json yazıldı:", OUT_JSON);
-  console.log("✅ Görseller (indirilebildiyse):", IMG_ROOT);
-  console.log("Toplam ürün:", products.length);
+  // atomic write
+  await fs.writeFile(OUT_JSON_TMP, JSON.stringify(products, null, 2), "utf-8");
+  await fs.rename(OUT_JSON_TMP, OUT_JSON);
+
+  console.log(`\n✅ products.next.json written: ${OUT_JSON}`);
+  console.log(`Toplam ürün: ${products.length}`);
 }
 
 main().catch((e) => {
