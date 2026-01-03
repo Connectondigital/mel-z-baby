@@ -87,9 +87,45 @@ async function main() {
     console.log("No existing products.json to backup.");
   }
 
-  // Replace products.json with products.next.json
-  await fs.copyFile(NEXT_PATH, CURRENT_PATH);
-  console.log("products.json has been replaced with products.next.json");
+  // Load old and next products
+  const oldRaw = await fs.readFile(CURRENT_PATH, "utf-8");
+  const nextRaw = await fs.readFile(NEXT_PATH, "utf-8");
+  let oldProducts = [];
+  let nextProducts = [];
+  try {
+    oldProducts = JSON.parse(oldRaw);
+  } catch (e) {
+    console.error("Failed to parse current products.json:", e.message);
+  }
+  try {
+    nextProducts = JSON.parse(nextRaw);
+  } catch (e) {
+    console.error("Failed to parse products.next.json:", e.message);
+    process.exit(1);
+  }
+
+  // Build map of old products by id for quick lookup
+  const oldMap = new Map(oldProducts.map(p => [p.id, p]));
+
+  // Merge variant fields and price from old to next if conditions met
+  for (const next of nextProducts) {
+    const old = oldMap.get(next.id);
+    if (!old) continue;
+
+    if ((!next.sizes || next.sizes.length === 0) && old.sizes && old.sizes.length > 0) {
+      next.sizes = old.sizes;
+    }
+    if ((!next.colors || next.colors.length === 0) && old.colors && old.colors.length > 0) {
+      next.colors = old.colors;
+    }
+    if ((next.price === 0 || next.price === null || next.price === undefined) && old.price > 0) {
+      next.price = old.price;
+    }
+  }
+
+  // Write merged nextProducts to products.json
+  await fs.writeFile(CURRENT_PATH, JSON.stringify(nextProducts, null, 2), "utf-8");
+  console.log("products.json has been replaced with merged products.next.json");
   process.exit(0);
 }
 

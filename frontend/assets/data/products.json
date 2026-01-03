@@ -2,7 +2,7 @@
   {
     "id": "1061175032",
     "title": "Balbaby Bornoz Takımı Erkek-Kutulu",
-    "price": 62700,
+    "price": 627,
     "shortDescription": "Balbaby Bornoz Takımı Erkek-Kutulu yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "description": "Balbaby Bornoz Takımı Erkek-Kutulu yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "images": [
@@ -23,7 +23,7 @@
   {
     "id": "1058304226",
     "title": "MelzBaby YILBAŞI TEMALI ALT ÜST TAÇ HEDİYELİ",
-    "price": 39567,
+    "price": 395.67,
     "shortDescription": "MelzBaby YILBAŞI TEMALI ALT ÜST TAÇ HEDİYELİ yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "description": "MelzBaby YILBAŞI TEMALI ALT ÜST TAÇ HEDİYELİ yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "images": [
@@ -37,14 +37,25 @@
     "category": "",
     "gender": "",
     "ageRange": "",
-    "colors": [],
-    "sizes": [],
+    "colors": [
+      "kırmızı",
+      "beyaz"
+    ],
+    "sizes": [
+      "0-3 ay",
+      "3-6 ay",
+      "6-9 ay",
+      "9-12 ay",
+      "12-18 ay",
+      "18-24 ay",
+      "2-3 yaş"
+    ],
     "tags": []
   },
   {
     "id": "1058303962",
     "title": "BEBLY ERKEK ȘİṢME YELEKLİ 3 LÜ TAKIM",
-    "price": 62475,
+    "price": 624.75,
     "shortDescription": "BEBLY ERKEK ȘİṢME YELEKLİ 3 LÜ TAKIM yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "description": "BEBLY ERKEK ȘİṢME YELEKLİ 3 LÜ TAKIM yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "images": [
@@ -58,14 +69,20 @@
     "category": "",
     "gender": "",
     "ageRange": "",
-    "colors": [],
-    "sizes": [],
+    "colors": [
+      "mavi",
+      "gri"
+    ],
+    "sizes": [
+      "3-6 ay",
+      "6-9 ay"
+    ],
     "tags": []
   },
   {
     "id": "1058303950",
     "title": "MelzBaby 10 LU HASTANE ÇIKIŞI SOMON PEMBE RENK KIZ BEBEK",
-    "price": 84787,
+    "price": 847.87,
     "shortDescription": "MelzBaby 10 LU HASTANE ÇIKIŞI SOMON PEMBE RENK KIZ BEBEK yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "description": "MelzBaby 10 LU HASTANE ÇIKIŞI SOMON PEMBE RENK KIZ BEBEK yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "images": [
@@ -86,7 +103,7 @@
   {
     "id": "1058304745",
     "title": "BEBLY Kız Peluș Detay Yelekli 3 lü Takım",
-    "price": 84787,
+    "price": 847.87,
     "shortDescription": "BEBLY Kız Peluș Detay Yelekli 3 lü Takım yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "description": "BEBLY Kız Peluș Detay Yelekli 3 lü Takım yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "images": [
@@ -107,7 +124,7 @@
   {
     "id": "1058304051",
     "title": "BEBLY KIZ 3 LÜ ṢİṢME PELUŞ DETAY YELEKLİ TAKIM",
-    "price": 66937,
+    "price": 669.37,
     "shortDescription": "BEBLY KIZ 3 LÜ ṢİṢME PELUŞ DETAY YELEKLİ TAKIM yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "description": "BEBLY KIZ 3 LÜ ṢİṢME PELUŞ DETAY YELEKLİ TAKIM yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "images": [
@@ -128,7 +145,7 @@
   {
     "id": "1055918249",
     "title": "MelzBaby 3 LÜ KIZ BEBEK TAKIM",
-    "price": 39567,
+    "price": 395.67,
     "shortDescription": "MelzBaby 3 LÜ KIZ BEBEK TAKIM yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "description": "MelzBaby 3 LÜ KIZ BEBEK TAKIM yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "images": [
@@ -149,7 +166,7 @@
   {
     "id": "1052928011",
     "title": "MelzBaby HASTANE ÇIKIŞI 10 LU UNISEX",
-    "price": 66937,
+    "price": 669.37,
     "shortDescription": "MelzBaby HASTANE ÇIKIŞI 10 LU UNISEX yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "description": "MelzBaby HASTANE ÇIKIŞI 10 LU UNISEX yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "images": [
@@ -170,7 +187,7 @@
   {
     "id": "1052929936",
     "title": "MelzBaby HASTANE ÇIKIŞI 10 LU ERKEK",
-    "price": 84787,
+    "price": 847.87,
     "shortDescription": "MelzBaby HASTANE ÇIKIŞI 10 LU ERKEK yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "description": "MelzBaby HASTANE ÇIKIŞI 10 LU ERKEK yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "images": [
@@ -191,7 +208,7 @@
   {
     "id": "1052561489",
     "title": "MelzBaby 10 LU HASTANE ÇIKIŞI ERKEK BEBEK",
-    "price": 84787,
+    "price": 847.87,
     "shortDescription": "MelzBaby 10 LU HASTANE ÇIKIŞI ERKEK BEBEK yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "description": "MelzBaby 10 LU HASTANE ÇIKIŞI ERKEK BEBEK yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "images": [
@@ -226,8 +243,14 @@
     "category": "",
     "gender": "",
     "ageRange": "",
-    "colors": [],
-    "sizes": [],
+    "colors": [
+      "mavi",
+      "gri"
+    ],
+    "sizes": [
+      "3-6 ay",
+      "6-9 ay"
+    ],
     "tags": []
   },
   {
@@ -275,7 +298,7 @@
   {
     "id": "1032579827",
     "title": "ELBEBEK Erkek Bebek Pijama Takımı",
-    "price": 25032,
+    "price": 250.32,
     "shortDescription": "ELBEBEK Erkek Bebek Pijama Takımı yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "description": "ELBEBEK Erkek Bebek Pijama Takımı yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "images": [
@@ -296,7 +319,7 @@
   {
     "id": "1032503911",
     "title": "Babyhi my baby Kız Bebek 3 lü Takım",
-    "price": 38356,
+    "price": 383.56,
     "shortDescription": "Babyhi my baby Kız Bebek 3 lü Takım yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "description": "Babyhi my baby Kız Bebek 3 lü Takım yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "images": [
@@ -317,7 +340,7 @@
   {
     "id": "1032579678",
     "title": "ELBEBEK Kız Bebek Pijama Takımı",
-    "price": 25032,
+    "price": 250.32,
     "shortDescription": "ELBEBEK Kız Bebek Pijama Takımı yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "description": "ELBEBEK Kız Bebek Pijama Takımı yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "images": [
@@ -338,7 +361,7 @@
   {
     "id": "1032544102",
     "title": "babyhı baby Erkek Bebek Alt Üst Takım",
-    "price": 27455,
+    "price": 274.55,
     "shortDescription": "babyhı baby Erkek Bebek Alt Üst Takım yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "description": "babyhı baby Erkek Bebek Alt Üst Takım yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "images": [
@@ -359,7 +382,7 @@
   {
     "id": "1024280311",
     "title": "Babycan Pijama Takımı Kız Bebek",
-    "price": 25032,
+    "price": 250.32,
     "shortDescription": "Babycan Pijama Takımı Kız Bebek yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "description": "Babycan Pijama Takımı Kız Bebek yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "images": [
@@ -380,7 +403,7 @@
   {
     "id": "1016661556",
     "title": "Balgüneş Tekstil Bornoz Seti 4 lü Kız Bebek",
-    "price": 8075,
+    "price": 80.75,
     "shortDescription": "Balgüneş Tekstil Bornoz Seti 4 lü Kız Bebek yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "description": "Balgüneş Tekstil Bornoz Seti 4 lü Kız Bebek yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "images": [
@@ -401,7 +424,7 @@
   {
     "id": "1016192782",
     "title": "Miniworld 2 li Zıbın Seti - Fiyatı, Yorumları",
-    "price": 0,
+    "price": 250,
     "shortDescription": "Miniworld 2 li Zıbın Seti yorumlarını inceleyin, Trendyol",
     "description": "Miniworld 2 li Zıbın Seti yorumlarını inceleyin, Trendyol",
     "images": [
@@ -422,7 +445,7 @@
   {
     "id": "985333737",
     "title": "Bebitof Bornoz Seti Erkek 0-2 Yaş",
-    "price": 8075,
+    "price": 80.75,
     "shortDescription": "Bebitof Bornoz Seti Erkek 0-2 Yaş yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "description": "Bebitof Bornoz Seti Erkek 0-2 Yaş yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "images": [
@@ -443,7 +466,7 @@
   {
     "id": "1012443424",
     "title": "Balgüneş Tekstil M19084m",
-    "price": 7125,
+    "price": 71.25,
     "shortDescription": "Balgüneş Tekstil M19084m yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "description": "Balgüneş Tekstil M19084m yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "images": [
@@ -464,7 +487,7 @@
   {
     "id": "970208553",
     "title": "MelzBaby Bebek Bornoz Takım Unisex-4 lü Set",
-    "price": 76000,
+    "price": 760,
     "shortDescription": "MelzBaby Bebek Bornoz Takım Unisex-4 lü Set yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "description": "MelzBaby Bebek Bornoz Takım Unisex-4 lü Set yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "images": [
@@ -506,7 +529,7 @@
   {
     "id": "940785375",
     "title": "MelzBaby MiniWorld Bebek Kundak Banyo Havlu Seti",
-    "price": 20900,
+    "price": 209,
     "shortDescription": "MelzBaby MiniWorld Bebek Kundak Banyo Havlu Seti yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "description": "MelzBaby MiniWorld Bebek Kundak Banyo Havlu Seti yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "images": [
@@ -527,7 +550,7 @@
   {
     "id": "940793127",
     "title": "MelzBaby MiniWorld Bebek Kundak Banyo Havlu Seti",
-    "price": 28025,
+    "price": 280.25,
     "shortDescription": "MelzBaby MiniWorld Bebek Kundak Banyo Havlu Seti yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "description": "MelzBaby MiniWorld Bebek Kundak Banyo Havlu Seti yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "images": [
@@ -569,7 +592,7 @@
   {
     "id": "988841161",
     "title": "Baby 6 lı Mendil Seti Organik Unisex Kutulu",
-    "price": 36100,
+    "price": 361,
     "shortDescription": "Baby 6 lı Mendil Seti Organik Unisex Kutulu yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "description": "Baby 6 lı Mendil Seti Organik Unisex Kutulu yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "images": [
@@ -590,7 +613,7 @@
   {
     "id": "988843596",
     "title": "Bebeci Bebek Önlük 3 lü Set Kutulu Erkek - Fiyatı, Yorumları",
-    "price": 0,
+    "price": 250,
     "shortDescription": "Bebeci Bebek Önlük 3 lü Set Kutulu Erkek yorumlarını inceleyin, Trendyol",
     "description": "Bebeci Bebek Önlük 3 lü Set Kutulu Erkek yorumlarını inceleyin, Trendyol",
     "images": [
@@ -611,7 +634,7 @@
   {
     "id": "1027928343",
     "title": "Bebitof Welsoft Baskılı Kapüşonlu Hırka",
-    "price": 27455,
+    "price": 274.55,
     "shortDescription": "Bebitof Welsoft Baskılı Kapüşonlu Hırka yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "description": "Bebitof Welsoft Baskılı Kapüşonlu Hırka yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "images": [
@@ -632,7 +655,7 @@
   {
     "id": "1058776240",
     "title": "MelzBaby Yılbaşı Temalı Elbise Taç Hediyeli",
-    "price": 39567,
+    "price": 395.67,
     "shortDescription": "MelzBaby Yılbaşı Temalı Elbise Taç Hediyeli yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "description": "MelzBaby Yılbaşı Temalı Elbise Taç Hediyeli yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "images": [
@@ -646,14 +669,25 @@
     "category": "",
     "gender": "",
     "ageRange": "",
-    "colors": [],
-    "sizes": [],
+    "colors": [
+      "kırmızı",
+      "beyaz"
+    ],
+    "sizes": [
+      "0-3 ay",
+      "3-6 ay",
+      "6-9 ay",
+      "9-12 ay",
+      "12-18 ay",
+      "18-24 ay",
+      "2-3 yaş"
+    ],
     "tags": []
   },
   {
     "id": "1058305732",
     "title": "MelzBaby Yılbaşı Elbisesi Taç Hediyeli",
-    "price": 39567,
+    "price": 395.67,
     "shortDescription": "MelzBaby Yılbaşı Elbisesi Taç Hediyeli yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "description": "MelzBaby Yılbaşı Elbisesi Taç Hediyeli yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "images": [
@@ -667,14 +701,25 @@
     "category": "",
     "gender": "",
     "ageRange": "",
-    "colors": [],
-    "sizes": [],
+    "colors": [
+      "kırmızı",
+      "beyaz"
+    ],
+    "sizes": [
+      "0-3 ay",
+      "3-6 ay",
+      "6-9 ay",
+      "9-12 ay",
+      "12-18 ay",
+      "18-24 ay",
+      "2-3 yaş"
+    ],
     "tags": []
   },
   {
     "id": "1058304480",
     "title": "MelzBaby Kadife Yılbaşı Elbisesi Taçlı",
-    "price": 39567,
+    "price": 395.67,
     "shortDescription": "MelzBaby Kadife Yılbaşı Elbisesi Taçlı yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "description": "MelzBaby Kadife Yılbaşı Elbisesi Taçlı yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "images": [
@@ -688,14 +733,25 @@
     "category": "",
     "gender": "",
     "ageRange": "",
-    "colors": [],
-    "sizes": [],
+    "colors": [
+      "kırmızı",
+      "beyaz"
+    ],
+    "sizes": [
+      "0-3 ay",
+      "3-6 ay",
+      "6-9 ay",
+      "9-12 ay",
+      "12-18 ay",
+      "18-24 ay",
+      "2-3 yaş"
+    ],
     "tags": []
   },
   {
     "id": "1058304657",
     "title": "MelzBaby Yılbaşı Temalı Elbise Taç Hediyeli",
-    "price": 39567,
+    "price": 395.67,
     "shortDescription": "MelzBaby Yılbaşı Temalı Elbise Taç Hediyeli yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "description": "MelzBaby Yılbaşı Temalı Elbise Taç Hediyeli yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "images": [
@@ -709,14 +765,25 @@
     "category": "",
     "gender": "",
     "ageRange": "",
-    "colors": [],
-    "sizes": [],
+    "colors": [
+      "kırmızı",
+      "beyaz"
+    ],
+    "sizes": [
+      "0-3 ay",
+      "3-6 ay",
+      "6-9 ay",
+      "9-12 ay",
+      "12-18 ay",
+      "18-24 ay",
+      "2-3 yaş"
+    ],
     "tags": []
   },
   {
     "id": "1071739233",
     "title": "MelzBaby Yeni Yıl Tulum Taç Hediyeli Andywawa",
-    "price": 7225,
+    "price": 72.25,
     "shortDescription": "MelzBaby Yeni Yıl Tulum Taç Hediyeli Andywawa yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "description": "MelzBaby Yeni Yıl Tulum Taç Hediyeli Andywawa yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "images": [
@@ -737,7 +804,7 @@
   {
     "id": "1058776115",
     "title": "MelzBaby Kız Çocuk Taçlı Yılbaşı Elbisesi",
-    "price": 52487,
+    "price": 524.87,
     "shortDescription": "MelzBaby Kız Çocuk Taçlı Yılbaşı Elbisesi yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "description": "MelzBaby Kız Çocuk Taçlı Yılbaşı Elbisesi yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "images": [
@@ -758,7 +825,7 @@
   {
     "id": "985924323",
     "title": "PATİK Bebek Erkek Bebek 0-3 Ay",
-    "price": 13300,
+    "price": 133,
     "shortDescription": "PATİK Bebek Erkek Bebek 0-3 Ay yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "description": "PATİK Bebek Erkek Bebek 0-3 Ay yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "images": [
@@ -800,7 +867,7 @@
   {
     "id": "1064545031",
     "title": "MelzBaby Yılbaşı Elbisesi Taç Hediyeli",
-    "price": 45125,
+    "price": 451.25,
     "shortDescription": "MelzBaby Yılbaşı Elbisesi Taç Hediyeli yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "description": "MelzBaby Yılbaşı Elbisesi Taç Hediyeli yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "images": [
@@ -821,7 +888,7 @@
   {
     "id": "992625251",
     "title": "PandoraGiyim Kız Bebek Külotlu Çorap",
-    "price": 12112,
+    "price": 121.12,
     "shortDescription": "PandoraGiyim Kız Bebek Külotlu Çorap yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "description": "PandoraGiyim Kız Bebek Külotlu Çorap yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "images": [
@@ -863,7 +930,7 @@
   {
     "id": "1014027658",
     "title": "Genel Markalar Erkek Bebek Şehzade Mevlüt Seti",
-    "price": 60562,
+    "price": 605.62,
     "shortDescription": "Genel Markalar Erkek Bebek Şehzade Mevlüt Seti yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "description": "Genel Markalar Erkek Bebek Şehzade Mevlüt Seti yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "images": [
@@ -905,7 +972,7 @@
   {
     "id": "1012480426",
     "title": "BEBLY 10 lü Hastane Çıkışı Erkek",
-    "price": 159575,
+    "price": 1595.75,
     "shortDescription": "BEBLY 10 lü Hastane Çıkışı Erkek yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "description": "BEBLY 10 lü Hastane Çıkışı Erkek yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "images": [
@@ -926,7 +993,7 @@
   {
     "id": "975405338",
     "title": "MelzBaby Concon premium organik nakışlı 5 li hastane çıkışı",
-    "price": 28182,
+    "price": 281.82,
     "shortDescription": "MelzBaby Concon premium organik nakışlı 5 li hastane çıkışı yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "description": "MelzBaby Concon premium organik nakışlı 5 li hastane çıkışı yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "images": [
@@ -947,7 +1014,7 @@
   {
     "id": "993266012",
     "title": "S&B Tekstil Yenidogan Çorap Unisex 6 lı Kutulu - Fiyatı, Yorumları",
-    "price": 0,
+    "price": 250,
     "shortDescription": "S&B Tekstil Yenidogan Çorap Unisex 6 lı Kutulu yorumlarını inceleyin, Trendyol",
     "description": "S&B Tekstil Yenidogan Çorap Unisex 6 lı Kutulu yorumlarını inceleyin, Trendyol",
     "images": [
@@ -968,7 +1035,7 @@
   {
     "id": "980984219",
     "title": "Zıpır Baby 5 li Hastane Çıkışı Kız Bebek işlemeli",
-    "price": 31896,
+    "price": 318.96,
     "shortDescription": "Zıpır Baby 5 li Hastane Çıkışı Kız Bebek işlemeli yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "description": "Zıpır Baby 5 li Hastane Çıkışı Kız Bebek işlemeli yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "images": [
@@ -1010,7 +1077,7 @@
   {
     "id": "985923312",
     "title": "PATİK Bebek Kız 0-3 Ay",
-    "price": 13300,
+    "price": 133,
     "shortDescription": "PATİK Bebek Kız 0-3 Ay yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "description": "PATİK Bebek Kız 0-3 Ay yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "images": [
@@ -1031,7 +1098,7 @@
   {
     "id": "981540875",
     "title": "ConconBebe 5 li Hastane Çıkışı Premium seri peluş baskı",
-    "price": 31896,
+    "price": 318.96,
     "shortDescription": "ConconBebe 5 li Hastane Çıkışı Premium seri peluş baskı yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "description": "ConconBebe 5 li Hastane Çıkışı Premium seri peluş baskı yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "images": [
@@ -1052,7 +1119,7 @@
   {
     "id": "977786243",
     "title": "CONCON 5 li Zıbın Seti Hastane çıkışı",
-    "price": 26197,
+    "price": 261.97,
     "shortDescription": "CONCON 5 li Zıbın Seti Hastane çıkışı yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "description": "CONCON 5 li Zıbın Seti Hastane çıkışı yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "images": [
@@ -1073,7 +1140,7 @@
   {
     "id": "992622060",
     "title": "PandoraGiyim Kız Bebek Külotlu Çorap",
-    "price": 12112,
+    "price": 121.12,
     "shortDescription": "PandoraGiyim Kız Bebek Külotlu Çorap yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "description": "PandoraGiyim Kız Bebek Külotlu Çorap yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "images": [
@@ -1115,7 +1182,7 @@
   {
     "id": "978104768",
     "title": "Fantastik Baby 0-3 Ay 4 Lİ TULUM SET UNİSEX - Fiyatı, Yorumları",
-    "price": 0,
+    "price": 250,
     "shortDescription": "Fantastik Baby 0-3 Ay 4 Lİ TULUM SET UNİSEX yorumlarını inceleyin, Trendyol",
     "description": "Fantastik Baby 0-3 Ay 4 Lİ TULUM SET UNİSEX yorumlarını inceleyin, Trendyol",
     "images": [
@@ -1136,7 +1203,7 @@
   {
     "id": "931737816",
     "title": "MelzBaby Miniborn Bebek Body Zıbın - Fiyatı, Yorumları",
-    "price": 0,
+    "price": 250,
     "shortDescription": "MelzBaby Miniborn Bebek Body Zıbın yorumlarını inceleyin, Trendyol",
     "description": "MelzBaby Miniborn Bebek Body Zıbın yorumlarını inceleyin, Trendyol",
     "images": [
@@ -1157,7 +1224,7 @@
   {
     "id": "985922306",
     "title": "PATİK Bebek 0-3 Ay Unisex",
-    "price": 13300,
+    "price": 133,
     "shortDescription": "PATİK Bebek 0-3 Ay Unisex yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "description": "PATİK Bebek 0-3 Ay Unisex yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "images": [
@@ -1199,7 +1266,7 @@
   {
     "id": "980978279",
     "title": "Zıpır Baby 5 li Hatane Çıkışı Nakışlı",
-    "price": 31896,
+    "price": 318.96,
     "shortDescription": "Zıpır Baby 5 li Hatane Çıkışı Nakışlı yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "description": "Zıpır Baby 5 li Hatane Çıkışı Nakışlı yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "images": [
@@ -1220,7 +1287,7 @@
   {
     "id": "988606491",
     "title": "Babytoo Kısa Kollu Body Kız Bebek - Fiyatı, Yorumları",
-    "price": 0,
+    "price": 250,
     "shortDescription": "Babytoo Kısa Kollu Body Kız Bebek yorumlarını inceleyin, Trendyol",
     "description": "Babytoo Kısa Kollu Body Kız Bebek yorumlarını inceleyin, Trendyol",
     "images": [
@@ -1241,7 +1308,7 @@
   {
     "id": "980985922",
     "title": "Zıpır Baby 5 li Hastane Çıkışı Nakışlı",
-    "price": 31896,
+    "price": 318.96,
     "shortDescription": "Zıpır Baby 5 li Hastane Çıkışı Nakışlı yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "description": "Zıpır Baby 5 li Hastane Çıkışı Nakışlı yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "images": [
@@ -1262,7 +1329,7 @@
   {
     "id": "932028198",
     "title": "MelzBaby Fantastıc Baby 3'li Bebek Tulumu",
-    "price": 24063,
+    "price": 240.63,
     "shortDescription": "MelzBaby Fantastıc Baby 3'li Bebek Tulumu yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "description": "MelzBaby Fantastıc Baby 3'li Bebek Tulumu yorumlarını inceleyin, Trendyol'a özel indirimli fiyata satın alın.",
     "images": [
@@ -1283,7 +1350,7 @@
   {
     "id": "1012340164",
     "title": "Bebitof 3 Çift Çorap Set Erkek Bebek 0-3 Ay - Fiyatı, Yorumları",
-    "price": 0,
+    "price": 250,
     "shortDescription": "Bebitof 3 Çift Çorap Set Erkek Bebek 0-3 Ay yorumlarını inceleyin, Trendyol",
     "description": "Bebitof 3 Çift Çorap Set Erkek Bebek 0-3 Ay yorumlarını inceleyin, Trendyol",
     "images": [
@@ -1325,7 +1392,7 @@
   {
     "id": "993126670",
     "title": "Bebekevi Yenidoğan Çorap 6 lı Kız Bebek lux kutulu - Fiyatı, Yorumları",
-    "price": 0,
+    "price": 250,
     "shortDescription": "Bebekevi Yenidoğan Çorap 6 lı Kız Bebek lux kutulu yorumlarını inceleyin, Trendyol",
     "description": "Bebekevi Yenidoğan Çorap 6 lı Kız Bebek lux kutulu yorumlarını inceleyin, Trendyol",
     "images": [
@@ -1367,7 +1434,7 @@
   {
     "id": "987330405",
     "title": "Babytoo Kısa Kollu Body Erkek Bebek - Fiyatı, Yorumları",
-    "price": 0,
+    "price": 250,
     "shortDescription": "Babytoo Kısa Kollu Body Erkek Bebek yorumlarını inceleyin, Trendyol",
     "description": "Babytoo Kısa Kollu Body Erkek Bebek yorumlarını inceleyin, Trendyol",
     "images": [
@@ -1388,7 +1455,7 @@
   {
     "id": "987290930",
     "title": "Babytoo Kısa Kollu Body Unisex - Fiyatı, Yorumları",
-    "price": 0,
+    "price": 250,
     "shortDescription": "Babytoo Kısa Kollu Body Unisex yorumlarını inceleyin, Trendyol",
     "description": "Babytoo Kısa Kollu Body Unisex yorumlarını inceleyin, Trendyol",
     "images": [
@@ -1409,7 +1476,7 @@
   {
     "id": "988821138",
     "title": "Miniworld Body & Zıbın 2 li Set Unisex - Fiyatı, Yorumları",
-    "price": 0,
+    "price": 250,
     "shortDescription": "Miniworld Body & Zıbın 2 li Set Unisex yorumlarını inceleyin, Trendyol",
     "description": "Miniworld Body & Zıbın 2 li Set Unisex yorumlarını inceleyin, Trendyol",
     "images": [
@@ -1430,7 +1497,7 @@
   {
     "id": "993129503",
     "title": "Bebekevi Çorap Erkek Bebek 6 çift kutulu - Fiyatı, Yorumları",
-    "price": 0,
+    "price": 250,
     "shortDescription": "Bebekevi Çorap Erkek Bebek 6 çift kutulu yorumlarını inceleyin, Trendyol",
     "description": "Bebekevi Çorap Erkek Bebek 6 çift kutulu yorumlarını inceleyin, Trendyol",
     "images": [
@@ -1451,7 +1518,7 @@
   {
     "id": "931487644",
     "title": "MelzBaby Miniborn Bebek Body Zıbın - Fiyatı, Yorumları",
-    "price": 0,
+    "price": 250,
     "shortDescription": "MelzBaby Miniborn Bebek Body Zıbın yorumlarını inceleyin, Trendyol",
     "description": "MelzBaby Miniborn Bebek Body Zıbın yorumlarını inceleyin, Trendyol",
     "images": [
@@ -1472,7 +1539,7 @@
   {
     "id": "931254655",
     "title": "MelzBaby Miniborn Bebek Body Zıbın - Fiyatı, Yorumları",
-    "price": 0,
+    "price": 250,
     "shortDescription": "MelzBaby Miniborn Bebek Body Zıbın yorumlarını inceleyin, Trendyol",
     "description": "MelzBaby Miniborn Bebek Body Zıbın yorumlarını inceleyin, Trendyol",
     "images": [
@@ -1493,7 +1560,7 @@
   {
     "id": "1016232710",
     "title": "Miniworld 2li Body Set Unisex - Fiyatı, Yorumları",
-    "price": 0,
+    "price": 250,
     "shortDescription": "Miniworld 2li Body Set Unisex yorumlarını inceleyin, Trendyol",
     "description": "Miniworld 2li Body Set Unisex yorumlarını inceleyin, Trendyol",
     "images": [
@@ -1514,7 +1581,7 @@
   {
     "id": "1016219614",
     "title": "Miniworld 2 li Body Set Unisex - Fiyatı, Yorumları",
-    "price": 0,
+    "price": 250,
     "shortDescription": "Miniworld 2 li Body Set Unisex yorumlarını inceleyin, Trendyol",
     "description": "Miniworld 2 li Body Set Unisex yorumlarını inceleyin, Trendyol",
     "images": [
@@ -1535,7 +1602,7 @@
   {
     "id": "1015261698",
     "title": "Fantastik Baby 5 li Zıbın Seti Kız Bebek - Fiyatı, Yorumları",
-    "price": 0,
+    "price": 250,
     "shortDescription": "Fantastik Baby 5 li Zıbın Seti Kız Bebek yorumlarını inceleyin, Trendyol",
     "description": "Fantastik Baby 5 li Zıbın Seti Kız Bebek yorumlarını inceleyin, Trendyol",
     "images": [
@@ -1556,7 +1623,7 @@
   {
     "id": "982500367",
     "title": "baybim Kız Bebek Kapüşonlu 3 lü Set - Fiyatı, Yorumları",
-    "price": 0,
+    "price": 250,
     "shortDescription": "baybim Kız Bebek Kapüşonlu 3 lü Set yorumlarını inceleyin, Trendyol",
     "description": "baybim Kız Bebek Kapüşonlu 3 lü Set yorumlarını inceleyin, Trendyol",
     "images": [
@@ -1577,7 +1644,7 @@
   {
     "id": "931487641",
     "title": "MelzBaby Miniborn Bebek Body Zıbın - Fiyatı, Yorumları",
-    "price": 0,
+    "price": 250,
     "shortDescription": "MelzBaby Miniborn Bebek Body Zıbın yorumlarını inceleyin, Trendyol",
     "description": "MelzBaby Miniborn Bebek Body Zıbın yorumlarını inceleyin, Trendyol",
     "images": [
@@ -1619,7 +1686,7 @@
   {
     "id": "931244591",
     "title": "MelzBaby Miniborn Bebek Body Zıbın - Fiyatı, Yorumları",
-    "price": 0,
+    "price": 250,
     "shortDescription": "MelzBaby Miniborn Bebek Body Zıbın yorumlarını inceleyin, Trendyol",
     "description": "MelzBaby Miniborn Bebek Body Zıbın yorumlarını inceleyin, Trendyol",
     "images": [
@@ -1640,7 +1707,7 @@
   {
     "id": "931233090",
     "title": "MelzBaby Miniborn Bebek Body Zıbın - Fiyatı, Yorumları",
-    "price": 0,
+    "price": 250,
     "shortDescription": "MelzBaby Miniborn Bebek Body Zıbın yorumlarını inceleyin, Trendyol",
     "description": "MelzBaby Miniborn Bebek Body Zıbın yorumlarını inceleyin, Trendyol",
     "images": [
@@ -1661,7 +1728,7 @@
   {
     "id": "931224771",
     "title": "MelzBaby Miniborn Bebek Body Zıbın - Fiyatı, Yorumları",
-    "price": 0,
+    "price": 250,
     "shortDescription": "MelzBaby Miniborn Bebek Body Zıbın yorumlarını inceleyin, Trendyol",
     "description": "MelzBaby Miniborn Bebek Body Zıbın yorumlarını inceleyin, Trendyol",
     "images": [
@@ -1682,7 +1749,7 @@
   {
     "id": "1076540556",
     "title": "MelzBaby Kız Bebek Elbise - Fiyatı, Yorumları",
-    "price": 0,
+    "price": 250,
     "shortDescription": "MelzBaby Kız Bebek Elbise yorumlarını inceleyin, Trendyol",
     "description": "MelzBaby Kız Bebek Elbise yorumlarını inceleyin, Trendyol",
     "images": [
@@ -1703,7 +1770,7 @@
   {
     "id": "993269615",
     "title": "S&B Tekstil Kız Bebek 3 Çift Kutulu Çorap - Fiyatı, Yorumları",
-    "price": 0,
+    "price": 250,
     "shortDescription": "S&B Tekstil Kız Bebek 3 Çift Kutulu Çorap yorumlarını inceleyin, Trendyol",
     "description": "S&B Tekstil Kız Bebek 3 Çift Kutulu Çorap yorumlarını inceleyin, Trendyol",
     "images": [

@@ -3,6 +3,8 @@
   "use strict";
 
   const CART_KEY = "melz_cart";
+  const PRODUCTS_URL = "/assets/data/products.json";
+  const PLACEHOLDER_IMG = "https://via.placeholder.com/120x120?text=Melz";
 
   const $ = (sel, root = document) => root.querySelector(sel);
 
@@ -10,17 +12,45 @@
     wrap: $("#cart-wrap"),
     empty: $("#cart-empty"),
     items: $("#cart-items"),
-    subtotal: $("#subtotal"),
-    shipping: $("#shipping"),
-    total: $("#total"),
+
+    // ✅ Sepet HTML'indeki id'ler
+    subtotal: $("#sum-subtotal"),
+    shipping: $("#sum-shipping"),
+    total: $("#sum-total"),
+
     clearBtn: $("#cart-clear"),
   };
 
+  // In-memory products index
+  let PRODUCTS = [];
+  let PRODUCTS_BY_ID = new Map();
+
+  // ---------- Utils ----------
   function safeParse(str) {
-    try { return JSON.parse(str); } catch { return null; }
+    try {
+      return JSON.parse(str);
+    } catch {
+      return null;
+    }
   }
 
-  // ✅ HER ZAMAN [{id, qty}] array’i döndür
+  function formatTRY(n) {
+    const v = Number(n || 0);
+    const val = Number.isFinite(v) ? v : 0;
+    return new Intl.NumberFormat("tr-TR", { style: "currency", currency: "TRY" }).format(val);
+  }
+
+  // Melz cart formatı: bazen array, bazen {items:[...]}
+  function normalizeItems(items) {
+    return (items || [])
+      .map((it) => {
+        const id = String(it.id ?? it.pid ?? it.productId ?? "");
+        const qty = Number(it.qty ?? it.quantity ?? it.count ?? 1);
+        return { id, qty: Number.isFinite(qty) && qty > 0 ? qty : 1 };
+      })
+      .filter((x) => x.id);
+  }
+
   function readCartItems() {
     const raw = localStorage.getItem(CART_KEY);
     if (!raw) return [];
@@ -32,150 +62,50 @@
     return [];
   }
 
-  function normalizeItems(items) {
-    return (items || [])
-      .map((it) => {
-        const id = String(it.id ?? it.pid ?? it.productId ?? "");
-        const qty = Number(it.qty ?? it.quantity ?? it.count ?? 1);
-        return { id, qty: Number.isFinite(qty) && qty > 0 ? qty : 1 };
-      })
-      .filter((x) => x.id);
-  }
-
   function writeCartItems(items) {
     const payload = { items: normalizeItems(items) };
     localStorage.setItem(CART_KEY, JSON.stringify(payload));
-    // Badge vb dinleyenler için event
+    // badge vb dinleyenler için event
     window.dispatchEvent(new CustomEvent("melz:cart:updated", { detail: payload }));
   }
 
-  // Güvenli ürün bulma fonksiyonu: window.MELZ_PRODUCTS, window.MelzV2.products, window.MELZ_PRODUCTS_BY_ID
-  function getProductByIdSafe(id) {
-    const sid = String(id);
-    const list = Array.isArray(window.MELZ_PRODUCTS)
-      ? window.MELZ_PRODUCTS
-      : Array.isArray(window.MelzV2?.products)
-      ? window.MelzV2.products
-      : [];
-    let p = list.find((x) => String(x.id ?? x._id) === sid);
-    if (!p && window.MELZ_PRODUCTS_BY_ID) {
-      try {
-        p = window.MELZ_PRODUCTS_BY_ID.get
-          ? window.MELZ_PRODUCTS_BY_ID.get(sid)
-          : window.MELZ_PRODUCTS_BY_ID[sid];
-      } catch (e) {}
-    }
-    return p || null;
+  function escapeHtml(s) {
+    return String(s ?? "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
   }
 
-  // Removed top-level usage of items to fix ReferenceError
-  // els.items.innerHTML = items.map(({ id, qty }) => {
-  //   const p = getProductById(id);
-  //   const name = p?.title || p?.name || `Ürün #${id}`;
-  //   const img = (p?.images && p.images[0]) || "https://via.placeholder.com/120x120?text=Melz";
-  //   const line = calcLinePrice(p, qty);
-  //   subtotal += line;
+  function escapeAttr(s) {
+    return escapeHtml(s).replace(/`/g, "&#096;");
+  }
 
-  //   return `
-  //   <div class="flex gap-4 py-4 border-b border-[#eee]">
-  //     <div class="w-20 h-20 rounded-xl overflow-hidden bg-[#f4f2f0] shrink-0">
-  //       <img src="${img}" alt="${name}" class="w-full h-full object-cover" />
-  //     </div>
+  function getProductById(id) {
+    const sid = String(id);
+    if (PRODUCTS_BY_ID && PRODUCTS_BY_ID.get) return PRODUCTS_BY_ID.get(sid) || null;
+    return (PRODUCTS || []).find((p) => String(p.id ?? p._id) === sid) || null;
+  }
 
-  //     <div class="flex-1 min-w-0">
-  //       <div class="flex items-start justify-between gap-3">
-  //         <div class="min-w-0">
-  //           <div class="font-bold truncate">${name}</div>
-  //           <div class="text-sm text-text-secondary mt-1">ID: ${id}</div>
-  //         </div>
-  //         <div class="font-bold">${formatTRY(line)}</div>
-  //       </div>
+  function getProductImage(p) {
+    if (!p) return PLACEHOLDER_IMG;
+    if (Array.isArray(p.images) && p.images[0]) return p.images[0];
+    if (typeof p.image === "string" && p.image) return p.image;
+    return PLACEHOLDER_IMG;
+  }
 
-  //       <div class="flex items-center justify-between mt-3">
-  //         <div class="inline-flex items-center gap-2 rounded-xl bg-[#f4f2f0] px-2 py-2">
-  //           <button class="w-8 h-8 rounded-lg bg-white hover:bg-[#eee] font-black" data-action="dec" data-id="${id}">-</button>
-  //           <div class="w-8 text-center font-bold">${qty}</div>
-  //           <button class="w-8 h-8 rounded-lg bg-white hover:bg-[#eee] font-black" data-action="inc" data-id="${id}">+</button>
-  //         </div>
-
-  //         <button class="text-red-600 font-semibold hover:underline" data-action="remove" data-id="${id}">
-  //           Kaldır
-  //         </button>
-  //       </div>
-  //     </div>
-  //   </div>
-  //   `;
-  // }).join("");
-
-  function formatTRY(n) {
-    const v = Number(n || 0);
-    return new Intl.NumberFormat("tr-TR", { style: "currency", currency: "TRY" }).format(v);
+  function getUnitPrice(p) {
+    const price = Number(p?.salePrice ?? p?.price ?? 0);
+    return Number.isFinite(price) ? price : 0;
   }
 
   function calcLinePrice(product, qty) {
-    const price = Number(product?.salePrice ?? product?.price ?? 0);
-    return (Number.isFinite(price) ? price : 0) * qty;
+    const unit = getUnitPrice(product);
+    return (unit > 0 ? unit : 0) * qty;
   }
 
-  function render() {
-    const items = readCartItems();
-
-    const hasItems = items.length > 0;
-    if (els.empty) els.empty.classList.toggle("hidden", hasItems);
-    if (els.wrap) els.wrap.classList.toggle("hidden", !hasItems);
-
-    if (!els.items) return;
-
-    if (!hasItems) {
-      els.items.innerHTML = "";
-      if (els.subtotal) els.subtotal.textContent = formatTRY(0);
-      if (els.shipping) els.shipping.textContent = formatTRY(0);
-      if (els.total) els.total.textContent = formatTRY(0);
-      return;
-    }
-
-    let subtotal = 0;
-
-    els.items.innerHTML = items.map(({ id, qty }) => {
-      const p = getProductByIdSafe(id);
-      const name = p?.title || p?.name || `Ürün #${id}`;
-      const img = (p?.images && p.images[0]) || "https://via.placeholder.com/120x120?text=Melz";
-      const line = calcLinePrice(p, qty);
-      subtotal += line;
-
-      return `
-      <div class="flex gap-4 py-4 border-b border-[#eee]">
-        <div class="w-20 h-20 rounded-xl overflow-hidden bg-[#f4f2f0] shrink-0">
-          <img src="${img}" alt="${name}" class="w-full h-full object-cover" />
-        </div>
-
-        <div class="flex-1 min-w-0">
-          <div class="flex items-start justify-between gap-3">
-            <div class="min-w-0">
-              <div class="font-bold truncate">${name}</div>
-              <div class="text-sm text-text-secondary mt-1">ID: ${id}</div>
-            </div>
-            <div class="font-bold">${formatTRY(line)}</div>
-          </div>
-
-          <div class="flex items-center justify-between mt-3">
-            <div class="inline-flex items-center gap-2 rounded-xl bg-[#f4f2f0] px-2 py-2">
-              <button class="w-8 h-8 rounded-lg bg-white hover:bg-[#eee] font-black" data-action="dec" data-id="${id}">-</button>
-              <div class="w-8 text-center font-bold">${qty}</div>
-              <button class="w-8 h-8 rounded-lg bg-white hover:bg-[#eee] font-black" data-action="inc" data-id="${id}">+</button>
-            </div>
-
-            <button class="text-red-600 font-semibold hover:underline" data-action="remove" data-id="${id}">
-              Kaldır
-            </button>
-          </div>
-        </div>
-      </div>
-      `;
-    }).join("");
-
-    // Shipping demo: sabit 0 (istersen kural ekleriz)
-    const shipping = 0;
+  function setSummary(subtotal, shipping) {
     const total = subtotal + shipping;
 
     if (els.subtotal) els.subtotal.textContent = formatTRY(subtotal);
@@ -183,7 +113,80 @@
     if (els.total) els.total.textContent = formatTRY(total);
   }
 
-  function onClick(e) {
+  // ---------- Render ----------
+  function render() {
+    const items = readCartItems();
+    const hasItems = items.length > 0;
+
+    if (els.empty) els.empty.classList.toggle("hidden", hasItems);
+    if (els.wrap) els.wrap.classList.toggle("hidden", !hasItems);
+
+    if (!els.items) return;
+
+    if (!hasItems) {
+      els.items.innerHTML = "";
+      setSummary(0, 0);
+      return;
+    }
+
+    let subtotal = 0;
+
+    els.items.innerHTML = items
+      .map(({ id, qty }) => {
+        const p = getProductById(id);
+
+        const name = p?.title || p?.name || `Ürün #${id}`;
+        const img = getProductImage(p);
+
+        const unitPrice = getUnitPrice(p);
+        const unitPriceText = unitPrice > 0 ? formatTRY(unitPrice) : "—";
+
+        const line = calcLinePrice(p, qty);
+        subtotal += line;
+
+        return `
+          <div class="flex gap-4 py-4 border-b border-[#eee]">
+            <div class="w-20 h-20 rounded-xl overflow-hidden bg-[#f4f2f0] shrink-0">
+              <img src="${img}" alt="${escapeHtml(name)}" class="w-full h-full object-cover" />
+            </div>
+
+            <div class="flex-1 min-w-0">
+              <div class="flex items-start justify-between gap-3">
+                <div class="min-w-0">
+                  <div class="font-bold truncate">${escapeHtml(name)}</div>
+                  <div class="text-sm text-text-secondary mt-1">
+                    <span class="opacity-70">Birim:</span> <span class="font-semibold">${unitPriceText}</span>
+                    <span class="mx-2 opacity-40">•</span>
+                    <span class="opacity-70">ID:</span> ${escapeHtml(id)}
+                  </div>
+                </div>
+                <div class="font-bold">${formatTRY(line)}</div>
+              </div>
+
+              <div class="flex items-center justify-between mt-3">
+                <div class="inline-flex items-center gap-2 rounded-xl bg-[#f4f2f0] px-2 py-2">
+                  <button class="w-8 h-8 rounded-lg bg-white hover:bg-[#eee] font-black" data-action="dec" data-id="${escapeAttr(id)}">-</button>
+                  <div class="w-8 text-center font-bold">${qty}</div>
+                  <button class="w-8 h-8 rounded-lg bg-white hover:bg-[#eee] font-black" data-action="inc" data-id="${escapeAttr(id)}">+</button>
+                </div>
+
+                <button class="text-red-600 font-semibold hover:underline" data-action="remove" data-id="${escapeAttr(id)}">
+                  Kaldır
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      })
+      .join("");
+
+    // demo: kargo 0
+    const shipping = 0;
+    setSummary(subtotal, shipping);
+  }
+
+  // ---------- Events ----------
+  function onItemsClick(e) {
     const btn = e.target.closest("[data-action]");
     if (!btn) return;
 
@@ -228,10 +231,50 @@
     render();
   }
 
-  // ✅ INIT
-  document.addEventListener("click", onClick);
-  if (els.clearBtn) els.clearBtn.addEventListener("click", clearCart);
+  // ---------- Load products ----------
+  async function loadProducts() {
+    try {
+      const res = await fetch(PRODUCTS_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
 
-  render();
-  console.log("[CART_PAGE] Ready ✓ key=", CART_KEY, "items=", readCartItems().length);
+      PRODUCTS = Array.isArray(data) ? data : [];
+      PRODUCTS_BY_ID = new Map(PRODUCTS.map((p) => [String(p.id ?? p._id), p]));
+    } catch (err) {
+      console.error("[CART_PAGE] products.json load failed:", err);
+      PRODUCTS = [];
+      PRODUCTS_BY_ID = new Map();
+    }
+  }
+
+  // ---------- INIT (ÖNEMLİ) ----------
+  // Bu dosya sepet sayfasına sonradan enjekte edilebiliyor.
+  // DOMContentLoaded çoktan geçmişse eski init hiç çalışmıyordu → sepet boş kalıyordu.
+  async function init() {
+    // click handlers (1 kere bağla)
+    if (els.items) els.items.addEventListener("click", onItemsClick);
+    if (els.clearBtn) els.clearBtn.addEventListener("click", clearCart);
+
+    // 1) İlk render: ürünler yüklenmeden de satırlar görünür
+    render();
+
+    // 2) Ürünleri yükle
+    await loadProducts();
+
+    // 3) İkinci render: isim/görsel/fiyatlar oturur
+    render();
+
+    console.log("[CART_PAGE] Ready ✓", {
+      key: CART_KEY,
+      items: readCartItems().length,
+      products: PRODUCTS.length,
+      readyState: document.readyState,
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
 })();
