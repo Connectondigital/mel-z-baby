@@ -1,0 +1,4 @@
+# Performance & Cost Rules
+1. DO NOT read the file "frontend/assets/data/products.json" unless explicitly asked. It is too large.
+2. DO NOT read image files (jpg, png) in "frontend/assets/img/" unless necessary for a specific UI check.
+3. When working on frontend layout, focus only on HTML and CSS files.
